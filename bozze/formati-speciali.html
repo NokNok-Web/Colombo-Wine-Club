@@ -215,12 +215,43 @@ section[id]{scroll-margin-top:100px}
   .shot.trio{height:280px}.shot.trio img.hero-b{height:206px}.shot.trio img.side{height:174px}
 }
 
+
+/* riconoscimenti in una riga */
+.awards-line{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding-block:26px;margin-bottom:0}
+.awards-line ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px 20px;align-items:center}
+.awards-line li{min-width:0}
+.awards-line li{display:flex;align-items:center;gap:12px;font-size:13.5px;color:var(--ink-2);line-height:1.3}
+.awards-line li b{display:block;font-weight:500;color:var(--ink);font-size:14px}
+.awards-line li i{display:block;font-style:normal;font-size:12px;letter-spacing:.04em;color:var(--gold-ink);margin-top:2px}
+.awards-line img{width:38px;height:auto}
+.awards-line .sc{font-family:var(--display);font-size:26px;color:var(--gold-ink);min-width:38px;text-align:center;display:inline-flex;justify-content:center}
+@media (max-width:1100px){.awards-line ul{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:700px){.awards-line ul{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 16px}}
+
+/* esperienze in cantina */
+.exp{display:grid;grid-template-columns:calc(50% - var(--col-gap)/2) minmax(0,1fr);column-gap:var(--col-gap);background:var(--ivory);align-items:stretch}
+.exp-img{margin:0;min-height:100%;overflow:hidden;background:var(--cellar)}
+.exp-img img{width:100%;height:100%;object-fit:cover;object-position:62% 40%}
+.exp-body{padding:88px max(48px,calc((100vw - var(--content))/2)) 88px 24px;display:grid;gap:18px;align-content:center}
+.exp-body .story-kicker{margin:0}
+.exp-body h2{font-size:var(--h2)}
+.exp-lead{color:var(--ink-2);max-width:52ch}
+.exp-list{list-style:none;margin:12px 0 0;padding:0;border-top:1px solid var(--ink)}
+.exp-list li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--rule)}
+.exp-list h3{font-size:20px}
+.exp-list p{font-size:14.5px;color:var(--ink-2);margin-top:4px}
+.exp-list .num{font-family:var(--display);font-size:22px;color:var(--gold-ink);white-space:nowrap}
+.exp-foot{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;margin-top:14px}
+.exp-foot .add{gap:10px;grid-auto-flow:column}
+.exp-foot p{font-size:13.5px;color:var(--ink-3)}
+@media (max-width:900px){.exp{grid-template-columns:1fr}.exp-img{aspect-ratio:3/2}.exp-body{padding:40px var(--gutter-r) 56px var(--gutter)}.exp-foot .add{width:100%}}
+
 /* chi è Colombo: come colombovino.it */
 .story{padding-block:0 96px}
-.story-kicker{font-size:13.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin:64px 0 12px}
+.story-kicker{font-size:13.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin:96px 0 12px}
 .story-h{font-size:var(--h2);line-height:1.05;display:grid}
 .story-img{margin:0;aspect-ratio:3/1;overflow:hidden;background:var(--cellar)}
-.story-img img{width:100%;height:100%;object-fit:cover;object-position:50% 60%}
+.story-img img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
 .story-text{margin-top:28px;max-width:720px;display:grid;gap:18px}
 .story-rule{display:flex;align-items:flex-end;height:22px;margin-bottom:12px}
 .story-rule span{flex:1;height:2px;background:var(--brand-gold)}
@@ -491,7 +522,7 @@ footer b{color:var(--ink);font-weight:500}
     </div>
   </nav>
 
-  <section class="collection group" id="confezioni" aria-labelledby="conf-t" style="margin-top:40px;padding-block:88px 104px">
+  <section class="collection group" id="confezioni" aria-labelledby="conf-t" style="margin-top:40px;padding-block:88px 104px;background:var(--paper)">
     <div class="wrap">
       <div class="group-head"><div><h2 id="conf-t">Confezioni regalo</h2><p>Percorsi di degustazione da aprire in compagnia o da regalare. Quasi tutti esistono in due versioni: la confezione piccola e quella da sei bottiglie.</p></div></div>
       <ul class="cards">
@@ -502,6 +533,16 @@ footer b{color:var(--ink);font-weight:500}
         <li class="card"><a class="cover" href="#" aria-label="Gran Selezione Pinot Nero"></a><div class="shot trio"><img class="side" src="img/COL-Apertura.png" alt="" loading="lazy" width="310" height="1100"><img class="hero-b" src="img/COL-Maxima.png" alt="" loading="lazy" width="310" height="1100"></div><div class="body"><p class="kind" style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)">Le due selezioni di Pinot Nero</p><h3>Gran Selezione Pinot Nero</h3><p class="contents">Apertura 2022 · Maxima 2021</p><div class="fmt" role="group" aria-label="Confezione"><button type="button" aria-pressed="true" data-price="40">2 bottiglie</button><button type="button" aria-pressed="false" data-price="115">6 bottiglie</button></div><div class="row"><span class="p num">€ 40,00</span><span class="vat">IVA inclusa</span></div><div class="actions"><button type="button" class="btn buy">Aggiungi</button></div></div></li>
         <li class="card"><a class="cover" href="#" aria-label="Tre Espressioni"></a><div class="shot trio"><img class="side" src="img/COL-Natusia.png" alt="" loading="lazy" width="310" height="1100"><img class="hero-b" src="img/COL-Pinot-nero.png" alt="" loading="lazy" width="310" height="1100"><span class="plus"><i><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7h10M7 2v10" stroke="currentColor" stroke-width="1.3"/></svg></i>Chardonnay<br>2025</span></div><div class="body"><p class="kind" style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)">Bianco, rosso e metodo classico</p><h3>Tre Espressioni</h3><p class="contents">Chardonnay 2025 · Pinot Nero 2025 · Natusia 2023</p><div class="fmt" role="group" aria-label="Confezione"><button type="button" aria-pressed="true" data-price="35">3 bottiglie</button><button type="button" aria-pressed="false" data-price="63">6 bottiglie</button></div><div class="row"><span class="p num">€ 35,00</span><span class="vat">IVA inclusa</span></div><div class="actions"><button type="button" class="btn buy">Aggiungi</button></div></div></li>
       </ul>
+    </div>
+  </section>
+
+  <section class="vault" id="annate" aria-labelledby="ann-t">
+    <figure class="vault-band"><img src="img/cantina-botti.jpg" alt="La cantina Colombo, con le botti di rovere dove riposa il Pinot Nero" loading="lazy" width="2200" height="1467"></figure>
+    <div class="wrap">
+      <div class="group-head"><div><h2 id="ann-t">Annate storiche</h2><p>Le annate che abbiamo lasciato riposare in cantina, per scoprire come il Pinot Nero di Bubbio evolve nel tempo. Poche bottiglie per ogni annata, custodite per i soci Platinum.</p></div></div>
+      <div class="reserved"><img class="gem" src="img/gemma.png" alt="" width="81" height="72"><p><b>Riservate ai soci Platinum.</b> Il livello Platinum si raggiunge con 2.000 Gemme.</p><a class="spec-dl" href="#livelli">Scopri i livelli<svg width="26" height="26" aria-hidden="true"><use href="#arrow"/></svg></a></div>
+        <div class="vwine"><div class="bt"><img src="img/COL-Apertura.png" alt="Bottiglia di Apertura" loading="lazy" width="310" height="1100"></div><div><h3>Apertura</h3><p class="d">Il Pinot Nero di Bubbio nella sua espressione più aperta, raccontato in cinque annate dal 2013 al 2020 e in Magnum 2018.</p><ul class="vgrid"><li class="vcard"><span class="y num">2013</span><span class="f">75 cl</span><span class="p num">€ 57,00</span><span class="lock"><svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><rect x="2.5" y="6" width="9" height="6.5" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 6V4.5a2.5 2.5 0 0 1 5 0V6" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>Riservata Platinum</span></li><li class="vcard"><span class="y num">2015</span><span class="f">75 cl</span><span class="p num">€ 49,00</span><span class="lock"><svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><rect x="2.5" y="6" width="9" height="6.5" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 6V4.5a2.5 2.5 0 0 1 5 0V6" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>Riservata Platinum</span></li><li class="vcard"><span class="y num">2017</span><span class="f">75 cl</span><span class="p num">€ 41,00</span><span class="lock"><svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><rect x="2.5" y="6" width="9" height="6.5" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 6V4.5a2.5 2.5 0 0 1 5 0V6" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>Riservata Platinum</span></li><li class="vcard"><span class="y num">2018</span><span class="f">75 cl</span><span class="p num">€ 37,00</span><span class="lock"><svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><rect x="2.5" y="6" width="9" height="6.5" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 6V4.5a2.5 2.5 0 0 1 5 0V6" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>Riservata Platinum</span></li><li class="vcard"><span class="y num">2020</span><span class="f">75 cl</span><span class="p num">€ 29,00</span><span class="lock"><svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><rect x="2.5" y="6" width="9" height="6.5" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 6V4.5a2.5 2.5 0 0 1 5 0V6" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>Riservata Platinum</span></li><li class="vcard mag"><span class="y num">2018</span><span class="f">Magnum 1,5 L</span><span class="p num">€ 57,00</span><span class="lock"><svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><rect x="2.5" y="6" width="9" height="6.5" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 6V4.5a2.5 2.5 0 0 1 5 0V6" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>Riservata Platinum</span></li></ul></div></div>
+        <div class="vwine"><div class="bt"><img src="img/COL-Maxima.png" alt="Bottiglia di Maxima" loading="lazy" width="310" height="1100"></div><div><h3>Maxima</h3><p class="d">La selezione più importante del nostro Pinot Nero, dalle annate 2015 e 2018, anche in Magnum.</p><ul class="vgrid"><li class="vcard"><span class="y num">2015</span><span class="f">75 cl</span><span class="p num">€ 49,00</span><span class="lock"><svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><rect x="2.5" y="6" width="9" height="6.5" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 6V4.5a2.5 2.5 0 0 1 5 0V6" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>Riservata Platinum</span></li><li class="vcard"><span class="y num">2018</span><span class="f">75 cl</span><span class="p num">€ 37,00</span><span class="lock"><svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><rect x="2.5" y="6" width="9" height="6.5" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 6V4.5a2.5 2.5 0 0 1 5 0V6" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>Riservata Platinum</span></li><li class="vcard mag"><span class="y num">2018</span><span class="f">Magnum 1,5 L</span><span class="p num">€ 75,00</span><span class="lock"><svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><rect x="2.5" y="6" width="9" height="6.5" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 6V4.5a2.5 2.5 0 0 1 5 0V6" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>Riservata Platinum</span></li></ul></div></div>
     </div>
   </section>
 
@@ -545,16 +586,6 @@ footer b{color:var(--ink);font-weight:500}
       <div class="lv-foot"><a class="add" href="homepage.html#iscrizione">Entra nel club</a><p><img class="gem" src="img/gemma.png" alt="" width="81" height="72">Il prezzo Gold di ogni vino è visibile ai soci dopo l'iscrizione.</p></div>
     </div>
   </section>  <!-- /@parte:livelli -->
-
-  <section class="vault" id="annate" aria-labelledby="ann-t">
-    <figure class="vault-band"><img src="img/cantina-botti.jpg" alt="La cantina Colombo, con le botti di rovere dove riposa il Pinot Nero" loading="lazy" width="2200" height="1467"></figure>
-    <div class="wrap">
-      <div class="group-head"><div><h2 id="ann-t">Annate storiche</h2><p>Le annate che abbiamo lasciato riposare in cantina, per scoprire come il Pinot Nero di Bubbio evolve nel tempo. Poche bottiglie per ogni annata, custodite per i soci Platinum.</p></div></div>
-      <div class="reserved"><img class="gem" src="img/gemma.png" alt="" width="81" height="72"><p><b>Riservate ai soci Platinum.</b> Il livello Platinum si raggiunge con 2.000 Gemme.</p><a class="spec-dl" href="#livelli">Scopri i livelli<svg width="26" height="26" aria-hidden="true"><use href="#arrow"/></svg></a></div>
-        <div class="vwine"><div class="bt"><img src="img/COL-Apertura.png" alt="Bottiglia di Apertura" loading="lazy" width="310" height="1100"></div><div><h3>Apertura</h3><p class="d">Il Pinot Nero di Bubbio nella sua espressione più aperta, raccontato in cinque annate dal 2013 al 2020 e in Magnum 2018.</p><ul class="vgrid"><li class="vcard"><span class="y num">2013</span><span class="f">75 cl</span><span class="p num">€ 57,00</span><span class="lock"><svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><rect x="2.5" y="6" width="9" height="6.5" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 6V4.5a2.5 2.5 0 0 1 5 0V6" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>Riservata Platinum</span></li><li class="vcard"><span class="y num">2015</span><span class="f">75 cl</span><span class="p num">€ 49,00</span><span class="lock"><svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><rect x="2.5" y="6" width="9" height="6.5" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 6V4.5a2.5 2.5 0 0 1 5 0V6" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>Riservata Platinum</span></li><li class="vcard"><span class="y num">2017</span><span class="f">75 cl</span><span class="p num">€ 41,00</span><span class="lock"><svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><rect x="2.5" y="6" width="9" height="6.5" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 6V4.5a2.5 2.5 0 0 1 5 0V6" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>Riservata Platinum</span></li><li class="vcard"><span class="y num">2018</span><span class="f">75 cl</span><span class="p num">€ 37,00</span><span class="lock"><svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><rect x="2.5" y="6" width="9" height="6.5" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 6V4.5a2.5 2.5 0 0 1 5 0V6" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>Riservata Platinum</span></li><li class="vcard"><span class="y num">2020</span><span class="f">75 cl</span><span class="p num">€ 29,00</span><span class="lock"><svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><rect x="2.5" y="6" width="9" height="6.5" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 6V4.5a2.5 2.5 0 0 1 5 0V6" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>Riservata Platinum</span></li><li class="vcard mag"><span class="y num">2018</span><span class="f">Magnum 1,5 L</span><span class="p num">€ 57,00</span><span class="lock"><svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><rect x="2.5" y="6" width="9" height="6.5" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 6V4.5a2.5 2.5 0 0 1 5 0V6" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>Riservata Platinum</span></li></ul></div></div>
-        <div class="vwine"><div class="bt"><img src="img/COL-Maxima.png" alt="Bottiglia di Maxima" loading="lazy" width="310" height="1100"></div><div><h3>Maxima</h3><p class="d">La selezione più importante del nostro Pinot Nero, dalle annate 2015 e 2018, anche in Magnum.</p><ul class="vgrid"><li class="vcard"><span class="y num">2015</span><span class="f">75 cl</span><span class="p num">€ 49,00</span><span class="lock"><svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><rect x="2.5" y="6" width="9" height="6.5" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 6V4.5a2.5 2.5 0 0 1 5 0V6" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>Riservata Platinum</span></li><li class="vcard"><span class="y num">2018</span><span class="f">75 cl</span><span class="p num">€ 37,00</span><span class="lock"><svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><rect x="2.5" y="6" width="9" height="6.5" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 6V4.5a2.5 2.5 0 0 1 5 0V6" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>Riservata Platinum</span></li><li class="vcard mag"><span class="y num">2018</span><span class="f">Magnum 1,5 L</span><span class="p num">€ 75,00</span><span class="lock"><svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><rect x="2.5" y="6" width="9" height="6.5" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 6V4.5a2.5 2.5 0 0 1 5 0V6" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>Riservata Platinum</span></li></ul></div></div>
-    </div>
-  </section>
 
 </main>
 
