@@ -214,6 +214,34 @@ section[id]{scroll-margin-top:100px}
   .shot.trio{height:280px}.shot.trio img.hero-b{height:206px}.shot.trio img.side{height:174px}
 }
 
+
+/* riconoscimenti in una riga */
+.awards-line{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding-block:26px;margin-bottom:0}
+.awards-line ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:space-between;gap:18px 32px;align-items:center}
+.awards-line li{display:flex;align-items:center;gap:12px;font-size:13.5px;color:var(--ink-2);line-height:1.3}
+.awards-line li b{display:block;font-weight:500;color:var(--ink);font-size:14px}
+.awards-line img{width:38px;height:auto}
+.awards-line .sc{font-family:var(--display);font-size:26px;color:var(--gold-ink);min-width:38px;text-align:center;display:inline-flex;justify-content:center}
+@media (max-width:900px){.awards-line ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 16px}}
+
+/* esperienze in cantina */
+.exp{display:grid;grid-template-columns:calc(50% - var(--col-gap)/2) minmax(0,1fr);column-gap:var(--col-gap);background:var(--ivory);align-items:stretch}
+.exp-img{margin:0;min-height:100%;overflow:hidden;background:var(--cellar)}
+.exp-img img{width:100%;height:100%;object-fit:cover;object-position:50% 50%}
+.exp-body{padding:88px max(48px,calc((100vw - var(--content))/2)) 88px 24px;display:grid;gap:18px;align-content:center}
+.exp-body .story-kicker{margin:0}
+.exp-body h2{font-size:var(--h2)}
+.exp-lead{color:var(--ink-2);max-width:52ch}
+.exp-list{list-style:none;margin:12px 0 0;padding:0;border-top:1px solid var(--ink)}
+.exp-list li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--rule)}
+.exp-list h3{font-size:20px}
+.exp-list p{font-size:14.5px;color:var(--ink-2);margin-top:4px}
+.exp-list .num{font-family:var(--display);font-size:22px;color:var(--gold-ink);white-space:nowrap}
+.exp-foot{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;margin-top:14px}
+.exp-foot .add{gap:10px;grid-auto-flow:column}
+.exp-foot p{font-size:13.5px;color:var(--ink-3)}
+@media (max-width:900px){.exp{grid-template-columns:1fr}.exp-img{aspect-ratio:3/2}.exp-body{padding:40px var(--gutter-r) 56px var(--gutter)}.exp-foot .add{width:100%}}
+
 /* chi è Colombo: come colombovino.it */
 .story{padding-block:0 96px}
 .story-kicker{font-size:13.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin:64px 0 12px}
@@ -403,6 +431,18 @@ footer b{color:var(--ink);font-weight:500}
     </div>
   </section>
 
+  <section class="awards-line" aria-label="Riconoscimenti">
+    <div class="wrap">
+      <ul>
+        <li><img src="img/tre-bicchieri-2026.png" alt="" width="54" height="42"><span><b>Tre Bicchieri</b> Gambero Rosso 2026</span></li>
+        <li><span class="sc num">99,3</span><span><b>Standing ovation</b> Vinodabere 2026</span></li>
+        <li><span class="sc num">3</span><span><b>Stelle</b> Vinibuoni d'Italia 2026</span></li>
+        <li><span class="sc num">92</span><span><b>Punti</b> WineCritic.com</span></li>
+        <li><span class="sc"><svg width="30" height="34" viewBox="0 0 30 34" aria-hidden="true"><path d="M9 1h4l3 9M21 1h-4l-3 9" fill="none" stroke="currentColor" stroke-width="1.2"/><circle cx="15" cy="21" r="10" fill="none" stroke="currentColor" stroke-width="1.2"/><circle cx="15" cy="21" r="6.5" fill="none" stroke="currentColor" stroke-width=".8"/></svg></span><span><b>Medaglia d'argento</b> Mundus Vini 2025</span></li>
+      </ul>
+    </div>
+  </section>
+
   <section class="join" id="iscrizione" aria-labelledby="join-t">
     <figure class="join-bg"><img src="img/bottiglie-riposo.jpg" alt="" loading="lazy" width="1700" height="1133"></figure>
     <div class="wrap">
@@ -543,6 +583,21 @@ footer b{color:var(--ink);font-weight:500}
         <p>Coltiviamo <b>dieci ettari</b> di vigneto in Alta Langa: un microcosmo intimo, curato giorno dopo giorno con dedizione e rispetto.</p>
         <a class="btn line" href="https://colombovino.it/chi-siamo/">Scopri la storia della famiglia</a>
       </div>
+    </div>
+  </section>
+
+  <section class="exp" id="esperienze" aria-labelledby="exp-t">
+    <figure class="exp-img"><img src="img/sala-degustazione.jpg" alt="La sala degustazione della cantina Colombo a Bubbio" loading="lazy" width="1600" height="1067"></figure>
+    <div class="exp-body">
+      <p class="story-kicker">Visite e degustazioni</p>
+      <h2 id="exp-t">Esperienze in cantina</h2>
+      <p class="exp-lead">Vieni a trovarci a Bubbio: una visita tra vinificazione e affinamento, poi la degustazione nella sala interna o sulla terrazza affacciata sulla vigna.</p>
+      <ul class="exp-list">
+        <li><div><h3>Degustazione sensoriale guidata</h3><p>Bollicine metodo classico e vini rossi, con le eccellenze della Val Bormida.</p></div><span class="num">€ 30</span></li>
+        <li><div><h3>Degustazione di annate storiche</h3><p>Le vecchie annate del nostro Pinot Nero e un assaggio di Alta Langa.</p></div><span class="num">€ 60</span></li>
+        <li><div><h3>Degustazione riservata con il sommelier</h3><p>Un percorso guidato da un sommelier professionista.</p></div><span class="num">€ 150</span></li>
+      </ul>
+      <div class="exp-foot"><a class="add" href="https://visit.colombovino.it/it/691471f924c5101bdf35f853?lang=it" target="_blank" rel="noopener">Prenota una visita <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></a><p>La prenotazione si apre su visit.colombovino.it</p></div>
     </div>
   </section>
 </main>
