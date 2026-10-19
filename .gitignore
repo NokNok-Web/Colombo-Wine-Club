@@ -1,0 +1,8 @@
+# Materiale di lavoro dell'agenzia: resta sul Mac, non va pubblicato
+.DS_Store
+.claude/
+.impeccable/
+assets/
+PRODUCT.md
+DESIGN.md
+presentazione-wine-club.html

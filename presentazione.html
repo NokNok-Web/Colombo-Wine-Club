@@ -1,0 +1,799 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Colombo Wine Club</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500;700&family=Barlow:wght@300;400;500;600&display=swap">
+<style>
+/* Layout: una lunga pagina-presentazione a capitoli, bianca e oro come colombovino.it; ogni capitolo è una "sala" con titolo serif grande a sinistra e contenuto a destra */
+:root{
+  --bg:#ffffff;
+  --bg-alt:#f7f5f0;
+  --ink:#141210;
+  --ink-soft:#5b554c;
+  --line:#e4ded2;
+  --gold:#ab8329;
+  --gold-deep:#8a6a20;
+  --gold-wash:rgba(171,131,41,.09);
+  --band:#141210;
+  --band-ink:#f3ede1;
+  --display:"Kaisei Decol", "Cormorant Garamond", Georgia, serif;
+  --body:"Barlow", "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#12100d;--bg-alt:#1a1713;--ink:#f1ebdf;--ink-soft:#b0a796;--line:#2f2a22;
+  --gold:#cfa24a;--gold-deep:#e0b968;--gold-wash:rgba(207,162,74,.1);--band:#0a0907;--band-ink:#f1ebdf;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12100d;--bg-alt:#1a1713;--ink:#f1ebdf;--ink-soft:#b0a796;--line:#2f2a22;
+  --gold:#cfa24a;--gold-deep:#e0b968;--gold-wash:rgba(207,162,74,.1);--band:#0a0907;--band-ink:#f1ebdf;color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;font-weight:400;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+@media (min-width:700px){.wrap{padding-left:max(40px,env(safe-area-inset-left,0px));padding-right:max(40px,env(safe-area-inset-right,0px))}}
+h1,h2,h3,h4{font-family:var(--display);font-weight:400;line-height:1.15;margin:0;text-wrap:balance}
+p{margin:0}
+a{color:var(--gold-deep)}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.eyebrow{font-family:var(--body);font-size:12.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.muted{color:var(--ink-soft)}
+
+/* nav */
+.topnav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.topnav .wrap{display:flex;align-items:center;gap:24px;height:56px}
+.topnav .mini{width:74px;color:var(--gold);flex:none;display:block}
+.topnav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;overflow-x:auto;scrollbar-width:none;min-width:0}
+.topnav ul::-webkit-scrollbar{display:none}
+.topnav a{color:var(--ink-soft);text-decoration:none;font-size:14px;white-space:nowrap}
+.topnav a:hover{color:var(--gold)}
+
+/* hero */
+.hero{padding-block:72px 64px;text-align:center;border-bottom:1px solid var(--line)}
+.hero .logo{width:min(260px,62vw);color:var(--gold);margin:0 auto 36px;display:block}
+.hero h1{font-size:clamp(40px,7vw,78px);letter-spacing:-.01em}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero .lead{max-width:600px;margin:22px auto 0;font-size:19px;color:var(--ink-soft);font-weight:300}
+.hero .meta{margin-top:34px;display:flex;justify-content:center;flex-wrap:wrap;gap:10px 28px;font-size:14px;color:var(--ink-soft)}
+.hero .meta b{font-weight:500;color:var(--ink)}
+
+/* chapter */
+.ch{padding-block:88px;border-bottom:1px solid var(--line)}
+.ch.alt{background:var(--bg-alt)}
+.ch-head{display:grid;gap:14px;margin-bottom:48px;max-width:760px}
+.ch-head .num{font-family:var(--display);color:var(--gold);font-size:15px}
+.ch-head h2{font-size:clamp(32px,4.6vw,50px)}
+.ch-head p{font-size:18px;color:var(--ink-soft);max-width:640px;font-weight:300}
+
+.grid2{display:grid;gap:28px;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
+.grid3{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr))}
+.grid2>*,.grid3>*{min-width:0}
+
+.statement{font-family:var(--display);font-size:clamp(22px,2.6vw,28px);line-height:1.4;max-width:820px}
+.statement em{font-style:normal;color:var(--gold)}
+
+.pill{display:inline-block;justify-self:start;align-self:start;line-height:1.5;font-size:12px;letter-spacing:.06em;text-transform:uppercase;font-weight:500;padding:3px 10px;border-radius:99px;border:1px solid var(--gold);color:var(--gold-deep)}
+.pill.solid{background:var(--gold);color:#fff;border-color:var(--gold)}
+.pill.ghost{border-color:var(--line);color:var(--ink-soft)}
+
+/* principles */
+.principle{display:grid;gap:8px;align-content:start;padding-top:18px;border-top:1px solid var(--gold)}
+.principle h3{font-size:22px}
+.principle p{color:var(--ink-soft);font-size:16px}
+
+/* offerta */
+.offer{display:grid;gap:10px;align-content:start;padding:26px;background:var(--bg);border:1px solid var(--line)}
+.ch.alt .offer{background:var(--bg)}
+.offer h3{font-size:23px}
+.offer p{font-size:15.5px;color:var(--ink-soft)}
+.offer ul{margin:4px 0 0;padding-left:18px;font-size:15.5px;color:var(--ink-soft)}
+.offer .tagrow{display:flex;gap:8px;flex-wrap:wrap;align-items:flex-start}
+.offers{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.offers>*{min-width:0}
+
+/* livelli */
+.levels{display:grid;gap:0;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--line);background:var(--bg)}
+.level{padding:30px 24px 28px;display:grid;gap:14px;align-content:start;border-left:1px solid var(--line);position:relative}
+.level:first-child{border-left:0}
+.level .rank{font-family:var(--display);font-size:13px;color:var(--ink-soft);letter-spacing:.08em}
+.level h3{font-size:30px}
+.level .seal{width:38px;height:38px;border-radius:50%;border:1px solid var(--gold);display:grid;place-items:center;color:var(--gold);font-family:var(--display);font-size:15px}
+.level.l2 .seal{background:var(--gold-wash)}
+.level.l3 .seal{background:var(--gold);color:#fff}
+.level.l4{background:var(--band);color:var(--band-ink)}
+.level.l4 .rank,.level.l4 .muted,.level.l4 li{color:color-mix(in srgb,var(--band-ink) 70%,transparent)}
+.level.l4 .seal{background:transparent;border-style:dashed}
+.level .row{display:grid;gap:2px;font-size:14.5px}
+.level .row b{font-weight:500;font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--gold)}
+.level ul{margin:0;padding-left:17px;font-size:15px;display:grid;gap:5px}
+@media (max-width:980px){.levels{grid-template-columns:repeat(2,minmax(0,1fr))}.level:nth-child(3){border-left:0}.level:nth-child(n+3){border-top:1px solid var(--line)}}
+@media (max-width:560px){.levels{grid-template-columns:1fr}.level{border-left:0;border-top:1px solid var(--line)}.level:first-child{border-top:0}}
+
+.ladder{margin-top:36px;display:grid;gap:10px}
+.ladder-bar{position:relative;height:6px;background:var(--line);border-radius:3px}
+.ladder-fill{position:absolute;inset:0 auto 0 0;background:var(--gold);border-radius:3px;width:0;transition:width .35s ease}
+.ladder-marks{position:relative;height:40px;font-size:13px;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+.ladder-marks span{position:absolute;transform:translateX(-50%);white-space:nowrap;text-align:center;line-height:1.3}
+.ladder-marks span:first-child{transform:none}
+.ladder-marks span:last-child{transform:translateX(-100%);text-align:right}
+.sim{margin-top:28px;padding:28px;border:1px solid var(--gold);display:grid;gap:18px;background:var(--bg)}
+.sim-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:baseline}
+.sim h3{font-size:24px}
+.sim input[type=range]{width:100%;accent-color:var(--gold)}
+.sim-out{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr))}
+.sim-out div{display:grid;gap:2px}
+.sim-out small{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--ink-soft)}
+.sim-out strong{font-family:var(--display);font-weight:400;font-size:30px;font-variant-numeric:tabular-nums}
+.sim label{font-size:15px;display:flex;gap:10px;align-items:center;color:var(--ink-soft)}
+
+/* nomi */
+.names{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));border-top:1px solid var(--line)}
+.name{padding:22px 22px 22px 0;border-bottom:1px solid var(--line);display:grid;gap:6px;align-content:start;min-width:0}
+.name h4{font-size:26px}
+.name p{font-size:15px;color:var(--ink-soft)}
+.name .ex{font-family:var(--display);color:var(--gold-deep);font-size:15.5px}
+
+/* rules list */
+.rules{display:grid;gap:0;margin:0;padding:0;list-style:none;border-top:1px solid var(--line)}
+.rules li{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:24px;padding:18px 0;border-bottom:1px solid var(--line);font-size:16px}
+.rules li b{font-weight:500}
+.rules li span{color:var(--ink-soft)}
+@media (max-width:620px){.rules li{grid-template-columns:1fr;gap:4px}}
+
+/* journey */
+.journey{list-style:none;margin:0;padding:0;display:grid;gap:0;counter-reset:j}
+.journey li{counter-increment:j;display:grid;grid-template-columns:64px minmax(0,1fr);gap:20px;padding:22px 0;border-top:1px solid var(--line)}
+.journey li::before{content:counter(j);font-family:var(--display);font-size:30px;color:var(--gold);line-height:1}
+.journey h4{font-size:22px;margin-bottom:4px}
+.journey p{color:var(--ink-soft);font-size:16px;max-width:640px}
+.journey .touch{margin-top:8px;font-size:13.5px;color:var(--gold-deep)}
+
+/* tree */
+.tree-scroll{overflow-x:auto}
+.tree{display:grid;grid-template-columns:repeat(4,minmax(200px,1fr));gap:22px;min-width:860px;padding-bottom:6px}
+.tree-root{display:flex;align-items:center;gap:14px;margin-bottom:26px;flex-wrap:wrap}
+.tree-root .node{font-family:var(--display);font-size:20px;padding:10px 18px;border:1px solid var(--gold);color:var(--gold-deep);background:var(--bg)}
+.branch{display:grid;gap:10px;align-content:start;padding-top:16px;border-top:2px solid var(--gold)}
+.branch h4{font-size:19px}
+.branch ul{list-style:none;margin:0;padding:0;display:grid;gap:7px;font-size:15px}
+.branch li{padding-left:14px;position:relative;color:var(--ink-soft)}
+.branch li::before{content:"";position:absolute;left:0;top:.75em;width:7px;height:1px;background:var(--gold)}
+.branch li.lock{color:var(--ink)}
+.branch .note{font-size:13px;color:var(--ink-soft);font-style:italic}
+.legend{margin-top:22px;display:flex;gap:18px;flex-wrap:wrap;font-size:13.5px;color:var(--ink-soft)}
+
+/* utenti table */
+.tbl-scroll{overflow-x:auto;border:1px solid var(--line);background:var(--bg)}
+table{border-collapse:collapse;width:100%;min-width:720px;font-size:15px}
+th,td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:500;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);background:var(--bg-alt)}
+td:first-child{font-family:var(--display);font-size:17px;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+.yes{color:var(--gold-deep)}
+.no{color:var(--ink-soft)}
+
+/* infrastruttura */
+.band{background:var(--band);color:var(--band-ink)}
+.band .ch-head p,.band .muted{color:color-mix(in srgb,var(--band-ink) 68%,transparent)}
+.band .ch{border-bottom:0}
+.arch{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1.1fr) auto minmax(0,1fr);gap:16px;align-items:stretch}
+.arch-col{display:grid;gap:12px;align-content:start}
+.arch-col>.eyebrow{margin-bottom:2px}
+.box{border:1px solid color-mix(in srgb,var(--band-ink) 22%,transparent);padding:16px 18px;display:grid;gap:4px;align-content:start}
+.box b{font-weight:500;font-size:16px}
+.box span{font-size:14px;color:color-mix(in srgb,var(--band-ink) 65%,transparent)}
+.box.core{border-color:var(--gold);background:rgba(171,131,41,.12)}
+.arrow{display:grid;place-items:center;color:var(--gold);font-size:22px}
+@media (max-width:900px){.arch{grid-template-columns:1fr}.arrow{transform:rotate(90deg);height:24px}}
+.why{margin-top:56px;display:grid;gap:28px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+.why div{display:grid;gap:6px;align-content:start;padding-top:16px;border-top:1px solid color-mix(in srgb,var(--band-ink) 22%,transparent)}
+.why h4{font-size:20px;color:var(--gold)}
+.why p{font-size:15.5px;color:color-mix(in srgb,var(--band-ink) 72%,transparent)}
+
+/* dashboard mock */
+.dash{border:1px solid var(--line);background:var(--bg);display:grid;grid-template-columns:200px minmax(0,1fr);min-height:420px;font-size:14px}
+.dash aside{border-right:1px solid var(--line);padding:20px 16px;display:grid;gap:4px;align-content:start;background:var(--bg-alt)}
+.dash aside .mini{width:70px;color:var(--gold);margin-bottom:16px}
+.dash aside a{display:block;padding:7px 10px;color:var(--ink-soft);text-decoration:none;border-radius:4px}
+.dash aside a.on{background:var(--gold-wash);color:var(--ink);font-weight:500}
+.dash main{padding:22px;display:grid;gap:20px;align-content:start;min-width:0}
+.dash-top{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px}
+.dash-top h4{font-size:22px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));gap:12px}
+.kpi{border:1px solid var(--line);padding:12px 14px;display:grid;gap:2px;align-content:start}
+.kpi small{color:var(--ink-soft);font-size:12px}
+.kpi strong{font-family:var(--display);font-weight:400;font-size:24px;font-variant-numeric:tabular-nums}
+.dash table{min-width:520px;font-size:13.5px}
+.dash td:first-child{font-family:var(--body);font-size:13.5px}
+.dash .tbl-scroll{border:1px solid var(--line)}
+.status{font-size:12px;padding:2px 8px;border-radius:99px;white-space:nowrap}
+.st-new{background:var(--gold-wash);color:var(--gold-deep)}
+.st-ship{background:color-mix(in srgb,#3a7d5c 14%,transparent);color:#3a7d5c}
+.st-wait{background:color-mix(in srgb,var(--ink-soft) 14%,transparent);color:var(--ink-soft)}
+.example{font-size:12.5px;color:var(--ink-soft);font-style:italic}
+@media (max-width:760px){.dash{grid-template-columns:1fr}.dash aside{border-right:0;border-bottom:1px solid var(--line);grid-auto-flow:column;overflow-x:auto;grid-auto-columns:max-content}.dash aside .mini{display:none}}
+.feat{margin-top:36px}
+
+/* stagioni */
+.seasons{display:grid;gap:0;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--line);background:var(--bg)}
+.season{padding:24px 22px;display:grid;gap:8px;align-content:start;border-left:1px solid var(--line)}
+.season:first-child{border-left:0}
+.season .when{font-family:var(--display);color:var(--gold);font-size:14px;letter-spacing:.06em}
+.season h4{font-size:22px}
+.season p{font-size:15px;color:var(--ink-soft)}
+@media (max-width:900px){.seasons{grid-template-columns:repeat(2,minmax(0,1fr))}.season:nth-child(3){border-left:0}.season:nth-child(n+3){border-top:1px solid var(--line)}}
+@media (max-width:520px){.seasons{grid-template-columns:1fr}.season{border-left:0;border-top:1px solid var(--line)}.season:first-child{border-top:0}}
+.gift{margin-top:28px;padding:28px;border:1px solid var(--gold);background:var(--bg);display:grid;gap:10px;max-width:820px}
+.gift h4{font-size:24px}
+.gift p{color:var(--ink-soft);font-size:16px}
+.check{font-size:13.5px;color:var(--gold-deep)}
+/* roadmap */
+.road{display:grid;gap:0;grid-template-columns:repeat(3,minmax(0,1fr));border-top:2px solid var(--gold)}
+.phase{padding:26px 26px 0 0;display:grid;gap:12px;align-content:start;position:relative}
+.phase::before{content:"";position:absolute;top:-8px;left:0;width:14px;height:14px;border-radius:50%;background:var(--bg);border:2px solid var(--gold)}
+.phase.now::before{background:var(--gold)}
+.phase h3{font-size:26px}
+.phase ul{margin:0;padding-left:18px;display:grid;gap:6px;font-size:15.5px;color:var(--ink-soft)}
+@media (max-width:820px){.road{grid-template-columns:1fr;border-top:0;border-left:2px solid var(--gold);padding-left:24px}.phase{padding:0 0 32px}.phase::before{left:-33px;top:6px}}
+
+/* decisioni */
+.decide{list-style:none;margin:0;padding:0;display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));column-gap:40px}
+.decide li{padding:16px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:22px minmax(0,1fr);gap:12px;font-size:16px}
+.decide li::before{content:"";width:14px;height:14px;border:1px solid var(--gold);margin-top:5px}
+.decide b{font-weight:500}
+.decide span{display:block;color:var(--ink-soft);font-size:14.5px}
+
+footer{padding-block:56px;text-align:center;font-size:14px;color:var(--ink-soft)}
+footer .mini{width:90px;color:var(--gold);margin:0 auto 14px;display:block}
+</style>
+</head>
+<body>
+
+
+<nav class="topnav" aria-label="Capitoli">
+  <div class="wrap">
+    <svg class="mini" viewBox="0 0 574.8 246.2" fill="currentColor" role="img" aria-label="Colombo"><g> <g> <path d="M358.8,90.9L358.8,90.9c-0.2,2.4-1.6,4.5-4.2,6c-8.1,3.6-23.1-5-35.7-21.4c0,0,0.1,0,0.1,0 c13.3-3.6,24.5-0.2,29.3,2.4c5.1,2.8,7,6.3,6.3,9.2c-0.4,1.7-1.6,2.7-2.7,2.7c-1.3,0.1-1.1-0.7-0.9-1.4c0.4-1.2,0.9-2.2,0.3-2.6 c-0.8-0.5-1.6,0.7-2.3,1.3c-0.7,0.7-1.7,0.3-1.5-1.1c0.2-1.8-0.5-2.9-1.6-3.8c-2.1-1.6-4.5-1-4.5-1c4.6,2.8,3.2,4.7,4.9,7.5 c1.2,2,3.7,3.3,6,2.9c1.7-0.3,3.7-1.7,4.4-3.9c1.3-3.9-1.9-8.7-7-11.8c-7.5-4.5-20-6.6-33-3.8c-1.7-2.5-3.4-5.1-5-7.8 c-1.6-2.8-3-5.5-4.3-8.3c8.9-9.8,13.4-21.7,13.2-30.4c-0.1-5.9-2.7-11.1-6.7-11.9c-2.3-0.5-4.5,0.6-5.6,1.9 c-1.5,1.8-1.6,4.6-0.5,6.6c1.6,2.9,3.9,2.6,4.1,8c0,0,1.8-1.8,1.4-4.4c-0.2-1.4-0.8-2.6-2.4-3.3c-1.2-0.6-1.1-1.6-0.2-1.9 c0.9-0.3,2.4-0.5,2.3-1.4c0-0.7-1.1-0.8-2.4-1.1c-0.7-0.1-1.5-0.4-0.8-1.5c0.6-1,2.1-1.5,3.7-1c2.9,0.9,5,4.3,4.8,10.1 c-0.2,5.4-2.8,16.8-12.6,26.5c0,0-0.1,0.1-0.1,0.1c-7.9-19.1-7.8-36.4-0.6-41.6c2.6-1.5,5.1-1.7,7.3-0.6l0,0 c-3-2.4-6.7-3.2-10.7-1.5c-11.6,5.5-14.6,28.7-5.4,51.5c-2.8,1.9-5.4,3.3-8.1,4.9l0,0c-2.6-1.5-5.3-3-8.1-4.9 c9.1-22.8,6.2-46-5.4-51.5c-3.9-1.7-7.7-1-10.7,1.5l0,0c2.2-1.1,4.7-0.9,7.3,0.6c7.2,5.2,7.3,22.5-0.6,41.6c0,0-0.1-0.1-0.1-0.1 c-9.8-9.7-12.4-21.1-12.6-26.5c-0.2-5.8,2-9.2,4.8-10.1c1.6-0.5,3.1,0,3.7,1c0.7,1.1-0.1,1.3-0.8,1.5c-1.3,0.3-2.3,0.3-2.4,1.1 c0,0.9,1.4,1.1,2.3,1.4c1,0.3,1.1,1.3-0.2,1.9c-1.6,0.7-2.2,1.9-2.4,3.3c-0.4,2.6,1.4,4.4,1.4,4.4c0.1-5.4,2.4-5.1,4.1-8 c1.1-2,1-4.9-0.5-6.6c-1.1-1.3-3.3-2.3-5.6-1.9c-4.1,0.8-6.6,6-6.7,11.9c-0.1,8.7,4.3,20.6,13.2,30.4c-1.3,2.7-2.7,5.5-4.3,8.2 c-1.6,2.8-3.3,5.4-5,7.8c-13-2.8-25.5-0.7-33,3.8c-5.1,3.1-8.3,7.9-7,11.8c0.8,2.2,2.7,3.6,4.4,3.9c2.3,0.4,4.8-0.9,6-2.9 c1.7-2.9,0.3-4.7,4.9-7.5c0,0-2.5-0.7-4.5,1c-1.1,0.9-1.8,2-1.6,3.8c0.1,1.3-0.8,1.8-1.5,1.1c-0.7-0.7-1.6-1.8-2.3-1.3 c-0.6,0.4-0.2,1.3,0.3,2.6c0.2,0.7,0.4,1.5-0.9,1.4c-1.2-0.1-2.4-1.1-2.7-2.7c-0.7-2.9,1.2-6.5,6.3-9.2c4.7-2.6,15.9-6,29.3-2.4 c0,0,0.1,0,0.1,0c-12.6,16.4-27.7,25-35.7,21.3c-2.6-1.5-4-3.6-4.2-6l0,0c-0.6,3.8,0.6,7.4,4.1,10c10.6,7.3,32.2-1.8,47.3-21 c3,1.5,5.6,3,8.3,4.6c0,3,0,6.1-0.2,9.4c-24.3,3.5-42.9,17.6-41.9,30.5c0.5,4.3,3,7.2,6.6,8.5l0,0c-2-1.4-3.1-3.7-3.1-6.7 c0.9-8.8,15.8-17.5,36.4-20.3c0,0,0,0.1,0,0.1c-3.5,13.3-12.1,21.3-16.7,24.2c-4.9,3-9,2.9-11.1,0.8c-1.2-1.2-1.5-2.7-1-3.7 c0.6-1.2,1.2-0.6,1.7-0.1c0.9,1,1.5,1.9,2.1,1.5c0.8-0.4,0.2-1.8,0-2.7c-0.2-1,0.6-1.6,1.7-0.8c1.4,1,2.7,1,4.1,0.5 c2.4-1,3.1-3.4,3.1-3.4c-4.8,2.6-5.6,0.5-9,0.5c-2.3,0-4.7,1.6-5.5,3.7c-0.6,1.6-0.4,4,1.2,5.8c2.7,3.1,8.5,2.8,13.7-0.1 c7.6-4.2,15.7-14,19.7-26.7c3-0.3,6.1-0.4,9.3-0.4c3.2,0,6.3,0.2,9.3,0.4c4.1,12.6,12.1,22.4,19.7,26.7c5.2,2.9,11,3.2,13.7,0.1 c1.6-1.8,1.7-4.2,1.2-5.8c-0.8-2.1-3.2-3.7-5.5-3.7c-3.3,0-4.2,2.1-9-0.5c0,0,0.7,2.5,3.1,3.4c1.3,0.5,2.7,0.6,4.1-0.5 c1.1-0.8,1.9-0.2,1.7,0.8c-0.2,0.9-0.8,2.3,0,2.7c0.7,0.4,1.2-0.5,2.1-1.5c0.5-0.5,1.1-1.1,1.7,0.1c0.5,1,0.3,2.6-1,3.7 c-2.2,2.1-6.2,2.2-11.1-0.8c-4.6-2.8-13.1-10.8-16.7-24.2c0,0,0-0.1,0-0.1c20.5,2.7,35.5,11.5,36.3,20.3c0,3-1.1,5.3-3.1,6.7l0,0 c3.6-1.3,6.2-4.2,6.6-8.5c1-12.8-17.6-27-41.9-30.5c-0.2-3.4-0.2-6.4-0.2-9.4c2.6-1.5,5.2-3.1,8.3-4.6 c15.1,19.3,36.7,28.3,47.3,21.1C358.2,98.3,359.4,94.7,358.8,90.9z M288.1,73.5c2.5,0,4.4,2,4.4,4.4c0,2.5-2,4.4-4.4,4.4 c-2.5,0-4.4-2-4.4-4.4C283.6,75.5,285.6,73.5,288.1,73.5z M271.6,75.9c1.2-1.7,2.4-3.6,3.5-5.4c1.1-1.9,2.1-3.8,3-5.7 c1.6,1.3,3.3,2.5,5,3.7c-1.7,1.3-3.2,2.7-4.1,4.3s-1.4,3.6-1.7,5.7C275.4,77.5,273.6,76.7,271.6,75.9z M288.1,93 c-2.2,0-4.3,0.1-6.4,0.3c0.3-2.1,0.5-4.1,0.7-6.1c1.9,0.8,3.9,1.4,5.7,1.4s3.8-0.6,5.7-1.4c0.2,2,0.4,4,0.7,6.1 C292.4,93.1,290.2,93,288.1,93z M298.9,78.3c-0.2-2.1-0.7-4.1-1.7-5.7s-2.4-3-4.1-4.3c1.7-1.2,3.3-2.4,5-3.7 c0.9,1.9,1.9,3.8,3,5.7c1.1,1.9,2.2,3.7,3.4,5.4C302.6,76.7,300.7,77.5,298.9,78.3z"></path> </g> <g> <path d="M59.8,214.9h2v22h-2c-0.6-2.5-1.6-4.7-3-6.6c-5.5,6.2-12.6,9.4-21.2,9.4c-9.1,0-16.5-2.9-22.3-8.6 c-5.8-5.8-8.7-13.4-8.7-22.8c0-6.2,1.3-12.1,4-17.6c2.7-5.5,6.4-9.6,11.1-12.2c4.8-2.7,10-4,15.7-4c4.7,0,9,1,12.8,2.9 c3.8,1.9,6.7,4.1,8.6,6.4c1.3-2.6,2.1-5.3,2.4-8.2h2l0.6,23.8h-2c-1.4-8.5-4.2-14.4-8.5-17.7c-4.3-3.3-9.1-5-14.5-5 c-6.6,0-11.8,2.7-15.7,8c-3.9,5.3-5.8,13-5.8,23c0,9.4,2.1,16.7,6.4,21.7c4.2,5,9.5,7.5,15.8,7.5c3.4,0,6.8-0.8,10.3-2.5 c3.5-1.6,6.3-4.4,8.4-8.3C58.2,222.3,59.4,218.5,59.8,214.9z"></path> <path d="M85.6,206.6c0-9.7,3.2-17.5,9.7-23.4c6.5-5.9,14.6-8.8,24.3-8.8c9.8,0,18,2.9,24.6,8.7c6.6,5.8,9.9,13.7,9.9,23.8 c0,9.7-3.1,17.6-9.4,23.7c-6.3,6-14.6,9-24.8,9c-10,0-18.2-3-24.6-9C88.8,224.6,85.6,216.6,85.6,206.6z M96.2,207 c0,10.1,2,17.7,6.1,22.8c4,5.1,10.1,7.6,18.2,7.6c7.1,0,12.7-2.5,16.8-7.6c4.1-5.1,6.2-12.6,6.2-22.7c0-9.8-2-17.3-6.1-22.5 c-4.1-5.2-9.9-7.8-17.6-7.8c-7.6,0-13.4,2.5-17.4,7.6S96.2,197,96.2,207z"></path> <path d="M225.9,220l-0.5,18.5h-53.4v-2.1h1.9c2.7,0,4.6-0.3,5.6-1c1-0.7,1.7-1.7,2-3.2c0.3-1.4,0.4-4.8,0.4-10v-30.8 c0-5-0.1-8.2-0.4-9.7c-0.3-1.5-0.9-2.5-1.9-3c-0.9-0.6-3-0.8-6.2-0.8h-1.4v-2.1h30.2v2.1h-2.8c-3.1,0-5.1,0.3-6.1,0.8 c-1,0.5-1.6,1.5-1.9,2.9c-0.3,1.4-0.5,4.7-0.5,9.9v32.9c0,4.5,0.1,7.4,0.4,8.5c0.2,1.1,0.9,2,2,2.7c1.1,0.6,3.5,1,7.1,1h4.8 c3.9,0,6.7-0.3,8.6-1c1.9-0.7,3.6-2.2,5.3-4.5c1.7-2.3,3.2-5.9,4.6-10.9H225.9z"></path> <path d="M238.1,206.6c0-9.7,3.2-17.5,9.7-23.4c6.5-5.9,14.6-8.8,24.3-8.8c9.8,0,18,2.9,24.6,8.7c6.6,5.8,9.9,13.7,9.9,23.8 c0,9.7-3.1,17.6-9.4,23.7c-6.3,6-14.6,9-24.8,9c-10,0-18.2-3-24.6-9C241.3,224.6,238.1,216.6,238.1,206.6z M248.7,207 c0,10.1,2,17.7,6.1,22.8c4,5.1,10.1,7.6,18.2,7.6c7.1,0,12.7-2.5,16.8-7.6c4.1-5.1,6.2-12.6,6.2-22.7c0-9.8-2-17.3-6.1-22.5 c-4.1-5.2-9.9-7.8-17.6-7.8c-7.6,0-13.4,2.5-17.4,7.6C250.7,189.5,248.7,197,248.7,207z"></path> <path d="M364.6,227.7l22.9-52h19.3v2.1h-2.3c-3.1,0-5.1,0.3-6.1,0.8c-1,0.5-1.6,1.5-1.9,2.9c-0.3,1.4-0.5,4.7-0.5,9.9v30.8 c0,4.9,0.1,8.2,0.4,9.7c0.2,1.5,0.9,2.7,1.9,3.4c1,0.7,2.9,1.1,5.8,1.1h2.8v2.1h-30.1v-2.1h2.2c2.7,0,4.5-0.3,5.5-1 c1-0.7,1.7-1.7,2-3.2c0.3-1.4,0.4-4.8,0.4-10v-40l-24.9,56.4h-2.2l-25.1-56.4v36.8c0,5,0.2,8.5,0.5,10.3c0.3,1.8,1.3,3.4,2.9,4.8 c1.6,1.4,3.9,2.2,6.8,2.3v2.1h-22.5v-2.1c2.7-0.2,4.9-0.9,6.6-2.2c1.7-1.3,2.7-2.9,3.1-4.8c0.4-1.9,0.6-5.5,0.6-10.7v-27.4 c0-5-0.1-8.2-0.4-9.7c-0.3-1.5-0.9-2.5-1.9-3c-0.9-0.6-3-0.8-6.2-0.8h-1.7v-2.1h19.2L364.6,227.7z"></path> <path d="M460.8,204.6c7.1,0.5,12.4,2.3,15.9,5.3c3.5,3,5.2,6.8,5.2,11.4c0,4-1.2,7.4-3.5,10.2c-2.4,2.9-5.4,4.7-9,5.6 c-3.7,0.9-8.6,1.3-14.7,1.3h-28.2v-2.1h2.4c2.7,0,4.6-0.3,5.6-1c1-0.7,1.7-1.7,2-3.2c0.3-1.4,0.4-4.8,0.4-10v-30.6 c0-5.1-0.1-8.4-0.4-9.9c-0.3-1.5-0.9-2.5-1.9-3.1c-0.9-0.6-3-0.8-6.2-0.8h-1.2v-2.1l10.3-0.3l11.8-0.4c17.2,0,29.4,4.9,29.4,14.8 c0,4.1-1.5,7.4-4.4,9.8C471.2,202.1,466.7,203.8,460.8,204.6z M445.9,203.8c0.8,0,1.4,0,1.9,0c6.7,0,14.8-1.1,17.2-3.2 c2.4-2.1,3.7-5.5,3.7-10.2c0-3.3-0.5-5.8-1.4-7.6c-1-1.8-2.4-3.2-4.3-4.2c-1.9-1-8.8-1.5-13.4-1.5c-1.2,0-2.4,0-3.7,0.1V203.8z M445.9,206v14c0,6,0.1,9.8,0.3,11.4c0.2,1.6,0.8,2.8,1.7,3.7c0.9,0.8,6.4,1.3,9.2,1.3c4.9,0,8.7-1.3,11.1-3.8 c2.5-2.5,3.7-6.3,3.7-11.4c0-5.2-1.4-9-4.2-11.5c-2.8-2.5-11.3-3.7-18.3-3.7C448.3,205.9,447.1,206,445.9,206z"></path> <path d="M503.1,206.6c0-9.7,3.2-17.5,9.7-23.4c6.5-5.9,14.6-8.8,24.3-8.8c9.8,0,18,2.9,24.6,8.7c6.6,5.8,9.9,13.7,9.9,23.8 c0,9.7-3.1,17.6-9.4,23.7c-6.3,6-14.6,9-24.8,9c-10,0-18.2-3-24.6-9C506.3,224.6,503.1,216.6,503.1,206.6z M513.7,207 c0,10.1,2,17.7,6.1,22.8c4,5.1,10.1,7.6,18.2,7.6c7.1,0,12.7-2.5,16.8-7.6c4.1-5.1,6.2-12.6,6.2-22.7c0-9.8-2-17.3-6.1-22.5 c-4.1-5.2-9.9-7.8-17.6-7.8c-7.6,0-13.4,2.5-17.4,7.6C515.7,189.5,513.7,197,513.7,207z"></path> </g></g></svg>
+    <ul>
+      <li><a href="#progetto">Il progetto</a></li>
+      <li><a href="#offerta">Offerta</a></li>
+      <li><a href="#livelli">Livelli</a></li>
+      <li><a href="#punti">Gemme</a></li>
+      <li><a href="#journey">User journey</a></li>
+      <li><a href="#alberatura">Alberatura</a></li>
+      <li><a href="#utenti">Utenti</a></li>
+      <li><a href="#infrastruttura">Infrastruttura</a></li>
+      <li><a href="#dashboard">Dashboard</a></li>
+      <li><a href="#anno">Tutto l'anno</a></li>
+      <li><a href="#roadmap">Roadmap</a></li>
+      <li><a href="#decisioni">Da decidere</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <svg class="logo" viewBox="0 0 574.8 246.2" fill="currentColor" role="img" aria-label="Colombo"><g> <g> <path d="M358.8,90.9L358.8,90.9c-0.2,2.4-1.6,4.5-4.2,6c-8.1,3.6-23.1-5-35.7-21.4c0,0,0.1,0,0.1,0 c13.3-3.6,24.5-0.2,29.3,2.4c5.1,2.8,7,6.3,6.3,9.2c-0.4,1.7-1.6,2.7-2.7,2.7c-1.3,0.1-1.1-0.7-0.9-1.4c0.4-1.2,0.9-2.2,0.3-2.6 c-0.8-0.5-1.6,0.7-2.3,1.3c-0.7,0.7-1.7,0.3-1.5-1.1c0.2-1.8-0.5-2.9-1.6-3.8c-2.1-1.6-4.5-1-4.5-1c4.6,2.8,3.2,4.7,4.9,7.5 c1.2,2,3.7,3.3,6,2.9c1.7-0.3,3.7-1.7,4.4-3.9c1.3-3.9-1.9-8.7-7-11.8c-7.5-4.5-20-6.6-33-3.8c-1.7-2.5-3.4-5.1-5-7.8 c-1.6-2.8-3-5.5-4.3-8.3c8.9-9.8,13.4-21.7,13.2-30.4c-0.1-5.9-2.7-11.1-6.7-11.9c-2.3-0.5-4.5,0.6-5.6,1.9 c-1.5,1.8-1.6,4.6-0.5,6.6c1.6,2.9,3.9,2.6,4.1,8c0,0,1.8-1.8,1.4-4.4c-0.2-1.4-0.8-2.6-2.4-3.3c-1.2-0.6-1.1-1.6-0.2-1.9 c0.9-0.3,2.4-0.5,2.3-1.4c0-0.7-1.1-0.8-2.4-1.1c-0.7-0.1-1.5-0.4-0.8-1.5c0.6-1,2.1-1.5,3.7-1c2.9,0.9,5,4.3,4.8,10.1 c-0.2,5.4-2.8,16.8-12.6,26.5c0,0-0.1,0.1-0.1,0.1c-7.9-19.1-7.8-36.4-0.6-41.6c2.6-1.5,5.1-1.7,7.3-0.6l0,0 c-3-2.4-6.7-3.2-10.7-1.5c-11.6,5.5-14.6,28.7-5.4,51.5c-2.8,1.9-5.4,3.3-8.1,4.9l0,0c-2.6-1.5-5.3-3-8.1-4.9 c9.1-22.8,6.2-46-5.4-51.5c-3.9-1.7-7.7-1-10.7,1.5l0,0c2.2-1.1,4.7-0.9,7.3,0.6c7.2,5.2,7.3,22.5-0.6,41.6c0,0-0.1-0.1-0.1-0.1 c-9.8-9.7-12.4-21.1-12.6-26.5c-0.2-5.8,2-9.2,4.8-10.1c1.6-0.5,3.1,0,3.7,1c0.7,1.1-0.1,1.3-0.8,1.5c-1.3,0.3-2.3,0.3-2.4,1.1 c0,0.9,1.4,1.1,2.3,1.4c1,0.3,1.1,1.3-0.2,1.9c-1.6,0.7-2.2,1.9-2.4,3.3c-0.4,2.6,1.4,4.4,1.4,4.4c0.1-5.4,2.4-5.1,4.1-8 c1.1-2,1-4.9-0.5-6.6c-1.1-1.3-3.3-2.3-5.6-1.9c-4.1,0.8-6.6,6-6.7,11.9c-0.1,8.7,4.3,20.6,13.2,30.4c-1.3,2.7-2.7,5.5-4.3,8.2 c-1.6,2.8-3.3,5.4-5,7.8c-13-2.8-25.5-0.7-33,3.8c-5.1,3.1-8.3,7.9-7,11.8c0.8,2.2,2.7,3.6,4.4,3.9c2.3,0.4,4.8-0.9,6-2.9 c1.7-2.9,0.3-4.7,4.9-7.5c0,0-2.5-0.7-4.5,1c-1.1,0.9-1.8,2-1.6,3.8c0.1,1.3-0.8,1.8-1.5,1.1c-0.7-0.7-1.6-1.8-2.3-1.3 c-0.6,0.4-0.2,1.3,0.3,2.6c0.2,0.7,0.4,1.5-0.9,1.4c-1.2-0.1-2.4-1.1-2.7-2.7c-0.7-2.9,1.2-6.5,6.3-9.2c4.7-2.6,15.9-6,29.3-2.4 c0,0,0.1,0,0.1,0c-12.6,16.4-27.7,25-35.7,21.3c-2.6-1.5-4-3.6-4.2-6l0,0c-0.6,3.8,0.6,7.4,4.1,10c10.6,7.3,32.2-1.8,47.3-21 c3,1.5,5.6,3,8.3,4.6c0,3,0,6.1-0.2,9.4c-24.3,3.5-42.9,17.6-41.9,30.5c0.5,4.3,3,7.2,6.6,8.5l0,0c-2-1.4-3.1-3.7-3.1-6.7 c0.9-8.8,15.8-17.5,36.4-20.3c0,0,0,0.1,0,0.1c-3.5,13.3-12.1,21.3-16.7,24.2c-4.9,3-9,2.9-11.1,0.8c-1.2-1.2-1.5-2.7-1-3.7 c0.6-1.2,1.2-0.6,1.7-0.1c0.9,1,1.5,1.9,2.1,1.5c0.8-0.4,0.2-1.8,0-2.7c-0.2-1,0.6-1.6,1.7-0.8c1.4,1,2.7,1,4.1,0.5 c2.4-1,3.1-3.4,3.1-3.4c-4.8,2.6-5.6,0.5-9,0.5c-2.3,0-4.7,1.6-5.5,3.7c-0.6,1.6-0.4,4,1.2,5.8c2.7,3.1,8.5,2.8,13.7-0.1 c7.6-4.2,15.7-14,19.7-26.7c3-0.3,6.1-0.4,9.3-0.4c3.2,0,6.3,0.2,9.3,0.4c4.1,12.6,12.1,22.4,19.7,26.7c5.2,2.9,11,3.2,13.7,0.1 c1.6-1.8,1.7-4.2,1.2-5.8c-0.8-2.1-3.2-3.7-5.5-3.7c-3.3,0-4.2,2.1-9-0.5c0,0,0.7,2.5,3.1,3.4c1.3,0.5,2.7,0.6,4.1-0.5 c1.1-0.8,1.9-0.2,1.7,0.8c-0.2,0.9-0.8,2.3,0,2.7c0.7,0.4,1.2-0.5,2.1-1.5c0.5-0.5,1.1-1.1,1.7,0.1c0.5,1,0.3,2.6-1,3.7 c-2.2,2.1-6.2,2.2-11.1-0.8c-4.6-2.8-13.1-10.8-16.7-24.2c0,0,0-0.1,0-0.1c20.5,2.7,35.5,11.5,36.3,20.3c0,3-1.1,5.3-3.1,6.7l0,0 c3.6-1.3,6.2-4.2,6.6-8.5c1-12.8-17.6-27-41.9-30.5c-0.2-3.4-0.2-6.4-0.2-9.4c2.6-1.5,5.2-3.1,8.3-4.6 c15.1,19.3,36.7,28.3,47.3,21.1C358.2,98.3,359.4,94.7,358.8,90.9z M288.1,73.5c2.5,0,4.4,2,4.4,4.4c0,2.5-2,4.4-4.4,4.4 c-2.5,0-4.4-2-4.4-4.4C283.6,75.5,285.6,73.5,288.1,73.5z M271.6,75.9c1.2-1.7,2.4-3.6,3.5-5.4c1.1-1.9,2.1-3.8,3-5.7 c1.6,1.3,3.3,2.5,5,3.7c-1.7,1.3-3.2,2.7-4.1,4.3s-1.4,3.6-1.7,5.7C275.4,77.5,273.6,76.7,271.6,75.9z M288.1,93 c-2.2,0-4.3,0.1-6.4,0.3c0.3-2.1,0.5-4.1,0.7-6.1c1.9,0.8,3.9,1.4,5.7,1.4s3.8-0.6,5.7-1.4c0.2,2,0.4,4,0.7,6.1 C292.4,93.1,290.2,93,288.1,93z M298.9,78.3c-0.2-2.1-0.7-4.1-1.7-5.7s-2.4-3-4.1-4.3c1.7-1.2,3.3-2.4,5-3.7 c0.9,1.9,1.9,3.8,3,5.7c1.1,1.9,2.2,3.7,3.4,5.4C302.6,76.7,300.7,77.5,298.9,78.3z"></path> </g> <g> <path d="M59.8,214.9h2v22h-2c-0.6-2.5-1.6-4.7-3-6.6c-5.5,6.2-12.6,9.4-21.2,9.4c-9.1,0-16.5-2.9-22.3-8.6 c-5.8-5.8-8.7-13.4-8.7-22.8c0-6.2,1.3-12.1,4-17.6c2.7-5.5,6.4-9.6,11.1-12.2c4.8-2.7,10-4,15.7-4c4.7,0,9,1,12.8,2.9 c3.8,1.9,6.7,4.1,8.6,6.4c1.3-2.6,2.1-5.3,2.4-8.2h2l0.6,23.8h-2c-1.4-8.5-4.2-14.4-8.5-17.7c-4.3-3.3-9.1-5-14.5-5 c-6.6,0-11.8,2.7-15.7,8c-3.9,5.3-5.8,13-5.8,23c0,9.4,2.1,16.7,6.4,21.7c4.2,5,9.5,7.5,15.8,7.5c3.4,0,6.8-0.8,10.3-2.5 c3.5-1.6,6.3-4.4,8.4-8.3C58.2,222.3,59.4,218.5,59.8,214.9z"></path> <path d="M85.6,206.6c0-9.7,3.2-17.5,9.7-23.4c6.5-5.9,14.6-8.8,24.3-8.8c9.8,0,18,2.9,24.6,8.7c6.6,5.8,9.9,13.7,9.9,23.8 c0,9.7-3.1,17.6-9.4,23.7c-6.3,6-14.6,9-24.8,9c-10,0-18.2-3-24.6-9C88.8,224.6,85.6,216.6,85.6,206.6z M96.2,207 c0,10.1,2,17.7,6.1,22.8c4,5.1,10.1,7.6,18.2,7.6c7.1,0,12.7-2.5,16.8-7.6c4.1-5.1,6.2-12.6,6.2-22.7c0-9.8-2-17.3-6.1-22.5 c-4.1-5.2-9.9-7.8-17.6-7.8c-7.6,0-13.4,2.5-17.4,7.6S96.2,197,96.2,207z"></path> <path d="M225.9,220l-0.5,18.5h-53.4v-2.1h1.9c2.7,0,4.6-0.3,5.6-1c1-0.7,1.7-1.7,2-3.2c0.3-1.4,0.4-4.8,0.4-10v-30.8 c0-5-0.1-8.2-0.4-9.7c-0.3-1.5-0.9-2.5-1.9-3c-0.9-0.6-3-0.8-6.2-0.8h-1.4v-2.1h30.2v2.1h-2.8c-3.1,0-5.1,0.3-6.1,0.8 c-1,0.5-1.6,1.5-1.9,2.9c-0.3,1.4-0.5,4.7-0.5,9.9v32.9c0,4.5,0.1,7.4,0.4,8.5c0.2,1.1,0.9,2,2,2.7c1.1,0.6,3.5,1,7.1,1h4.8 c3.9,0,6.7-0.3,8.6-1c1.9-0.7,3.6-2.2,5.3-4.5c1.7-2.3,3.2-5.9,4.6-10.9H225.9z"></path> <path d="M238.1,206.6c0-9.7,3.2-17.5,9.7-23.4c6.5-5.9,14.6-8.8,24.3-8.8c9.8,0,18,2.9,24.6,8.7c6.6,5.8,9.9,13.7,9.9,23.8 c0,9.7-3.1,17.6-9.4,23.7c-6.3,6-14.6,9-24.8,9c-10,0-18.2-3-24.6-9C241.3,224.6,238.1,216.6,238.1,206.6z M248.7,207 c0,10.1,2,17.7,6.1,22.8c4,5.1,10.1,7.6,18.2,7.6c7.1,0,12.7-2.5,16.8-7.6c4.1-5.1,6.2-12.6,6.2-22.7c0-9.8-2-17.3-6.1-22.5 c-4.1-5.2-9.9-7.8-17.6-7.8c-7.6,0-13.4,2.5-17.4,7.6C250.7,189.5,248.7,197,248.7,207z"></path> <path d="M364.6,227.7l22.9-52h19.3v2.1h-2.3c-3.1,0-5.1,0.3-6.1,0.8c-1,0.5-1.6,1.5-1.9,2.9c-0.3,1.4-0.5,4.7-0.5,9.9v30.8 c0,4.9,0.1,8.2,0.4,9.7c0.2,1.5,0.9,2.7,1.9,3.4c1,0.7,2.9,1.1,5.8,1.1h2.8v2.1h-30.1v-2.1h2.2c2.7,0,4.5-0.3,5.5-1 c1-0.7,1.7-1.7,2-3.2c0.3-1.4,0.4-4.8,0.4-10v-40l-24.9,56.4h-2.2l-25.1-56.4v36.8c0,5,0.2,8.5,0.5,10.3c0.3,1.8,1.3,3.4,2.9,4.8 c1.6,1.4,3.9,2.2,6.8,2.3v2.1h-22.5v-2.1c2.7-0.2,4.9-0.9,6.6-2.2c1.7-1.3,2.7-2.9,3.1-4.8c0.4-1.9,0.6-5.5,0.6-10.7v-27.4 c0-5-0.1-8.2-0.4-9.7c-0.3-1.5-0.9-2.5-1.9-3c-0.9-0.6-3-0.8-6.2-0.8h-1.7v-2.1h19.2L364.6,227.7z"></path> <path d="M460.8,204.6c7.1,0.5,12.4,2.3,15.9,5.3c3.5,3,5.2,6.8,5.2,11.4c0,4-1.2,7.4-3.5,10.2c-2.4,2.9-5.4,4.7-9,5.6 c-3.7,0.9-8.6,1.3-14.7,1.3h-28.2v-2.1h2.4c2.7,0,4.6-0.3,5.6-1c1-0.7,1.7-1.7,2-3.2c0.3-1.4,0.4-4.8,0.4-10v-30.6 c0-5.1-0.1-8.4-0.4-9.9c-0.3-1.5-0.9-2.5-1.9-3.1c-0.9-0.6-3-0.8-6.2-0.8h-1.2v-2.1l10.3-0.3l11.8-0.4c17.2,0,29.4,4.9,29.4,14.8 c0,4.1-1.5,7.4-4.4,9.8C471.2,202.1,466.7,203.8,460.8,204.6z M445.9,203.8c0.8,0,1.4,0,1.9,0c6.7,0,14.8-1.1,17.2-3.2 c2.4-2.1,3.7-5.5,3.7-10.2c0-3.3-0.5-5.8-1.4-7.6c-1-1.8-2.4-3.2-4.3-4.2c-1.9-1-8.8-1.5-13.4-1.5c-1.2,0-2.4,0-3.7,0.1V203.8z M445.9,206v14c0,6,0.1,9.8,0.3,11.4c0.2,1.6,0.8,2.8,1.7,3.7c0.9,0.8,6.4,1.3,9.2,1.3c4.9,0,8.7-1.3,11.1-3.8 c2.5-2.5,3.7-6.3,3.7-11.4c0-5.2-1.4-9-4.2-11.5c-2.8-2.5-11.3-3.7-18.3-3.7C448.3,205.9,447.1,206,445.9,206z"></path> <path d="M503.1,206.6c0-9.7,3.2-17.5,9.7-23.4c6.5-5.9,14.6-8.8,24.3-8.8c9.8,0,18,2.9,24.6,8.7c6.6,5.8,9.9,13.7,9.9,23.8 c0,9.7-3.1,17.6-9.4,23.7c-6.3,6-14.6,9-24.8,9c-10,0-18.2-3-24.6-9C506.3,224.6,503.1,216.6,503.1,206.6z M513.7,207 c0,10.1,2,17.7,6.1,22.8c4,5.1,10.1,7.6,18.2,7.6c7.1,0,12.7-2.5,16.8-7.6c4.1-5.1,6.2-12.6,6.2-22.7c0-9.8-2-17.3-6.1-22.5 c-4.1-5.2-9.9-7.8-17.6-7.8c-7.6,0-13.4,2.5-17.4,7.6C515.7,189.5,513.7,197,513.7,207z"></path> </g></g></svg>
+    <p class="eyebrow">Proposta di progetto · Ottobre 2026</p>
+    <h1 style="margin-top:18px">Colombo <em>Wine Club</em></h1>
+    <p class="lead">Un luogo riservato a chi ama i vini di Colombo: tutta la cantina online, edizioni che non si trovano altrove e vantaggi che crescono con il socio.</p>
+    <div class="meta">
+      <span><b>Dominio</b> wineclub.colombovino.it</span>
+      <span><b>Iscrizione</b> gratuita, dai 18 anni</span>
+      <span><b>Spedizioni</b> Direct from Italy</span>
+    </div>
+  </div>
+</header>
+
+<section class="ch" id="progetto">
+  <div class="wrap">
+    <div class="ch-head">
+      <span class="num">I</span>
+      <h2>Il progetto in sintesi</h2>
+    </div>
+    <p class="statement">Il Colombo Wine Club è un <em>club</em> riservato a chi ama i vini di Colombo. Chi si iscrive entra nella cerchia della cantina: accede a tutti i vini, alle edizioni pensate solo per i soci e, acquisto dopo acquisto, sale di livello con prezzi e privilegi migliori.</p>
+    <div class="grid3" style="margin-top:56px">
+      <div class="principle"><h3>Si parte leggeri</h3><p>La prima fase usa solo vini e accessori già disponibili in cantina. Nessun packaging nuovo da produrre e stoccare: prima il club deve vendere.</p></div>
+      <div class="principle"><h3>Esclusivo, non scontistico</h3><p>Il sistema a punti premia la fedeltà con accessi, anteprime ed esperienze in cantina. Nessuna logica da raccolta punti del supermercato.</p></div>
+      <div class="principle"><h3>Si sale e basta</h3><p>Un livello raggiunto resta per sempre. Il socio non perde mai ciò che ha conquistato.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="ch alt" id="offerta">
+  <div class="wrap">
+    <div class="ch-head">
+      <span class="num">II</span>
+      <h2>Cosa si trova nel club</h2>
+      <p>Tutti i vini del sito istituzionale, più una parte di catalogo pensata solo per i soci.</p>
+    </div>
+    <div class="offers">
+      <div class="offer">
+        <div class="tagrow"><span class="pill ghost">Per tutti</span></div>
+        <h3>I vini della cantina</h3>
+        <ul>
+          <li>Natusia · Metodo classico</li>
+          <li>Alta Langa Blanc de Blancs</li>
+          <li>Alta Langa Rosé DOCG</li>
+          <li>Alta Langa Blanc de Noir DOCG</li>
+          <li>Apertura · Pinot nero DOC</li>
+          <li>Maxima · Pinot nero DOC</li>
+          <li>Pinot nero DOC</li>
+        </ul>
+      </div>
+      <div class="offer">
+        <div class="tagrow"><span class="pill ghost">Per tutti</span></div>
+        <h3>Collezioni</h3>
+        <p>Selezioni composte con bottiglie già in cantina, senza confezioni dedicate.</p>
+        <ul>
+          <li>Trilogia Alta Langa · Blanc de Blancs, Rosé, Blanc de Noir</li>
+          <li>Trilogia Metodo classico</li>
+          <li>Collezione Colombo · un vino per ogni etichetta</li>
+          <li>Assaggio · due vini a confronto</li>
+        </ul>
+      </div>
+      <div class="offer">
+        <div class="tagrow"><span class="pill">Solo soci</span></div>
+        <h3>Edizioni riservate</h3>
+        <ul>
+          <li>Tirature limitate, per esempio un passaggio in barrique dedicato</li>
+          <li>Prenotazioni anticipate sulle nuove uscite</li>
+        </ul>
+      </div>
+      <div class="offer">
+        <div class="tagrow"><span class="pill">Dal livello 3</span></div>
+        <h3>Vecchie annate</h3>
+        <p>Bottiglie messe da parte nelle annate passate, disponibili in piccole quantità solo per i soci dei livelli più alti.</p>
+      </div>
+      <div class="offer">
+        <div class="tagrow"><span class="pill ghost">Per tutti</span><span class="pill">Omaggio dal livello 2</span></div>
+        <h3>Accessori</h3>
+        <p>Secchiello con logo, stopper, cavatappi. Si possono acquistare, abbinare a un vino (vino + stopper, vino + cavatappi) o ricevere in omaggio.</p>
+      </div>
+      <div class="offer">
+        <div class="tagrow"><span class="pill solid">2028</span></div>
+        <h3>Il "60 mesi"</h3>
+        <p>Alta Langa Blanc de Noir, 60 mesi sui lieviti, 1.000 bottiglie numerate. Il club è il canale naturale per la sua uscita, con prelazione ai soci dei livelli più alti.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ch" id="livelli">
+  <div class="wrap">
+    <div class="ch-head">
+      <span class="num">III</span>
+      <h2>I livelli del socio</h2>
+      <p>Quattro livelli. Si entra gratis, si sale accumulando Gemme, l'ultimo è solo su invito. I nomi dei livelli sono da scegliere: le proposte sono nel capitolo successivo.</p>
+    </div>
+    <div class="levels">
+      <article class="level l1">
+        <span class="rank">INGRESSO</span>
+        <div class="seal">I</div>
+        <h3>Livello 1</h3>
+        <div class="row"><b>Come si entra</b>Iscrizione gratuita</div>
+        <div class="row"><b>Prezzi</b>Prezzo da enoteca</div>
+        <ul>
+          <li>Accesso a tutto il catalogo e alle collezioni</li>
+          <li>Spedizione gratuita sopra 210 €</li>
+          <li>Accumulo Gemme dal primo ordine</li>
+        </ul>
+      </article>
+      <article class="level l2">
+        <span class="rank">SOCIO</span>
+        <div class="seal">II</div>
+        <h3>Livello 2</h3>
+        <div class="row"><b>Come si entra</b>500 Gemme, oppure su invito per i clienti storici</div>
+        <div class="row"><b>Prezzi</b>Prezzo da cantina</div>
+        <ul>
+          <li>Spedizione gratuita sopra 190 €</li>
+          <li>Accessorio in omaggio negli ordini sopra una soglia</li>
+          <li>Accesso alle edizioni riservate</li>
+        </ul>
+      </article>
+      <article class="level l3">
+        <span class="rank">SOCIO FEDELE</span>
+        <div class="seal">III</div>
+        <h3>Livello 3</h3>
+        <div class="row"><b>Come si entra</b>2.000 Gemme</div>
+        <div class="row"><b>Prezzi</b>Prezzo da cantina</div>
+        <ul>
+          <li>Prelazione sul "60 mesi" e sulle nuove uscite</li>
+          <li>Accesso alle vecchie annate</li>
+          <li>Una degustazione all'anno per due, cedibile a un amico</li>
+          <li>"Porta un amico": regala l'ingresso al livello 2</li>
+          <li>Omaggio nel primo ordine del mese del compleanno</li>
+        </ul>
+      </article>
+      <article class="level l4">
+        <span class="rank">SU INVITO</span>
+        <div class="seal">IV</div>
+        <h3>Livello 4</h3>
+        <div class="row"><b style="color:var(--gold)">Come si entra</b>Solo su invito della cantina</div>
+        <div class="row"><b style="color:var(--gold)">Prezzi</b>Prezzo da cantina</div>
+        <ul>
+          <li>Cena dedicata in cantina</li>
+          <li>Esperienze in vigna: vendemmia, sboccatura</li>
+          <li>Contatto diretto con la famiglia Colombo</li>
+        </ul>
+        <span class="pill" style="justify-self:start;color:var(--gold)">Fase successiva</span>
+      </article>
+    </div>
+    <p class="muted" style="margin-top:20px;font-size:15px">Da livello 2 in su il prezzo resta lo stesso: dal livello 3 cambiano i privilegi, non lo sconto. Così il prezzo da cantina resta credibile e il valore si sposta sulle esperienze.</p>
+
+    <div class="sim" aria-labelledby="sim-title">
+      <div class="sim-top">
+        <h3 id="sim-title">Prova il percorso di un socio</h3>
+        <span class="example">Simulazione · 1 Gemma per ogni euro speso</span>
+      </div>
+      <input type="range" id="spend" min="0" max="2600" step="10" value="780" aria-label="Spesa totale in euro">
+      <label for="boxes"><input type="checkbox" id="boxes"> Metà della spesa in collezioni e novità (Gemme doppie)</label>
+      <div class="ladder">
+        <div class="ladder-bar"><div class="ladder-fill" id="fill"></div></div>
+        <div class="ladder-marks">
+          <span style="left:0">0<br>Livello 1</span>
+          <span style="left:19.23%">500<br>Livello 2</span>
+          <span style="left:76.92%">2.000<br>Livello 3</span>
+          <span style="left:100%">2.600</span>
+        </div>
+      </div>
+      <div class="sim-out">
+        <div><small>Spesa totale</small><strong id="o-spend">780 €</strong></div>
+        <div><small>Gemme</small><strong id="o-pts">780</strong></div>
+        <div><small>Livello</small><strong id="o-lvl">Livello 2</strong></div>
+        <div><small>Ordini medi da 260 €</small><strong id="o-ord">3</strong></div>
+      </div>
+      <p class="muted" id="o-next" style="font-size:15px"></p>
+    </div>
+  </div>
+</section>
+
+<section class="ch alt" id="punti">
+  <div class="wrap">
+    <div class="ch-head">
+      <span class="num">IV</span>
+      <h2>Come funzionano le Gemme</h2>
+      <p>I punti del club si chiamano Gemme. Si parla di Gemme e non di euro, perché il percorso sia un gioco elegante e non un conto da fare.</p>
+    </div>
+    <ul class="rules">
+      <li><b>Regola base</b><span>1 Gemma per ogni euro speso sui vini e sugli accessori, spedizione esclusa.</span></li>
+      <li><b>Prodotti che valgono di più</b><span>Collezioni, novità ed edizioni riservate possono dare Gemme doppie. Spinge verso i prodotti che la cantina vuole far conoscere.</span></li>
+      <li><b>Campagne</b><span>Periodi a Gemme doppie decisi dalla cantina dalla dashboard: Natale, uscita di un nuovo millesimo, vendemmia.</span></li>
+      <li><b>Resi e annullamenti</b><span>Le Gemme di un ordine annullato vengono tolti in automatico.</span></li>
+      <li><b>Scadenza</b><span>Nessuna. Gemme e livelli non scadono.</span></li>
+      <li><b>Clienti storici</b><span>I clienti che hanno già dato il consenso a ricevere comunicazioni da Colombo ricevono una mail di invito con un link personale: iscrivendosi entrano subito al livello 2. L'iscrizione resta una loro scelta.</span></li>
+    </ul>
+
+    <h3 style="font-size:28px;margin:64px 0 8px">I nomi</h3>
+    <p class="muted" style="margin-bottom:24px;max-width:640px">Il logo di Colombo richiama una gemma incastonata: per questo i punti si chiamano <b style="color:var(--ink);font-weight:500">Gemme</b>. Per i livelli proponiamo nomi semplici e riconoscibili, da scegliere insieme.</p>
+    <ul class="rules">
+      <li><b>Silver · Gold · Platinum · Black</b><span>La scala più conosciuta. Black, su invito, richiama l'astuccio nero di Colombo.</span></li>
+      <li><b>Member · Silver · Gold · Platinum</b><span>Si entra come Member, i metalli arrivano con le Gemme.</span></li>
+      <li><b>Classic · Gold · Platinum · Ultra</b><span>Ultra per il livello su invito, il più esclusivo.</span></li>
+      <li><b>Argento · Oro · Platino · Nero</b><span>La stessa scala in italiano.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="ch" id="journey">
+  <div class="wrap">
+    <div class="ch-head">
+      <span class="num">V</span>
+      <h2>Il percorso del socio</h2>
+      <p>Cosa vive una persona dal primo contatto al livello 3, e dove interviene la cantina.</p>
+    </div>
+    <ol class="journey">
+      <li><div><h4>Scopre il club</h4><p>Dal sito istituzionale, da una degustazione in cantina, da una mail o dai social. Arriva sulla home del club e vede vini e vantaggi.</p><p class="touch">Punti di contatto: menu del sito, materiale in sala degustazione, Brevo</p></div></li>
+      <li><div><h4>Si iscrive</h4><p>Nome, email, data di nascita (l'iscrizione è bloccata sotto i 18 anni), consenso privacy e, se vuole, consenso alle comunicazioni. Entra al livello 1, oppure al livello 2 se arriva da un invito.</p><p class="touch">Iscrizione sincronizzata con Brevo</p></div></li>
+      <li><div><h4>Primo ordine</h4><p>Sceglie i vini, vede i prezzi del suo livello e quanto manca alla spedizione gratuita. Paga con carta, Apple Pay o Google Pay.</p><p class="touch">Pagamento con Stripe · ordine trasmesso a Direct from Italy</p></div></li>
+      <li><div><h4>Riceve e accumula</h4><p>Riceve la mail di conferma dell'ordine. Nell'area personale vede lo storico ordini, le Gemme guadagnate e la barra verso il livello successivo.</p></div></li>
+      <li><div><h4>Sale di livello</h4><p>Al raggiungimento della soglia riceve una mail di benvenuto nel nuovo livello. I nuovi prezzi e vantaggi si attivano subito.</p><p class="touch">Mail automatica dal sistema · segmento aggiornato in Brevo</p></div></li>
+      <li><div><h4>Arriva al livello 3</h4><p>Prenota le uscite in anteprima, chiede la sua degustazione, invita un amico. La cantina conosce i suoi soci migliori e può invitarli al livello 4.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="ch alt" id="alberatura">
+  <div class="wrap">
+    <div class="ch-head">
+      <span class="num">VI</span>
+      <h2>Alberatura del sito</h2>
+      <p>Le pagine del club e come sono organizzate. Le voci in nero richiedono l'accesso.</p>
+    </div>
+    <div class="tree-root"><span class="node">wineclub.colombovino.it</span><span class="muted" style="font-size:14px">collegato dal menu di colombovino.it</span></div>
+    <div class="tree-scroll">
+      <div class="tree">
+        <div class="branch">
+          <h4>Il Club</h4>
+          <ul>
+            <li>Home del club</li>
+            <li>Come funziona</li>
+            <li>Livelli e vantaggi</li>
+            <li>Domande frequenti</li>
+            <li>Iscriviti · Accedi</li>
+          </ul>
+        </div>
+        <div class="branch">
+          <h4>I vini del club</h4>
+          <ul>
+            <li>Tutti i vini</li>
+            <li>Scheda vino</li>
+            <li>Collezioni</li>
+            <li class="lock">Edizioni riservate</li>
+            <li class="lock">Vecchie annate</li>
+            <li>Accessori</li>
+            <li>Carrello e pagamento</li>
+          </ul>
+        </div>
+        <div class="branch">
+          <h4>Area personale</h4>
+          <ul>
+            <li class="lock">Il mio livello e le mie Gemme</li>
+            <li class="lock">I miei ordini</li>
+            <li class="lock">I miei vantaggi</li>
+            <li class="lock">Richiedi una degustazione</li>
+            <li class="lock">Invita un amico</li>
+            <li class="lock">Dati, indirizzi, preferenze</li>
+          </ul>
+        </div>
+        <div class="branch">
+          <h4>Area B2B</h4>
+          <ul>
+            <li>Richiesta di accesso B2B</li>
+            <li class="lock">Tutti i vini con listino distributori</li>
+            <li class="lock">Tutti i vini con listino ristoratori</li>
+            <li class="lock">Ordini e documenti</li>
+          </ul>
+          <h4 style="margin-top:14px">Servizio</h4>
+          <ul>
+            <li>Spedizioni e resi</li>
+            <li>Termini di vendita</li>
+            <li>Privacy e cookie</li>
+            <li>Contatti</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ch" id="utenti">
+  <div class="wrap">
+    <div class="ch-head">
+      <span class="num">VII</span>
+      <h2>Chi usa il sito e cosa vede</h2>
+      <p>Ogni tipo di utente vede il suo listino. La cantina gestisce tutto dalla stessa dashboard.</p>
+    </div>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>Utente</th><th>Prezzi</th><th>Cosa vede</th><th>Cosa può fare</th></tr></thead>
+        <tbody>
+          <tr><td>Visitatore</td><td>Prezzo da enoteca</td><td>Vini, collezioni, livelli e vantaggi</td><td>Iscriversi</td></tr>
+          <tr><td>Cliente <span class="muted" style="font-family:var(--body);font-size:14px">(livelli 1, 2, 3, 4)</span></td><td>Prezzo da enoteca al livello 1, <span class="yes">prezzo da cantina</span> dal livello 2</td><td>Vini, collezioni e area personale. Dal livello 2 anche le edizioni riservate, dal livello 3 vecchie annate e anteprime</td><td>Acquistare, accumulare punti, usare i vantaggi del proprio livello</td></tr>
+          <tr><td>Distributore <span class="muted" style="font-family:var(--body);font-size:14px">(area B2B)</span></td><td class="yes">Listino distributori</td><td>Tutti i vini, con i prezzi a lui dedicati</td><td>Ordinare da subito, dopo l'approvazione dell'account</td></tr>
+          <tr><td>Ristoratore <span class="muted" style="font-family:var(--body);font-size:14px">(area B2B)</span></td><td class="yes">Listino ristoratori</td><td>Tutti i vini, con i prezzi a lui dedicati</td><td>Ordinare da subito, dopo l'approvazione dell'account</td></tr>
+          <tr><td>Gestore e-commerce</td><td class="no">—</td><td>Dashboard</td><td>Ordini, prodotti, clienti, campagne</td></tr>
+          <tr><td>Amministratore</td><td class="no">—</td><td>Dashboard completa</td><td>Tutto, più utenti, listini e impostazioni</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="font-size:28px;margin:64px 0 8px">Come si entra nell'area B2B</h3>
+    <p class="muted" style="margin-bottom:24px;max-width:640px">I prezzi B2B sono più bassi, quindi l'accesso non è automatico. La proposta è che ogni account venga approvato da Colombo. I dettagli sono da definire insieme.</p>
+    <ul class="rules">
+      <li><b>Richiesta</b><span>Il distributore o il ristoratore compila un modulo dedicato: ragione sociale, partita IVA, tipo di attività, paese, dati per la fatturazione.</span></li>
+      <li><b>In attesa</b><span>Finché la richiesta non è approvata, l'account vede i normali prezzi da enoteca.</span></li>
+      <li><b>Approvazione</b><span>Colombo riceve una notifica, controlla la richiesta dalla dashboard e assegna il listino: distributori o ristoratori. Il cliente riceve una mail di conferma.</span></li>
+      <li><b>Da definire</b><span>Chi approva, quali documenti chiedere, se i clienti B2B accumulano Gemme, come pagano (carta o bonifico) e come vengono spediti gli ordini ai distributori esteri.</span></li>
+    </ul>
+  </div>
+</section>
+
+<div class="band" id="infrastruttura">
+  <section class="ch">
+    <div class="wrap">
+      <div class="ch-head">
+        <span class="num" style="color:var(--gold)">VIII</span>
+        <h2>L'infrastruttura</h2>
+        <p>Un sito su misura, scritto da zero per il Colombo Wine Club, senza WordPress né plugin. Al centro un unico sistema che sa chi è il socio, quali prezzi vede e quanti punti ha.</p>
+      </div>
+      <div class="arch">
+        <div class="arch-col">
+          <span class="eyebrow">Chi lo usa</span>
+          <div class="box"><b>Sito del club</b><span>Pagine del club, vini, area personale del socio. Veloce e pensato per lo smartphone.</span></div>
+          <div class="box"><b>Dashboard cantina</b><span>Per il gestore e-commerce e l'amministratore.</span></div>
+        </div>
+        <div class="arrow" aria-hidden="true">→</div>
+        <div class="arch-col">
+          <span class="eyebrow">Il motore</span>
+          <div class="box core"><b>Gestionale del club</b><span>Catalogo e listini · soci, livelli e punti · ordini · regole delle campagne · invio delle mail di servizio</span></div>
+          <div class="box"><b>Database</b><span>Soci, ordini e storico punti in un unico archivio, con backup automatici.</span></div>
+        </div>
+        <div class="arrow" aria-hidden="true">→</div>
+        <div class="arch-col">
+          <span class="eyebrow">Servizi collegati</span>
+          <div class="box"><b>Stripe</b><span>Pagamenti con carta, Apple Pay, Google Pay. Klarna per pagare a rate, se Stripe la approva per la vendita di vino.</span></div>
+          <div class="box"><b>Direct from Italy</b><span>Spedizioni in Italia e nel mondo, accise comprese. Il modo di collegarlo (API o scambio di file) è da concordare con loro.</span></div>
+          <div class="box"><b>Brevo</b><span>Soci, livelli e consensi sincronizzati per newsletter e campagne.</span></div>
+        </div>
+      </div>
+      <div class="why" style="margin-top:48px">
+        <div style="grid-column:1/-1"><h4>Cosa è garantito e cosa va verificato</h4><p>Iscrizione, livelli, punti, listini, area personale, dashboard, mail automatiche, pagamenti con carta, Apple Pay e Google Pay e collegamento a Brevo sono sviluppati da noi, senza dipendere da nessuno. Due punti dipendono da fornitori esterni e li confermiamo prima dello sviluppo. <b>Klarna</b> considera il vino un prodotto soggetto ad approvazione: va richiesta all'apertura dell'account Stripe. <b>Direct from Italy</b> non pubblica un'interfaccia tecnica documentata: dobbiamo concordare con loro come ricevono gli ordini e se restituiscono il tracciamento. Senza collegamento automatico gli ordini si trasmettono comunque, con un'esportazione dalla dashboard.</p></div>
+      </div>
+      <div class="why">
+        <div><h4>Fatto su misura</h4><p>Livelli, punti e listini sono il cuore del progetto, non un plugin adattato. Ogni regola si cambia dalla dashboard.</p></div>
+        <div><h4>Veloce e sicuro</h4><p>Nessun plugin da aggiornare e nessun pannello WordPress esposto. I dati di pagamento restano su Stripe.</p></div>
+        <div><h4>Cresce con il club</h4><p>Abbonamenti, nuovi livelli e nuove funzioni si aggiungono sopra la stessa base, senza rifare il sito.</p></div>
+        <div><h4>Regole incluse</h4><p>Data di nascita obbligatoria e iscrizione bloccata ai minorenni, pagine per termini di vendita, recesso, privacy e cookie fin dal primo giorno. I testi legali vanno validati dal consulente della cantina.</p></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section class="ch" id="dashboard">
+  <div class="wrap">
+    <div class="ch-head">
+      <span class="num">IX</span>
+      <h2>La dashboard della cantina</h2>
+      <p>Un pannello semplice per gestire il club ogni giorno, senza competenze tecniche.</p>
+    </div>
+    <div class="dash" role="img" aria-label="Anteprima della dashboard con riepilogo ordini, soci e punti">
+      <aside>
+        <svg class="mini" viewBox="0 0 574.8 246.2" fill="currentColor" role="img" aria-label="Colombo"><g> <g> <path d="M358.8,90.9L358.8,90.9c-0.2,2.4-1.6,4.5-4.2,6c-8.1,3.6-23.1-5-35.7-21.4c0,0,0.1,0,0.1,0 c13.3-3.6,24.5-0.2,29.3,2.4c5.1,2.8,7,6.3,6.3,9.2c-0.4,1.7-1.6,2.7-2.7,2.7c-1.3,0.1-1.1-0.7-0.9-1.4c0.4-1.2,0.9-2.2,0.3-2.6 c-0.8-0.5-1.6,0.7-2.3,1.3c-0.7,0.7-1.7,0.3-1.5-1.1c0.2-1.8-0.5-2.9-1.6-3.8c-2.1-1.6-4.5-1-4.5-1c4.6,2.8,3.2,4.7,4.9,7.5 c1.2,2,3.7,3.3,6,2.9c1.7-0.3,3.7-1.7,4.4-3.9c1.3-3.9-1.9-8.7-7-11.8c-7.5-4.5-20-6.6-33-3.8c-1.7-2.5-3.4-5.1-5-7.8 c-1.6-2.8-3-5.5-4.3-8.3c8.9-9.8,13.4-21.7,13.2-30.4c-0.1-5.9-2.7-11.1-6.7-11.9c-2.3-0.5-4.5,0.6-5.6,1.9 c-1.5,1.8-1.6,4.6-0.5,6.6c1.6,2.9,3.9,2.6,4.1,8c0,0,1.8-1.8,1.4-4.4c-0.2-1.4-0.8-2.6-2.4-3.3c-1.2-0.6-1.1-1.6-0.2-1.9 c0.9-0.3,2.4-0.5,2.3-1.4c0-0.7-1.1-0.8-2.4-1.1c-0.7-0.1-1.5-0.4-0.8-1.5c0.6-1,2.1-1.5,3.7-1c2.9,0.9,5,4.3,4.8,10.1 c-0.2,5.4-2.8,16.8-12.6,26.5c0,0-0.1,0.1-0.1,0.1c-7.9-19.1-7.8-36.4-0.6-41.6c2.6-1.5,5.1-1.7,7.3-0.6l0,0 c-3-2.4-6.7-3.2-10.7-1.5c-11.6,5.5-14.6,28.7-5.4,51.5c-2.8,1.9-5.4,3.3-8.1,4.9l0,0c-2.6-1.5-5.3-3-8.1-4.9 c9.1-22.8,6.2-46-5.4-51.5c-3.9-1.7-7.7-1-10.7,1.5l0,0c2.2-1.1,4.7-0.9,7.3,0.6c7.2,5.2,7.3,22.5-0.6,41.6c0,0-0.1-0.1-0.1-0.1 c-9.8-9.7-12.4-21.1-12.6-26.5c-0.2-5.8,2-9.2,4.8-10.1c1.6-0.5,3.1,0,3.7,1c0.7,1.1-0.1,1.3-0.8,1.5c-1.3,0.3-2.3,0.3-2.4,1.1 c0,0.9,1.4,1.1,2.3,1.4c1,0.3,1.1,1.3-0.2,1.9c-1.6,0.7-2.2,1.9-2.4,3.3c-0.4,2.6,1.4,4.4,1.4,4.4c0.1-5.4,2.4-5.1,4.1-8 c1.1-2,1-4.9-0.5-6.6c-1.1-1.3-3.3-2.3-5.6-1.9c-4.1,0.8-6.6,6-6.7,11.9c-0.1,8.7,4.3,20.6,13.2,30.4c-1.3,2.7-2.7,5.5-4.3,8.2 c-1.6,2.8-3.3,5.4-5,7.8c-13-2.8-25.5-0.7-33,3.8c-5.1,3.1-8.3,7.9-7,11.8c0.8,2.2,2.7,3.6,4.4,3.9c2.3,0.4,4.8-0.9,6-2.9 c1.7-2.9,0.3-4.7,4.9-7.5c0,0-2.5-0.7-4.5,1c-1.1,0.9-1.8,2-1.6,3.8c0.1,1.3-0.8,1.8-1.5,1.1c-0.7-0.7-1.6-1.8-2.3-1.3 c-0.6,0.4-0.2,1.3,0.3,2.6c0.2,0.7,0.4,1.5-0.9,1.4c-1.2-0.1-2.4-1.1-2.7-2.7c-0.7-2.9,1.2-6.5,6.3-9.2c4.7-2.6,15.9-6,29.3-2.4 c0,0,0.1,0,0.1,0c-12.6,16.4-27.7,25-35.7,21.3c-2.6-1.5-4-3.6-4.2-6l0,0c-0.6,3.8,0.6,7.4,4.1,10c10.6,7.3,32.2-1.8,47.3-21 c3,1.5,5.6,3,8.3,4.6c0,3,0,6.1-0.2,9.4c-24.3,3.5-42.9,17.6-41.9,30.5c0.5,4.3,3,7.2,6.6,8.5l0,0c-2-1.4-3.1-3.7-3.1-6.7 c0.9-8.8,15.8-17.5,36.4-20.3c0,0,0,0.1,0,0.1c-3.5,13.3-12.1,21.3-16.7,24.2c-4.9,3-9,2.9-11.1,0.8c-1.2-1.2-1.5-2.7-1-3.7 c0.6-1.2,1.2-0.6,1.7-0.1c0.9,1,1.5,1.9,2.1,1.5c0.8-0.4,0.2-1.8,0-2.7c-0.2-1,0.6-1.6,1.7-0.8c1.4,1,2.7,1,4.1,0.5 c2.4-1,3.1-3.4,3.1-3.4c-4.8,2.6-5.6,0.5-9,0.5c-2.3,0-4.7,1.6-5.5,3.7c-0.6,1.6-0.4,4,1.2,5.8c2.7,3.1,8.5,2.8,13.7-0.1 c7.6-4.2,15.7-14,19.7-26.7c3-0.3,6.1-0.4,9.3-0.4c3.2,0,6.3,0.2,9.3,0.4c4.1,12.6,12.1,22.4,19.7,26.7c5.2,2.9,11,3.2,13.7,0.1 c1.6-1.8,1.7-4.2,1.2-5.8c-0.8-2.1-3.2-3.7-5.5-3.7c-3.3,0-4.2,2.1-9-0.5c0,0,0.7,2.5,3.1,3.4c1.3,0.5,2.7,0.6,4.1-0.5 c1.1-0.8,1.9-0.2,1.7,0.8c-0.2,0.9-0.8,2.3,0,2.7c0.7,0.4,1.2-0.5,2.1-1.5c0.5-0.5,1.1-1.1,1.7,0.1c0.5,1,0.3,2.6-1,3.7 c-2.2,2.1-6.2,2.2-11.1-0.8c-4.6-2.8-13.1-10.8-16.7-24.2c0,0,0-0.1,0-0.1c20.5,2.7,35.5,11.5,36.3,20.3c0,3-1.1,5.3-3.1,6.7l0,0 c3.6-1.3,6.2-4.2,6.6-8.5c1-12.8-17.6-27-41.9-30.5c-0.2-3.4-0.2-6.4-0.2-9.4c2.6-1.5,5.2-3.1,8.3-4.6 c15.1,19.3,36.7,28.3,47.3,21.1C358.2,98.3,359.4,94.7,358.8,90.9z M288.1,73.5c2.5,0,4.4,2,4.4,4.4c0,2.5-2,4.4-4.4,4.4 c-2.5,0-4.4-2-4.4-4.4C283.6,75.5,285.6,73.5,288.1,73.5z M271.6,75.9c1.2-1.7,2.4-3.6,3.5-5.4c1.1-1.9,2.1-3.8,3-5.7 c1.6,1.3,3.3,2.5,5,3.7c-1.7,1.3-3.2,2.7-4.1,4.3s-1.4,3.6-1.7,5.7C275.4,77.5,273.6,76.7,271.6,75.9z M288.1,93 c-2.2,0-4.3,0.1-6.4,0.3c0.3-2.1,0.5-4.1,0.7-6.1c1.9,0.8,3.9,1.4,5.7,1.4s3.8-0.6,5.7-1.4c0.2,2,0.4,4,0.7,6.1 C292.4,93.1,290.2,93,288.1,93z M298.9,78.3c-0.2-2.1-0.7-4.1-1.7-5.7s-2.4-3-4.1-4.3c1.7-1.2,3.3-2.4,5-3.7 c0.9,1.9,1.9,3.8,3,5.7c1.1,1.9,2.2,3.7,3.4,5.4C302.6,76.7,300.7,77.5,298.9,78.3z"></path> </g> <g> <path d="M59.8,214.9h2v22h-2c-0.6-2.5-1.6-4.7-3-6.6c-5.5,6.2-12.6,9.4-21.2,9.4c-9.1,0-16.5-2.9-22.3-8.6 c-5.8-5.8-8.7-13.4-8.7-22.8c0-6.2,1.3-12.1,4-17.6c2.7-5.5,6.4-9.6,11.1-12.2c4.8-2.7,10-4,15.7-4c4.7,0,9,1,12.8,2.9 c3.8,1.9,6.7,4.1,8.6,6.4c1.3-2.6,2.1-5.3,2.4-8.2h2l0.6,23.8h-2c-1.4-8.5-4.2-14.4-8.5-17.7c-4.3-3.3-9.1-5-14.5-5 c-6.6,0-11.8,2.7-15.7,8c-3.9,5.3-5.8,13-5.8,23c0,9.4,2.1,16.7,6.4,21.7c4.2,5,9.5,7.5,15.8,7.5c3.4,0,6.8-0.8,10.3-2.5 c3.5-1.6,6.3-4.4,8.4-8.3C58.2,222.3,59.4,218.5,59.8,214.9z"></path> <path d="M85.6,206.6c0-9.7,3.2-17.5,9.7-23.4c6.5-5.9,14.6-8.8,24.3-8.8c9.8,0,18,2.9,24.6,8.7c6.6,5.8,9.9,13.7,9.9,23.8 c0,9.7-3.1,17.6-9.4,23.7c-6.3,6-14.6,9-24.8,9c-10,0-18.2-3-24.6-9C88.8,224.6,85.6,216.6,85.6,206.6z M96.2,207 c0,10.1,2,17.7,6.1,22.8c4,5.1,10.1,7.6,18.2,7.6c7.1,0,12.7-2.5,16.8-7.6c4.1-5.1,6.2-12.6,6.2-22.7c0-9.8-2-17.3-6.1-22.5 c-4.1-5.2-9.9-7.8-17.6-7.8c-7.6,0-13.4,2.5-17.4,7.6S96.2,197,96.2,207z"></path> <path d="M225.9,220l-0.5,18.5h-53.4v-2.1h1.9c2.7,0,4.6-0.3,5.6-1c1-0.7,1.7-1.7,2-3.2c0.3-1.4,0.4-4.8,0.4-10v-30.8 c0-5-0.1-8.2-0.4-9.7c-0.3-1.5-0.9-2.5-1.9-3c-0.9-0.6-3-0.8-6.2-0.8h-1.4v-2.1h30.2v2.1h-2.8c-3.1,0-5.1,0.3-6.1,0.8 c-1,0.5-1.6,1.5-1.9,2.9c-0.3,1.4-0.5,4.7-0.5,9.9v32.9c0,4.5,0.1,7.4,0.4,8.5c0.2,1.1,0.9,2,2,2.7c1.1,0.6,3.5,1,7.1,1h4.8 c3.9,0,6.7-0.3,8.6-1c1.9-0.7,3.6-2.2,5.3-4.5c1.7-2.3,3.2-5.9,4.6-10.9H225.9z"></path> <path d="M238.1,206.6c0-9.7,3.2-17.5,9.7-23.4c6.5-5.9,14.6-8.8,24.3-8.8c9.8,0,18,2.9,24.6,8.7c6.6,5.8,9.9,13.7,9.9,23.8 c0,9.7-3.1,17.6-9.4,23.7c-6.3,6-14.6,9-24.8,9c-10,0-18.2-3-24.6-9C241.3,224.6,238.1,216.6,238.1,206.6z M248.7,207 c0,10.1,2,17.7,6.1,22.8c4,5.1,10.1,7.6,18.2,7.6c7.1,0,12.7-2.5,16.8-7.6c4.1-5.1,6.2-12.6,6.2-22.7c0-9.8-2-17.3-6.1-22.5 c-4.1-5.2-9.9-7.8-17.6-7.8c-7.6,0-13.4,2.5-17.4,7.6C250.7,189.5,248.7,197,248.7,207z"></path> <path d="M364.6,227.7l22.9-52h19.3v2.1h-2.3c-3.1,0-5.1,0.3-6.1,0.8c-1,0.5-1.6,1.5-1.9,2.9c-0.3,1.4-0.5,4.7-0.5,9.9v30.8 c0,4.9,0.1,8.2,0.4,9.7c0.2,1.5,0.9,2.7,1.9,3.4c1,0.7,2.9,1.1,5.8,1.1h2.8v2.1h-30.1v-2.1h2.2c2.7,0,4.5-0.3,5.5-1 c1-0.7,1.7-1.7,2-3.2c0.3-1.4,0.4-4.8,0.4-10v-40l-24.9,56.4h-2.2l-25.1-56.4v36.8c0,5,0.2,8.5,0.5,10.3c0.3,1.8,1.3,3.4,2.9,4.8 c1.6,1.4,3.9,2.2,6.8,2.3v2.1h-22.5v-2.1c2.7-0.2,4.9-0.9,6.6-2.2c1.7-1.3,2.7-2.9,3.1-4.8c0.4-1.9,0.6-5.5,0.6-10.7v-27.4 c0-5-0.1-8.2-0.4-9.7c-0.3-1.5-0.9-2.5-1.9-3c-0.9-0.6-3-0.8-6.2-0.8h-1.7v-2.1h19.2L364.6,227.7z"></path> <path d="M460.8,204.6c7.1,0.5,12.4,2.3,15.9,5.3c3.5,3,5.2,6.8,5.2,11.4c0,4-1.2,7.4-3.5,10.2c-2.4,2.9-5.4,4.7-9,5.6 c-3.7,0.9-8.6,1.3-14.7,1.3h-28.2v-2.1h2.4c2.7,0,4.6-0.3,5.6-1c1-0.7,1.7-1.7,2-3.2c0.3-1.4,0.4-4.8,0.4-10v-30.6 c0-5.1-0.1-8.4-0.4-9.9c-0.3-1.5-0.9-2.5-1.9-3.1c-0.9-0.6-3-0.8-6.2-0.8h-1.2v-2.1l10.3-0.3l11.8-0.4c17.2,0,29.4,4.9,29.4,14.8 c0,4.1-1.5,7.4-4.4,9.8C471.2,202.1,466.7,203.8,460.8,204.6z M445.9,203.8c0.8,0,1.4,0,1.9,0c6.7,0,14.8-1.1,17.2-3.2 c2.4-2.1,3.7-5.5,3.7-10.2c0-3.3-0.5-5.8-1.4-7.6c-1-1.8-2.4-3.2-4.3-4.2c-1.9-1-8.8-1.5-13.4-1.5c-1.2,0-2.4,0-3.7,0.1V203.8z M445.9,206v14c0,6,0.1,9.8,0.3,11.4c0.2,1.6,0.8,2.8,1.7,3.7c0.9,0.8,6.4,1.3,9.2,1.3c4.9,0,8.7-1.3,11.1-3.8 c2.5-2.5,3.7-6.3,3.7-11.4c0-5.2-1.4-9-4.2-11.5c-2.8-2.5-11.3-3.7-18.3-3.7C448.3,205.9,447.1,206,445.9,206z"></path> <path d="M503.1,206.6c0-9.7,3.2-17.5,9.7-23.4c6.5-5.9,14.6-8.8,24.3-8.8c9.8,0,18,2.9,24.6,8.7c6.6,5.8,9.9,13.7,9.9,23.8 c0,9.7-3.1,17.6-9.4,23.7c-6.3,6-14.6,9-24.8,9c-10,0-18.2-3-24.6-9C506.3,224.6,503.1,216.6,503.1,206.6z M513.7,207 c0,10.1,2,17.7,6.1,22.8c4,5.1,10.1,7.6,18.2,7.6c7.1,0,12.7-2.5,16.8-7.6c4.1-5.1,6.2-12.6,6.2-22.7c0-9.8-2-17.3-6.1-22.5 c-4.1-5.2-9.9-7.8-17.6-7.8c-7.6,0-13.4,2.5-17.4,7.6C515.7,189.5,513.7,197,513.7,207z"></path> </g></g></svg>
+        <a class="on">Panoramica</a>
+        <a>Ordini</a>
+        <a>Vini e prodotti</a>
+        <a>Collezioni</a>
+        <a>Soci e livelli</a>
+        <a>Campagne Gemme</a>
+        <a>Listini</a>
+        <a>Impostazioni</a>
+      </aside>
+      <main>
+        <div class="dash-top"><h4>Buongiorno, Andrea</h4><span class="example">Dati di esempio</span></div>
+        <div class="kpis">
+          <div class="kpi"><small>Ordini questo mese</small><strong>42</strong></div>
+          <div class="kpi"><small>Fatturato del mese</small><strong>11.340 €</strong></div>
+          <div class="kpi"><small>Nuovi soci</small><strong>68</strong></div>
+          <div class="kpi"><small>Soci livello 3</small><strong>14</strong></div>
+        </div>
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th>Ordine</th><th>Socio</th><th>Livello</th><th>Totale</th><th>Stato</th></tr></thead>
+            <tbody>
+              <tr><td>#1048</td><td>Giulia R. · Torino</td><td>Livello 2</td><td>284 €</td><td><span class="status st-new">Da preparare</span></td></tr>
+              <tr><td>#1047</td><td>Marco B. · Monaco</td><td>Livello 3</td><td>512 €</td><td><span class="status st-ship">Spedito</span></td></tr>
+              <tr><td>#1046</td><td>Anna P. · Milano</td><td>Livello 1</td><td>196 €</td><td><span class="status st-ship">Spedito</span></td></tr>
+              <tr><td>#1045</td><td>Luca D. · Zurigo</td><td>Livello 2</td><td>338 €</td><td><span class="status st-wait">In attesa ritiro</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+    <div class="grid3 feat">
+      <div class="principle"><h3>Ordini</h3><p>Elenco ordini con il loro stato, rimborsi tramite Stripe. Lo stato della spedizione si aggiorna in automatico se Direct from Italy lo rende disponibile, altrimenti a mano.</p></div>
+      <div class="principle"><h3>Catalogo e listini</h3><p>Vini, collezioni, edizioni riservate. Per ogni prodotto: prezzo enoteca, prezzo cantina, listini B2B, Gemme.</p></div>
+      <div class="principle"><h3>Soci</h3><p>Chi sono, a che livello, quanto hanno speso. Si può promuovere un socio a mano o invitarlo al livello 4.</p></div>
+      <div class="principle"><h3>Campagne Gemme</h3><p>Si crea una campagna a Gemme doppie scegliendo prodotti e date. Si attiva e si chiude da sola.</p></div>
+      <div class="principle"><h3>Inviti</h3><p>Si carica la lista dei clienti storici che hanno dato il consenso; il sistema crea i link personali e li passa a Brevo per l'invio.</p></div>
+      <div class="principle"><h3>Clienti B2B</h3><p>Le richieste di distributori e ristoratori arrivano in dashboard: si approvano o si rifiutano e si assegna il listino.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="ch alt" id="anno">
+  <div class="wrap">
+    <div class="ch-head">
+      <span class="num">X</span>
+      <h2>Il club tutto l'anno</h2>
+      <p>Occasioni per far tornare i soci anche tra un ordine e l'altro. Ogni iniziativa si gestisce dalla dashboard, senza sviluppi aggiuntivi.</p>
+    </div>
+    <ul class="rules">
+      <li><b>Porta un amico</b><span>Ogni socio ha un link personale da condividere. Quando l'amico si iscrive e il suo primo ordine viene confermato, entrambi ricevono 100 Gemme. Per i soci del livello 3 l'amico entra in più direttamente al livello 2.</span></li>
+      <li><b>Anniversario</b><span>Nel giorno in cui si è iscritto, il socio riceve 50 Gemme e una mail di auguri dal club.</span></li>
+      <li><b>Compleanno</b><span>Per tutto il mese del compleanno ogni ordine vale Gemme doppie. Ai soci del livello 3 si aggiunge l'omaggio nel primo ordine del mese.</span></li>
+      <li><b>Regola comune</b><span>Le promozioni non si sommano: se un ordine rientra in più iniziative, vale quella più favorevole al socio.</span></li>
+    </ul>
+
+    <h3 style="font-size:28px;margin:64px 0 24px">Il calendario delle campagne</h3>
+    <div class="seasons">
+      <div class="season"><span class="when">DICEMBRE</span><h4>Natale</h4><p>Gemme doppie sulle collezioni. Spedizione regalo a un indirizzo diverso, con un messaggio personalizzato.</p></div>
+      <div class="season"><span class="when">FEBBRAIO</span><h4>San Valentino</h4><p>L'Alta Langa Rosé in evidenza in home e nella newsletter dei soci.</p></div>
+      <div class="season"><span class="when">GIUGNO – AGOSTO</span><h4>Estate</h4><p>Le bollicine Alta Langa in primo piano, ognuna con un suggerimento di abbinamento.</p></div>
+      <div class="season"><span class="when">SETTEMBRE</span><h4>Vendemmia</h4><p>Una settimana a Gemme doppie su tutto il catalogo, mentre in cantina si raccoglie.</p></div>
+    </div>
+
+    <div class="gift">
+      <span class="eyebrow">Regali</span>
+      <h4>La carta regalo del club</h4>
+      <p>Si acquista online scegliendo l'importo e si invia per mail con un messaggio. Chi la riceve si iscrive al club per usarla: ogni carta regalo porta un nuovo socio, senza nulla da stoccare. Le Gemme si guadagnano quando la carta viene spesa, non quando viene acquistata.</p>
+    </div>
+  </div>
+</section>
+
+<section class="ch" id="roadmap">
+  <div class="wrap">
+    <div class="ch-head">
+      <span class="num">XI</span>
+      <h2>Le fasi</h2>
+      <p>Si parte con ciò che fa vendere subito. Il resto si aggiunge quando il club è avviato.</p>
+    </div>
+    <div class="road">
+      <div class="phase now"><span class="pill solid" style="justify-self:start">Fase 1</span><h3>Apertura del club</h3>
+        <ul><li>Sito del club con i vini e l'area personale</li><li>Livelli 1, 2, 3 e sistema a Gemme</li><li>Area B2B per distributori e ristoratori, con approvazione</li><li>Pagamenti Stripe, Direct from Italy, Brevo</li><li>Dashboard della cantina</li><li>Invito ai clienti storici</li><li>Porta un amico, anniversario, compleanno, campagne e carta regalo</li><li>Logo del Wine Club</li></ul></div>
+      <div class="phase"><span class="pill" style="justify-self:start">Fase 2</span><h3>Il club cresce</h3>
+        <ul><li>Livello 4, solo su invito</li><li>Membership a pagamento: con una quota una tantum (per esempio 50 €) si entra subito al livello 2, senza aspettare di raggiungere 500 Gemme</li></ul></div>
+      <div class="phase"><span class="pill" style="justify-self:start">2028</span><h3>Il "60 mesi"</h3>
+        <ul><li>Prenotazioni riservate ai soci dei livelli 3 e 4</li><li>Bottiglie numerate assegnate al socio</li><li>Etichetta impreziosita dedicata</li></ul></div>
+    </div>
+
+    <h3 style="font-size:28px;margin:72px 0 8px">Idee per il futuro</h3>
+    <p class="muted" style="margin-bottom:24px;max-width:640px">Ragionamenti di sviluppo da riprendere quando il club sarà avviato. Non fanno parte delle prime due fasi.</p>
+    <ul class="rules">
+      <li><b>Wine box</b><span>Invii programmati di una selezione di bottiglie, per esempio due volte l'anno più le festività. Da valutare in base alla risposta dei soci e alla gestione delle spedizioni.</span></li>
+      <li><b>Confezioni dedicate</b><span>Astucci, fasce o packaging riservati al club, per aumentare il valore percepito. Formato, costi e spazi di stoccaggio da definire.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="ch alt" id="decisioni">
+  <div class="wrap">
+    <div class="ch-head">
+      <span class="num">XII</span>
+      <h2>Da decidere insieme</h2>
+      <p>Le scelte che ci servono per passare alla grafica definitiva e allo sviluppo.</p>
+    </div>
+    <ul class="decide">
+      <li><div><b>Nomi dei livelli</b><span>Quale scala scegliere, tra le proposte del capitolo IV.</span></div></li>
+      <li><div><b>Soglie</b><span>500 e 2.000 Gemme: confermiamo?</span></div></li>
+      <li><div><b>Listini</b><span>Prezzo enoteca e prezzo cantina per ogni vino.</span></div></li>
+      <li><div><b>Collezioni</b><span>Quali comporre per l'apertura e con quali vini.</span></div></li>
+      <li><div><b>Edizioni riservate e vecchie annate</b><span>Quali bottiglie e quante sono disponibili.</span></div></li>
+      <li><div><b>Accessori</b><span>Quali pezzi tra quelli in cantina, quali in omaggio e come partono insieme ai vini con Direct from Italy.</span></div></li>
+      <li><div><b>Prodotti a Gemme doppie</b><span>Quali prodotti e campagne per l'apertura.</span></div></li>
+      <li><div><b>Account Stripe e Klarna</b><span>Da aprire a nome della società agricola, chiedendo l'approvazione di Klarna per la vendita di vino.</span></div></li>
+      <li><div><b>Direct from Italy</b><span>Contatto tecnico: come ricevono gli ordini, tariffe per destinazione, tracciamento.</span></div></li>
+      <li><div><b>Lista clienti storici</b><span>Solo chi ha dato il consenso alle comunicazioni.</span></div></li>
+      <li><div><b>Regole B2B</b><span>Chi approva gli account, listini distributori e ristoratori, metodo di pagamento.</span></div></li>
+      <li><div><b>Fatture B2B</b><span>Il sito raccoglie partita IVA e codice destinatario; la fattura elettronica si emette con il gestionale della cantina o con un collegamento da definire.</span></div></li>
+      <li><div><b>Spedizioni B2B all'estero</b><span>Verificare con Direct from Italy se gestisce anche gli ordini dei distributori, che seguono regole fiscali diverse dai privati.</span></div></li>
+      <li><div><b>Messaggio regalo</b><span>Chi prepara i pacchi stampa il biglietto: da organizzare con la cantina e Direct from Italy.</span></div></li>
+      <li><div><b>Carta regalo</b><span>Importi, durata e trattamento fiscale da validare con il commercialista.</span></div></li>
+      <li><div><b>Membership a pagamento</b><span>Prezzo e condizioni, da decidere per la fase 2.</span></div></li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <svg class="mini" viewBox="0 0 574.8 246.2" fill="currentColor" role="img" aria-label="Colombo"><g> <g> <path d="M358.8,90.9L358.8,90.9c-0.2,2.4-1.6,4.5-4.2,6c-8.1,3.6-23.1-5-35.7-21.4c0,0,0.1,0,0.1,0 c13.3-3.6,24.5-0.2,29.3,2.4c5.1,2.8,7,6.3,6.3,9.2c-0.4,1.7-1.6,2.7-2.7,2.7c-1.3,0.1-1.1-0.7-0.9-1.4c0.4-1.2,0.9-2.2,0.3-2.6 c-0.8-0.5-1.6,0.7-2.3,1.3c-0.7,0.7-1.7,0.3-1.5-1.1c0.2-1.8-0.5-2.9-1.6-3.8c-2.1-1.6-4.5-1-4.5-1c4.6,2.8,3.2,4.7,4.9,7.5 c1.2,2,3.7,3.3,6,2.9c1.7-0.3,3.7-1.7,4.4-3.9c1.3-3.9-1.9-8.7-7-11.8c-7.5-4.5-20-6.6-33-3.8c-1.7-2.5-3.4-5.1-5-7.8 c-1.6-2.8-3-5.5-4.3-8.3c8.9-9.8,13.4-21.7,13.2-30.4c-0.1-5.9-2.7-11.1-6.7-11.9c-2.3-0.5-4.5,0.6-5.6,1.9 c-1.5,1.8-1.6,4.6-0.5,6.6c1.6,2.9,3.9,2.6,4.1,8c0,0,1.8-1.8,1.4-4.4c-0.2-1.4-0.8-2.6-2.4-3.3c-1.2-0.6-1.1-1.6-0.2-1.9 c0.9-0.3,2.4-0.5,2.3-1.4c0-0.7-1.1-0.8-2.4-1.1c-0.7-0.1-1.5-0.4-0.8-1.5c0.6-1,2.1-1.5,3.7-1c2.9,0.9,5,4.3,4.8,10.1 c-0.2,5.4-2.8,16.8-12.6,26.5c0,0-0.1,0.1-0.1,0.1c-7.9-19.1-7.8-36.4-0.6-41.6c2.6-1.5,5.1-1.7,7.3-0.6l0,0 c-3-2.4-6.7-3.2-10.7-1.5c-11.6,5.5-14.6,28.7-5.4,51.5c-2.8,1.9-5.4,3.3-8.1,4.9l0,0c-2.6-1.5-5.3-3-8.1-4.9 c9.1-22.8,6.2-46-5.4-51.5c-3.9-1.7-7.7-1-10.7,1.5l0,0c2.2-1.1,4.7-0.9,7.3,0.6c7.2,5.2,7.3,22.5-0.6,41.6c0,0-0.1-0.1-0.1-0.1 c-9.8-9.7-12.4-21.1-12.6-26.5c-0.2-5.8,2-9.2,4.8-10.1c1.6-0.5,3.1,0,3.7,1c0.7,1.1-0.1,1.3-0.8,1.5c-1.3,0.3-2.3,0.3-2.4,1.1 c0,0.9,1.4,1.1,2.3,1.4c1,0.3,1.1,1.3-0.2,1.9c-1.6,0.7-2.2,1.9-2.4,3.3c-0.4,2.6,1.4,4.4,1.4,4.4c0.1-5.4,2.4-5.1,4.1-8 c1.1-2,1-4.9-0.5-6.6c-1.1-1.3-3.3-2.3-5.6-1.9c-4.1,0.8-6.6,6-6.7,11.9c-0.1,8.7,4.3,20.6,13.2,30.4c-1.3,2.7-2.7,5.5-4.3,8.2 c-1.6,2.8-3.3,5.4-5,7.8c-13-2.8-25.5-0.7-33,3.8c-5.1,3.1-8.3,7.9-7,11.8c0.8,2.2,2.7,3.6,4.4,3.9c2.3,0.4,4.8-0.9,6-2.9 c1.7-2.9,0.3-4.7,4.9-7.5c0,0-2.5-0.7-4.5,1c-1.1,0.9-1.8,2-1.6,3.8c0.1,1.3-0.8,1.8-1.5,1.1c-0.7-0.7-1.6-1.8-2.3-1.3 c-0.6,0.4-0.2,1.3,0.3,2.6c0.2,0.7,0.4,1.5-0.9,1.4c-1.2-0.1-2.4-1.1-2.7-2.7c-0.7-2.9,1.2-6.5,6.3-9.2c4.7-2.6,15.9-6,29.3-2.4 c0,0,0.1,0,0.1,0c-12.6,16.4-27.7,25-35.7,21.3c-2.6-1.5-4-3.6-4.2-6l0,0c-0.6,3.8,0.6,7.4,4.1,10c10.6,7.3,32.2-1.8,47.3-21 c3,1.5,5.6,3,8.3,4.6c0,3,0,6.1-0.2,9.4c-24.3,3.5-42.9,17.6-41.9,30.5c0.5,4.3,3,7.2,6.6,8.5l0,0c-2-1.4-3.1-3.7-3.1-6.7 c0.9-8.8,15.8-17.5,36.4-20.3c0,0,0,0.1,0,0.1c-3.5,13.3-12.1,21.3-16.7,24.2c-4.9,3-9,2.9-11.1,0.8c-1.2-1.2-1.5-2.7-1-3.7 c0.6-1.2,1.2-0.6,1.7-0.1c0.9,1,1.5,1.9,2.1,1.5c0.8-0.4,0.2-1.8,0-2.7c-0.2-1,0.6-1.6,1.7-0.8c1.4,1,2.7,1,4.1,0.5 c2.4-1,3.1-3.4,3.1-3.4c-4.8,2.6-5.6,0.5-9,0.5c-2.3,0-4.7,1.6-5.5,3.7c-0.6,1.6-0.4,4,1.2,5.8c2.7,3.1,8.5,2.8,13.7-0.1 c7.6-4.2,15.7-14,19.7-26.7c3-0.3,6.1-0.4,9.3-0.4c3.2,0,6.3,0.2,9.3,0.4c4.1,12.6,12.1,22.4,19.7,26.7c5.2,2.9,11,3.2,13.7,0.1 c1.6-1.8,1.7-4.2,1.2-5.8c-0.8-2.1-3.2-3.7-5.5-3.7c-3.3,0-4.2,2.1-9-0.5c0,0,0.7,2.5,3.1,3.4c1.3,0.5,2.7,0.6,4.1-0.5 c1.1-0.8,1.9-0.2,1.7,0.8c-0.2,0.9-0.8,2.3,0,2.7c0.7,0.4,1.2-0.5,2.1-1.5c0.5-0.5,1.1-1.1,1.7,0.1c0.5,1,0.3,2.6-1,3.7 c-2.2,2.1-6.2,2.2-11.1-0.8c-4.6-2.8-13.1-10.8-16.7-24.2c0,0,0-0.1,0-0.1c20.5,2.7,35.5,11.5,36.3,20.3c0,3-1.1,5.3-3.1,6.7l0,0 c3.6-1.3,6.2-4.2,6.6-8.5c1-12.8-17.6-27-41.9-30.5c-0.2-3.4-0.2-6.4-0.2-9.4c2.6-1.5,5.2-3.1,8.3-4.6 c15.1,19.3,36.7,28.3,47.3,21.1C358.2,98.3,359.4,94.7,358.8,90.9z M288.1,73.5c2.5,0,4.4,2,4.4,4.4c0,2.5-2,4.4-4.4,4.4 c-2.5,0-4.4-2-4.4-4.4C283.6,75.5,285.6,73.5,288.1,73.5z M271.6,75.9c1.2-1.7,2.4-3.6,3.5-5.4c1.1-1.9,2.1-3.8,3-5.7 c1.6,1.3,3.3,2.5,5,3.7c-1.7,1.3-3.2,2.7-4.1,4.3s-1.4,3.6-1.7,5.7C275.4,77.5,273.6,76.7,271.6,75.9z M288.1,93 c-2.2,0-4.3,0.1-6.4,0.3c0.3-2.1,0.5-4.1,0.7-6.1c1.9,0.8,3.9,1.4,5.7,1.4s3.8-0.6,5.7-1.4c0.2,2,0.4,4,0.7,6.1 C292.4,93.1,290.2,93,288.1,93z M298.9,78.3c-0.2-2.1-0.7-4.1-1.7-5.7s-2.4-3-4.1-4.3c1.7-1.2,3.3-2.4,5-3.7 c0.9,1.9,1.9,3.8,3,5.7c1.1,1.9,2.2,3.7,3.4,5.4C302.6,76.7,300.7,77.5,298.9,78.3z"></path> </g> <g> <path d="M59.8,214.9h2v22h-2c-0.6-2.5-1.6-4.7-3-6.6c-5.5,6.2-12.6,9.4-21.2,9.4c-9.1,0-16.5-2.9-22.3-8.6 c-5.8-5.8-8.7-13.4-8.7-22.8c0-6.2,1.3-12.1,4-17.6c2.7-5.5,6.4-9.6,11.1-12.2c4.8-2.7,10-4,15.7-4c4.7,0,9,1,12.8,2.9 c3.8,1.9,6.7,4.1,8.6,6.4c1.3-2.6,2.1-5.3,2.4-8.2h2l0.6,23.8h-2c-1.4-8.5-4.2-14.4-8.5-17.7c-4.3-3.3-9.1-5-14.5-5 c-6.6,0-11.8,2.7-15.7,8c-3.9,5.3-5.8,13-5.8,23c0,9.4,2.1,16.7,6.4,21.7c4.2,5,9.5,7.5,15.8,7.5c3.4,0,6.8-0.8,10.3-2.5 c3.5-1.6,6.3-4.4,8.4-8.3C58.2,222.3,59.4,218.5,59.8,214.9z"></path> <path d="M85.6,206.6c0-9.7,3.2-17.5,9.7-23.4c6.5-5.9,14.6-8.8,24.3-8.8c9.8,0,18,2.9,24.6,8.7c6.6,5.8,9.9,13.7,9.9,23.8 c0,9.7-3.1,17.6-9.4,23.7c-6.3,6-14.6,9-24.8,9c-10,0-18.2-3-24.6-9C88.8,224.6,85.6,216.6,85.6,206.6z M96.2,207 c0,10.1,2,17.7,6.1,22.8c4,5.1,10.1,7.6,18.2,7.6c7.1,0,12.7-2.5,16.8-7.6c4.1-5.1,6.2-12.6,6.2-22.7c0-9.8-2-17.3-6.1-22.5 c-4.1-5.2-9.9-7.8-17.6-7.8c-7.6,0-13.4,2.5-17.4,7.6S96.2,197,96.2,207z"></path> <path d="M225.9,220l-0.5,18.5h-53.4v-2.1h1.9c2.7,0,4.6-0.3,5.6-1c1-0.7,1.7-1.7,2-3.2c0.3-1.4,0.4-4.8,0.4-10v-30.8 c0-5-0.1-8.2-0.4-9.7c-0.3-1.5-0.9-2.5-1.9-3c-0.9-0.6-3-0.8-6.2-0.8h-1.4v-2.1h30.2v2.1h-2.8c-3.1,0-5.1,0.3-6.1,0.8 c-1,0.5-1.6,1.5-1.9,2.9c-0.3,1.4-0.5,4.7-0.5,9.9v32.9c0,4.5,0.1,7.4,0.4,8.5c0.2,1.1,0.9,2,2,2.7c1.1,0.6,3.5,1,7.1,1h4.8 c3.9,0,6.7-0.3,8.6-1c1.9-0.7,3.6-2.2,5.3-4.5c1.7-2.3,3.2-5.9,4.6-10.9H225.9z"></path> <path d="M238.1,206.6c0-9.7,3.2-17.5,9.7-23.4c6.5-5.9,14.6-8.8,24.3-8.8c9.8,0,18,2.9,24.6,8.7c6.6,5.8,9.9,13.7,9.9,23.8 c0,9.7-3.1,17.6-9.4,23.7c-6.3,6-14.6,9-24.8,9c-10,0-18.2-3-24.6-9C241.3,224.6,238.1,216.6,238.1,206.6z M248.7,207 c0,10.1,2,17.7,6.1,22.8c4,5.1,10.1,7.6,18.2,7.6c7.1,0,12.7-2.5,16.8-7.6c4.1-5.1,6.2-12.6,6.2-22.7c0-9.8-2-17.3-6.1-22.5 c-4.1-5.2-9.9-7.8-17.6-7.8c-7.6,0-13.4,2.5-17.4,7.6C250.7,189.5,248.7,197,248.7,207z"></path> <path d="M364.6,227.7l22.9-52h19.3v2.1h-2.3c-3.1,0-5.1,0.3-6.1,0.8c-1,0.5-1.6,1.5-1.9,2.9c-0.3,1.4-0.5,4.7-0.5,9.9v30.8 c0,4.9,0.1,8.2,0.4,9.7c0.2,1.5,0.9,2.7,1.9,3.4c1,0.7,2.9,1.1,5.8,1.1h2.8v2.1h-30.1v-2.1h2.2c2.7,0,4.5-0.3,5.5-1 c1-0.7,1.7-1.7,2-3.2c0.3-1.4,0.4-4.8,0.4-10v-40l-24.9,56.4h-2.2l-25.1-56.4v36.8c0,5,0.2,8.5,0.5,10.3c0.3,1.8,1.3,3.4,2.9,4.8 c1.6,1.4,3.9,2.2,6.8,2.3v2.1h-22.5v-2.1c2.7-0.2,4.9-0.9,6.6-2.2c1.7-1.3,2.7-2.9,3.1-4.8c0.4-1.9,0.6-5.5,0.6-10.7v-27.4 c0-5-0.1-8.2-0.4-9.7c-0.3-1.5-0.9-2.5-1.9-3c-0.9-0.6-3-0.8-6.2-0.8h-1.7v-2.1h19.2L364.6,227.7z"></path> <path d="M460.8,204.6c7.1,0.5,12.4,2.3,15.9,5.3c3.5,3,5.2,6.8,5.2,11.4c0,4-1.2,7.4-3.5,10.2c-2.4,2.9-5.4,4.7-9,5.6 c-3.7,0.9-8.6,1.3-14.7,1.3h-28.2v-2.1h2.4c2.7,0,4.6-0.3,5.6-1c1-0.7,1.7-1.7,2-3.2c0.3-1.4,0.4-4.8,0.4-10v-30.6 c0-5.1-0.1-8.4-0.4-9.9c-0.3-1.5-0.9-2.5-1.9-3.1c-0.9-0.6-3-0.8-6.2-0.8h-1.2v-2.1l10.3-0.3l11.8-0.4c17.2,0,29.4,4.9,29.4,14.8 c0,4.1-1.5,7.4-4.4,9.8C471.2,202.1,466.7,203.8,460.8,204.6z M445.9,203.8c0.8,0,1.4,0,1.9,0c6.7,0,14.8-1.1,17.2-3.2 c2.4-2.1,3.7-5.5,3.7-10.2c0-3.3-0.5-5.8-1.4-7.6c-1-1.8-2.4-3.2-4.3-4.2c-1.9-1-8.8-1.5-13.4-1.5c-1.2,0-2.4,0-3.7,0.1V203.8z M445.9,206v14c0,6,0.1,9.8,0.3,11.4c0.2,1.6,0.8,2.8,1.7,3.7c0.9,0.8,6.4,1.3,9.2,1.3c4.9,0,8.7-1.3,11.1-3.8 c2.5-2.5,3.7-6.3,3.7-11.4c0-5.2-1.4-9-4.2-11.5c-2.8-2.5-11.3-3.7-18.3-3.7C448.3,205.9,447.1,206,445.9,206z"></path> <path d="M503.1,206.6c0-9.7,3.2-17.5,9.7-23.4c6.5-5.9,14.6-8.8,24.3-8.8c9.8,0,18,2.9,24.6,8.7c6.6,5.8,9.9,13.7,9.9,23.8 c0,9.7-3.1,17.6-9.4,23.7c-6.3,6-14.6,9-24.8,9c-10,0-18.2-3-24.6-9C506.3,224.6,503.1,216.6,503.1,206.6z M513.7,207 c0,10.1,2,17.7,6.1,22.8c4,5.1,10.1,7.6,18.2,7.6c7.1,0,12.7-2.5,16.8-7.6c4.1-5.1,6.2-12.6,6.2-22.7c0-9.8-2-17.3-6.1-22.5 c-4.1-5.2-9.9-7.8-17.6-7.8c-7.6,0-13.4,2.5-17.4,7.6C515.7,189.5,513.7,197,513.7,207z"></path> </g></g></svg>
+    Colombo Antonio e Figli · Bubbio (Asti) · Proposta per il Colombo Wine Club
+  </div>
+</footer>
+
+<script>
+(function(){
+  var r=document.getElementById('spend'),b=document.getElementById('boxes'),MAX=2600;
+  function fmt(n){return n.toLocaleString('it-IT')}
+  function upd(){
+    var s=+r.value,p=b.checked?Math.round(s*1.5):s;
+    var lvl=p>=2000?'Livello 3':p>=500?'Livello 2':'Livello 1';
+    document.getElementById('o-spend').textContent=fmt(s)+' €';
+    document.getElementById('o-pts').textContent=fmt(p);
+    document.getElementById('o-lvl').textContent=lvl;
+    document.getElementById('o-ord').textContent=s?Math.ceil(s/260):0;
+    document.getElementById('fill').style.width=Math.min(100,p/MAX*100)+'%';
+    var nx=p<500?'Mancano '+fmt(500-p)+' Gemme al livello 2.':p<2000?'Mancano '+fmt(2000-p)+' Gemme al livello 3.':'Livello 3 raggiunto. Il livello 4 si raggiunge solo su invito della cantina.';
+    document.getElementById('o-next').textContent=nx;
+  }
+  r.addEventListener('input',upd);b.addEventListener('change',upd);upd();
+})();
+</script>
+
+</body>
+</html>

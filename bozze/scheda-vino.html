@@ -1,0 +1,594 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Scheda Blanc de Noir</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap">
+<style>
+/* Layout: pannello grigio chiaro sfumato con la bottiglia a sinistra, colonna bianca a destra con i numeri del vino e l'acquisto; sotto, capitoli editoriali a filetto e card per cofanetti e vini. */
+:root{
+  color-scheme:light;
+  --paper:#ffffff;
+  --stone:#f6f3ed;
+  --cellar:#12100d;
+  --ink:#141210;
+  --ink-2:#5a534a;
+  --ink-3:#6b645a;
+  --rule:#e3dccf;
+  --h2:clamp(30px,2.9vw,40px);
+  --h3:24px;
+  --col-gap:32px;
+  --content:1184px;
+  --brand-gold:#c08e00;
+  --mist:#f4f4f2;
+  --ivory:#faf6f0;
+  --stage:radial-gradient(60% 48% at 50% 38%, #fefefc 0%, rgba(254,254,252,0) 75%), linear-gradient(175deg, #fbfaf7 0%, #f5f2ec 55%, #ece7de 100%);
+  --vignette:radial-gradient(140% 100% at 50% 40%, rgba(0,0,0,0) 60%, rgba(80,72,58,.06) 100%);
+  --gold:#ab8329;
+  --gold-ink:#8a6a20;
+  --gold-soft:#d9c08a;
+  --on-cellar:#efe7d6;
+  --on-cellar-2:#a99f8c;
+  --display:"Kaisei Decol", "Hiragino Mincho ProN", Georgia, serif;
+  --text:"Barlow", "Helvetica Neue", Arial, sans-serif;
+  --gutter:max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r:max(16px, env(safe-area-inset-right, 0px));
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--text);font-size:17px;line-height:1.6;font-weight:400;-webkit-font-smoothing:antialiased}
+::selection{background:var(--gold-soft);color:var(--ink)}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.1;margin:0;text-wrap:balance;letter-spacing:-.005em}
+p{margin:0}
+a{color:inherit;text-underline-offset:.22em;text-decoration-thickness:1px}
+a:hover{color:var(--gold-ink)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+button{font:inherit;color:inherit;cursor:pointer}
+.num{font-variant-numeric:tabular-nums lining-nums}
+.wrap{max-width:1280px;margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter-r)}
+@media (min-width:760px){.wrap{padding-left:max(48px,env(safe-area-inset-left,0px));padding-right:max(48px,env(safe-area-inset-right,0px))}}
+
+/* barra benvenuto */
+.welcome{background:var(--cellar);color:var(--on-cellar);font-size:13.5px;letter-spacing:.04em}
+.welcome .wrap{display:flex;justify-content:center;align-items:center;gap:6px 14px;flex-wrap:wrap;padding-block:9px;text-align:center}
+.welcome a{color:var(--gold-soft)}
+
+/* testata */
+.head{border-bottom:1px solid var(--rule);background:var(--paper);position:sticky;top:env(safe-area-inset-top,0px);z-index:20}
+.head .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:92px;gap:16px}
+.menu{display:flex;gap:30px;list-style:none;margin:0;padding:0;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+.menu a{text-decoration:none;color:var(--ink-2)}
+.menu a[aria-current]{color:var(--ink)}
+.brand{display:block;width:142px}
+.brand img{width:100%;height:auto;display:block}
+.me{justify-self:end;display:flex;align-items:center;gap:22px;font-size:14px}
+.me .lvl{display:flex;align-items:center;gap:6px;color:var(--ink-2);white-space:nowrap}
+.me .lvl b{font-weight:500;color:var(--ink)}
+.me a{text-decoration:none;color:var(--ink)}
+.me .lvl{color:var(--ink-2)}
+.acct,.cart{display:flex;align-items:center;gap:8px}
+.me .lbl{font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+.me .lvl:hover b,.acct:hover,.cart:hover{color:var(--gold-ink)}
+@media (max-width:1180px){.me .lbl{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}}
+.cart{display:flex;align-items:center;gap:8px;text-decoration:none}
+.cart .count{min-width:22px;height:22px;border-radius:11px;background:var(--ink);color:#fff;font-size:12px;display:grid;place-items:center;padding:0 6px;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+.cart .count.bump{transform:scale(1.25)}
+.burger{display:none;background:none;border:0;padding:8px;margin-left:-8px}
+.gem{width:14px;height:14px;flex:none;color:var(--gold)}
+.me .short{display:none}
+@media (max-width:980px){.menu{display:none}.burger{display:block}.me .full{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.me .short{display:inline}.me{gap:14px;font-size:13px}.brand{width:92px}}
+
+/* pagina vino */
+.wine{display:grid;grid-template-columns:calc(50% - var(--col-gap)/2) minmax(0,1fr);column-gap:var(--col-gap);min-height:min(860px,calc(100svh - 128px))}
+.cellar{margin:0;background:var(--vignette),var(--stage);position:relative;display:grid;place-items:start center;overflow:hidden;padding-block:56px 72px}
+.cellar::before,.card .shot::before{content:"";position:absolute;inset:0;background:url(img/pattern-chiara.jpg) center/1137px auto repeat;filter:sepia(.25) brightness(.7) contrast(2.2) brightness(1.2);opacity:.22;mix-blend-mode:multiply;pointer-events:none}
+.cellar::after{content:"";position:absolute;left:50%;top:calc(56px + clamp(420px,calc(100svh - 230px),680px) - 16px);width:44%;height:26px;transform:translateX(-50%);background:radial-gradient(50% 50% at 50% 50%, rgba(30,28,25,.28) 0%, rgba(30,28,25,0) 100%);filter:blur(4px);pointer-events:none}
+.cellar img{position:relative;z-index:1;height:clamp(420px,calc(100svh - 230px),680px);width:auto;filter:drop-shadow(0 24px 26px rgba(40,36,30,.22))}
+.sheet{padding:88px max(48px,calc((100vw - var(--content))/2)) 48px 0;display:grid;gap:22px;align-content:start;min-width:0}
+.sheet h1{font-size:clamp(40px,4.6vw,66px)}
+.denom{font-size:15px;letter-spacing:.02em;color:var(--ink-2);margin-top:12px}
+.lead{font-size:17px;color:var(--ink-2);max-width:56ch;font-weight:300}
+
+/* cartellino */
+.spec{margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--col-gap)}
+.spec div{display:grid;grid-template-columns:minmax(0,120px) minmax(0,1fr);gap:12px;padding:11px 0;border-bottom:1px solid var(--rule);font-size:15px}
+.spec dt{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);padding-top:2px}
+.spec dd{margin:0}
+.spec-wrap{display:grid;gap:20px}
+.spec-dl{display:inline-flex;align-items:center;gap:12px;font-family:var(--display);font-size:20px;color:var(--gold);text-decoration:none;justify-self:start}
+.spec-dl:hover{color:var(--brand-gold)}
+.spec-dl svg{flex:none;transition:transform .4s cubic-bezier(.16,1,.3,1)}
+.spec-dl:hover svg{transform:translateY(3px)}
+@media (prefers-reduced-motion:reduce){.add .done,.shelf img,.mbar,.ship-bar i,.cart .count{transition:none!important}.shelf a:hover img{transform:none}}
+
+/* acquisto */
+.buy{display:grid;gap:14px}
+.price-row{display:flex;align-items:center;gap:12px 28px;flex-wrap:wrap}
+.pwrap{display:grid;gap:6px}
+.vat{font-size:12.5px;color:var(--ink-3);letter-spacing:.02em}
+.price{font-family:var(--display);font-size:42px;line-height:1}
+.price-meta{display:grid;gap:2px;font-size:14.5px;color:var(--ink-2);padding-bottom:18px}
+.price-meta b{font-weight:500;color:var(--ink)}
+.price-meta .next{display:inline-flex;flex-wrap:wrap;gap:4px 6px;align-items:baseline;border:1px solid var(--rule);padding:4px 10px;color:var(--ink)}
+.price-meta a{color:var(--ink);font-weight:500}
+.gems{display:inline-flex;align-items:center;gap:7px;color:var(--ink);font-weight:400}
+.gems b{color:var(--gold-ink);font-weight:600}
+.sample{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);border:1px dashed var(--ink-3);padding:1px 7px;border-radius:2px;align-self:flex-start}
+.controls{display:flex;gap:12px;flex-wrap:wrap}
+.qty{display:flex;align-items:stretch;border:1px solid var(--ink);height:56px}
+.qty button{width:44px;background:none;border:0;color:var(--ink);display:grid;place-items:center}
+.qty button:hover{background:var(--stone)}
+.qty button:disabled{color:var(--rule);cursor:default;background:none}
+.qty output{width:40px;display:grid;place-items:center;font-size:17px}
+.add{flex:1;min-width:220px;height:56px;border:0;background:var(--brand-gold);color:#fff;font-size:14px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;position:relative;overflow:hidden;transition:background-color .3s}
+.add:hover{background:#a67b00}
+.add .done{position:absolute;inset:0;display:grid;place-items:center;background:var(--ink);color:#fff;clip-path:inset(0 100% 0 0);transition:clip-path .6s cubic-bezier(.16,1,.3,1)}
+.add.ok .done{clip-path:inset(0 0 0 0)}
+.ship{display:grid;gap:8px;font-size:14.5px;color:var(--ink-2)}
+.ship-bar{height:3px;background:var(--rule);position:relative}
+.ship-bar i{position:absolute;inset:0 auto 0 0;background:var(--gold);transition:width .6s cubic-bezier(.16,1,.3,1)}
+.ship b{color:var(--ink);font-weight:500}
+.award{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--ink-2);border-top:1px solid var(--rule);padding-top:18px}
+.award img{width:54px;height:auto}
+
+@media (max-width:900px){
+  .wine{grid-template-columns:1fr;min-height:0}
+  .cellar{height:auto;padding-block:24px 36px;place-items:center}
+  .cellar::after{top:calc(24px + clamp(300px,58svh,480px) - 12px)}
+  .cellar img{height:clamp(300px,58svh,480px)}
+  .sheet{padding:32px var(--gutter-r) 40px var(--gutter)}
+  .spec{grid-template-columns:1fr}
+}
+
+.tasting{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:44px var(--col-gap)}
+.tasting>div{display:grid;gap:14px;align-content:start;padding-left:0;position:relative;min-width:0}
+.tasting h3{font-size:var(--h3);color:var(--ink)}
+.tasting h3::before{content:"";position:absolute;left:-22px;top:.55em;width:9px;height:9px;border-radius:50%;background:var(--gold)}
+.tasting p{color:var(--ink);max-width:52ch;font-weight:300;font-size:17.5px}
+@media (max-width:900px){.tasting{grid-template-columns:1fr;gap:40px}.tasting>div{padding-left:28px}.tasting h3::before{left:0}}
+
+/* divisore con ricciolo, come colombovino.it */
+.divider{display:flex;align-items:flex-end;height:22px;margin-bottom:48px;grid-column:1/-1}
+.divider span{flex:1;height:2px;background:var(--brand-gold);margin-bottom:0}
+.divider img{width:20px;height:auto;margin-left:-6px;margin-bottom:-.4px;position:relative;display:block}
+@media (max-width:900px){.divider{margin-bottom:40px}}
+
+/* capitoli */
+.chapter{padding-block:56px 72px}
+.ch-grid{display:grid;grid-template-columns:1fr;gap:32px}
+.ch-grid>*{min-width:0}
+.ch-title h2{font-size:var(--h2)}
+.ch-title p{margin-top:14px;color:var(--ink-2);max-width:62ch}
+@media (max-width:900px){.ch-grid{grid-template-columns:1fr}.chapter{padding-block:64px}}
+
+.notes{display:grid;gap:0}
+.note{display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr);gap:24px;padding:28px 0;border-top:1px solid var(--rule)}
+.note:first-child{border-top:0;padding-top:0}
+.note h3{font-size:24px}
+.note p{max-width:68ch;color:var(--ink-2)}
+@media (max-width:620px){.note{grid-template-columns:1fr;gap:8px}}
+
+.vine{margin:0;background:var(--cellar);aspect-ratio:21/8;overflow:hidden}
+.vine img{width:100%;height:100%;object-fit:cover;object-position:50% 45%}
+.journey{margin-top:40px;display:grid;gap:18px}
+.stations{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:var(--col-gap);border-top:1px solid var(--ink)}
+.stations li{display:grid;gap:6px;align-content:start;padding:24px 0 0;position:relative}
+.stations li::before{content:"";position:absolute;top:-6px;left:0;width:11px;height:11px;border-radius:50%;border:1px solid var(--gold);background:var(--paper)}
+.stations li.st3::before{background:var(--gold)}
+.stations .m{color:var(--gold-ink)}
+.stations h3{font-size:var(--h3)}
+.stations p{font-size:15.5px;color:var(--ink-2);max-width:40ch}
+.origin-meta{margin-top:18px;padding-top:18px;border-top:1px solid var(--rule);font-size:15px;color:var(--ink-2);display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center}
+.dl{display:inline-flex;align-items:center;gap:8px;color:var(--ink)}
+@media (max-width:900px){
+  .stations{grid-template-columns:1fr;gap:26px;border-top:0;border-left:1px solid var(--ink);margin-left:5px}
+  .stations li{padding:0 0 0 22px}
+  .stations li::before{top:4px;left:-6px}
+}
+
+.awards{border-top:1px solid var(--rule)}
+.ay{border-bottom:1px solid var(--rule)}
+.ay summary{list-style:none;display:flex;justify-content:space-between;align-items:center;padding:22px 0;cursor:pointer}
+.ay summary::-webkit-details-marker{display:none}
+.ay .yr{font-family:var(--display);font-size:var(--h2);line-height:1;color:var(--ink-3);transition:color .3s}
+.ay[open] .yr{color:var(--gold-ink)}
+.ay .chev{color:var(--ink-2);transition:transform .35s cubic-bezier(.16,1,.3,1);flex:none}
+.ay[open] .chev{transform:rotate(180deg)}
+.ay summary:hover .yr{color:var(--ink)}
+.ay ul{list-style:none;margin:0;padding:0 0 18px}
+.ay li{display:grid;grid-template-columns:18px minmax(0,1fr) auto;gap:4px 16px;padding:14px 0;border-top:1px solid var(--rule);align-items:baseline}
+.ay li::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--gold);grid-row:1;align-self:center}
+.ay .what{text-transform:uppercase;letter-spacing:.04em;font-size:15px}
+.ay .res{text-transform:uppercase;letter-spacing:.04em;font-size:15px;text-align:right}
+.ay .vint{grid-column:2/-1;font-size:14px;color:var(--ink-2)}
+@media (max-width:700px){.ay li{grid-template-columns:18px minmax(0,1fr)}.ay .res{grid-column:2;text-align:left;color:var(--ink-2)}}
+@media (prefers-reduced-motion:reduce){.ay .chev{transition:none}}
+
+/* livelli */
+.levels h2{font-size:var(--h2)}
+.levels.chapter{padding-bottom:72px}
+.lv-intro{margin-top:14px;color:var(--ink-2);max-width:72ch;text-wrap:pretty}
+.tiers{list-style:none;margin:32px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:var(--col-gap)}
+.tiers li{border-top:1px solid var(--rule);padding:22px 0 0;display:grid;gap:6px;align-content:start;position:relative}
+.tiers li.you{border-top:2px solid var(--brand-gold);padding-top:21px}
+.tiers h3{font-size:var(--h3)}
+.tiers .how{font-size:14.5px;color:var(--ink-2)}
+.tiers .tp{font-size:14.5px;color:var(--ink-2);margin-top:6px}
+.tiers .tp .num{font-family:var(--display);font-size:20px;color:var(--ink);margin-right:4px}
+.tiers .here-tag{position:absolute;top:22px;right:0;margin:0}
+.more-club{margin-top:36px}
+.more-club:hover svg{transform:translateX(3px)}
+@media (max-width:700px){.tiers{grid-template-columns:1fr;row-gap:24px}}
+
+.tbl{margin-top:24px;overflow-x:auto;border-top:1px solid var(--ink)}
+.tbl table{border-collapse:collapse;width:100%;min-width:760px;font-size:15px}
+.tbl th,.tbl td{text-align:left;padding:11px 18px 11px 0;border-bottom:1px solid var(--rule);vertical-align:top}
+.tbl thead th{font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;color:var(--ink-3)}
+.tbl tbody th{font-family:var(--display);font-weight:400;font-size:18px;white-space:nowrap}
+.tbl small{color:var(--ink-3);font-size:13px}
+.tbl tr.you{background:var(--mist)}
+.tbl tr.you th,.tbl tr.you td{padding-top:12px;padding-bottom:12px}
+.tbl tr.you th{padding-left:14px}
+.tbl tbody tr:not(.you) th{padding-left:14px}
+.here-tag{display:inline-block;margin-left:8px;font-family:var(--text);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-ink);border:1px solid var(--brand-gold);padding:2px 8px;vertical-align:middle}
+
+/* collezione */
+.collection{background:var(--ivory);padding-block:56px 72px}
+.collection h2,.wines h2{font-size:var(--h2)}
+.collection .intro{margin-top:14px;color:var(--ink-2);max-width:60ch}
+.cards{list-style:none;margin:32px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px var(--col-gap)}
+.card{background:var(--paper);border:1px solid var(--rule);display:grid;grid-template-rows:auto 1fr;min-width:0;transition:box-shadow .4s cubic-bezier(.16,1,.3,1),transform .4s cubic-bezier(.16,1,.3,1)}
+.card:hover{box-shadow:0 18px 40px -18px rgba(20,18,16,.25);transform:translateY(-3px)}
+.card .shot{position:relative;overflow:hidden;background:var(--stage);display:flex;justify-content:center;align-items:flex-end;gap:6px;height:280px;padding:24px 16px 20px}
+.card .shot img{position:relative;z-index:1;height:100%;width:auto;max-width:30%;object-fit:contain}
+.card .shot.one img{max-width:none}
+.card .shot .acc{align-self:center;font-family:var(--display);font-size:15px;color:var(--ink-2);border:1px dashed var(--ink-3);padding:10px 14px;text-align:center;line-height:1.3}
+.card .body{padding:22px 22px 24px;display:grid;gap:6px;align-content:start}
+.card h3{font-size:var(--h3)}
+.card .what{font-size:15px;color:var(--ink-2)}
+.card .row{margin-top:8px;display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;font-size:15px}
+.card .row .p{font-family:var(--display);font-size:24px}
+.card .row .g{display:inline-flex;gap:6px;align-items:center;color:var(--ink-2)}
+.btn{margin-top:14px;display:inline-grid;place-items:center;height:48px;padding:0 22px;background:var(--brand-gold);color:#fff;text-decoration:none;font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;transition:background-color .3s}
+.btn:hover{background:#a67b00;color:#fff}
+.btn.line{background:none;color:#8a6a20;border:1px solid var(--brand-gold)}
+.btn.line:hover{background:var(--brand-gold);color:#fff}
+.coll-note{margin-top:24px;font-size:14px;color:var(--ink-3)}
+.wines .cards{grid-template-columns:repeat(3,minmax(0,1fr))}
+.wines .card{border:0;background:transparent}
+.wines .card:hover{box-shadow:none;transform:none}
+.wines .card .shot{height:320px;position:relative}
+.wines .card .shot img{transition:transform .8s cubic-bezier(.16,1,.3,1)}
+.wines .card:hover .shot img{transform:translateY(-6px)}
+.wines .card .body{padding:20px 0 0}
+.wines .card .btn{width:100%}
+@media (max-width:900px){.collection{padding-block:64px}.collection .cards{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:80%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px}.collection .card{scroll-snap-align:start}.card .shot{height:230px}.wines .cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.wines .card .shot{height:200px}.wines .card .body{padding:16px}.wines .card h3{font-size:20px}}
+@media (prefers-reduced-motion:reduce){.card{transition:none}.card:hover{transform:none}}
+
+
+/* card collezione premium */
+.card.coll{position:relative;border:0;background:transparent;box-shadow:none}
+.card.coll:hover{transform:none;box-shadow:none}
+.card.coll .cover{position:absolute;inset:0;z-index:2}
+.card.coll .btn{position:relative;z-index:3}
+.shot.trio{position:relative;height:340px;overflow:hidden;align-items:flex-end;gap:0;padding:0 0 46px}
+.shot.trio::after{content:"";position:absolute;left:18%;right:18%;bottom:30px;height:22px;background:radial-gradient(50% 50% at 50% 50%,rgba(30,28,25,.28),rgba(30,28,25,0));filter:blur(3px)}
+.shot.trio img{position:relative;z-index:1;width:auto;max-width:none;transition:transform .8s cubic-bezier(.16,1,.3,1)}
+.shot.trio img.hero{height:250px;z-index:2}
+.shot.trio img.side{height:212px;margin:0 -16px;filter:brightness(.97)}
+.card.coll:hover .shot.trio img.hero{transform:translateY(-6px)}
+.card.coll:hover .shot.trio img.side:first-child{transform:translateX(-6px)}
+.card.coll:hover .shot.trio img.side:last-child{transform:translateX(6px)}
+.shot .plus{position:relative;z-index:2;align-self:center;margin-left:22px;display:grid;justify-items:center;gap:8px;font-family:var(--display);font-size:15px;line-height:1.25;color:var(--ink-2);text-align:center}
+.shot .plus i{font-style:normal;width:34px;height:34px;border:1px solid var(--brand-gold);border-radius:50%;display:grid;place-items:center;color:var(--brand-gold);font-family:var(--text);font-size:18px}
+.card.coll .body{background:transparent;padding:22px 0 0;gap:8px}
+.card.coll .kind{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.card.coll h3{font-size:var(--h3)}
+.card.coll .row{margin-top:10px;padding-top:14px;border-top:1px solid var(--rule)}
+.card.coll .btn{width:100%;height:46px;font-size:12px;letter-spacing:.2em}
+@media (max-width:900px){.shot.trio{height:280px}.shot.trio img.hero{height:206px}.shot.trio img.side{height:174px}}
+@media (prefers-reduced-motion:reduce){.shot.trio img{transition:none}}
+
+footer{position:relative;isolation:isolate;overflow:hidden;background:#fff;border-top:1px solid var(--rule);color:var(--ink-2);font-size:14px;padding-block:56px calc(56px + env(safe-area-inset-bottom,0px))}
+footer .wrap{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:32px var(--col-gap);align-items:start}
+.f-brand{grid-column:span 3}
+footer nav{grid-column:span 1}
+footer .f-bottom{grid-column:1/-1}
+footer h2{font-family:var(--text);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--ink);margin-bottom:14px}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+footer a{color:var(--ink-2);text-decoration:none}
+footer a:hover{color:var(--gold-ink)}
+.f-brand{display:grid;gap:18px}
+footer .f-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;margin-top:40px;padding-top:20px;position:relative;font-size:13.5px}
+@media (max-width:900px){footer .wrap{grid-template-columns:repeat(2,minmax(0,1fr))}.f-brand{grid-column:1/-1}}
+footer .brand{width:130px}
+footer .f-bottom::before{content:"";position:absolute;top:0;left:16px;right:16px;height:1px;background:var(--rule)}
+@media (min-width:760px){footer .f-bottom::before{left:48px;right:48px}}
+footer::before{content:"";position:absolute;inset:0;z-index:-1;background:url(img/pattern-chiara.jpg) center/cover no-repeat;opacity:.4;pointer-events:none}
+footer p{max-width:46ch}
+footer b{color:var(--ink);font-weight:500}
+
+/* barra mobile */
+.mbar{display:none}
+@media (max-width:900px){
+  .mbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--paper);border-top:1px solid var(--rule);padding:10px var(--gutter-r) calc(10px + env(safe-area-inset-bottom,0px)) var(--gutter);gap:14px;align-items:center;transform:translateY(110%);transition:transform .45s cubic-bezier(.16,1,.3,1)}
+  .mbar.show{transform:none}
+  .mbar .p{font-family:var(--display);font-size:24px;line-height:1}
+  .mbar small{display:block;font-size:12px;color:var(--ink-3)}
+  .mbar .add{min-width:0;height:48px;font-size:13px}
+  footer{padding-bottom:calc(120px + env(safe-area-inset-bottom,0px))}
+}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+</style>
+</head>
+<body>
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="gem" viewBox="0 0 16 16"><path d="M4 2h8l3 4-7 8-7-8 3-4Z" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M1 6h14M6 2 5 6l3 8 3-8-1-4" fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round"/></symbol>
+  <symbol id="user" viewBox="0 0 20 20"><circle cx="10" cy="7" r="3.4" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M3.5 17c.9-3.2 3.4-5 6.5-5s5.6 1.8 6.5 5" fill="none" stroke="currentColor" stroke-width="1.3"/></symbol>
+  <symbol id="bag" viewBox="0 0 20 20"><path d="M4 6h12l-1 11H5L4 6Z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M7.5 8V5a2.5 2.5 0 0 1 5 0v3" fill="none" stroke="currentColor" stroke-width="1.3"/></symbol>
+  <symbol id="menu" viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h12" stroke="currentColor" stroke-width="1.4" fill="none"/></symbol>
+  <symbol id="doc" viewBox="0 0 20 20"><path d="M5 2h7l4 4v12H5V2Z M12 2v4h4 M8 11h5 M8 14h5" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></symbol>
+</svg>
+
+<div class="welcome"><div class="wrap"><span>Iscriviti al club: ricevi via mail un codice per il <b>10% sul primo ordine</b>.</span><a href="#iscrizione">Iscriviti</a></div></div>
+
+<header class="head">
+  <div class="wrap">
+    <div style="display:flex;align-items:center;gap:8px">
+      <button class="burger" aria-label="Apri il menu"><svg width="24" height="24"><use href="#menu"/></svg></button>
+      <ul class="menu">
+        <li><a href="#vini" aria-current="page">Vini</a></li>
+        <li><a href="#formati">Formati speciali</a></li>
+        <li><a href="#livelli">Il club</a></li>
+      </ul>
+    </div>
+    <a class="brand" href="#"><img src="img/logo-wine-club.png" alt="Colombo Wine Club" width="600" height="329"></a>
+    <div class="me">
+      <a class="lvl" href="#account" title="Il tuo livello e le tue Gemme"><svg class="gem"><use href="#gem"/></svg><span class="full"><b>Silver</b> · <span class="num" id="gemTotal">120</span> Gemme</span><span class="short" aria-hidden="true"><b>Silver</b> · <span class="num">120</span></span></a>
+      <a class="acct" href="#account"><svg width="20" height="20"><use href="#user"/></svg><span class="lbl">Area riservata</span></a>
+      <a class="cart" href="#ordine"><svg width="20" height="20"><use href="#bag"/></svg><span class="sr">Carrello</span><span class="count num" id="cartCount">2</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="vini">
+  <section class="wine" aria-labelledby="wine-name">
+    <figure class="cellar">
+      <img src="img/COL-Blanc-de-noirs-g.png" alt="Bottiglia di Alta Langa Blanc de Noir Colombo" width="310" height="1100">
+    </figure>
+
+    <div class="sheet">
+      <div>
+        <h1 id="wine-name">Alta Langa Blanc de Noir</h1>
+        <p class="denom">Alta Langa DOCG · Metodo classico · Extra Brut · 2022 · 75 cl</p>
+      </div>
+
+      <p class="lead">Alta Langa da sole uve Pinot Nero raccolte a mano, rifermentato in bottiglia e affinato almeno 36 mesi sui lieviti. Oro brillante, perlage fine e persistente, note minerali, frutta a polpa bianca e fiori.</p>
+
+      <div class="buy" id="ordine">
+        <div class="price-row">
+          <div class="pwrap"><span class="price num" id="price">€ 38,00</span><span class="vat">IVA inclusa</span></div>
+          <div class="price-meta">
+            <span class="next">Con Gold <b class="num">€ 34,00</b> · <a href="#livelli">Scopri i livelli</a></span>
+          </div>
+        </div>
+        <span class="gems"><svg class="gem"><use href="#gem"/></svg><span>Con questo ordine guadagni <b class="num" id="gemsEarn">38</b> Gemme</span></span>
+        <div class="controls">
+          <div class="qty" role="group" aria-label="Quantità">
+            <button type="button" id="minus" aria-label="Togli una bottiglia" disabled><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7h10" stroke="currentColor" stroke-width="1.3"/></svg></button>
+            <output id="qty" class="num" aria-live="polite">1</output>
+            <button type="button" id="plus" aria-label="Aggiungi una bottiglia"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7h10M7 2v10" stroke="currentColor" stroke-width="1.3"/></svg></button>
+          </div>
+          <button type="button" class="add" id="add"><span>Aggiungi all'ordine</span><span class="done" aria-hidden="true">Aggiunto all'ordine</span></button>
+        </div>
+        <div class="ship" aria-live="polite">
+          <div class="ship-bar"><i id="shipBar" style="width:51%"></i></div>
+          <span id="shipText">Nel tuo ordine ci sono <b class="num">€ 108,00</b>: ti mancano <b class="num">€ 102,00</b> per la spedizione gratuita in Italia.</span>
+        </div>
+      </div>
+
+      <div class="award">
+        <img src="img/tre-bicchieri-2026.png" alt="Tre Bicchieri Gambero Rosso" width="54" height="42">
+        <span>Tre Bicchieri, Gambero Rosso · Vini d'Italia 2026, assegnati all'annata 2021.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" aria-labelledby="tecnica">
+    <div class="wrap ch-grid">
+      <div class="divider" aria-hidden="true"><span></span><img src="img/ricciolo.png" alt="" width="343" height="277"></div>
+      <div class="ch-title"><h2 id="tecnica">Scheda tecnica</h2></div>
+      <div class="spec-wrap">
+          <dl class="spec">
+        <div><dt>Denominazione</dt><dd>Alta Langa DOCG</dd></div>
+        <div><dt>Uve</dt><dd>100% Pinot Nero</dd></div>
+        <div><dt>Metodo</dt><dd>Classico</dd></div>
+        <div><dt>Affinamento</dt><dd>Almeno 36 mesi sui lieviti</dd></div>
+        <div><dt>Dosaggio</dt><dd>Extra Brut</dd></div>
+        <div><dt>Vendemmia</dt><dd>2022, raccolta a mano</dd></div>
+        <div><dt>Zona</dt><dd>Bubbio, Val Bormida</dd></div>
+        <div><dt>Formato</dt><dd>75 cl</dd></div>
+      </dl>
+      <a class="spec-dl" href="https://colombovino.it/vini/blanc-de-noir/">Scarica la scheda tecnica<svg width="28" height="28" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M12.5 16.5 20 24l7.5-7.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="collection" id="collezioni" aria-labelledby="cofanetti">
+    <div class="wrap">
+      <div class="divider" aria-hidden="true"><span></span><img src="img/ricciolo.png" alt="" width="343" height="277"></div>
+      <h2 id="cofanetti">Lo trovi anche in</h2>
+      <p class="intro">Le collezioni e i cofanetti del club che includono questo vino.</p>
+      <ul class="cards">
+        <li class="card coll"><a class="cover" href="#" aria-label="Trilogia Alta Langa"></a><div class="shot trio"><img class="side" src="img/COL-Blanc-de-blancs.png" alt="" loading="lazy" width="310" height="1100"><img class="hero" src="img/COL-Blanc-de-noirs-g.png" alt="" loading="lazy" width="310" height="1100"><img class="side" src="img/COL-Rose.png" alt="" loading="lazy" width="310" height="1100"></div><div class="body"><p class="kind">Blanc de Blancs · Blanc de Noir · Rosé</p><h3>Trilogia Alta Langa</h3><div class="row"><span class="p num">€ 99,00</span><span class="g"><svg class="gem"><use href="#gem"/></svg><span class="num">99</span> Gemme</span></div><a class="btn" href="#">Scopri la collezione</a></div></li>
+        <li class="card coll"><a class="cover" href="#" aria-label="Trilogia Metodo classico"></a><div class="shot trio"><img class="side" src="img/COL-Natusia.png" alt="" loading="lazy" width="310" height="1100"><img class="hero" src="img/COL-Blanc-de-noirs-g.png" alt="" loading="lazy" width="310" height="1100"><img class="side" src="img/COL-Blanc-de-blancs.png" alt="" loading="lazy" width="310" height="1100"></div><div class="body"><p class="kind">Natusia · Blanc de Noir · Blanc de Blancs</p><h3>Trilogia Metodo classico</h3><div class="row"><span class="p num">€ 95,00</span><span class="g"><svg class="gem"><use href="#gem"/></svg><span class="num">95</span> Gemme</span></div><a class="btn" href="#">Scopri la collezione</a></div></li>
+        <li class="card coll"><a class="cover" href="#" aria-label="Blanc de Noir e stopper"></a><div class="shot trio"><img class="hero" src="img/COL-Blanc-de-noirs-g.png" alt="" loading="lazy" width="310" height="1100"><span class="plus" aria-hidden="true"><i><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7h10M7 2v10" stroke="currentColor" stroke-width="1.3"/></svg></i>Stopper<br>Colombo</span></div><div class="body"><p class="kind">Una bottiglia · Stopper Colombo</p><h3>Blanc de Noir e stopper</h3><div class="row"><span class="p num">€ 42,00</span><span class="g"><svg class="gem"><use href="#gem"/></svg><span class="num">42</span> Gemme</span></div><a class="btn" href="#">Scopri il cofanetto</a></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="chapter" aria-labelledby="calice">
+    <div class="wrap">
+      <div class="divider" aria-hidden="true"><span></span><img src="img/ricciolo.png" alt="" width="343" height="277"></div>
+      <h2 id="calice" class="sr">Il vino</h2>
+      <div class="tasting">
+        <div><h3>Uve</h3><p>100% uve di Pinot Nero, selezionate già in vigna e raccolte a mano in piccole cassette.</p></div>
+        <div><h3>Colore</h3><p>Giallo paglierino intenso, luminoso e cristallino. Il perlage, un ricamo finissimo e persistente, sale con eleganza creando una spuma serrata e persistente.</p></div>
+        <div><h3>Profumo</h3><p>Delicati sentori di viola e rosa, la freschezza croccante della pesca bianca, note di frutti rossi e un inatteso agrume di pompelmo. L'affinamento aggiunge la rotondità del burro e la fragranza del pane tostato, mentre un sentore iodato racconta il terroir della Val Bormida.</p></div>
+        <div><h3>Sapore</h3><p>Cremoso e avvolgente, sostenuto da una vibrante acidità di ribes e da tannini leggerissimi, quasi un sussurro. Grande struttura, sapidità e mineralità, con un finale iodato che evoca il sale marino e chiude su mandorla e pane tostato.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" aria-labelledby="origine">
+    <div class="wrap">
+      <div class="divider" aria-hidden="true"><span></span><img src="img/ricciolo.png" alt="" width="343" height="277"></div>
+      <div class="ch-grid">
+        <div class="ch-title"><h2 id="origine">Dalla vigna alla bottiglia</h2><p>Dalla raccolta a mano alla sboccatura, almeno 36 mesi dopo.</p></div>
+        <figure class="vine"><img src="img/bottiglie-riposo.jpg" alt="Bottiglie di Alta Langa Colombo a riposo sui lieviti in cantina" loading="lazy" width="1700" height="1133"></figure>
+      </div>
+      <div class="journey">
+        <ol class="stations">
+          <li class="st1"><h3><span class="m num">Mese 0</span> · Vendemmia e tiraggio</h3><p>Pinot Nero raccolto a mano in piccole cassette, pressatura soffice, fermentazione a temperatura controllata. Poi la rifermentazione in bottiglia.</p></li>
+          <li class="st2"><h3><span class="m num">Mese 36</span> · Sboccatura</h3><p>Almeno 36 mesi sui lieviti nelle cantine sotterranee. La data di sboccatura è in retroetichetta.</p></li>
+          <li class="st3"><h3><span class="m num">Mese 60</span> · Il "60 mesi", 2028</h3><p>La versione più lunga dello stesso vino: 1.000 bottiglie numerate.</p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" aria-labelledby="premi">
+    <div class="wrap ch-grid">
+      <div class="divider" aria-hidden="true"><span></span><img src="img/ricciolo.png" alt="" width="343" height="277"></div>
+      <div class="ch-title"><h2 id="premi">Riconoscimenti</h2></div>
+      <div class="awards">
+        <details class="ay"><summary><span class="yr num">2026</span><svg class="chev" width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="14" fill="none" stroke="currentColor" stroke-width="1"/><path d="M9.5 12.5 15 18l5.5-5.5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></summary>
+          <ul>
+            <li><span class="what">WOW! The Italian Wine Competition · Civiltà del bere 2026</span><span class="res">WOW argento 8/10</span><span class="vint">Blanc de Noir Extra Brut <span class="num">2022</span></span></li>
+            <li><span class="what">The WineHunter Award 2026</span><span class="res">Rosso 90–92,9</span><span class="vint">Blanc de Noir Extra Brut <span class="num">2022</span></span></li>
+            <li><span class="what">Gambero Rosso · Vini d'Italia 2026</span><span class="res">Tre Bicchieri</span><span class="vint">Blanc de Noir Extra Brut <span class="num">2021</span></span></li>
+            <li><span class="what">Vinodabere · Guida 2026 ai migliori Pinot Nero d'Italia, spumanti Piemonte</span><span class="res">99,3 · Standing ovation</span><span class="vint">Blanc de Noir Extra Brut <span class="num">2021</span></span></li>
+            <li><span class="what">Vinibuoni d'Italia · Edizione 2026</span><span class="res">3 stelle</span><span class="vint">Blanc de Noir Extra Brut <span class="num">2021</span></span></li>
+            <li><span class="what">I Vini di Veronelli 2026 · Guida oro</span><span class="res">Vino valutato per la prima volta (80–93/100)</span><span class="vint">Blanc de Noir Extra Brut <span class="num">2021</span></span></li>
+            <li><span class="what">Concours Mondial de Bruxelles · Sessione Vini Effervescenti 2026</span><span class="res">87,60 punti</span><span class="vint">Blanc de Noir Extra Brut <span class="num">2022</span></span></li>
+          </ul>
+        </details>
+        <details class="ay"><summary><span class="yr num">2025</span><svg class="chev" width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="14" fill="none" stroke="currentColor" stroke-width="1"/><path d="M9.5 12.5 15 18l5.5-5.5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></summary>
+          <ul>
+            <li><span class="what">Mundus Vini · The Grand International Wine Award</span><span class="res">Medaglia d'argento</span><span class="vint">Blanc de Noir Extra Brut <span class="num">2021</span></span></li>
+            <li><span class="what">WineCritic.com · tra i migliori 10 blog di vino italiani</span><span class="res">92/100 punti</span><span class="vint">Blanc de Noir Extra Brut <span class="num">2021</span></span></li>
+          </ul>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter levels" id="livelli" aria-labelledby="livelli-t">
+    <div class="wrap">
+      <div class="divider" aria-hidden="true"><span></span><img src="img/ricciolo.png" alt="" width="343" height="277"></div>
+      <h2 id="livelli-t">I livelli del club</h2>
+      <p class="lv-intro">Ogni euro speso vale una Gemma: con le Gemme sali di livello, e il livello resta tuo.</p>
+      <ol class="tiers">
+        <li class="you"><span class="here-tag">Il tuo livello</span><h3>Silver</h3><p class="how">Con l'iscrizione</p><p class="tp"><span class="num">€ 38,00</span> questo vino</p></li>
+        <li><h3>Gold</h3><p class="how">Da <span class="num">500</span> Gemme</p><p class="tp"><span class="num">€ 34,00</span> questo vino</p></li>
+        <li><h3>Platinum</h3><p class="how">Da <span class="num">2.000</span> Gemme</p><p class="tp"><span class="num">€ 34,00</span> e vantaggi esclusivi</p></li>
+      </ol>
+      <a class="spec-dl more-club" href="#club">Scopri come funziona il club<svg width="28" height="28" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M16.5 12.5 24 20l-7.5 7.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></a>
+    </div>
+  </section>
+
+  <section class="chapter wines" aria-labelledby="altri">
+    <div class="wrap">
+      <div class="divider" aria-hidden="true"><span></span><img src="img/ricciolo.png" alt="" width="343" height="277"></div>
+      <h2 id="altri">Altri vini del club</h2>
+      <ul class="cards">
+        <li class="card"><div class="shot one"><img src="img/COL-Natusia.png" alt="" loading="lazy" width="310" height="1100"></div><div class="body"><h3>Natusia</h3><p class="what">Metodo classico</p><a class="btn line" href="#">Scopri il vino</a></div></li>
+        <li class="card"><div class="shot one"><img src="img/COL-Blanc-de-blancs.png" alt="" loading="lazy" width="310" height="1100"></div><div class="body"><h3>Alta Langa Blanc de Blancs</h3><p class="what">Alta Langa DOCG</p><a class="btn line" href="#">Scopri il vino</a></div></li>
+        <li class="card"><div class="shot one"><img src="img/COL-Rose.png" alt="" loading="lazy" width="310" height="1100"></div><div class="body"><h3>Alta Langa Rosé</h3><p class="what">Alta Langa DOCG</p><a class="btn line" href="#">Scopri il vino</a></div></li>
+        <li class="card"><div class="shot one"><img src="img/COL-Apertura.png" alt="" loading="lazy" width="310" height="1100"></div><div class="body"><h3>Apertura</h3><p class="what">Pinot nero DOC</p><a class="btn line" href="#">Scopri il vino</a></div></li>
+        <li class="card"><div class="shot one"><img src="img/COL-Maxima.png" alt="" loading="lazy" width="310" height="1100"></div><div class="body"><h3>Maxima</h3><p class="what">Pinot nero DOC</p><a class="btn line" href="#">Scopri il vino</a></div></li>
+        <li class="card"><div class="shot one"><img src="img/COL-Pinot-nero.png" alt="" loading="lazy" width="310" height="1100"></div><div class="body"><h3>Pinot nero</h3><p class="what">Pinot nero DOC</p><a class="btn line" href="#">Scopri il vino</a></div></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-brand">
+      <span class="brand"><img src="img/logo-wine-club.png" alt="Colombo Wine Club" width="600" height="329" loading="lazy"></span>
+      <p><b>Colombo Antonio e Figli</b><br>Società Agricola Semplice<br>Reg. Cafra 172/B, Bubbio 14051 (Asti)<br>P.IVA 01317970059</p>
+    </div>
+    <nav aria-label="Il club"><h2>Il club</h2><ul><li><a href="#">Come funziona</a></li><li><a href="#livelli">Livelli e Gemme</a></li><li><a href="#">Porta un amico</a></li><li><a href="#">Carta regalo</a></li><li><a href="#">Domande frequenti</a></li></ul></nav>
+    <nav aria-label="Assistenza"><h2>Assistenza</h2><ul><li><a href="#">Spedizioni</a></li><li><a href="#">Resi e diritto di recesso</a></li><li><a href="#">Termini e condizioni di vendita</a></li><li><a href="#">Contatti</a></li></ul></nav>
+    <nav aria-label="Informazioni legali"><h2>Legale</h2><ul><li><a href="#">Privacy policy</a></li><li><a href="#">Cookie policy</a></li><li><a href="https://colombovino.it/">colombovino.it</a></li></ul></nav>
+  </div>
+  <div class="wrap f-bottom"><span>info@colombovino.it · Sala degustazione 338 8703900</span><span>Vendita riservata ai maggiori di 18 anni</span></div>
+</footer>
+
+<div class="mbar" id="mbar" aria-hidden="true">
+  <div><span class="p num" id="mPrice">€ 38,00</span><small>Silver · +<span id="mGems">38</span> Gemme</small></div>
+  <button type="button" class="add" id="mAdd" tabindex="-1"><span>Aggiungi all'ordine</span><span class="done">Aggiunto</span></button>
+</div>
+
+<script>
+(function(){
+  var UNIT=38, CART=108, FREE=210, q=1, cartN=2, gems=120;
+  var eur=function(n){return '€ '+n.toFixed(2).replace('.',',')};
+  var $=function(id){return document.getElementById(id)};
+
+  function render(){
+    $('qty').textContent=q;
+    $('minus').disabled=q<=1;
+    $('gemsEarn').textContent=UNIT*q;
+    $('mGems').textContent=UNIT*q;
+    $('price').textContent=eur(UNIT*q);
+    $('mPrice').textContent=eur(UNIT*q);
+  }
+  function ship(){
+    var missing=Math.max(0,FREE-CART);
+    $('shipBar').style.width=Math.min(100,CART/FREE*100)+'%';
+    $('shipText').innerHTML=missing>0
+      ?'Nel tuo ordine ci sono <b class="num">'+eur(CART)+'</b>: ti mancano <b class="num">'+eur(missing)+'</b> per la spedizione gratuita in Italia.'
+      :'Nel tuo ordine ci sono <b class="num">'+eur(CART)+'</b>: la spedizione in Italia è gratuita.';
+  }
+  $('plus').addEventListener('click',function(){if(q<24){q++;render()}});
+  $('minus').addEventListener('click',function(){if(q>1){q--;render()}});
+
+  function add(btn){
+    CART+=UNIT*q; cartN+=q;
+    var c=$('cartCount'); c.textContent=cartN; c.classList.add('bump');
+    setTimeout(function(){c.classList.remove('bump')},500);
+    ship();
+    [$('add'),$('mAdd')].forEach(function(b){b.classList.add('ok')});
+    setTimeout(function(){[$('add'),$('mAdd')].forEach(function(b){b.classList.remove('ok')})},1800);
+    q=1; render();
+  }
+  $('add').addEventListener('click',add);
+  $('mAdd').addEventListener('click',add);
+
+  var mbar=$('mbar'), mainAdd=$('add'), ticking=false;
+  function bar(){
+    ticking=false;
+    var show=mainAdd.getBoundingClientRect().bottom<0;
+    mbar.classList.toggle('show',show);
+    mbar.setAttribute('aria-hidden',show?'false':'true');
+    $('mAdd').tabIndex=show?0:-1;
+  }
+  addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(bar)}},{passive:true});
+  addEventListener('resize',bar);
+  bar();
+  render(); ship();
+})();
+</script>
+
+</body>
+</html>
