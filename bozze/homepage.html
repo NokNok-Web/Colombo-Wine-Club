@@ -246,6 +246,17 @@ section[id]{scroll-margin-top:100px}
 @media (max-width:900px){.exp{grid-template-columns:1fr}.exp-img{aspect-ratio:3/2}.exp-body{padding:40px var(--gutter-r) 56px var(--gutter)}.exp-foot .add{width:100%}}
 
 /* chi è Colombo: come colombovino.it */
+.story-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:48px calc(var(--col-gap)*2);align-items:start}
+.story-grid .story-text{max-width:none}
+.quote{margin:96px 0 0;padding:40px 0 0 40px;border-left:1px solid var(--brand-gold);position:relative}
+.quote .qm{color:var(--gold);display:block;margin-bottom:22px}
+.quote blockquote{margin:0}
+.quote blockquote p{font-family:var(--display);font-size:clamp(26px,2.3vw,34px);line-height:1.3;color:var(--ink);text-wrap:balance}
+.quote figcaption{margin-top:28px;display:grid;gap:4px}
+.quote .sig{font-family:var(--display);font-size:20px;color:var(--gold-ink)}
+.quote .role{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+@media (max-width:900px){.story-grid{grid-template-columns:1fr}.quote{margin-top:8px;padding:28px 0 0 24px}}
+
 .story{padding-block:0 96px}
 .story-kicker{font-size:13.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin:96px 0 12px}
 .story-h{font-size:var(--h2);line-height:1.05;display:grid}
@@ -579,12 +590,21 @@ footer b{color:var(--ink);font-weight:500}
 
   <section class="story" id="colombo" aria-labelledby="colombo-t">
     <div class="wrap">
-      <p class="story-kicker">Un progetto familiare in Alta Langa</p>
-      <h2 id="colombo-t" class="story-h">Illuminati da una sfida</h2>
-      <div class="story-text">
-        <p>Immersa tra le colline della <b>Val Bormida</b>, nel cuore dell'<b>Alta Langa astigiana</b>, l'azienda nasce nei primi anni Duemila da una scelta di Antonio Colombo: dare forma, con i suoi figli, a un progetto ambizioso. Dimostrare che questo profilo di Langa è uno dei territori più vocati d'Italia per il <b>Pinot Nero</b>.</p>
-        <p>Coltiviamo <b>dieci ettari</b> di vigneto in Alta Langa: un microcosmo intimo, curato giorno dopo giorno con dedizione e rispetto.</p>
-        <a class="btn line" href="https://colombovino.it/chi-siamo/">Scopri la storia della famiglia</a>
+      <div class="story-grid">
+        <div class="story-main">
+        <p class="story-kicker">Un progetto familiare in Alta Langa</p>
+        <h2 id="colombo-t" class="story-h">Illuminati da una sfida</h2>
+        <div class="story-text">
+          <p>Immersa tra le colline della <b>Val Bormida</b>, nel cuore dell'<b>Alta Langa astigiana</b>, l'azienda nasce nei primi anni Duemila da una scelta di Antonio Colombo e dei suoi figli: dedicarsi al <b>Pinot Nero</b> e all'Alta Langa, su vigne di almeno ottant'anni.</p>
+          <p>Coltiviamo <b>dieci ettari</b> di vigneto in Alta Langa: un microcosmo intimo, curato giorno dopo giorno con dedizione e rispetto.</p>
+          <a class="btn line" href="https://colombovino.it/chi-siamo/">Scopri la storia della famiglia</a>
+        </div>
+        </div>
+        <figure class="quote">
+          <svg class="qm" width="44" height="34" viewBox="0 0 44 34" aria-hidden="true"><path d="M0 34V20Q0 6 14 0l3 5Q8 9 8 18h9v16H0Zm27 0V20q0-14 14-20l3 5q-9 4-9 13h9v16H27Z" fill="currentColor"/></svg>
+          <blockquote><p>Ci siamo dati una sfida: dimostrare che questo angolo di Val Bormida è uno dei territori più vocati d'Italia per il Pinot Nero.</p></blockquote>
+          <figcaption><span class="sig">Antonio e Andrea Colombo</span><span class="role">Colombo Antonio e Figli · Bubbio</span></figcaption>
+        </figure>
       </div>
     </div>
   </section>
