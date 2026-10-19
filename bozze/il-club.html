@@ -492,12 +492,12 @@ footer b{color:var(--ink);font-weight:500}
 .seasons .m{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-ink)}
 .seasons h3{font-size:22px}
 .seasons p{font-size:15px;color:var(--ink-2)}
-.gifts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--col-gap);margin-top:36px}
-.gifts a{display:grid;gap:10px;align-content:start;padding:28px 24px;border:1px solid var(--rule);text-decoration:none;transition:border-color .3s}
-.gifts a:hover{border-color:var(--brand-gold)}
-.gifts h3{font-size:var(--h3)}
-.gifts p{color:var(--ink-2);font-size:15.5px}
-.gifts .spec-dl{font-size:17px;margin-top:6px}
+.regali{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--col-gap);margin-top:36px}
+.regali a{display:grid;gap:10px;align-content:start;padding:28px 24px;border:1px solid var(--rule);text-decoration:none;transition:border-color .3s}
+.regali a:hover{border-color:var(--brand-gold)}
+.regali h3{font-size:var(--h3)}
+.regali p{color:var(--ink-2);font-size:15.5px}
+.regali .spec-dl{font-size:17px;margin-top:6px}
 .b2b{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:40px var(--col-gap);align-items:start}
 .b2b ol{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
 .b2b li{display:grid;grid-template-columns:150px minmax(0,1fr);gap:20px;padding:16px 0;border-bottom:1px solid var(--rule)}
@@ -513,7 +513,7 @@ footer b{color:var(--ink);font-weight:500}
 .club-cta{background:var(--cellar);color:var(--on-cellar);padding-block:80px;text-align:center}
 .club-cta h2{font-size:var(--h2);color:#fff}
 .club-cta p{margin:14px auto 28px;max-width:54ch;color:var(--on-cellar-2)}
-@media (max-width:900px){.steps,.earn,.gifts,.b2b{grid-template-columns:1fr}.seasons{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.b2b li{grid-template-columns:1fr;gap:4px}.steps .n{font-size:44px}}
+@media (max-width:900px){.steps,.earn,.regali,.b2b{grid-template-columns:1fr}.seasons{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.b2b li{grid-template-columns:1fr;gap:4px}.steps .n{font-size:44px}}
 </style>
 </head>
 <body>
@@ -525,7 +525,7 @@ footer b{color:var(--ink);font-weight:500}
   <symbol id="arrow" viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M16.5 12.5 24 20l-7.5 7.5" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
 </svg>
 
-<div class="welcome"><div class="wrap"><span>Iscriviti al club: ricevi via mail un codice per il <b>10% sul primo ordine</b>.</span><a href="homepage.html#iscrizione">Iscriviti</a></div></div>
+<div class="welcome"><div class="wrap"><span>Iscriviti al club: ricevi via mail un codice per il <b>10% sul primo ordine</b>.</span><a href="#iscrizione">Iscriviti</a></div></div>
 
 <header class="head over" id="head">
   <div class="wrap">
@@ -539,7 +539,7 @@ footer b{color:var(--ink);font-weight:500}
     </div>
     <a class="brand" href="homepage.html"><img class="dark" src="img/logo-wine-club.png" alt="Colombo Wine Club" width="600" height="329"><img class="light" src="img/logo-wine-club-chiaro.png" alt="Colombo Wine Club" width="600" height="329"></a>
     <div class="me">
-      <a class="lvl" href="homepage.html#iscrizione"><img class="gem" src="img/gemma.png" alt="" width="81" height="72"><span class="full"><b>Entra nel club</b></span><span class="short" aria-hidden="true"><b>Entra</b></span></a>
+      <a class="lvl" href="#iscrizione"><img class="gem" src="img/gemma.png" alt="" width="81" height="72"><span class="full"><b>Entra nel club</b></span><span class="short" aria-hidden="true"><b>Entra</b></span></a>
       <a class="acct" href="#accedi"><svg width="20" height="20"><use href="#user"/></svg><span class="lbl">Accedi</span></a>
       <a class="cart" href="#ordine"><svg width="20" height="20"><use href="#bag"/></svg><span class="sr">Carrello</span><span class="count num" id="cartCount">0</span></a>
     </div>
@@ -552,7 +552,7 @@ footer b{color:var(--ink);font-weight:500}
     <div class="wrap">
       <p class="kicker">Colombo Wine Club</p>
       <h1 id="page-t">Il club</h1>
-      <p class="intro">Un posto riservato a chi ama i vini di Bubbio. Entri gratis, ogni acquisto ti regala Gemme e, livello dopo livello, la cantina si apre un po' di più.</p>
+      <p class="intro">Un posto riservato a chi ama i vini Colombo. Entri gratis, ogni acquisto ti regala Gemme e, livello dopo livello, la cantina si apre un po' di più.</p>
     </div>
   </section>
 
@@ -621,20 +621,12 @@ footer b{color:var(--ink);font-weight:500}
   <section class="group" id="gemme" aria-labelledby="gemme-t" style="padding-block:88px 24px">
     <div class="wrap">
       <div class="divider" aria-hidden="true"><span></span><img src="img/ricciolo.png" alt="" width="343" height="277"></div>
-      <div class="group-head"><div><h2 id="gemme-t">Come si raccolgono le Gemme</h2><p>Non solo con gli acquisti: il club premia anche chi ci resta vicino nel tempo.</p></div></div>
+      <div class="group-head"><div><h2 id="gemme-t">Come si raccolgono le Gemme</h2><p>Con ogni acquisto, e qualcosa in più per chi ci resta vicino nel tempo.</p></div></div>
       <div class="earn">
         <div><h3>Ogni acquisto</h3><span class="g"><img class="gem" src="img/gemma.png" alt="" width="81" height="72">1 per euro</span><p>Su vini, confezioni regalo e accessori, spedizione esclusa.</p></div>
-        <div><h3>Porta un amico</h3><span class="g"><img class="gem" src="img/gemma.png" alt="" width="81" height="72">+100</span><p>Al primo ordine del tuo amico, 100 Gemme a te e 100 a lui.</p></div>
         <div><h3>Il tuo compleanno</h3><span class="g"><img class="gem" src="img/gemma.png" alt="" width="81" height="72">× 2</span><p>Per tutto il mese del tuo compleanno ogni ordine vale Gemme doppie.</p></div>
         <div><h3>L'anniversario nel club</h3><span class="g"><img class="gem" src="img/gemma.png" alt="" width="81" height="72">+50</span><p>Ogni anno, nel giorno in cui ti sei iscritto.</p></div>
       </div>
-      <h3 style="font-size:var(--h3);margin-top:64px">Il calendario del club</h3>
-      <ul class="seasons">
-        <li><span class="m">Dicembre</span><h3>Natale</h3><p>Gemme doppie sulle collezioni e spedizione regalo con un messaggio personalizzato.</p></li>
-        <li><span class="m">Febbraio</span><h3>San Valentino</h3><p>L'Alta Langa Rosé protagonista del mese.</p></li>
-        <li><span class="m">Giugno · agosto</span><h3>Estate</h3><p>Le bollicine Alta Langa, ognuna con il suo abbinamento.</p></li>
-        <li><span class="m">Settembre</span><h3>Vendemmia</h3><p>Una settimana a Gemme doppie su tutti i vini, mentre in vigna si raccoglie.</p></li>
-      </ul>
     </div>
   </section>
 
@@ -642,10 +634,9 @@ footer b{color:var(--ink);font-weight:500}
     <div class="wrap">
       <div class="divider" aria-hidden="true"><span></span><img src="img/ricciolo.png" alt="" width="343" height="277"></div>
       <div class="group-head"><div><h2 id="regali-t">Regalare il club</h2></div></div>
-      <div class="gifts">
+      <div class="regali">
         <a href="formati-speciali.html#confezioni"><h3>Le confezioni regalo</h3><p>Percorsi di degustazione da tre o sei bottiglie, pronti da regalare.</p><span class="spec-dl">Scopri le confezioni<svg width="24" height="24" aria-hidden="true"><use href="#arrow"/></svg></span></a>
         <a href="#"><h3>La carta regalo</h3><p>Scegli l'importo e un messaggio: chi la riceve entra nel club per usarla.</p><span class="spec-dl">Regala una carta<svg width="24" height="24" aria-hidden="true"><use href="#arrow"/></svg></span></a>
-        <a href="#"><h3>Porta un amico</h3><p>Condividi il tuo link personale: al suo primo ordine ricevete 100 Gemme a testa.</p><span class="spec-dl">Invita un amico<svg width="24" height="24" aria-hidden="true"><use href="#arrow"/></svg></span></a>
       </div>
     </div>
   </section>
@@ -654,7 +645,7 @@ footer b{color:var(--ink);font-weight:500}
     <div class="wrap">
       <div class="divider" aria-hidden="true"><span></span><img src="img/ricciolo.png" alt="" width="343" height="277"></div>
       <div class="b2b">
-        <div><h2 id="b2b-t" style="font-size:var(--h2)">Area B2B</h2><p style="margin-top:14px;color:var(--ink-2)">Per distributori e ristoratori, in Italia e all'estero: tutti i vini della cantina con un listino dedicato.</p><a class="btn line" style="width:auto;margin-top:24px" href="homepage.html#iscrizione">Richiedi l'accesso B2B</a></div>
+        <div><h2 id="b2b-t" style="font-size:var(--h2)">Area B2B</h2><p style="margin-top:14px;color:var(--ink-2)">Per distributori e ristoratori, in Italia e all'estero: tutti i vini della cantina con un listino dedicato.</p><a class="btn line" style="width:auto;margin-top:24px" href="#iscrizione">Richiedi l'accesso B2B</a></div>
         <ol>
           <li><b>Registrazione</b><span>Inserisci la partita IVA o il VAT number, la ragione sociale e il tipo di attività.</span></li>
           <li><b>Verifica</b><span>Controlliamo la partita IVA sul registro europeo VIES. Se è valida, l'account è attivo subito.</span></li>
@@ -680,13 +671,79 @@ footer b{color:var(--ink);font-weight:500}
     </div>
   </section>
 
-  <section class="club-cta" aria-labelledby="cta-t">
+  <!-- @parte:iscrizione -->
+  <section class="join" id="iscrizione" aria-labelledby="join-t">
+    <figure class="join-bg"><img src="img/bottiglie-riposo.jpg" alt="" loading="lazy" width="1700" height="1133"></figure>
     <div class="wrap">
-      <h2 id="cta-t">La cantina ti aspetta</h2>
-      <p>Iscriviti gratis: ricevi subito il codice per il 10% sul primo ordine e inizi a raccogliere Gemme.</p>
-      <a class="add" href="homepage.html#iscrizione">Entra nel club</a>
+      <div class="invite" id="invite" data-who="privato">
+        <div class="invite-head">
+          <img class="seal" src="img/logo-wine-club.png" alt="" width="600" height="329">
+          <h2 id="join-t">Il tuo invito al club</h2>
+          <div data-for="privato">
+            <p>L'iscrizione è gratuita e riservata ai maggiori di 18 anni.</p>
+            <ul class="gifts">
+              <li><img class="gem" src="img/gemma.png" alt="" width="81" height="72"><span><b>10% di sconto</b> sul primo ordine, con il codice che ricevi via mail</span></li>
+              <li><img class="gem" src="img/gemma.png" alt="" width="81" height="72"><span><b>Accumula Gemme</b> sin dal primo acquisto</span></li>
+            </ul>
+          </div>
+          <div data-for="b2b">
+            <p>Per distributori e ristoratori, in Italia e all'estero.</p>
+            <ul class="gifts">
+              <li><img class="gem" src="img/gemma.png" alt="" width="81" height="72"><span>Il <b>listino dedicato</b> alla tua attività su tutti i vini</span></li>
+              <li><img class="gem" src="img/gemma.png" alt="" width="81" height="72"><span>Ordini da subito, appena la cantina <b>approva l'account</b></span></li>
+            </ul>
+          </div>
+        </div>
+
+        <form class="form" id="joinForm" novalidate>
+          <fieldset class="who">
+            <legend>Ti iscrivi come</legend>
+            <label><input type="radio" name="who" value="privato" checked>Privato</label>
+            <label><input type="radio" name="who" value="b2b">Area B2B</label>
+          </fieldset>
+
+          <div class="field"><label for="f-mail">Email</label><input id="f-mail" name="email" type="email" autocomplete="email" inputmode="email" required><span class="err">Controlla l'indirizzo email.</span></div>
+
+          <div class="more-fields" id="more">
+            <div>
+              <div class="fields" data-for="privato">
+                <div class="field"><label for="f-nome">Nome</label><input id="f-nome" name="nome" autocomplete="given-name" required><span class="err">Scrivi il tuo nome.</span></div>
+                <div class="field"><label for="f-cognome">Cognome</label><input id="f-cognome" name="cognome" autocomplete="family-name" required><span class="err">Scrivi il tuo cognome.</span></div>
+                <div class="field full"><label for="f-nascita">Data di nascita</label><input id="f-nascita" name="nascita" type="date" autocomplete="bday" required><span class="hint">Il club è riservato ai maggiori di 18 anni.</span><span class="err">Per iscriverti devi avere almeno 18 anni.</span></div>
+              </div>
+
+              <div class="fields" data-for="b2b">
+                <div class="field full"><label for="b-rs">Ragione sociale</label><input id="b-rs" name="ragione" autocomplete="organization" required><span class="err">Scrivi la ragione sociale.</span></div>
+                <div class="field"><label for="b-tipo">Attività</label><select id="b-tipo" name="tipo" required><option value="" selected disabled>Scegli</option><option>Distributore</option><option>Ristoratore</option></select><span class="err">Scegli il tipo di attività.</span></div>
+                <div class="field"><label for="b-paese">Paese</label><select id="b-paese" name="paese" required><option value="IT" selected>Italia</option><option value="UE">Altro paese dell'Unione europea</option><option value="EXTRA">Fuori dall'Unione europea</option></select></div>
+                <div class="field full"><label for="b-iva" id="b-iva-l">Partita IVA</label><input id="b-iva" name="iva" autocomplete="off" inputmode="numeric" required><span class="hint" id="b-iva-h">11 cifre. La verifichiamo prima di approvare l'account.</span><span class="err" id="b-iva-e">La partita IVA non è valida: controlla le 11 cifre.</span></div>
+                <div class="field"><label for="b-nome">Nome del referente</label><input id="b-nome" name="refnome" autocomplete="given-name" required><span class="err">Scrivi il nome.</span></div>
+                <div class="field"><label for="b-cognome">Cognome del referente</label><input id="b-cognome" name="refcognome" autocomplete="family-name" required><span class="err">Scrivi il cognome.</span></div>
+              </div>
+
+              <label class="check"><input type="checkbox" name="privacy" required><span>Ho letto la <a href="#">privacy policy</a> e accetto i <a href="#">termini del club</a>.</span></label>
+              <label class="check"><input type="checkbox" name="news"><span>Voglio ricevere via mail le novità della cantina e le campagne del club.</span></label>
+            </div>
+          </div>
+
+          <button type="submit" class="add"><span class="start">Continua</span><span class="go" data-for="privato">Accetta l'invito</span><span class="go" data-for="b2b">Richiedi l'accesso B2B</span></button>
+          <p class="small">Sei già socio? <a href="#accedi">Accedi</a></p>
+        </form>
+
+        <div class="done-msg" role="status" aria-live="polite">
+          <div data-for="privato">
+            <p>Ti abbiamo inviato una mail per confermare l'indirizzo. Dentro trovi il codice per il 10% sul primo ordine.</p>
+            <span class="code">BENVENUTO10</span>
+            <a class="spec-dl" href="vini.html">Inizia dai vini<svg width="28" height="28" aria-hidden="true"><use href="#arrow"/></svg></a>
+          </div>
+          <div data-for="b2b">
+            <p>La cantina verifica i dati della tua attività e assegna il listino. Ti scriviamo appena l'account è approvato; nel frattempo puoi già vedere i vini.</p>
+            <a class="spec-dl" href="vini.html">Guarda i vini<svg width="28" height="28" aria-hidden="true"><use href="#arrow"/></svg></a>
+          </div>
+        </div>
+      </div>
     </div>
-  </section>
+  </section>  <!-- /@parte:iscrizione -->
 
 </main>
 
@@ -696,13 +753,202 @@ footer b{color:var(--ink);font-weight:500}
       <span class="brand"><img src="img/logo-wine-club.png" alt="Colombo Wine Club" width="600" height="329" loading="lazy"></span>
       <p><b>Colombo Antonio e Figli</b><br>Società Agricola Semplice<br>Reg. Cafra 172/B, Bubbio 14051 (Asti)<br>P.IVA 01317970059</p>
     </div>
-    <nav aria-label="Il club"><h2>Il club</h2><ul><li><a href="il-club.html#come">Come funziona</a></li><li><a href="il-club.html#livelli">Livelli e Gemme</a></li><li><a href="il-club.html#regali">Porta un amico</a></li><li><a href="il-club.html#regali">Carta regalo</a></li><li><a href="il-club.html#domande">Domande frequenti</a></li></ul></nav>
+    <nav aria-label="Il club"><h2>Il club</h2><ul><li><a href="il-club.html#come">Come funziona</a></li><li><a href="il-club.html#livelli">Livelli e Gemme</a></li><li><a href="il-club.html#regali">Carta regalo</a></li><li><a href="il-club.html#domande">Domande frequenti</a></li></ul></nav>
     <nav aria-label="Assistenza"><h2>Assistenza</h2><ul><li><a href="#">Spedizioni</a></li><li><a href="#">Resi e diritto di recesso</a></li><li><a href="#">Termini e condizioni di vendita</a></li><li><a href="#">Contatti</a></li></ul></nav>
     <nav aria-label="Informazioni legali"><h2>Legale</h2><ul><li><a href="#">Privacy policy</a></li><li><a href="#">Cookie policy</a></li><li><a href="https://colombovino.it/">colombovino.it</a></li></ul></nav>
   </div>
   <div class="wrap f-bottom"><span>info@colombovino.it · Sala degustazione 338 8703900</span><span>Vendita riservata ai maggiori di 18 anni</span></div>
 </footer>
 
+<!-- @parte:iscrizione-extra -->
+<style>
+/* invito al club: compatto, si apre alla compilazione */
+.join{position:relative;isolation:isolate;background:var(--cellar);padding-block:72px;overflow:hidden}
+.join-bg{position:absolute;inset:0;z-index:-2;margin:0}
+.join-bg img{width:100%;height:100%;object-fit:cover;object-position:50% 50%}
+.join::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(70% 90% at 50% 50%,rgba(18,16,13,.6) 0%,rgba(18,16,13,.9) 100%)}
+.invite{position:relative;max-width:1040px;margin:0 auto;background:var(--paper);padding:48px 56px;box-shadow:0 40px 80px -30px rgba(0,0,0,.6);display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:32px 56px;align-items:start}
+.invite::before{content:"";position:absolute;inset:12px;border:1px solid var(--gold-soft);pointer-events:none}
+.invite-head{display:grid;gap:14px;align-content:start}
+.invite-head .seal{width:88px;height:auto;margin-bottom:6px}
+.invite-head h2{font-size:clamp(30px,3vw,42px)}
+.invite-head p{color:var(--ink-2);max-width:40ch}
+.invite-head [data-for]{display:none}
+.invite[data-who="privato"] .invite-head [data-for="privato"],.invite[data-who="b2b"] .invite-head [data-for="b2b"]{display:grid}
+.gifts{list-style:none;margin:8px 0 0;padding:0;gap:0}
+.gifts li{display:grid;grid-template-columns:18px minmax(0,1fr);gap:12px;padding:10px 0;border-top:1px solid var(--rule);font-size:15px;color:var(--ink-2);align-items:start}
+.gifts li .gem{margin-top:3px}
+.gifts b{color:var(--ink);font-weight:500}
+.form{display:grid;gap:20px;min-width:0}
+.who{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--ink);margin:0;padding:0;min-width:0}
+.who legend{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.who label{position:relative;display:grid;place-items:center;text-align:center;min-height:52px;padding:8px 12px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;color:var(--ink-2);cursor:pointer;transition:background-color .3s,color .3s}
+.who label+label{border-left:1px solid var(--ink)}
+.who input{position:absolute;opacity:0;pointer-events:none}
+.who label:has(input:checked){background:var(--ink);color:#fff}
+.who label:has(input:focus-visible){outline:2px solid var(--gold);outline-offset:3px}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px var(--col-gap)}
+.field{display:grid;gap:8px;min-width:0}
+.field.full{grid-column:1/-1}
+.field label{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.field input,.field select{height:48px;border:0;border-bottom:1px solid var(--ink-3);background:transparent;padding:0;font:inherit;font-size:17px;color:var(--ink);border-radius:0;min-width:0;width:100%;transition:border-color .3s}
+.field select{appearance:none;-webkit-appearance:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%235a534a' stroke-width='1.3'/%3E%3C/svg%3E") right 4px center no-repeat;padding-right:24px;cursor:pointer}
+.field input:focus,.field select:focus{outline:none;border-bottom-color:var(--gold);box-shadow:0 1px 0 var(--gold)}
+.field [aria-invalid="true"]{border-bottom-color:#9b2c1f}
+.field .hint{font-size:13px;color:var(--ink-3)}
+.field .err{font-size:13px;color:#9b2c1f;display:none}
+.field.bad .err{display:block}
+.field.bad .hint{display:none}
+.more-fields{display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s cubic-bezier(.16,1,.3,1)}
+.more-fields>div{overflow:hidden;min-height:0;display:grid;gap:20px}
+.more-fields>div>:first-child{margin-top:4px}
+.invite.open .more-fields{grid-template-rows:1fr}
+.more-fields [data-for]{display:none}
+.invite[data-who="privato"] .more-fields [data-for="privato"],.invite[data-who="b2b"] .more-fields [data-for="b2b"]{display:grid}
+.check{display:grid;grid-template-columns:22px minmax(0,1fr);gap:12px;font-size:14.5px;color:var(--ink-2);align-items:start;cursor:pointer}
+.check input{appearance:none;-webkit-appearance:none;width:20px;height:20px;border:1px solid var(--ink-3);margin:2px 0 0;display:grid;place-items:center;cursor:pointer;background:var(--paper)}
+.check input:checked{background:var(--ink);border-color:var(--ink)}
+.check input:checked::after{content:"";width:10px;height:6px;border-left:1.5px solid #fff;border-bottom:1.5px solid #fff;transform:translateY(-1px) rotate(-45deg)}
+.check a{color:var(--ink)}
+.check.bad input{border-color:#9b2c1f}
+.form .add{width:100%}
+.form .add [data-for]{display:none}
+.invite[data-who="privato"] .add [data-for="privato"],.invite[data-who="b2b"] .add [data-for="b2b"]{display:inline}
+.invite:not(.open) .add .go{display:none!important}
+.invite.open .add .start{display:none}
+.form .small{font-size:13.5px;color:var(--ink-3)}
+.form .small a{color:var(--ink)}
+.done-msg{display:none;gap:16px;align-content:start}
+.invite.sent .form{display:none}
+.invite.sent .done-msg{display:grid}
+.invite.sent .invite-head p,.invite.sent .gifts{display:none!important}
+.done-msg p{color:var(--ink-2);max-width:44ch}
+.done-msg .code{justify-self:start;font-family:var(--display);font-size:24px;letter-spacing:.1em;border:1px dashed var(--brand-gold);padding:12px 22px;color:var(--ink)}
+.done-msg [data-for]{display:none}
+.invite[data-who="privato"] .done-msg [data-for="privato"],.invite[data-who="b2b"] .done-msg [data-for="b2b"]{display:grid;gap:16px}
+@media (prefers-reduced-motion:reduce){.more-fields{transition:none}}
+@media (max-width:900px){.invite{grid-template-columns:1fr;padding:44px 32px}}
+@media (max-width:620px){
+  .join{padding-block:40px}
+  .invite{padding:40px 22px 32px;gap:28px}
+  .invite::before{inset:8px}
+  .fields{grid-template-columns:1fr}
+}
+
+footer{position:relative;isolation:isolate;overflow:hidden;background:#fff;border-top:1px solid var(--rule);color:var(--ink-2);font-size:14px;padding-block:56px calc(56px + env(safe-area-inset-bottom,0px))}
+footer .wrap{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:32px var(--col-gap);align-items:start}
+.f-brand{grid-column:span 3}
+footer nav{grid-column:span 1}
+footer .f-bottom{grid-column:1/-1}
+footer h2{font-family:var(--text);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--ink);margin-bottom:14px}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+footer a{color:var(--ink-2);text-decoration:none}
+footer a:hover{color:var(--gold-ink)}
+.f-brand{display:grid;gap:18px}
+footer .f-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;margin-top:40px;padding-top:20px;position:relative;font-size:13.5px}
+@media (max-width:900px){footer .wrap{grid-template-columns:repeat(2,minmax(0,1fr))}.f-brand{grid-column:1/-1}}
+footer .brand{width:130px}
+footer .f-bottom::before{content:"";position:absolute;top:0;left:16px;right:16px;height:1px;background:var(--rule)}
+@media (min-width:760px){footer .f-bottom::before{left:48px;right:48px}}
+footer::before{content:"";position:absolute;inset:0;z-index:-1;background:url(img/pattern-chiara.jpg) center/cover no-repeat;opacity:.4;pointer-events:none}
+footer p{max-width:46ch}
+footer b{color:var(--ink);font-weight:500}
+
+</style>
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  // iscrizione: compatta finché non si comincia a compilare
+  var form=$('joinForm'), invite=$('invite');
+  function open(){ if(!invite.classList.contains('open')) invite.classList.add('open') }
+  $('f-mail').addEventListener('input',open);
+  $('f-mail').addEventListener('focus',open);
+
+  // privato o azienda
+  form.querySelectorAll('input[name=who]').forEach(function(r){
+    r.addEventListener('change',function(){ invite.dataset.who=r.value; open() });
+  });
+
+  // partita IVA, VAT number o numero fiscale estero a seconda del paese
+  var IVA={
+    IT:{l:'Partita IVA',h:'11 cifre. La verifichiamo prima di approvare l’account.',e:'La partita IVA non è valida: controlla le 11 cifre.',m:'numeric'},
+    UE:{l:'VAT number',h:'Con il prefisso del paese, per esempio FR12345678901. Lo verifichiamo sul registro europeo VIES.',e:'Il VAT number non è valido: deve iniziare con il prefisso del paese.',m:'text'},
+    EXTRA:{l:'Numero fiscale dell’azienda',h:'Il numero fiscale della tua attività nel tuo paese (Tax ID).',e:'Scrivi il numero fiscale della tua attività.',m:'text'}
+  };
+  function paese(){
+    var c=IVA[$('b-paese').value];
+    $('b-iva-l').textContent=c.l; $('b-iva-h').textContent=c.h; $('b-iva-e').textContent=c.e;
+    $('b-iva').inputMode=c.m;
+    if($('b-iva').value) check($('b-iva'));
+  }
+  $('b-paese').addEventListener('change',paese);
+
+  function pivaIT(v){
+    if(!/^\d{11}$/.test(v)) return false;
+    var s=0;
+    for(var i=0;i<10;i++){ var d=+v[i]; if(i%2){ d*=2; if(d>9) d-=9 } s+=d }
+    return (10-s%10)%10===+v[10];
+  }
+  var EU=['AT','BE','BG','CY','CZ','DE','DK','EE','EL','ES','FI','FR','HR','HU','IE','LT','LU','LV','MT','NL','PL','PT','RO','SE','SI','SK'];
+  function vatUE(v){ return EU.indexOf(v.slice(0,2))>-1 && /^[A-Z0-9]{2,13}$/.test(v.slice(2)) }
+
+  function setBad(input,bad){
+    var box=input.closest('.field')||input.closest('.check');
+    box.classList.toggle('bad',bad);
+    input.setAttribute('aria-invalid',bad?'true':'false');
+  }
+  function adult(v){
+    if(!v) return false;
+    var b=new Date(v+'T00:00:00'), t=new Date();
+    var age=t.getFullYear()-b.getFullYear();
+    var m=t.getMonth()-b.getMonth();
+    if(m<0||(m===0&&t.getDate()<b.getDate())) age--;
+    return age>=18 && age<120;
+  }
+  function check(input){
+    var v=input.value.trim(), ok=v.length>0;
+    if(input.name==='email') ok=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+    if(input.name==='nascita') ok=adult(input.value);
+    if(input.name==='privacy') ok=input.checked;
+    if(input.name==='iva'){
+      var c=v.replace(/[\s.\-]/g,'').toUpperCase(), p=$('b-paese').value;
+      if(p==='IT') ok=pivaIT(c.replace(/^IT/,''));
+      else if(p==='UE') ok=vatUE(c);
+      else ok=c.length>=4;
+    }
+    setBad(input,!ok);
+    return ok;
+  }
+  function active(){
+    var who=invite.dataset.who;
+    return [].filter.call(form.querySelectorAll('[required]'),function(i){
+      var g=i.closest('[data-for]');
+      return !g || g.dataset.for===who;
+    });
+  }
+  form.querySelectorAll('[required]').forEach(function(i){
+    var ev=(i.type==='checkbox'||i.tagName==='SELECT')?'change':'blur';
+    i.addEventListener(ev,function(){ if(ev==='change'||i.value) check(i) });
+  });
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!invite.classList.contains('open')){
+      open();
+      if(!check($('f-mail'))) $('f-mail').focus();
+      else (invite.dataset.who==='b2b'?$('b-rs'):$('f-nome')).focus();
+      return;
+    }
+    var first=null;
+    active().forEach(function(i){ if(!check(i)&&!first) first=i });
+    if(first){ first.focus(); return }
+    var h=$('join-t'), b2b=invite.dataset.who==='b2b';
+    h.textContent=b2b?'Richiesta ricevuta':'Benvenuto nel club, '+$('f-nome').value.trim();
+    invite.classList.add('sent');
+    h.setAttribute('tabindex','-1');
+    h.focus();
+  });
+})();
+</script><!-- /@parte:iscrizione-extra -->
 <!-- @parte:livelli-css -->
 <style>
 /* livelli del club su fondo cantina: blocco condiviso */
