@@ -583,7 +583,7 @@ footer b{color:var(--ink);font-weight:500}
     b.dataset.label=b.textContent;
     b.addEventListener('click',function(){
       if(b.disabled) return;
-      n++; count.textContent=n;
+      count.textContent=(parseInt(count.textContent,10)||0)+1;
       b.classList.add('added'); b.textContent='Aggiunto';
       setTimeout(function(){b.classList.remove('added'); b.textContent=b.dataset.label},1600);
     });
