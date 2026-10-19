@@ -246,7 +246,9 @@ section[id]{scroll-margin-top:100px}
 @media (max-width:900px){.exp{grid-template-columns:1fr}.exp-img{aspect-ratio:3/2}.exp-body{padding:40px var(--gutter-r) 56px var(--gutter)}.exp-foot .add{width:100%}}
 
 /* chi è Colombo: come colombovino.it */
-.quote{margin:72px 0 0 calc((100% + var(--col-gap))/12*3);max-width:760px}
+.quote-band{position:relative;isolation:isolate;background:#fff;padding-block:104px 112px;border-top:1px solid var(--rule)}
+.quote-band::before{content:"";position:absolute;inset:0;z-index:-1;background:url(img/pattern-chiara.jpg) center/cover no-repeat;opacity:.45;pointer-events:none}
+.quote{margin:0 0 0 calc((100% + var(--col-gap))/12*3);max-width:760px}
 .quote .story-rule{margin-bottom:28px}
 .quote .qm{color:var(--gold);display:block;margin-bottom:18px}
 .quote blockquote{margin:0}
@@ -254,9 +256,9 @@ section[id]{scroll-margin-top:100px}
 .quote figcaption{margin:26px 0 0 clamp(0px,8vw,120px);display:grid;gap:4px}
 .quote .sig{font-family:var(--display);font-size:20px;color:var(--gold-ink)}
 .quote .role{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
-@media (max-width:900px){.quote{margin:48px 0 0}.quote figcaption{margin-left:0}}
+@media (max-width:900px){.quote-band{padding-block:64px 72px}.quote{margin:0}.quote figcaption{margin-left:0}}
 
-.story{padding-block:0 96px}
+.story{padding-block:0 104px}
 .story-kicker{font-size:13.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin:96px 0 12px}
 .story-h{font-size:var(--h2);line-height:1.05;display:grid}
 .story-img{margin:0;aspect-ratio:3/1;overflow:hidden;background:var(--cellar)}
@@ -596,6 +598,11 @@ footer b{color:var(--ink);font-weight:500}
         <p>Coltiviamo <b>dieci ettari</b> di vigneto in Alta Langa: un microcosmo intimo, curato giorno dopo giorno con dedizione e rispetto.</p>
         <a class="btn line" href="https://colombovino.it/chi-siamo/">Scopri la storia della famiglia</a>
       </div>
+    </div>
+  </section>
+
+  <section class="quote-band" aria-label="Le parole della famiglia Colombo">
+    <div class="wrap">
       <figure class="quote">
         <div class="story-rule" aria-hidden="true"><span></span><img src="img/ricciolo.png" alt="" width="343" height="277"></div>
           <svg class="qm" width="44" height="34" viewBox="0 0 44 34" aria-hidden="true"><path d="M0 34V20Q0 6 14 0l3 5Q8 9 8 18h9v16H0Zm27 0V20q0-14 14-20l3 5q-9 4-9 13h9v16H27Z" fill="currentColor"/></svg>
