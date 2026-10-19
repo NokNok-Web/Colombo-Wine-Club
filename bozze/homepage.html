@@ -207,13 +207,13 @@ section[id]{scroll-margin-top:100px}
 }
 
 /* chi è Colombo: come colombovino.it */
-.story{padding-block:56px 96px}
-.story-kicker{font-size:13.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin:0 0 14px clamp(0px,8vw,120px)}
-.story-h{font-size:clamp(44px,6.2vw,92px);line-height:1;letter-spacing:-.01em;display:grid}
-.story-h .in{padding-left:clamp(40px,10vw,150px)}
-.story-img{margin:56px 0 0;aspect-ratio:21/8;overflow:hidden;background:var(--cellar)}
+.story{padding-block:0 96px}
+.story-kicker{font-size:13.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin:64px 0 12px}
+.story-h{font-size:var(--h2);line-height:1.1;display:grid}
+.story-h .in{padding-left:1.6em}
+.story-img{margin:0;aspect-ratio:21/8;overflow:hidden;background:var(--cellar)}
 .story-img img{width:100%;height:100%;object-fit:cover;object-position:50% 60%}
-.story-text{margin-top:56px;margin-left:calc((100% + var(--col-gap))/12*2);max-width:640px;display:grid;gap:18px}
+.story-text{margin-top:40px;margin-left:calc((100% + var(--col-gap))/12*2);max-width:640px;display:grid;gap:18px}
 .story-rule{display:flex;align-items:flex-end;height:22px;margin-bottom:12px}
 .story-rule span{flex:1;height:2px;background:var(--brand-gold)}
 .story-rule img{width:20px;height:auto;margin-left:-6px;margin-bottom:-.4px;position:relative;display:block}
@@ -221,7 +221,7 @@ section[id]{scroll-margin-top:100px}
 .story-text b{font-weight:600}
 .tlink{justify-self:start;margin-top:14px;margin-left:clamp(0px,6vw,96px);padding:0 8px 8px;border-bottom:1px solid var(--gold);color:var(--gold);text-decoration:none;font-size:17px;transition:color .3s,border-color .3s}
 .tlink:hover{color:var(--brand-gold);border-color:var(--brand-gold)}
-@media (max-width:900px){.story{padding-block:48px 72px}.story-img{aspect-ratio:3/2;margin-top:36px}.story-text{margin-left:0;margin-top:36px}.story-kicker{margin-left:0}.tlink{margin-left:0}}
+@media (max-width:900px){.story{padding-block:0 72px}.story-img{aspect-ratio:3/2}.story-kicker{margin-top:40px}.story-text{margin-left:0;margin-top:36px}.story-kicker{margin-left:0}.tlink{margin-left:0}}
 
 /* invito al club: compatto, si apre alla compilazione */
 .join{position:relative;isolation:isolate;background:var(--cellar);padding-block:72px;overflow:hidden}
@@ -518,13 +518,10 @@ footer b{color:var(--ink);font-weight:500}
   </section>
 
   <section class="story" id="colombo" aria-labelledby="colombo-t">
-    <div class="wrap">
-      <div class="divider" aria-hidden="true"><span></span><img src="img/ricciolo.png" alt="" width="343" height="277"></div>
-      <p class="story-kicker">Un progetto familiare in Alta Langa</p>
-      <h2 id="colombo-t" class="story-h"><span>Illuminati</span><span class="in">da una sfida</span></h2>
-    </div>
     <figure class="story-img"><img src="img/colline-colombo.jpg" alt="Le colline della Val Bormida, nell'Alta Langa astigiana, tra vigne e boschi in autunno" loading="lazy" width="2000" height="1143"></figure>
     <div class="wrap">
+      <p class="story-kicker">Un progetto familiare in Alta Langa</p>
+      <h2 id="colombo-t" class="story-h"><span>Illuminati</span><span class="in">da una sfida</span></h2>
       <div class="story-text">
         <div class="story-rule" aria-hidden="true"><span></span><img src="img/ricciolo.png" alt="" width="343" height="277"></div>
         <p>Immersa tra le colline della <b>Val Bormida</b>, nel cuore dell'<b>Alta Langa astigiana</b>, l'azienda nasce nei primi anni Duemila da una scelta di Antonio Colombo: dare forma, con i suoi figli, a un progetto ambizioso. Dimostrare che questo profilo di Langa è uno dei territori più vocati d'Italia per il <b>Pinot Nero</b>.</p>
