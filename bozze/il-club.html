@@ -481,9 +481,11 @@ footer b{color:var(--ink);font-weight:500}
 .steps h3{font-size:var(--h3)}
 .steps p{color:var(--ink-2);max-width:40ch}
 .earn{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 var(--col-gap);margin-top:36px;border-top:1px solid var(--ink)}
-.earn div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 20px;padding:20px 0;border-bottom:1px solid var(--rule);align-items:baseline}
+.earn div{display:grid;grid-template-columns:auto minmax(0,1fr);align-content:start;gap:4px 20px;padding:20px 0;border-bottom:1px solid var(--rule);align-items:baseline}
 .earn h3{font-size:20px}
-.earn p{grid-column:1/-1;font-size:15px;color:var(--ink-2)}
+.earn p{grid-column:2;font-size:15px;color:var(--ink-2)}
+.earn .g{grid-row:1/span 2;align-self:start;margin-top:4px}
+.earn .g .gem{width:22px}
 .earn .g{display:inline-flex;align-items:center;gap:8px;font-family:var(--display);font-size:22px;color:var(--gold-ink);white-space:nowrap}
 .seasons{list-style:none;margin:36px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--col-gap)}
 .seasons li{background:var(--stage);padding:26px 22px;display:grid;gap:8px;align-content:start;position:relative;overflow:hidden}
@@ -571,7 +573,7 @@ footer b{color:var(--ink);font-weight:500}
       <div class="group-head"><div><h2 id="come-t">Come funziona</h2></div></div>
       <ol class="steps">
         <li><span class="n num">1</span><h3>Entra nel club</h3><p>L'iscrizione è gratuita. Entri come Silver e ricevi via mail un codice per il 10% sul primo ordine.</p></li>
-        <li><span class="n num">2</span><h3>Raccogli Gemme</h3><p>Ogni euro speso vale una Gemma. Nelle campagne del club e su alcune collezioni le Gemme sono doppie.</p></li>
+        <li><span class="n num">2</span><h3>Raccogli Gemme</h3><p>Le Gemme arrivano con i tuoi acquisti e con le promozioni speciali riservate ai soci.</p></li>
         <li><span class="n num">3</span><h3>Sali di livello</h3><p>Con 500 Gemme diventi Gold, con 2.000 Platinum. Il livello raggiunto resta tuo per sempre.</p></li>
       </ol>
     </div>
@@ -589,7 +591,7 @@ footer b{color:var(--ink);font-weight:500}
           <ul class="perks">
             <li><span>Tutti i vini della cantina e le collezioni del club</span></li>
             <li><span><b>10%</b> sul primo ordine con il codice di benvenuto</span></li>
-            <li><span>Una Gemma per ogni euro, e Gemme doppie nelle campagne del club</span></li>
+            <li><span>Gemme con ogni acquisto e nelle promozioni del club</span></li>
             <li><span>Spedizione gratuita in Italia sopra <b class="num">€ 210</b></span></li>
           </ul>
         </li>
@@ -621,11 +623,12 @@ footer b{color:var(--ink);font-weight:500}
   <section class="group" id="gemme" aria-labelledby="gemme-t" style="padding-block:88px 24px">
     <div class="wrap">
       <div class="divider" aria-hidden="true"><span></span><img src="img/ricciolo.png" alt="" width="343" height="277"></div>
-      <div class="group-head"><div><h2 id="gemme-t">Come si raccolgono le Gemme</h2><p>Con ogni acquisto, e qualcosa in più per chi ci resta vicino nel tempo.</p></div></div>
+      <div class="group-head"><div><h2 id="gemme-t">Come si raccolgono le Gemme</h2><p>Le Gemme arrivano con gli acquisti e con le promozioni speciali del club.</p></div></div>
       <div class="earn">
-        <div><h3>Ogni acquisto</h3><span class="g"><img class="gem" src="img/gemma.png" alt="" width="81" height="72">1 per euro</span><p>Su vini, confezioni regalo e accessori, spedizione esclusa.</p></div>
-        <div><h3>Il tuo compleanno</h3><span class="g"><img class="gem" src="img/gemma.png" alt="" width="81" height="72">× 2</span><p>Per tutto il mese del tuo compleanno ogni ordine vale Gemme doppie.</p></div>
-        <div><h3>L'anniversario nel club</h3><span class="g"><img class="gem" src="img/gemma.png" alt="" width="81" height="72">+50</span><p>Ogni anno, nel giorno in cui ti sei iscritto.</p></div>
+        <div><h3>Con i tuoi acquisti</h3><span class="g"><img class="gem" src="img/gemma.png" alt="" width="81" height="72"></span><p>Ogni ordine nel club ti avvicina al livello successivo.</p></div>
+        <div><h3>Con le promozioni del club</h3><span class="g"><img class="gem" src="img/gemma.png" alt="" width="81" height="72"></span><p>In alcuni periodi dell'anno e su alcune collezioni le Gemme crescono più in fretta.</p></div>
+        <div><h3>Nei tuoi momenti speciali</h3><span class="g"><img class="gem" src="img/gemma.png" alt="" width="81" height="72"></span><p>Il club ti festeggia: per il compleanno e per l'anniversario della tua iscrizione c'è sempre una sorpresa.</p></div>
+        <div><h3>Con le novità della cantina</h3><span class="g"><img class="gem" src="img/gemma.png" alt="" width="81" height="72"></span><p>Le nuove uscite e le edizioni speciali possono valere qualcosa in più.</p></div>
       </div>
     </div>
   </section>
@@ -661,7 +664,7 @@ footer b{color:var(--ink);font-weight:500}
       <div class="group-head"><div><h2 id="faq-t">Domande frequenti</h2></div></div>
       <div class="faq">
         <details><summary>L'iscrizione è a pagamento?<svg width="28" height="28" viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="14" fill="none" stroke="currentColor" stroke-width="1"/><path d="M9.5 12.5 15 18l5.5-5.5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></summary><p>No, entrare nel club è gratuito. È riservato ai maggiori di 18 anni: all'iscrizione ti chiediamo la data di nascita.</p></details>
-        <details><summary>Come si calcolano le Gemme?<svg width="28" height="28" viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="14" fill="none" stroke="currentColor" stroke-width="1"/><path d="M9.5 12.5 15 18l5.5-5.5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></summary><p>Ogni euro speso sui vini, sulle confezioni e sugli accessori vale una Gemma. La spedizione non conta. In alcune campagne e su alcuni prodotti le Gemme sono doppie.</p></details>
+        <details><summary>Come si raccolgono le Gemme?<svg width="28" height="28" viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="14" fill="none" stroke="currentColor" stroke-width="1"/><path d="M9.5 12.5 15 18l5.5-5.5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></summary><p>Con i tuoi acquisti nel club e con le promozioni speciali riservate ai soci. Nella tua area riservata vedi sempre quante Gemme hai e quante ne mancano al livello successivo.</p></details>
         <details><summary>Le Gemme scadono? Posso perdere il livello?<svg width="28" height="28" viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="14" fill="none" stroke="currentColor" stroke-width="1"/><path d="M9.5 12.5 15 18l5.5-5.5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></summary><p>No. Le Gemme non scadono e il livello che raggiungi resta tuo per sempre.</p></details>
         <details><summary>Cosa succede alle Gemme se restituisco un ordine?<svg width="28" height="28" viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="14" fill="none" stroke="currentColor" stroke-width="1"/><path d="M9.5 12.5 15 18l5.5-5.5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></summary><p>Le Gemme di un ordine annullato o restituito vengono tolte in automatico dal tuo saldo.</p></details>
         <details><summary>Quanto costa la spedizione?<svg width="28" height="28" viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="14" fill="none" stroke="currentColor" stroke-width="1"/><path d="M9.5 12.5 15 18l5.5-5.5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></summary><p>In Italia la spedizione è gratuita sopra € 210 per i soci Silver e sopra € 190 dai soci Gold. All'estero si paga la tariffa calcolata in base alla destinazione.</p></details>
