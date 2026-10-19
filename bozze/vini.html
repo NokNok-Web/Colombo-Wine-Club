@@ -510,10 +510,10 @@ footer b{color:var(--ink);font-weight:500}
     </div>
   </section>
   <!-- @parte:livelli -->
-  <section class="chapter" id="livelli" aria-labelledby="livelli-t">
+  <section class="lv-dark" id="livelli" aria-labelledby="livelli-t">
     <div class="wrap">
       <div class="divider" aria-hidden="true"><span></span><img src="img/ricciolo.png" alt="" width="343" height="277"></div>
-      <div class="ch-title"><h2 id="livelli-t">I livelli del club</h2><p>Il club cresce con te. Entri come Silver e ogni acquisto ti regala Gemme: con le Gemme accedi a prezzi riservati, alle anteprime e alle esperienze in cantina. Il livello che raggiungi resta tuo.</p></div>
+      <h2 id="livelli-t">I livelli del club</h2><p class="lv-lead">Più ti avvicini alla cantina, più la cantina si apre a te. Entri come Silver, e ogni acquisto ti regala Gemme che ti portano verso prezzi riservati, anteprime ed esperienze a Bubbio. Il livello che raggiungi resta tuo.</p>
       <ol class="tiers">
         <li>
           <h3>Silver</h3>
@@ -542,10 +542,11 @@ footer b{color:var(--ink);font-weight:500}
             <li><span>Accesso in anteprima alle nuove uscite</span></li>
             <li><span>Le annate storiche di Apertura e Maxima</span></li>
             <li><span>Visita e degustazione in cantina con la famiglia Colombo</span></li>
+            <li class="tease"><span>E qualche sorpresa, che si svela solo ai soci Platinum</span></li>
           </ul>
         </li>
       </ol>
-      <p class="gem-rule"><img class="gem" src="img/gemma.png" alt="" width="81" height="72">Il prezzo Gold di ogni vino è visibile ai soci dopo l'iscrizione.</p>
+      <div class="lv-foot"><a class="add" href="homepage.html#iscrizione">Entra nel club</a><p><img class="gem" src="img/gemma.png" alt="" width="81" height="72">Il prezzo Gold di ogni vino è visibile ai soci dopo l'iscrizione.</p></div>
     </div>
   </section>  <!-- /@parte:livelli -->
 
@@ -564,6 +565,40 @@ footer b{color:var(--ink);font-weight:500}
   <div class="wrap f-bottom"><span>info@colombovino.it · Sala degustazione 338 8703900</span><span>Vendita riservata ai maggiori di 18 anni</span></div>
 </footer>
 
+<!-- @parte:livelli-css -->
+<style>
+/* livelli del club su fondo cantina: blocco condiviso */
+.lv-dark{position:relative;isolation:isolate;background:var(--cellar);color:var(--on-cellar);padding-block:72px 104px;overflow:hidden}
+.lv-dark::before{content:"";position:absolute;inset:0;z-index:-2;background:url(img/cantina-botti.jpg) center 45%/cover no-repeat;opacity:.16}
+.lv-dark::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(60% 70% at 85% 20%,rgba(217,192,138,.12),rgba(217,192,138,0) 70%),linear-gradient(180deg,rgba(18,16,13,.55) 0%,rgba(18,16,13,.85) 100%)}
+.lv-dark .divider{margin-bottom:48px}
+.lv-dark h2{font-size:var(--h2);color:#fff}
+.lv-dark .lv-lead{margin-top:16px;max-width:58ch;font-size:18px;font-weight:300;color:var(--on-cellar)}
+.lv-dark .tiers{margin-top:48px;column-gap:var(--col-gap)}
+.lv-dark .tiers>li{border:1px solid rgba(217,192,138,.22);border-top:1px solid rgba(217,192,138,.22);padding:30px 28px 28px;gap:10px;background:rgba(255,255,255,.015)}
+.lv-dark .tiers>li::before{display:none}
+.lv-dark .tiers h3{font-size:clamp(28px,2.6vw,36px);color:#fff}
+.lv-dark .tiers .how{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-soft)}
+.lv-dark .perks{margin-top:14px}
+.lv-dark .perks li{border-color:rgba(217,192,138,.14);color:var(--on-cellar-2);font-size:15px}
+.lv-dark .perks li:first-child{border-top-color:rgba(217,192,138,.14)}
+.lv-dark .perks li::before{background:var(--gold-soft)}
+.lv-dark .perks b{color:#fff}
+.lv-dark .tiers>li.top{border-color:rgba(217,192,138,.6);background:linear-gradient(180deg,rgba(217,192,138,.10) 0%,rgba(217,192,138,.02) 100%);box-shadow:0 30px 60px -30px rgba(0,0,0,.8)}
+.lv-dark .tiers>li.top h3{color:var(--gold-soft)}
+.lv-dark .perks li.tease{color:var(--gold-soft);font-family:var(--display);font-size:17px}
+.lv-dark .perks li.tease::before{background:transparent;border:1px solid var(--gold-soft)}
+.lv-dark .lv-foot{margin-top:44px;display:flex;flex-wrap:wrap;align-items:center;gap:16px 32px}
+.lv-dark .lv-foot p{display:flex;align-items:center;gap:10px;font-size:15px;color:var(--on-cellar-2)}
+.lv-dark .lv-foot .add{text-decoration:none}
+.lv-wine .tiers>li{padding:24px 24px 22px}
+.lv-wine .tiers>li.you{border-color:var(--gold-soft)}
+.lv-wine .here-tag{position:absolute;top:24px;right:20px;margin:0;color:var(--gold-soft);border-color:rgba(217,192,138,.6);background:transparent}
+.lv-wine .tp{margin-top:10px;padding-top:12px;border-top:1px solid rgba(217,192,138,.16);font-size:14.5px;color:var(--on-cellar-2)}
+.lv-wine .tp .num{font-family:var(--display);font-size:22px;color:#fff;margin-right:6px}
+.lv-wine .more-club{margin-top:40px;color:var(--gold-soft)}
+@media (max-width:760px){.lv-dark{padding-block:56px 72px}.lv-dark .tiers{border-left:0;margin-left:0;gap:16px}.lv-dark .tiers>li{padding:22px 20px}.lv-dark .lv-foot .add{width:100%}}
+</style><!-- /@parte:livelli-css -->
 <script>
 (function(){
   var count=document.getElementById('cartCount'), n=0;
