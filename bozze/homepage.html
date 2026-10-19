@@ -20,7 +20,7 @@
   --ink-2:#5a534a;
   --ink-3:#6b645a;
   --rule:#e3dccf;
-  --h2:clamp(30px,2.9vw,40px);
+  --h2:clamp(36px,3.8vw,54px);
   --h3:24px;
   --col-gap:32px;
   --content:1184px;
@@ -209,11 +209,11 @@ section[id]{scroll-margin-top:100px}
 /* chi è Colombo: come colombovino.it */
 .story{padding-block:0 96px}
 .story-kicker{font-size:13.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin:64px 0 12px}
-.story-h{font-size:var(--h2);line-height:1.1;display:grid}
-.story-h .in{padding-left:1.6em}
-.story-img{margin:0;aspect-ratio:21/8;overflow:hidden;background:var(--cellar)}
+.story-h{font-size:var(--h2);line-height:1.05;display:grid}
+.story-h .in{padding-left:calc((100% + var(--col-gap))/12*2)}
+.story-img{margin:0;aspect-ratio:3/1;overflow:hidden;background:var(--cellar)}
 .story-img img{width:100%;height:100%;object-fit:cover;object-position:50% 60%}
-.story-text{margin-top:40px;margin-left:calc((100% + var(--col-gap))/12*2);max-width:640px;display:grid;gap:18px}
+.story-text{margin-top:32px;margin-left:calc((100% + var(--col-gap))/12*2);max-width:640px;display:grid;gap:18px}
 .story-rule{display:flex;align-items:flex-end;height:22px;margin-bottom:12px}
 .story-rule span{flex:1;height:2px;background:var(--brand-gold)}
 .story-rule img{width:20px;height:auto;margin-left:-6px;margin-bottom:-.4px;position:relative;display:block}
@@ -221,7 +221,7 @@ section[id]{scroll-margin-top:100px}
 .story-text b{font-weight:600}
 .tlink{justify-self:start;margin-top:14px;margin-left:clamp(0px,6vw,96px);padding:0 8px 8px;border-bottom:1px solid var(--gold);color:var(--gold);text-decoration:none;font-size:17px;transition:color .3s,border-color .3s}
 .tlink:hover{color:var(--brand-gold);border-color:var(--brand-gold)}
-@media (max-width:900px){.story{padding-block:0 72px}.story-img{aspect-ratio:3/2}.story-kicker{margin-top:40px}.story-text{margin-left:0;margin-top:36px}.story-kicker{margin-left:0}.tlink{margin-left:0}}
+@media (max-width:900px){.story{padding-block:0 72px}.story-img{aspect-ratio:3/2}.story-h .in{padding-left:0}.story-kicker{margin-top:40px}.story-text{margin-left:0;margin-top:36px}.story-kicker{margin-left:0}.tlink{margin-left:0}}
 
 /* invito al club: compatto, si apre alla compilazione */
 .join{position:relative;isolation:isolate;background:var(--cellar);padding-block:72px;overflow:hidden}
