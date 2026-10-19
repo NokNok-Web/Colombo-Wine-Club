@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Homepage Wine Club</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap">
+<style>
+/* Layout: stesso sistema della scheda vino. Prima schermata con pannello grigio chiaro sfumato e tre bottiglie a sinistra, promessa del club a destra; sotto, capitoli aperti dal divisore con ricciolo: livelli, bestseller, collezioni, chi è Colombo, iscrizione. */
+:root{
+  color-scheme:light;
+  --paper:#ffffff;
+  --stone:#f6f3ed;
+  --cellar:#12100d;
+  --ink:#141210;
+  --ink-2:#5a534a;
+  --ink-3:#6b645a;
+  --rule:#e3dccf;
+  --h2:clamp(30px,2.9vw,40px);
+  --h3:24px;
+  --col-gap:32px;
+  --content:1184px;
+  --brand-gold:#c08e00;
+  --mist:#f4f4f2;
+  --ivory:#faf6f0;
+  --stage:radial-gradient(60% 48% at 50% 38%, #fefefc 0%, rgba(254,254,252,0) 75%), linear-gradient(175deg, #fbfaf7 0%, #f5f2ec 55%, #ece7de 100%);
+  --vignette:radial-gradient(140% 100% at 50% 40%, rgba(0,0,0,0) 60%, rgba(80,72,58,.06) 100%);
+  --gold:#ab8329;
+  --gold-ink:#8a6a20;
+  --gold-soft:#d9c08a;
+  --on-cellar:#efe7d6;
+  --on-cellar-2:#a99f8c;
+  --display:"Kaisei Decol", "Hiragino Mincho ProN", Georgia, serif;
+  --text:"Barlow", "Helvetica Neue", Arial, sans-serif;
+  --gutter:max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r:max(16px, env(safe-area-inset-right, 0px));
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--text);font-size:17px;line-height:1.6;font-weight:400;-webkit-font-smoothing:antialiased}
+::selection{background:var(--gold-soft);color:var(--ink)}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.1;margin:0;text-wrap:balance;letter-spacing:-.005em}
+p{margin:0}
+a{color:inherit;text-underline-offset:.22em;text-decoration-thickness:1px}
+a:hover{color:var(--gold-ink)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+button{font:inherit;color:inherit;cursor:pointer}
+.num{font-variant-numeric:tabular-nums lining-nums}
+.wrap{max-width:1280px;margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter-r)}
+@media (min-width:760px){.wrap{padding-left:max(48px,env(safe-area-inset-left,0px));padding-right:max(48px,env(safe-area-inset-right,0px))}}
+section[id]{scroll-margin-top:100px}
+
+/* barra benvenuto */
+.welcome{background:var(--cellar);color:var(--on-cellar);font-size:13.5px;letter-spacing:.04em}
+.welcome .wrap{display:flex;justify-content:center;align-items:center;gap:6px 14px;flex-wrap:wrap;padding-block:9px;text-align:center}
+.welcome a{color:var(--gold-soft)}
+
+/* testata */
+.head{border-bottom:1px solid var(--rule);background:var(--paper);position:sticky;top:env(safe-area-inset-top,0px);z-index:20}
+.head .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:92px;gap:16px}
+.menu{display:flex;gap:30px;list-style:none;margin:0;padding:0;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+.menu a{text-decoration:none;color:var(--ink-2)}
+.menu a[aria-current]{color:var(--ink)}
+.brand{display:block;width:142px}
+.brand img{width:100%;height:auto;display:block}
+.me{justify-self:end;display:flex;align-items:center;gap:22px;font-size:14px}
+.me .lvl{display:flex;align-items:center;gap:6px;color:var(--ink-2);white-space:nowrap}
+.me .lvl b{font-weight:500;color:var(--ink)}
+.me a{text-decoration:none;color:var(--ink)}
+.acct,.cart{display:flex;align-items:center;gap:8px}
+.me .lbl{font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+.me .lvl:hover b,.acct:hover,.cart:hover{color:var(--gold-ink)}
+@media (max-width:1180px){.me .lbl{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}}
+.cart{display:flex;align-items:center;gap:8px;text-decoration:none}
+.cart .count{min-width:22px;height:22px;border-radius:11px;background:var(--ink);color:#fff;font-size:12px;display:grid;place-items:center;padding:0 6px}
+.burger{display:none;background:none;border:0;padding:8px;margin-left:-8px}
+.gem{width:14px;height:14px;flex:none;color:var(--gold)}
+.me .short{display:none}
+@media (max-width:980px){.menu{display:none}.burger{display:block}.me .full{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.me .short{display:inline}.me{gap:14px;font-size:13px}.brand{width:92px}}
+
+/* prima schermata */
+.hero{display:grid;grid-template-columns:calc(50% - var(--col-gap)/2) minmax(0,1fr);column-gap:var(--col-gap);min-height:min(820px,calc(100svh - 128px))}
+.cellar{margin:0;background:var(--vignette),var(--stage);position:relative;display:grid;place-items:end center;overflow:hidden;padding-block:56px 72px}
+.cellar::before,.card .shot::before{content:"";position:absolute;inset:0;background:url(img/pattern-chiara.jpg) center/1137px auto repeat;filter:sepia(.25) brightness(.7) contrast(2.2) brightness(1.2);opacity:.22;mix-blend-mode:multiply;pointer-events:none}
+.cellar::after{content:"";position:absolute;left:50%;bottom:58px;width:62%;height:28px;transform:translateX(-50%);background:radial-gradient(50% 50% at 50% 50%, rgba(30,28,25,.28) 0%, rgba(30,28,25,0) 100%);filter:blur(4px);pointer-events:none}
+.bottles{position:relative;z-index:1;display:flex;align-items:flex-end;justify-content:center}
+.bottles img{width:auto;filter:drop-shadow(0 24px 26px rgba(40,36,30,.22))}
+.bottles .hero-b{height:clamp(380px,calc(100svh - 280px),600px);position:relative;z-index:2}
+.bottles .side{height:clamp(320px,calc((100svh - 280px)*.85),510px);margin:0 -22px;filter:drop-shadow(0 20px 22px rgba(40,36,30,.18)) brightness(.97)}
+.sheet{padding:88px max(48px,calc((100vw - var(--content))/2)) 48px 0;display:grid;gap:26px;align-content:center;min-width:0}
+.sheet h1{font-size:clamp(40px,4.6vw,66px)}
+.denom{font-size:15px;letter-spacing:.02em;color:var(--ink-2);margin-top:12px}
+.lead{font-size:17px;color:var(--ink-2);max-width:56ch;font-weight:300}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.add{flex:1;min-width:220px;height:56px;border:0;background:var(--brand-gold);color:#fff;font-size:14px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;display:grid;place-items:center;text-decoration:none;transition:background-color .3s}
+.add:hover{background:#a67b00;color:#fff}
+.add.line{flex:0 1 auto;padding:0 28px;background:none;color:var(--gold-ink);border:1px solid var(--brand-gold)}
+.add.line:hover{background:var(--brand-gold);color:#fff}
+.gems{display:inline-flex;align-items:center;gap:7px;color:var(--ink-2);font-size:14.5px}
+.gems b{color:var(--ink);font-weight:500}
+.award{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--ink-2);border-top:1px solid var(--rule);padding-top:18px}
+.award img{width:54px;height:auto}
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr;min-height:0}
+  .cellar{padding-block:28px 40px}
+  .cellar::after{bottom:28px}
+  .bottles .hero-b{height:clamp(280px,50svh,420px)}
+  .bottles .side{height:clamp(238px,42svh,356px);margin:0 -16px}
+  .sheet{padding:32px var(--gutter-r) 48px var(--gutter)}
+}
+
+/* divisore con ricciolo, come colombovino.it */
+.divider{display:flex;align-items:flex-end;height:22px;margin-bottom:48px;grid-column:1/-1}
+.divider span{flex:1;height:2px;background:var(--brand-gold);margin-bottom:0}
+.divider img{width:20px;height:auto;margin-left:-6px;margin-bottom:-.4px;position:relative;display:block}
+@media (max-width:900px){.divider{margin-bottom:40px}}
+
+/* capitoli */
+.chapter{padding-block:56px 72px}
+.ch-title h2{font-size:var(--h2)}
+.ch-title p{margin-top:14px;color:var(--ink-2);max-width:62ch}
+.ch-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px 32px;flex-wrap:wrap}
+@media (max-width:900px){.chapter{padding-block:64px}}
+.spec-dl{display:inline-flex;align-items:center;gap:12px;font-family:var(--display);font-size:20px;color:var(--gold);text-decoration:none;justify-self:start}
+.spec-dl:hover{color:var(--brand-gold)}
+.spec-dl svg{flex:none;transition:transform .4s cubic-bezier(.16,1,.3,1)}
+.spec-dl:hover svg{transform:translateX(3px)}
+
+/* livelli */
+.tiers{list-style:none;margin:36px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:var(--col-gap)}
+.tiers>li{border-top:1px solid var(--ink);padding:24px 0 0;display:grid;gap:8px;align-content:start;position:relative}
+.tiers>li::before{content:"";position:absolute;top:-6px;left:0;width:11px;height:11px;border-radius:50%;border:1px solid var(--gold);background:var(--paper)}
+.tiers>li.top::before{background:var(--gold)}
+.tiers h3{font-size:var(--h3)}
+.tiers .how{font-size:14.5px;color:var(--gold-ink)}
+.perks{list-style:none;margin:10px 0 0;padding:0;display:grid}
+.perks li{display:grid;grid-template-columns:18px minmax(0,1fr);gap:10px;padding:11px 0;border-bottom:1px solid var(--rule);font-size:15px;color:var(--ink-2)}
+.perks li:first-child{border-top:1px solid var(--rule)}
+.perks li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold);margin-top:.62em}
+.perks b{color:var(--ink);font-weight:500}
+.gem-rule{margin-top:36px;display:flex;align-items:center;gap:10px;font-size:15px;color:var(--ink-2)}
+@media (max-width:760px){
+  .tiers{grid-template-columns:1fr;gap:34px;border-left:1px solid var(--ink);margin-left:5px}
+  .tiers>li{border-top:0;padding:0 0 0 22px}
+  .tiers>li::before{top:6px;left:-6px}
+}
+
+/* card */
+.cards{list-style:none;margin:32px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px var(--col-gap)}
+.card{background:var(--paper);display:grid;grid-template-rows:auto 1fr;min-width:0;position:relative}
+.card .cover{position:absolute;inset:0;z-index:2}
+.card .btn{position:relative;z-index:3}
+.card .shot{position:relative;overflow:hidden;background:var(--stage);display:flex;justify-content:center;align-items:flex-end;height:320px;padding:24px 16px 20px}
+.card .shot img{position:relative;z-index:1;height:100%;width:auto;object-fit:contain;transition:transform .8s cubic-bezier(.16,1,.3,1)}
+.card:hover .shot img{transform:translateY(-6px)}
+.card .body{padding:20px 0 0;display:grid;gap:6px;align-content:start}
+.card h3{font-size:var(--h3)}
+.card .what{font-size:15px;color:var(--ink-2)}
+.card .row{margin-top:10px;padding-top:14px;border-top:1px solid var(--rule);display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;font-size:15px}
+.card .row .p{font-family:var(--display);font-size:24px;line-height:1}
+.card .row .vat{font-size:12.5px;color:var(--ink-3)}
+.gold-price{display:inline-flex;align-items:center;gap:7px;font-size:14px;color:var(--ink-2);margin-top:2px}
+.gold-price b{color:var(--ink);font-weight:500}
+.btn{margin-top:14px;display:inline-grid;place-items:center;height:48px;padding:0 22px;background:var(--brand-gold);color:#fff;text-decoration:none;font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;transition:background-color .3s;width:100%}
+.btn:hover{background:#a67b00;color:#fff}
+.btn.line{background:none;color:var(--gold-ink);border:1px solid var(--brand-gold)}
+.btn.line:hover{background:var(--brand-gold);color:#fff}
+@media (prefers-reduced-motion:reduce){.card .shot img{transition:none}.card:hover .shot img{transform:none}}
+
+/* collezioni */
+.collection{background:var(--ivory);padding-block:56px 72px}
+.collection .card{background:transparent}
+.shot.trio{height:340px;gap:0;padding:0 0 46px}
+.shot.trio::after{content:"";position:absolute;left:18%;right:18%;bottom:30px;height:22px;background:radial-gradient(50% 50% at 50% 50%,rgba(30,28,25,.28),rgba(30,28,25,0));filter:blur(3px)}
+.card .shot.trio img{max-width:none}
+.shot.trio img.hero-b{height:250px;z-index:2}
+.shot.trio img.side{height:212px;margin:0 -16px;filter:brightness(.97)}
+.card:hover .shot.trio img.side:first-child{transform:translateX(-6px)}
+.card:hover .shot.trio img.side:last-child{transform:translateX(6px)}
+.shot .plus{position:relative;z-index:2;align-self:center;margin-left:22px;display:grid;justify-items:center;gap:8px;font-family:var(--display);font-size:15px;line-height:1.25;color:var(--ink-2);text-align:center}
+.shot .plus i{font-style:normal;width:34px;height:34px;border:1px solid var(--brand-gold);border-radius:50%;display:grid;place-items:center;color:var(--brand-gold)}
+.card .kind{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+@media (max-width:900px){
+  .collection{padding-block:64px}
+  .cards{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:80%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px;gap:var(--col-gap)}
+  .card{scroll-snap-align:start}
+  .card .shot{height:260px}
+  .shot.trio{height:280px}.shot.trio img.hero-b{height:206px}.shot.trio img.side{height:174px}
+}
+
+/* chi è Colombo */
+.house{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:48px var(--col-gap);align-items:start}
+.house figure{margin:0;background:var(--cellar);aspect-ratio:4/5;overflow:hidden;position:sticky;top:128px}
+.house figure img{width:100%;height:100%;object-fit:cover}
+.house .ch-title p{font-weight:300;font-size:18px;color:var(--ink)}
+.notes{margin-top:36px;display:grid}
+.note{display:grid;grid-template-columns:minmax(0,170px) minmax(0,1fr);gap:24px;padding:24px 0;border-top:1px solid var(--rule)}
+.note h3{font-size:22px}
+.note p{max-width:60ch;color:var(--ink-2)}
+.house .spec-dl{margin-top:28px}
+@media (max-width:900px){.house{grid-template-columns:1fr}.house figure{position:static;aspect-ratio:4/3}}
+@media (max-width:620px){.note{grid-template-columns:1fr;gap:6px}}
+
+/* iscrizione */
+.join{position:relative;isolation:isolate;background:var(--ivory);padding-block:56px 80px;overflow:hidden}
+.join::before{content:"";position:absolute;inset:0;z-index:-1;background:url(img/pattern-chiara.jpg) center/1137px auto repeat;filter:sepia(.25) brightness(.7) contrast(2.2) brightness(1.2);opacity:.12;mix-blend-mode:multiply;pointer-events:none}
+.join-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:48px var(--col-gap);align-items:start}
+.join .ch-title p{max-width:44ch}
+.join .perks{margin-top:28px;max-width:46ch}
+.form{background:var(--paper);border:1px solid var(--rule);padding:36px;display:grid;gap:20px}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px var(--col-gap)}
+.field{display:grid;gap:8px;min-width:0}
+.field.full{grid-column:1/-1}
+.field label{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.field input{height:52px;border:0;border-bottom:1px solid var(--ink-3);background:transparent;padding:0;font:inherit;font-size:17px;color:var(--ink);border-radius:0;min-width:0;width:100%}
+.field input:focus{outline:none;border-bottom:2px solid var(--gold)}
+.field input:focus-visible{outline:none}
+.field input[aria-invalid="true"]{border-bottom-color:#9b2c1f}
+.field .hint{font-size:13px;color:var(--ink-3)}
+.field .err{font-size:13px;color:#9b2c1f;display:none}
+.field.bad .err{display:block}
+.field.bad .hint{display:none}
+.check{display:grid;grid-template-columns:22px minmax(0,1fr);gap:12px;font-size:14.5px;color:var(--ink-2);align-items:start;cursor:pointer}
+.check input{appearance:none;-webkit-appearance:none;width:20px;height:20px;border:1px solid var(--ink-3);margin:2px 0 0;display:grid;place-items:center;cursor:pointer;background:var(--paper)}
+.check input:checked{background:var(--ink);border-color:var(--ink)}
+.check input:checked::after{content:"";width:10px;height:6px;border-left:1.5px solid #fff;border-bottom:1.5px solid #fff;transform:translateY(-1px) rotate(-45deg)}
+.check a{color:var(--ink)}
+.check.bad input{border-color:#9b2c1f}
+.form .add{width:100%;flex:none}
+.form .small{font-size:13.5px;color:var(--ink-3)}
+.form .small a{color:var(--ink)}
+.done-msg{display:none;gap:16px}
+.form.sent .fields,.form.sent .check,.form.sent .add,.form.sent .small{display:none}
+.form.sent .done-msg{display:grid}
+.done-msg h3{font-size:30px}
+.done-msg p{color:var(--ink-2)}
+.done-msg .code{justify-self:start;font-family:var(--display);font-size:22px;letter-spacing:.08em;border:1px dashed var(--brand-gold);padding:10px 18px;color:var(--ink)}
+@media (max-width:900px){.join-grid{grid-template-columns:1fr}.join{padding-block:64px}}
+@media (max-width:560px){.fields{grid-template-columns:1fr}.form{padding:24px 20px}}
+
+footer{position:relative;isolation:isolate;overflow:hidden;background:#fff;border-top:1px solid var(--rule);color:var(--ink-2);font-size:14px;padding-block:56px calc(56px + env(safe-area-inset-bottom,0px))}
+footer .wrap{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:32px var(--col-gap);align-items:start}
+.f-brand{grid-column:span 3}
+footer nav{grid-column:span 1}
+footer .f-bottom{grid-column:1/-1}
+footer h2{font-family:var(--text);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--ink);margin-bottom:14px}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+footer a{color:var(--ink-2);text-decoration:none}
+footer a:hover{color:var(--gold-ink)}
+.f-brand{display:grid;gap:18px}
+footer .f-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;margin-top:40px;padding-top:20px;position:relative;font-size:13.5px}
+@media (max-width:900px){footer .wrap{grid-template-columns:repeat(2,minmax(0,1fr))}.f-brand{grid-column:1/-1}}
+footer .brand{width:130px}
+footer .f-bottom::before{content:"";position:absolute;top:0;left:16px;right:16px;height:1px;background:var(--rule)}
+@media (min-width:760px){footer .f-bottom::before{left:48px;right:48px}}
+footer::before{content:"";position:absolute;inset:0;z-index:-1;background:url(img/pattern-chiara.jpg) center/cover no-repeat;opacity:.4;pointer-events:none}
+footer p{max-width:46ch}
+footer b{color:var(--ink);font-weight:500}
+
+/* barra mobile */
+.mbar{display:none}
+@media (max-width:900px){
+  .mbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--paper);border-top:1px solid var(--rule);padding:10px var(--gutter-r) calc(10px + env(safe-area-inset-bottom,0px)) var(--gutter);gap:14px;align-items:center;transform:translateY(110%);transition:transform .45s cubic-bezier(.16,1,.3,1)}
+  .mbar.show{transform:none}
+  .mbar .t{font-family:var(--display);font-size:19px;line-height:1.15}
+  .mbar small{display:block;font-size:12px;color:var(--ink-3)}
+  .mbar .add{min-width:0;height:48px;font-size:13px;flex:0 0 auto;padding:0 22px}
+  footer{padding-bottom:calc(120px + env(safe-area-inset-bottom,0px))}
+}
+@media (prefers-reduced-motion:reduce){.mbar{transition:none}.spec-dl svg{transition:none}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="gem" viewBox="0 0 16 16"><path d="M4 2h8l3 4-7 8-7-8 3-4Z" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M1 6h14M6 2 5 6l3 8 3-8-1-4" fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round"/></symbol>
+  <symbol id="user" viewBox="0 0 20 20"><circle cx="10" cy="7" r="3.4" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M3.5 17c.9-3.2 3.4-5 6.5-5s5.6 1.8 6.5 5" fill="none" stroke="currentColor" stroke-width="1.3"/></symbol>
+  <symbol id="bag" viewBox="0 0 20 20"><path d="M4 6h12l-1 11H5L4 6Z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M7.5 8V5a2.5 2.5 0 0 1 5 0v3" fill="none" stroke="currentColor" stroke-width="1.3"/></symbol>
+  <symbol id="menu" viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h12" stroke="currentColor" stroke-width="1.4" fill="none"/></symbol>
+  <symbol id="arrow" viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M16.5 12.5 24 20l-7.5 7.5" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+</svg>
+
+<div class="welcome"><div class="wrap"><span>Iscriviti al club: ricevi via mail un codice per il <b>10% sul primo ordine</b>.</span><a href="#iscrizione">Iscriviti</a></div></div>
+
+<header class="head">
+  <div class="wrap">
+    <div style="display:flex;align-items:center;gap:8px">
+      <button class="burger" aria-label="Apri il menu"><svg width="24" height="24"><use href="#menu"/></svg></button>
+      <ul class="menu">
+        <li><a href="#bestseller">Vini</a></li>
+        <li><a href="#collezioni">Formati speciali</a></li>
+        <li><a href="#livelli">Il club</a></li>
+      </ul>
+    </div>
+    <a class="brand" href="#" aria-current="page"><img src="img/logo-wine-club.png" alt="Colombo Wine Club" width="600" height="329"></a>
+    <div class="me">
+      <a class="lvl" href="#iscrizione"><svg class="gem"><use href="#gem"/></svg><span class="full"><b>Iscriviti</b> · è gratis</span><span class="short" aria-hidden="true"><b>Iscriviti</b></span></a>
+      <a class="acct" href="#accedi"><svg width="20" height="20"><use href="#user"/></svg><span class="lbl">Accedi</span></a>
+      <a class="cart" href="#ordine"><svg width="20" height="20"><use href="#bag"/></svg><span class="sr">Carrello</span><span class="count num">0</span></a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero" aria-labelledby="hero-t">
+    <figure class="cellar">
+      <div class="bottles">
+        <img class="side" src="img/COL-Blanc-de-blancs.png" alt="" width="310" height="1100">
+        <img class="hero-b" src="img/COL-Blanc-de-noirs-g.png" alt="Bottiglie di Alta Langa Colombo: Blanc de Blancs, Blanc de Noir e Rosé" width="310" height="1100">
+        <img class="side" src="img/COL-Rose.png" alt="" width="310" height="1100">
+      </div>
+    </figure>
+
+    <div class="sheet">
+      <div>
+        <h1 id="hero-t">Il club dei vini Colombo</h1>
+        <p class="denom">Alta Langa e Pinot Nero · Bubbio, Val Bormida</p>
+      </div>
+      <p class="lead">Tutti i vini della cantina, le collezioni del club e le edizioni numerate, spediti a casa tua. Ogni ordine vale Gemme: con le Gemme sali di livello, e il livello resta tuo.</p>
+      <div class="cta">
+        <a class="add" href="#iscrizione">Iscriviti gratis</a>
+        <a class="add line" href="#bestseller">Scopri i vini</a>
+      </div>
+      <span class="gems"><svg class="gem"><use href="#gem"/></svg><span>Con l'iscrizione ricevi un codice per il <b>10% sul primo ordine</b>.</span></span>
+      <div class="award">
+        <img src="img/tre-bicchieri-2026.png" alt="Tre Bicchieri Gambero Rosso" width="54" height="42">
+        <span>Alta Langa Blanc de Noir: Tre Bicchieri, Gambero Rosso · Vini d'Italia 2026, assegnati all'annata 2021.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="livelli" aria-labelledby="livelli-t">
+    <div class="wrap">
+      <div class="divider" aria-hidden="true"><span></span><img src="img/ricciolo.png" alt="" width="343" height="277"></div>
+      <div class="ch-title"><h2 id="livelli-t">I livelli del club</h2><p>Si entra Silver, gratis. Ogni euro speso vale una Gemma, e con le Gemme si sale: i livelli non si perdono mai.</p></div>
+      <ol class="tiers">
+        <li>
+          <h3>Silver</h3>
+          <p class="how">Con l'iscrizione</p>
+          <ul class="perks">
+            <li><span>Tutti i vini della cantina e le collezioni del club</span></li>
+            <li><span><b>10%</b> sul primo ordine con il codice di benvenuto</span></li>
+            <li><span>Una Gemma per ogni euro, e Gemme doppie nelle campagne del club</span></li>
+            <li><span>Spedizione gratuita in Italia sopra <b class="num">€ 210</b></span></li>
+          </ul>
+        </li>
+        <li>
+          <h3>Gold</h3>
+          <p class="how">Da <span class="num">500</span> Gemme</p>
+          <ul class="perks">
+            <li><span><b>Prezzo Gold</b> su tutti i vini e le collezioni</span></li>
+            <li><span>Spedizione gratuita in Italia sopra <b class="num">€ 190</b></span></li>
+            <li><span>Un regalo per il tuo compleanno e per l'anniversario nel club</span></li>
+          </ul>
+        </li>
+        <li class="top">
+          <h3>Platinum</h3>
+          <p class="how">Da <span class="num">2.000</span> Gemme</p>
+          <ul class="perks">
+            <li><span>Il prezzo Gold, sempre</span></li>
+            <li><span>Accesso in anteprima alle nuove uscite e alle edizioni numerate</span></li>
+            <li><span>Visita e degustazione in cantina con la famiglia Colombo</span></li>
+          </ul>
+        </li>
+      </ol>
+      <p class="gem-rule"><svg class="gem"><use href="#gem"/></svg>Il prezzo Gold di ogni vino è visibile ai soci dopo l'iscrizione.</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="bestseller" aria-labelledby="best-t">
+    <div class="wrap">
+      <div class="divider" aria-hidden="true"><span></span><img src="img/ricciolo.png" alt="" width="343" height="277"></div>
+      <div class="ch-head">
+        <div class="ch-title"><h2 id="best-t">I più scelti dai soci</h2></div>
+        <a class="spec-dl" href="#">Tutti i vini<svg width="28" height="28" aria-hidden="true"><use href="#arrow"/></svg></a>
+      </div>
+      <ul class="cards">
+        <li class="card"><a class="cover" href="scheda-vino.html" aria-label="Alta Langa Blanc de Noir"></a><div class="shot"><img src="img/COL-Blanc-de-noirs-g.png" alt="" loading="lazy" width="310" height="1100"></div><div class="body"><h3>Alta Langa Blanc de Noir</h3><p class="what">Alta Langa DOCG · Extra Brut · 2022</p><div class="row"><span class="p num">€ 38,00</span><span class="vat">IVA inclusa</span></div><span class="gold-price"><svg class="gem"><use href="#gem"/></svg><span><b>Gold</b> · prezzo riservato ai soci</span></span><a class="btn line" href="scheda-vino.html">Scopri il vino</a></div></li>
+        <li class="card"><a class="cover" href="#" aria-label="Alta Langa Rosé"></a><div class="shot"><img src="img/COL-Rose.png" alt="" loading="lazy" width="310" height="1100"></div><div class="body"><h3>Alta Langa Rosé</h3><p class="what">Alta Langa DOCG · Brut</p><div class="row"><span class="p num">€ 38,00</span><span class="vat">IVA inclusa</span></div><span class="gold-price"><svg class="gem"><use href="#gem"/></svg><span><b>Gold</b> · prezzo riservato ai soci</span></span><a class="btn line" href="#">Scopri il vino</a></div></li>
+        <li class="card"><a class="cover" href="#" aria-label="Natusia"></a><div class="shot"><img src="img/COL-Natusia.png" alt="" loading="lazy" width="310" height="1100"></div><div class="body"><h3>Natusia</h3><p class="what">Metodo classico</p><div class="row"><span class="p num">€ 29,00</span><span class="vat">IVA inclusa</span></div><span class="gold-price"><svg class="gem"><use href="#gem"/></svg><span><b>Gold</b> · prezzo riservato ai soci</span></span><a class="btn line" href="#">Scopri il vino</a></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="collection" id="collezioni" aria-labelledby="coll-t">
+    <div class="wrap">
+      <div class="divider" aria-hidden="true"><span></span><img src="img/ricciolo.png" alt="" width="343" height="277"></div>
+      <div class="ch-title"><h2 id="coll-t">Le collezioni del club</h2><p>Tre vini scelti per essere aperti insieme: le selezioni pensate per i soci, anche da regalare.</p></div>
+      <ul class="cards">
+        <li class="card"><a class="cover" href="#" aria-label="Trilogia Alta Langa"></a><div class="shot trio"><img class="side" src="img/COL-Blanc-de-blancs.png" alt="" loading="lazy" width="310" height="1100"><img class="hero-b" src="img/COL-Blanc-de-noirs-g.png" alt="" loading="lazy" width="310" height="1100"><img class="side" src="img/COL-Rose.png" alt="" loading="lazy" width="310" height="1100"></div><div class="body"><p class="kind">Blanc de Blancs · Blanc de Noir · Rosé</p><h3>Trilogia Alta Langa</h3><div class="row"><span class="p num">€ 99,00</span><span class="vat">IVA inclusa</span></div><span class="gold-price"><svg class="gem"><use href="#gem"/></svg><span><b>Gold</b> · prezzo riservato ai soci</span></span><a class="btn" href="#">Scopri la collezione</a></div></li>
+        <li class="card"><a class="cover" href="#" aria-label="Trilogia Metodo classico"></a><div class="shot trio"><img class="side" src="img/COL-Natusia.png" alt="" loading="lazy" width="310" height="1100"><img class="hero-b" src="img/COL-Blanc-de-noirs-g.png" alt="" loading="lazy" width="310" height="1100"><img class="side" src="img/COL-Blanc-de-blancs.png" alt="" loading="lazy" width="310" height="1100"></div><div class="body"><p class="kind">Natusia · Blanc de Noir · Blanc de Blancs</p><h3>Trilogia Metodo classico</h3><div class="row"><span class="p num">€ 95,00</span><span class="vat">IVA inclusa</span></div><span class="gold-price"><svg class="gem"><use href="#gem"/></svg><span><b>Gold</b> · prezzo riservato ai soci</span></span><a class="btn" href="#">Scopri la collezione</a></div></li>
+        <li class="card"><a class="cover" href="#" aria-label="Trilogia Pinot Nero"></a><div class="shot trio"><img class="side" src="img/COL-Apertura.png" alt="" loading="lazy" width="310" height="1100"><img class="hero-b" src="img/COL-Maxima.png" alt="" loading="lazy" width="310" height="1100"><img class="side" src="img/COL-Pinot-nero.png" alt="" loading="lazy" width="310" height="1100"></div><div class="body"><p class="kind">Apertura · Maxima · Pinot nero</p><h3>Trilogia Pinot Nero</h3><div class="row"><span class="p num">€ 89,00</span><span class="vat">IVA inclusa</span></div><span class="gold-price"><svg class="gem"><use href="#gem"/></svg><span><b>Gold</b> · prezzo riservato ai soci</span></span><a class="btn" href="#">Scopri la collezione</a></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="chapter" id="colombo" aria-labelledby="colombo-t">
+    <div class="wrap">
+      <div class="divider" aria-hidden="true"><span></span><img src="img/ricciolo.png" alt="" width="343" height="277"></div>
+      <div class="house">
+        <figure><img src="img/vigne.jpg" alt="Le vigne Colombo a Bubbio, in Val Bormida" loading="lazy" width="1400" height="1400"></figure>
+        <div>
+          <div class="ch-title"><h2 id="colombo-t">Chi è Colombo</h2><p>Una famiglia di vignaioli a Bubbio, in Val Bormida, nell'Alta Langa astigiana. Pinot Nero e metodo classico da vigne vecchie, seguiti dalla vigna alla bottiglia.</p></div>
+          <div class="notes">
+            <div class="note"><h3>Le vigne</h3><p>Vigne vecchie di almeno 80 anni, sulle colline di Bubbio in Val Bormida.</p></div>
+            <div class="note"><h3>Solo millesimati</h3><p>Ogni vino Colombo porta l'annata della sua vendemmia: Alta Langa DOCG, metodo classico e Pinot Nero.</p></div>
+            <div class="note"><h3>Il "60 mesi"</h3><p>L'Alta Langa Blanc de Noir che resta 60 mesi sui lieviti: 1.000 bottiglie numerate, in uscita nel 2028. I soci saranno i primi a saperlo.</p></div>
+            <div class="note"><h3>La famiglia</h3><p>Nel club il rapporto è diretto: con la cantina e con la famiglia Colombo, senza intermediari.</p></div>
+          </div>
+          <a class="spec-dl" href="https://colombovino.it/">La storia su colombovino.it<svg width="28" height="28" aria-hidden="true"><use href="#arrow"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="join" id="iscrizione" aria-labelledby="join-t">
+    <div class="wrap">
+      <div class="divider" aria-hidden="true"><span></span><img src="img/ricciolo.png" alt="" width="343" height="277"></div>
+      <div class="join-grid">
+        <div>
+          <div class="ch-title"><h2 id="join-t">Entra nel club</h2><p>L'iscrizione è gratuita e riservata ai maggiori di 18 anni. Bastano un minuto e un indirizzo email.</p></div>
+          <ul class="perks">
+            <li><span>Il codice per il <b>10% sul primo ordine</b>, subito via mail</span></li>
+            <li><span>Il prezzo Gold di ogni vino, visibile appena entri</span></li>
+            <li><span>Le Gemme dal primo acquisto e le novità della cantina</span></li>
+          </ul>
+        </div>
+
+        <form class="form" id="joinForm" novalidate>
+          <div class="fields">
+            <div class="field"><label for="f-nome">Nome</label><input id="f-nome" name="nome" autocomplete="given-name" required><span class="err">Scrivi il tuo nome.</span></div>
+            <div class="field"><label for="f-cognome">Cognome</label><input id="f-cognome" name="cognome" autocomplete="family-name" required><span class="err">Scrivi il tuo cognome.</span></div>
+            <div class="field full"><label for="f-mail">Email</label><input id="f-mail" name="email" type="email" autocomplete="email" inputmode="email" required><span class="err">Controlla l'indirizzo email.</span></div>
+            <div class="field full"><label for="f-nascita">Data di nascita</label><input id="f-nascita" name="nascita" type="date" autocomplete="bday" required><span class="hint">Il club è riservato ai maggiori di 18 anni.</span><span class="err">Per iscriverti devi avere almeno 18 anni.</span></div>
+          </div>
+          <label class="check" id="c-privacy"><input type="checkbox" name="privacy" required><span>Ho letto la <a href="#">privacy policy</a> e accetto i <a href="#">termini del club</a>.</span></label>
+          <label class="check"><input type="checkbox" name="news"><span>Voglio ricevere via mail le novità della cantina e le campagne del club.</span></label>
+          <button type="submit" class="add">Iscriviti gratis</button>
+          <p class="small">Sei già socio? <a href="#accedi">Accedi</a></p>
+          <div class="done-msg" role="status" aria-live="polite">
+            <h3 id="doneTitle">Benvenuto nel club</h3>
+            <p>Ti abbiamo inviato una mail per confermare l'indirizzo. Dentro trovi il codice per il 10% sul primo ordine.</p>
+            <span class="code">BENVENUTO10</span>
+            <a class="spec-dl" href="#bestseller">Inizia dai vini<svg width="28" height="28" aria-hidden="true"><use href="#arrow"/></svg></a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-brand">
+      <span class="brand"><img src="img/logo-wine-club.png" alt="Colombo Wine Club" width="600" height="329" loading="lazy"></span>
+      <p><b>Colombo Antonio e Figli</b><br>Società Agricola Semplice<br>Reg. Cafra 172/B, Bubbio 14051 (Asti)<br>P.IVA 01317970059</p>
+    </div>
+    <nav aria-label="Il club"><h2>Il club</h2><ul><li><a href="#">Come funziona</a></li><li><a href="#livelli">Livelli e Gemme</a></li><li><a href="#">Porta un amico</a></li><li><a href="#">Carta regalo</a></li><li><a href="#">Domande frequenti</a></li></ul></nav>
+    <nav aria-label="Assistenza"><h2>Assistenza</h2><ul><li><a href="#">Spedizioni</a></li><li><a href="#">Resi e diritto di recesso</a></li><li><a href="#">Termini e condizioni di vendita</a></li><li><a href="#">Contatti</a></li></ul></nav>
+    <nav aria-label="Informazioni legali"><h2>Legale</h2><ul><li><a href="#">Privacy policy</a></li><li><a href="#">Cookie policy</a></li><li><a href="https://colombovino.it/">colombovino.it</a></li></ul></nav>
+  </div>
+  <div class="wrap f-bottom"><span>info@colombovino.it · Sala degustazione 338 8703900</span><span>Vendita riservata ai maggiori di 18 anni</span></div>
+</footer>
+
+<div class="mbar" id="mbar" aria-hidden="true">
+  <div><span class="t">Entra nel club</span><small>Gratis · 10% sul primo ordine</small></div>
+  <a class="add" id="mJoin" href="#iscrizione" tabindex="-1">Iscriviti</a>
+</div>
+
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+
+  // barra mobile: compare dopo la prima schermata, sparisce sul form
+  var mbar=$('mbar'), hero=document.querySelector('.hero'), join=$('iscrizione'), ticking=false;
+  function bar(){
+    ticking=false;
+    var past=hero.getBoundingClientRect().bottom<0;
+    var j=join.getBoundingClientRect();
+    var atForm=j.top<innerHeight && j.bottom>0;
+    var show=past && !atForm;
+    mbar.classList.toggle('show',show);
+    mbar.setAttribute('aria-hidden',show?'false':'true');
+    $('mJoin').tabIndex=show?0:-1;
+  }
+  addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(bar)}},{passive:true});
+  addEventListener('resize',bar);
+  bar();
+
+  // iscrizione
+  var form=$('joinForm');
+  function setBad(input,bad){
+    var box=input.closest('.field')||input.closest('.check');
+    box.classList.toggle('bad',bad);
+    input.setAttribute('aria-invalid',bad?'true':'false');
+  }
+  function adult(v){
+    if(!v) return false;
+    var b=new Date(v+'T00:00:00'), t=new Date();
+    var age=t.getFullYear()-b.getFullYear();
+    var m=t.getMonth()-b.getMonth();
+    if(m<0||(m===0&&t.getDate()<b.getDate())) age--;
+    return age>=18 && age<120;
+  }
+  function check(input){
+    var v=input.value.trim(), ok=true;
+    if(input.name==='nome'||input.name==='cognome') ok=v.length>0;
+    if(input.name==='email') ok=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+    if(input.name==='nascita') ok=adult(input.value);
+    if(input.name==='privacy') ok=input.checked;
+    setBad(input,!ok);
+    return ok;
+  }
+  form.querySelectorAll('input[required]').forEach(function(i){
+    i.addEventListener(i.type==='checkbox'?'change':'blur',function(){ if(i.type==='checkbox'||i.value) check(i) });
+  });
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var first=null;
+    form.querySelectorAll('input[required]').forEach(function(i){ if(!check(i)&&!first) first=i });
+    if(first){ first.focus(); return }
+    var name=$('f-nome').value.trim();
+    $('doneTitle').textContent='Benvenuto nel club, '+name;
+    form.classList.add('sent');
+    $('doneTitle').setAttribute('tabindex','-1');
+    $('doneTitle').focus();
+  });
+})();
+</script>
+
+</body>
+</html>
