@@ -80,7 +80,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .cart .count{min-width:22px;height:22px;border-radius:11px;background:var(--ink);color:#fff;font-size:12px;display:grid;place-items:center;padding:0 6px;transition:transform .5s cubic-bezier(.16,1,.3,1)}
 .cart .count.bump{transform:scale(1.25)}
 .burger{display:none;background:none;border:0;padding:8px;margin-left:-8px}
-.gem{width:14px;height:14px;flex:none;color:var(--gold)}
+.gem{width:17px;height:auto;flex:none}
 .me .short{display:none}
 @media (max-width:980px){.menu{display:none}.burger{display:block}.me .full{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.me .short{display:inline}.me{gap:14px;font-size:13px}.brand{width:92px}}
 
@@ -352,7 +352,7 @@ footer b{color:var(--ink);font-weight:500}
     </div>
     <a class="brand" href="#"><img src="img/logo-wine-club.png" alt="Colombo Wine Club" width="600" height="329"></a>
     <div class="me">
-      <a class="lvl" href="#account" title="Il tuo livello e le tue Gemme"><svg class="gem"><use href="#gem"/></svg><span class="full"><b>Silver</b> · <span class="num" id="gemTotal">120</span> Gemme</span><span class="short" aria-hidden="true"><b>Silver</b> · <span class="num">120</span></span></a>
+      <a class="lvl" href="#account" title="Il tuo livello e le tue Gemme"><img class="gem" src="img/gemma.png" alt="" width="81" height="72"><span class="full"><b>Silver</b> · <span class="num" id="gemTotal">120</span> Gemme</span><span class="short" aria-hidden="true"><b>Silver</b> · <span class="num">120</span></span></a>
       <a class="acct" href="#account"><svg width="20" height="20"><use href="#user"/></svg><span class="lbl">Area riservata</span></a>
       <a class="cart" href="#ordine"><svg width="20" height="20"><use href="#bag"/></svg><span class="sr">Carrello</span><span class="count num" id="cartCount">2</span></a>
     </div>
@@ -380,7 +380,7 @@ footer b{color:var(--ink);font-weight:500}
             <span class="next">Con Gold <b class="num">€ 34,00</b> · <a href="#livelli">Scopri i livelli</a></span>
           </div>
         </div>
-        <span class="gems"><svg class="gem"><use href="#gem"/></svg><span>Con questo ordine guadagni <b class="num" id="gemsEarn">38</b> Gemme</span></span>
+        <span class="gems"><img class="gem" src="img/gemma.png" alt="" width="81" height="72"><span>Con questo ordine guadagni <b class="num" id="gemsEarn">38</b> Gemme</span></span>
         <div class="controls">
           <div class="qty" role="group" aria-label="Quantità">
             <button type="button" id="minus" aria-label="Togli una bottiglia" disabled><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7h10" stroke="currentColor" stroke-width="1.3"/></svg></button>
@@ -428,9 +428,9 @@ footer b{color:var(--ink);font-weight:500}
       <h2 id="cofanetti">Lo trovi anche in</h2>
       <p class="intro">Le collezioni e i cofanetti del club che includono questo vino.</p>
       <ul class="cards">
-        <li class="card coll"><a class="cover" href="#" aria-label="Trilogia Alta Langa"></a><div class="shot trio"><img class="side" src="img/COL-Blanc-de-blancs.png" alt="" loading="lazy" width="310" height="1100"><img class="hero" src="img/COL-Blanc-de-noirs-g.png" alt="" loading="lazy" width="310" height="1100"><img class="side" src="img/COL-Rose.png" alt="" loading="lazy" width="310" height="1100"></div><div class="body"><p class="kind">Blanc de Blancs · Blanc de Noir · Rosé</p><h3>Trilogia Alta Langa</h3><div class="row"><span class="p num">€ 99,00</span><span class="g"><svg class="gem"><use href="#gem"/></svg><span class="num">99</span> Gemme</span></div><a class="btn" href="#">Scopri la collezione</a></div></li>
-        <li class="card coll"><a class="cover" href="#" aria-label="Trilogia Metodo classico"></a><div class="shot trio"><img class="side" src="img/COL-Natusia.png" alt="" loading="lazy" width="310" height="1100"><img class="hero" src="img/COL-Blanc-de-noirs-g.png" alt="" loading="lazy" width="310" height="1100"><img class="side" src="img/COL-Blanc-de-blancs.png" alt="" loading="lazy" width="310" height="1100"></div><div class="body"><p class="kind">Natusia · Blanc de Noir · Blanc de Blancs</p><h3>Trilogia Metodo classico</h3><div class="row"><span class="p num">€ 95,00</span><span class="g"><svg class="gem"><use href="#gem"/></svg><span class="num">95</span> Gemme</span></div><a class="btn" href="#">Scopri la collezione</a></div></li>
-        <li class="card coll"><a class="cover" href="#" aria-label="Blanc de Noir e stopper"></a><div class="shot trio"><img class="hero" src="img/COL-Blanc-de-noirs-g.png" alt="" loading="lazy" width="310" height="1100"><span class="plus" aria-hidden="true"><i><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7h10M7 2v10" stroke="currentColor" stroke-width="1.3"/></svg></i>Stopper<br>Colombo</span></div><div class="body"><p class="kind">Una bottiglia · Stopper Colombo</p><h3>Blanc de Noir e stopper</h3><div class="row"><span class="p num">€ 42,00</span><span class="g"><svg class="gem"><use href="#gem"/></svg><span class="num">42</span> Gemme</span></div><a class="btn" href="#">Scopri il cofanetto</a></div></li>
+        <li class="card coll"><a class="cover" href="#" aria-label="Trilogia Alta Langa"></a><div class="shot trio"><img class="side" src="img/COL-Blanc-de-blancs.png" alt="" loading="lazy" width="310" height="1100"><img class="hero" src="img/COL-Blanc-de-noirs-g.png" alt="" loading="lazy" width="310" height="1100"><img class="side" src="img/COL-Rose.png" alt="" loading="lazy" width="310" height="1100"></div><div class="body"><p class="kind">Blanc de Blancs · Blanc de Noir · Rosé</p><h3>Trilogia Alta Langa</h3><div class="row"><span class="p num">€ 99,00</span><span class="g"><img class="gem" src="img/gemma.png" alt="" width="81" height="72"><span class="num">99</span> Gemme</span></div><a class="btn" href="#">Scopri la collezione</a></div></li>
+        <li class="card coll"><a class="cover" href="#" aria-label="Trilogia Metodo classico"></a><div class="shot trio"><img class="side" src="img/COL-Natusia.png" alt="" loading="lazy" width="310" height="1100"><img class="hero" src="img/COL-Blanc-de-noirs-g.png" alt="" loading="lazy" width="310" height="1100"><img class="side" src="img/COL-Blanc-de-blancs.png" alt="" loading="lazy" width="310" height="1100"></div><div class="body"><p class="kind">Natusia · Blanc de Noir · Blanc de Blancs</p><h3>Trilogia Metodo classico</h3><div class="row"><span class="p num">€ 95,00</span><span class="g"><img class="gem" src="img/gemma.png" alt="" width="81" height="72"><span class="num">95</span> Gemme</span></div><a class="btn" href="#">Scopri la collezione</a></div></li>
+        <li class="card coll"><a class="cover" href="#" aria-label="Blanc de Noir e stopper"></a><div class="shot trio"><img class="hero" src="img/COL-Blanc-de-noirs-g.png" alt="" loading="lazy" width="310" height="1100"><span class="plus" aria-hidden="true"><i><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7h10M7 2v10" stroke="currentColor" stroke-width="1.3"/></svg></i>Stopper<br>Colombo</span></div><div class="body"><p class="kind">Una bottiglia · Stopper Colombo</p><h3>Blanc de Noir e stopper</h3><div class="row"><span class="p num">€ 42,00</span><span class="g"><img class="gem" src="img/gemma.png" alt="" width="81" height="72"><span class="num">42</span> Gemme</span></div><a class="btn" href="#">Scopri il cofanetto</a></div></li>
       </ul>
     </div>
   </section>
