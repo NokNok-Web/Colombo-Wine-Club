@@ -575,8 +575,8 @@ footer .mini{width:90px;color:var(--gold);margin:0 auto 14px;display:block}
         <tbody>
           <tr><td>Visitatore</td><td>Prezzo da enoteca</td><td>Vini, collezioni, livelli e vantaggi</td><td>Iscriversi</td></tr>
           <tr><td>Cliente <span class="muted" style="font-family:var(--body);font-size:14px">(livelli 1, 2, 3, 4)</span></td><td>Prezzo da enoteca al livello 1, <span class="yes">prezzo da cantina</span> dal livello 2</td><td>Vini, collezioni e area personale. Dal livello 2 anche le edizioni riservate, dal livello 3 vecchie annate e anteprime</td><td>Acquistare, accumulare punti, usare i vantaggi del proprio livello</td></tr>
-          <tr><td>Distributore <span class="muted" style="font-family:var(--body);font-size:14px">(area B2B)</span></td><td class="yes">Listino distributori</td><td>Tutti i vini, con i prezzi a lui dedicati</td><td>Ordinare da subito, dopo l'approvazione dell'account</td></tr>
-          <tr><td>Ristoratore <span class="muted" style="font-family:var(--body);font-size:14px">(area B2B)</span></td><td class="yes">Listino ristoratori</td><td>Tutti i vini, con i prezzi a lui dedicati</td><td>Ordinare da subito, dopo l'approvazione dell'account</td></tr>
+          <tr><td>Distributore <span class="muted" style="font-family:var(--body);font-size:14px">(area B2B)</span></td><td class="yes">Listino distributori</td><td>Tutti i vini, con i prezzi a lui dedicati</td><td>Ordinare da subito, dopo la verifica della partita IVA</td></tr>
+          <tr><td>Ristoratore <span class="muted" style="font-family:var(--body);font-size:14px">(area B2B)</span></td><td class="yes">Listino ristoratori</td><td>Tutti i vini, con i prezzi a lui dedicati</td><td>Ordinare da subito, dopo la verifica della partita IVA</td></tr>
           <tr><td>Gestore e-commerce</td><td class="no">—</td><td>Dashboard</td><td>Ordini, prodotti, clienti, campagne</td></tr>
           <tr><td>Amministratore</td><td class="no">—</td><td>Dashboard completa</td><td>Tutto, più utenti, listini e impostazioni</td></tr>
         </tbody>
@@ -584,12 +584,13 @@ footer .mini{width:90px;color:var(--gold);margin:0 auto 14px;display:block}
     </div>
 
     <h3 style="font-size:28px;margin:64px 0 8px">Come si entra nell'area B2B</h3>
-    <p class="muted" style="margin-bottom:24px;max-width:640px">I prezzi B2B sono più bassi, quindi l'accesso non è automatico. La proposta è che ogni account venga approvato da Colombo. I dettagli sono da definire insieme.</p>
+    <p class="muted" style="margin-bottom:24px;max-width:640px">L'accesso B2B è consentito solo con una partita IVA valida. Il sito la verifica in automatico al momento della registrazione, così i prezzi dedicati restano riservati alle aziende.</p>
     <ul class="rules">
-      <li><b>Richiesta</b><span>Il distributore o il ristoratore compila un modulo dedicato: ragione sociale, partita IVA, tipo di attività, paese, dati per la fatturazione.</span></li>
-      <li><b>In attesa</b><span>Finché la richiesta non è approvata, l'account vede i normali prezzi da enoteca.</span></li>
-      <li><b>Approvazione</b><span>Colombo riceve una notifica, controlla la richiesta dalla dashboard e assegna il listino: distributori o ristoratori. Il cliente riceve una mail di conferma.</span></li>
-      <li><b>Da definire</b><span>Chi approva, quali documenti chiedere, se i clienti B2B accumulano Gemme, come pagano (carta o bonifico) e come vengono spediti gli ordini ai distributori esteri.</span></li>
+      <li><b>Registrazione</b><span>Il distributore o il ristoratore inserisce partita IVA (o VAT number), paese, ragione sociale, tipo di attività e dati di fatturazione.</span></li>
+      <li><b>Verifica automatica</b><span>Il sito controlla la partita IVA sul registro europeo VIES della Commissione europea: dice se il numero è attivo e, per la maggior parte dei paesi, a quale azienda è intestato. La ragione sociale restituita viene confrontata con quella inserita.</span></li>
+      <li><b>Accesso</b><span>Se la verifica va a buon fine l'account è attivo subito, con il listino del tipo di attività scelto (distributori o ristoratori). Colombo vede ogni nuovo account in dashboard e può cambiare listino o bloccarlo.</span></li>
+      <li><b>Casi da controllare a mano</b><span>Se il numero non risulta su VIES (servizio momentaneamente non disponibile, partite IVA italiane non abilitate alle operazioni con l'estero, paesi fuori dall'Unione europea), l'account resta in attesa con i prezzi standard e Colombo lo approva dalla dashboard.</span></li>
+      <li><b>Da definire</b><span>Se usare anche un servizio a pagamento per le partite IVA italiane non presenti su VIES, se i clienti B2B accumulano Gemme, come pagano (carta o bonifico) e come vengono spediti gli ordini ai distributori esteri.</span></li>
     </ul>
   </div>
 </section>
@@ -681,7 +682,7 @@ footer .mini{width:90px;color:var(--gold);margin:0 auto 14px;display:block}
       <div class="principle"><h3>Soci</h3><p>Chi sono, a che livello, quanto hanno speso. Si può promuovere un socio a mano o invitarlo al livello 4.</p></div>
       <div class="principle"><h3>Campagne Gemme</h3><p>Si crea una campagna a Gemme doppie scegliendo prodotti e date. Si attiva e si chiude da sola.</p></div>
       <div class="principle"><h3>Inviti</h3><p>Si carica la lista dei clienti storici che hanno dato il consenso; il sistema crea i link personali e li passa a Brevo per l'invio.</p></div>
-      <div class="principle"><h3>Clienti B2B</h3><p>Le richieste di distributori e ristoratori arrivano in dashboard: si approvano o si rifiutano e si assegna il listino.</p></div>
+      <div class="principle"><h3>Clienti B2B</h3><p>Gli account con partita IVA verificata compaiono in dashboard; quelli non verificabili restano in attesa e si approvano o rifiutano da qui.</p></div>
     </div>
   </div>
 </section>
@@ -725,7 +726,7 @@ footer .mini{width:90px;color:var(--gold);margin:0 auto 14px;display:block}
     </div>
     <div class="road">
       <div class="phase now"><span class="pill solid" style="justify-self:start">Fase 1</span><h3>Apertura del club</h3>
-        <ul><li>Sito del club con i vini e l'area personale</li><li>Livelli 1, 2, 3 e sistema a Gemme</li><li>Area B2B per distributori e ristoratori, con approvazione</li><li>Pagamenti Stripe, Direct from Italy, Brevo</li><li>Dashboard della cantina</li><li>Invito ai clienti storici</li><li>Porta un amico, anniversario, compleanno, campagne e carta regalo</li><li>Logo del Wine Club</li></ul></div>
+        <ul><li>Sito del club con i vini e l'area personale</li><li>Livelli 1, 2, 3 e sistema a Gemme</li><li>Area B2B per distributori e ristoratori, con verifica della partita IVA</li><li>Pagamenti Stripe, Direct from Italy, Brevo</li><li>Dashboard della cantina</li><li>Invito ai clienti storici</li><li>Porta un amico, anniversario, compleanno, campagne e carta regalo</li><li>Logo del Wine Club</li></ul></div>
       <div class="phase"><span class="pill" style="justify-self:start">Fase 2</span><h3>Il club cresce</h3>
         <ul><li>Livello 4, solo su invito</li><li>Membership a pagamento: con una quota una tantum (per esempio 50 €) si entra subito al livello 2, senza aspettare di raggiungere 500 Gemme</li></ul></div>
       <div class="phase"><span class="pill" style="justify-self:start">2028</span><h3>Il "60 mesi"</h3>
@@ -759,7 +760,7 @@ footer .mini{width:90px;color:var(--gold);margin:0 auto 14px;display:block}
       <li><div><b>Account Stripe e Klarna</b><span>Da aprire a nome della società agricola, chiedendo l'approvazione di Klarna per la vendita di vino.</span></div></li>
       <li><div><b>Direct from Italy</b><span>Contatto tecnico: come ricevono gli ordini, tariffe per destinazione, tracciamento.</span></div></li>
       <li><div><b>Lista clienti storici</b><span>Solo chi ha dato il consenso alle comunicazioni.</span></div></li>
-      <li><div><b>Regole B2B</b><span>Chi approva gli account, listini distributori e ristoratori, metodo di pagamento.</span></div></li>
+      <li><div><b>Regole B2B</b><span>Chi approva i casi non verificabili, listini distributori e ristoratori, metodo di pagamento.</span></div></li>
       <li><div><b>Fatture B2B</b><span>Il sito raccoglie partita IVA e codice destinatario; la fattura elettronica si emette con il gestionale della cantina o con un collegamento da definire.</span></div></li>
       <li><div><b>Spedizioni B2B all'estero</b><span>Verificare con Direct from Italy se gestisce anche gli ordini dei distributori, che seguono regole fiscali diverse dai privati.</span></div></li>
       <li><div><b>Messaggio regalo</b><span>Chi prepara i pacchi stampa il biglietto: da organizzare con la cantina e Direct from Italy.</span></div></li>
