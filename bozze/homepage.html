@@ -464,7 +464,7 @@ footer b{color:var(--ink);font-weight:500}
             <p>Per distributori e ristoratori, in Italia e all'estero.</p>
             <ul class="gifts">
               <li><img class="gem" src="img/gemma.png" alt="" width="81" height="72"><span>Il <b>listino dedicato</b> alla tua attività su tutti i vini</span></li>
-              <li><img class="gem" src="img/gemma.png" alt="" width="81" height="72"><span>Ordini da subito, appena la cantina <b>approva l'account</b></span></li>
+              <li><img class="gem" src="img/gemma.png" alt="" width="81" height="72"><span>Ordini da subito, appena <b>verifichiamo la partita IVA</b></span></li>
             </ul>
           </div>
         </div>
@@ -490,7 +490,7 @@ footer b{color:var(--ink);font-weight:500}
                 <div class="field full"><label for="b-rs">Ragione sociale</label><input id="b-rs" name="ragione" autocomplete="organization" required><span class="err">Scrivi la ragione sociale.</span></div>
                 <div class="field"><label for="b-tipo">Attività</label><select id="b-tipo" name="tipo" required><option value="" selected disabled>Scegli</option><option>Distributore</option><option>Ristoratore</option></select><span class="err">Scegli il tipo di attività.</span></div>
                 <div class="field"><label for="b-paese">Paese</label><select id="b-paese" name="paese" required><option value="IT" selected>Italia</option><option value="UE">Altro paese dell'Unione europea</option><option value="EXTRA">Fuori dall'Unione europea</option></select></div>
-                <div class="field full"><label for="b-iva" id="b-iva-l">Partita IVA</label><input id="b-iva" name="iva" autocomplete="off" inputmode="numeric" required><span class="hint" id="b-iva-h">11 cifre. La verifichiamo prima di approvare l'account.</span><span class="err" id="b-iva-e">La partita IVA non è valida: controlla le 11 cifre.</span></div>
+                <div class="field full"><label for="b-iva" id="b-iva-l">Partita IVA</label><input id="b-iva" name="iva" autocomplete="off" inputmode="numeric" required><span class="hint" id="b-iva-h">11 cifre. La verifichiamo in automatico sul registro europeo VIES.</span><span class="err" id="b-iva-e">La partita IVA non è valida: controlla le 11 cifre.</span></div>
                 <div class="field"><label for="b-nome">Nome del referente</label><input id="b-nome" name="refnome" autocomplete="given-name" required><span class="err">Scrivi il nome.</span></div>
                 <div class="field"><label for="b-cognome">Cognome del referente</label><input id="b-cognome" name="refcognome" autocomplete="family-name" required><span class="err">Scrivi il cognome.</span></div>
               </div>
@@ -511,7 +511,7 @@ footer b{color:var(--ink);font-weight:500}
             <a class="spec-dl" href="vini.html">Inizia dai vini<svg width="28" height="28" aria-hidden="true"><use href="#arrow"/></svg></a>
           </div>
           <div data-for="b2b">
-            <p>La cantina verifica i dati della tua attività e assegna il listino. Ti scriviamo appena l'account è approvato; nel frattempo puoi già vedere i vini.</p>
+            <p>Verifichiamo la tua partita IVA sul registro europeo VIES: se è valida, il tuo account è attivo subito con il listino dedicato. Se la verifica automatica non è possibile, la cantina controlla i dati e ti scrive appena l'account è attivo.</p>
             <a class="spec-dl" href="vini.html">Guarda i vini<svg width="28" height="28" aria-hidden="true"><use href="#arrow"/></svg></a>
           </div>
         </div>
@@ -851,9 +851,9 @@ footer b{color:var(--ink);font-weight:500}
 
   // partita IVA, VAT number o numero fiscale estero a seconda del paese
   var IVA={
-    IT:{l:'Partita IVA',h:'11 cifre. La verifichiamo prima di approvare l’account.',e:'La partita IVA non è valida: controlla le 11 cifre.',m:'numeric'},
+    IT:{l:'Partita IVA',h:'11 cifre. La verifichiamo in automatico sul registro europeo VIES.',e:'La partita IVA non è valida: controlla le 11 cifre.',m:'numeric'},
     UE:{l:'VAT number',h:'Con il prefisso del paese, per esempio FR12345678901. Lo verifichiamo sul registro europeo VIES.',e:'Il VAT number non è valido: deve iniziare con il prefisso del paese.',m:'text'},
-    EXTRA:{l:'Numero fiscale dell’azienda',h:'Il numero fiscale della tua attività nel tuo paese (Tax ID).',e:'Scrivi il numero fiscale della tua attività.',m:'text'}
+    EXTRA:{l:'Numero fiscale dell’azienda',h:'Il numero fiscale della tua attività nel tuo paese (Tax ID). Lo verifica la cantina prima di attivare l’account.',e:'Scrivi il numero fiscale della tua attività.',m:'text'}
   };
   function paese(){
     var c=IVA[$('b-paese').value];
