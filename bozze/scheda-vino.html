@@ -95,8 +95,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .wine{margin-top:-93px;display:grid;grid-template-columns:calc(50% - var(--col-gap)/2) minmax(0,1fr);column-gap:var(--col-gap);min-height:min(860px,calc(100svh - 128px))}
 .cellar{margin:0;background:var(--vignette),var(--stage);position:relative;display:grid;place-items:start center;overflow:hidden;padding-block:149px 72px}
 .cellar::before,.card .shot::before{content:"";position:absolute;inset:0;background:url(img/pattern-chiara.jpg) center/1137px auto repeat;filter:sepia(.25) brightness(.7) contrast(2.2) brightness(1.2);opacity:.22;mix-blend-mode:multiply;pointer-events:none}
-.cellar::after{content:"";position:absolute;left:50%;top:calc(149px + clamp(420px,calc(100svh - 230px),680px) - 16px);width:44%;height:26px;transform:translateX(-50%);background:radial-gradient(50% 50% at 50% 50%, rgba(30,28,25,.28) 0%, rgba(30,28,25,0) 100%);filter:blur(4px);pointer-events:none}
-.cellar img{position:relative;z-index:1;height:clamp(420px,calc(100svh - 230px),680px);width:auto;filter:drop-shadow(0 24px 26px rgba(40,36,30,.22))}
+.cellar img{position:relative;z-index:1;height:clamp(420px,calc(100svh - 230px),680px);width:auto}
 .sheet{padding:181px max(48px,calc((100vw - var(--content))/2)) 48px 0;display:grid;gap:22px;align-content:start;min-width:0}
 .sheet h1{font-size:clamp(40px,4.6vw,66px)}
 .denom{font-size:15px;letter-spacing:.02em;color:var(--ink-2);margin-top:12px}
@@ -147,7 +146,6 @@ button{font:inherit;color:inherit;cursor:pointer}
 @media (max-width:900px){
   .wine{grid-template-columns:1fr;min-height:0}
   .cellar{height:auto;padding-block:117px 36px;place-items:center}
-  .cellar::after{top:calc(117px + clamp(300px,58svh,480px) - 12px)}
   .cellar img{height:clamp(300px,58svh,480px)}
   .sheet{padding:32px var(--gutter-r) 40px var(--gutter)}
   .spec{grid-template-columns:1fr}
