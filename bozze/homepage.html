@@ -805,8 +805,21 @@ footer b{color:var(--ink);font-weight:500}
 .shot.six img{height:200px;margin:0 -2px;max-width:none}
 .card .contents{font-size:13.5px;color:var(--ink-2);margin-top:2px}
 
+/* variante A: niente ombre, la bottiglia appoggia su un filetto oro */
+.card .shot{border-bottom:1px solid var(--brand-gold)}
+.card .shot::after,.shot.trio::after{display:none!important}
+.card .shot img{filter:none!important}
+.card .shot:not(.trio):not(.six) img{height:calc(100% - 22px);margin-bottom:22px}
+.card .shot.trio,.card .shot.six{padding-bottom:22px}
+
 .wines .card,.collection .card{border:0;background:transparent;box-shadow:none;transform:none}
 .card .body{padding:20px 0 0}
+/* variante A: niente ombre, la bottiglia appoggia su un filetto oro */
+.card .shot{border-bottom:1px solid var(--brand-gold)}
+.card .shot::after,.shot.trio::after{display:none!important}
+.card .shot img{filter:none!important}
+.card .shot:not(.trio):not(.six) img{height:calc(100% - 22px);margin-bottom:22px}
+.card .shot.trio,.card .shot.six{padding-bottom:22px}
 </style>
 <script>
 (function(){

@@ -247,7 +247,19 @@ section[id]{scroll-margin-top:100px}
 @media (max-width:900px){.exp{grid-template-columns:1fr}.exp-img{aspect-ratio:3/2}.exp-body{padding:40px var(--gutter-r) 56px var(--gutter)}.exp-foot .add{width:100%}}
 
 /* chi è Colombo: come colombovino.it */
-.story{padding-block:0 96px}
+.quote-band{position:relative;isolation:isolate;background:#fff;padding-block:104px 112px;border-top:1px solid var(--rule)}
+.quote-band::before{content:"";position:absolute;inset:0;z-index:-1;background:url(img/pattern-chiara.jpg) center/cover no-repeat;opacity:.45;pointer-events:none}
+.quote{margin:0 0 0 calc((100% + var(--col-gap))/12*3);max-width:760px}
+.quote .story-rule{margin-bottom:28px}
+.quote .qm{color:var(--gold);display:block;margin-bottom:18px}
+.quote blockquote{margin:0}
+.quote blockquote p{font-family:var(--display);font-size:clamp(28px,2.8vw,40px);line-height:1.25;color:var(--ink);text-wrap:balance}
+.quote figcaption{margin:26px 0 0 clamp(0px,8vw,120px);display:grid;gap:4px}
+.quote .sig{font-family:var(--display);font-size:20px;color:var(--gold-ink)}
+.quote .role{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+@media (max-width:900px){.quote-band{padding-block:64px 72px}.quote{margin:0}.quote figcaption{margin-left:0}}
+
+.story{padding-block:0 104px}
 .story-kicker{font-size:13.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin:96px 0 12px}
 .story-h{font-size:var(--h2);line-height:1.05;display:grid}
 .story-img{margin:0;aspect-ratio:3/1;overflow:hidden;background:var(--cellar)}
@@ -438,6 +450,13 @@ footer b{color:var(--ink);font-weight:500}
 .shot.six{gap:0;padding:0 0 46px;height:340px}
 .shot.six img{height:200px;margin:0 -2px;max-width:none}
 .card .contents{font-size:13.5px;color:var(--ink-2);margin-top:2px}
+
+/* variante A: niente ombre, la bottiglia appoggia su un filetto oro */
+.card .shot{border-bottom:1px solid var(--brand-gold)}
+.card .shot::after,.shot.trio::after{display:none!important}
+.card .shot img{filter:none!important}
+.card .shot:not(.trio):not(.six) img{height:calc(100% - 22px);margin-bottom:22px}
+.card .shot.trio,.card .shot.six{padding-bottom:22px}
 
 /* annate storiche: la cantina delle annate */
 .vault{position:relative;isolation:isolate;background:var(--cellar);color:var(--on-cellar);padding-block:0 96px;overflow:hidden}
