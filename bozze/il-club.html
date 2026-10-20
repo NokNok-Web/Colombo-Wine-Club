@@ -401,7 +401,9 @@ footer b{color:var(--ink);font-weight:500}
 .subnav a.on{color:var(--ink)}
 .subnav a.on span{border-bottom-color:var(--brand-gold)}
 .subnav a+a::before{content:"";display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--gold);margin:0 18px 0 18px;vertical-align:middle;position:relative;top:-3px}
-.group{padding-block:56px 24px}
+.group{padding-block:72px 48px}
+.group.last{padding-bottom:136px}
+@media (max-width:900px){.group{padding-block:56px 32px}.group.last{padding-bottom:88px}}
 .group-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px 32px;flex-wrap:wrap}
 .group-head h2{font-size:var(--h2)}
 .group-head p{margin-top:12px;color:var(--ink-2);max-width:56ch}
@@ -974,7 +976,7 @@ footer b{color:var(--ink);font-weight:500}
 <!-- @parte:livelli-css -->
 <style>
 /* livelli del club su fondo cantina: blocco condiviso */
-.lv-dark{position:relative;isolation:isolate;background:var(--cellar);color:var(--on-cellar);padding-block:72px 104px;overflow:hidden}
+.lv-dark{position:relative;isolation:isolate;background:var(--cellar);color:var(--on-cellar);padding-block:104px 120px;overflow:hidden}
 .lv-dark::before{content:"";position:absolute;inset:0;z-index:-2;background:url(img/cantina-botti.jpg) center 45%/cover no-repeat;opacity:.16}
 .lv-dark::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(60% 70% at 85% 20%,rgba(217,192,138,.12),rgba(217,192,138,0) 70%),linear-gradient(180deg,rgba(18,16,13,.55) 0%,rgba(18,16,13,.85) 100%)}
 .lv-dark .divider{margin-bottom:48px}
