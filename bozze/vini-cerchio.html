@@ -1,0 +1,705 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vini Wine Club, prova cerchio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap">
+<style>
+/* Layout: stesso sistema della homepage e della scheda vino, griglia unica da 1184px con colonne a 32px. */
+
+
+:root{
+  color-scheme:light;
+  --paper:#ffffff;
+  --stone:#f6f3ed;
+  --cellar:#12100d;
+  --ink:#141210;
+  --ink-2:#5a534a;
+  --ink-3:#6b645a;
+  --rule:#e3dccf;
+  --h2:clamp(36px,3.8vw,54px);
+  --h3:24px;
+  --col-gap:32px;
+  --content:1184px;
+  --brand-gold:#c08e00;
+  --mist:#f4f4f2;
+  --ivory:#faf6f0;
+  --stage:radial-gradient(60% 48% at 50% 38%, #fefefc 0%, rgba(254,254,252,0) 75%), linear-gradient(175deg, #fbfaf7 0%, #f5f2ec 55%, #ece7de 100%);
+  --gold:#ab8329;
+  --gold-ink:#8a6a20;
+  --gold-soft:#d9c08a;
+  --on-cellar:#efe7d6;
+  --on-cellar-2:#a99f8c;
+  --display:"Kaisei Decol", "Hiragino Mincho ProN", Georgia, serif;
+  --text:"Barlow", "Helvetica Neue", Arial, sans-serif;
+  --gutter:max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r:max(16px, env(safe-area-inset-right, 0px));
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--text);font-size:17px;line-height:1.6;font-weight:400;-webkit-font-smoothing:antialiased}
+::selection{background:var(--gold-soft);color:var(--ink)}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.1;margin:0;text-wrap:balance;letter-spacing:-.005em}
+p{margin:0}
+a{color:inherit;text-underline-offset:.22em;text-decoration-thickness:1px}
+a:hover{color:var(--gold-ink)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+button{font:inherit;color:inherit;cursor:pointer}
+.num{font-variant-numeric:tabular-nums lining-nums}
+.wrap{max-width:1280px;margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter-r)}
+@media (min-width:760px){.wrap{padding-left:max(48px,env(safe-area-inset-left,0px));padding-right:max(48px,env(safe-area-inset-right,0px))}}
+section[id]{scroll-margin-top:100px}
+
+/* barra benvenuto */
+.welcome{background:var(--cellar);color:var(--on-cellar);font-size:13.5px;letter-spacing:.04em}
+.welcome .wrap{display:flex;justify-content:center;align-items:center;gap:6px 14px;flex-wrap:wrap;padding-block:9px;text-align:center}
+.welcome a{color:var(--gold-soft)}
+
+/* testata */
+.head{border-bottom:1px solid var(--rule);background:var(--paper);position:sticky;top:env(safe-area-inset-top,0px);z-index:20;transition:background-color .45s,border-color .45s}
+.head .brand .light{display:none}
+.head.over{background:transparent;border-bottom-color:rgba(239,231,214,.16)}
+.head.over .brand .dark{display:none}
+.head.over .brand .light{display:block}
+.head.over .menu a,.head.over .me a,.head.over .me .lvl,.head.over .burger{color:var(--on-cellar)}
+.head.over .me .lvl b{color:#fff}
+.head.over .menu a:hover,.head.over .me a:hover,.head.over .me .lvl:hover b{color:var(--gold-soft)}
+.head.over .cart .count{background:var(--on-cellar);color:var(--ink)}
+.head .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:92px;gap:16px}
+.menu{display:flex;gap:30px;list-style:none;margin:0;padding:0;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+.menu a{text-decoration:none;color:var(--ink-2)}
+.menu a{position:relative;padding-bottom:6px;transition:color .3s}
+.menu a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--brand-gold);transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.16,1,.3,1)}
+.menu a:hover::after,.menu a[aria-current="page"]::after{transform:scaleX(1)}
+.menu a[aria-current="page"]{color:var(--ink)}
+.head.over .menu a[aria-current="page"]{color:#fff}
+.head.over .menu a::after{background:var(--gold-soft)}
+.brand{display:block;width:142px}
+.brand img{width:100%;height:auto;display:block}
+.me{justify-self:end;display:flex;align-items:center;gap:22px;font-size:14px}
+.me .lvl{display:flex;align-items:center;gap:6px;color:var(--ink-2);white-space:nowrap}
+.me .lvl b{font-weight:500;color:var(--ink)}
+.me a{text-decoration:none;color:var(--ink)}
+.acct,.cart{display:flex;align-items:center;gap:8px}
+.me .lbl{font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+.me .lvl:hover b,.acct:hover,.cart:hover{color:var(--gold-ink)}
+@media (max-width:1180px){.me .lbl{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}}
+.cart{display:flex;align-items:center;gap:8px;text-decoration:none}
+.cart .count{min-width:22px;height:22px;border-radius:11px;background:var(--ink);color:#fff;font-size:12px;display:grid;place-items:center;padding:0 6px}
+.burger{display:none;background:none;border:0;padding:8px;margin-left:-8px;color:var(--ink)}
+.gem{width:17px;height:auto;flex:none}
+.me .short{display:none}
+@media (max-width:980px){.menu{display:none}.burger{display:block}.me .full{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.me .short{display:inline}.me{gap:14px;font-size:13px}.brand{width:92px}}
+
+/* pulsanti */
+.add{min-width:220px;height:56px;padding:0 40px;border:0;background:var(--brand-gold);color:#fff;font-size:14px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;display:inline-grid;place-items:center;text-decoration:none;transition:background-color .3s}
+.add:hover{background:#a67b00;color:#fff}
+.spec-dl{display:inline-flex;align-items:center;gap:12px;font-family:var(--display);font-size:20px;color:var(--gold);text-decoration:none;justify-self:start}
+.spec-dl:hover{color:var(--brand-gold)}
+.spec-dl svg{flex:none;transition:transform .4s cubic-bezier(.16,1,.3,1)}
+.spec-dl:hover svg{transform:translateX(3px)}
+
+/* prima schermata */
+.hero{position:relative;isolation:isolate;margin-top:-93px;min-height:min(960px,calc(100svh - 36px));display:grid;align-items:end;background:var(--cellar);color:var(--on-cellar);overflow:hidden}
+.hero-img{position:absolute;top:0;bottom:0;right:0;left:38%;z-index:-2;margin:0;overflow:hidden}
+.hero-img img{width:100%;height:100%;object-fit:cover;object-position:50% 42%;transform:scale(1.04);animation:settle 2.4s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes settle{to{transform:scale(1)}}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,#12100d 0%,#12100d 38%,rgba(18,16,13,.55) 50%,rgba(18,16,13,0) 64%),linear-gradient(0deg,rgba(18,16,13,.85) 0%,rgba(18,16,13,0) 22%),linear-gradient(180deg,rgba(18,16,13,.6) 0,rgba(18,16,13,0) 200px)}
+.hero .wrap{width:100%;padding-block:200px 0}
+.hero-copy{max-width:min(520px,calc(38vw - 48px));display:grid;gap:26px}
+.hero h1{font-size:clamp(40px,4.4vw,64px);line-height:1.06;color:#fff}
+.hero .lead{font-size:18px;line-height:1.6;color:var(--on-cellar);max-width:50ch;font-weight:300}
+.cta{display:flex;align-items:center;gap:16px 32px;flex-wrap:wrap;margin-top:6px}
+.login{font-size:14.5px;color:var(--on-cellar-2)}
+.login a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(239,231,214,.4);padding-bottom:2px}
+.login a:hover{color:var(--gold-soft);border-color:var(--gold-soft)}
+.hero-foot{margin-top:72px;border-top:1px solid rgba(239,231,214,.16);display:flex;flex-wrap:wrap;gap:12px 48px;padding-block:22px calc(22px + env(safe-area-inset-bottom,0px));font-size:14px;color:var(--on-cellar-2)}
+.hero-foot>span{display:inline-flex;align-items:center;gap:10px}
+.hero-foot b{color:var(--on-cellar);font-weight:500}
+.hero-foot img:not(.gem){width:34px;height:auto}
+@media (prefers-reduced-motion:reduce){.hero-img img{animation:none;transform:none}}
+@media (max-width:900px){
+  .hero{min-height:0;display:block}
+  .hero-img{position:relative;left:auto;aspect-ratio:4/3.9}
+  .hero-img img{object-position:46% 40%}
+  .hero::after{display:none}
+  .hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#12100d 0%,rgba(18,16,13,0) 45%),linear-gradient(180deg,rgba(18,16,13,.65) 0,rgba(18,16,13,0) 140px)}
+  .hero .wrap{padding-block:0;margin-top:-56px;position:relative}
+  .hero-copy{max-width:none}
+  .hero .lead{font-size:17px}
+  .cta .add{width:100%}
+  .hero-foot{margin-top:48px;flex-direction:column;gap:10px}
+}
+
+/* divisore con ricciolo, come colombovino.it */
+.divider{display:flex;align-items:flex-end;height:22px;margin-bottom:48px;grid-column:1/-1}
+.divider span{flex:1;height:2px;background:var(--brand-gold);margin-bottom:0}
+.divider img{width:20px;height:auto;margin-left:-6px;margin-bottom:-.4px;position:relative;display:block}
+@media (max-width:900px){.divider{margin-bottom:40px}}
+
+/* capitoli */
+.chapter{padding-block:56px 72px}
+.ch-title h2{font-size:var(--h2)}
+.ch-title p{margin-top:14px;color:var(--ink-2);max-width:62ch}
+.ch-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px 32px;flex-wrap:wrap}
+@media (max-width:900px){.chapter{padding-block:64px}}
+
+/* livelli */
+.tiers{list-style:none;margin:36px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:var(--col-gap)}
+.tiers>li{border-top:1px solid var(--ink);padding:24px 0 0;display:grid;gap:8px;align-content:start;position:relative}
+.tiers>li::before{content:"";position:absolute;top:-6px;left:0;width:11px;height:11px;border-radius:50%;border:1px solid var(--gold);background:var(--paper)}
+.tiers>li.top::before{background:var(--gold)}
+.tiers h3{font-size:var(--h3)}
+.tiers .how{font-size:14.5px;color:var(--gold-ink)}
+.perks{list-style:none;margin:10px 0 0;padding:0;display:grid}
+.perks li{display:grid;grid-template-columns:18px minmax(0,1fr);gap:10px;padding:11px 0;border-bottom:1px solid var(--rule);font-size:15px;color:var(--ink-2)}
+.perks li:first-child{border-top:1px solid var(--rule)}
+.perks li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold);margin-top:.62em}
+.perks b{color:var(--ink);font-weight:500}
+.gem-rule{margin-top:36px;display:flex;align-items:center;gap:10px;font-size:15px;color:var(--ink-2)}
+@media (max-width:760px){
+  .tiers{grid-template-columns:1fr;gap:34px;border-left:1px solid var(--ink);margin-left:5px}
+  .tiers>li{border-top:0;padding:0 0 0 22px}
+  .tiers>li::before{top:6px;left:-6px}
+}
+
+/* card */
+.cards{list-style:none;margin:32px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px var(--col-gap)}
+.card{display:grid;grid-template-rows:auto 1fr;min-width:0;position:relative}
+.card .cover{position:absolute;inset:0;z-index:2}
+.card .btn{position:relative;z-index:3}
+.card .shot{position:relative;overflow:hidden;background:var(--stage);display:flex;justify-content:center;align-items:flex-end;height:320px;padding:24px 16px 20px}
+.card .shot::before{content:"";position:absolute;inset:0;background:url(img/pattern-chiara.jpg) center/1137px auto repeat;filter:sepia(.25) brightness(.7) contrast(2.2) brightness(1.2);opacity:.22;mix-blend-mode:multiply;pointer-events:none}
+.card .shot img{position:relative;z-index:1;height:100%;width:auto;object-fit:contain;transition:transform .8s cubic-bezier(.16,1,.3,1)}
+.card:hover .shot img{transform:translateY(-6px)}
+.card .body{padding:20px 0 0;display:grid;gap:6px;align-content:start}
+.card h3{font-size:var(--h3);transition:color .3s}
+.card .what{font-size:15px;color:var(--ink-2)}
+.card .row{margin-top:10px;padding-top:14px;border-top:1px solid var(--rule);display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;font-size:15px}
+.card .row .p{font-family:var(--display);font-size:24px;line-height:1}
+.card .row .vat{font-size:12.5px;color:var(--ink-3)}
+.gold-price{display:inline-flex;align-items:center;gap:7px;font-size:14px;color:var(--ink-2);margin-top:2px}
+.gold-price b{color:var(--ink);font-weight:500}
+.more{margin-top:16px;display:inline-flex;align-items:center;gap:12px;font-family:var(--display);font-size:18px;color:var(--gold-ink);justify-self:start}
+.more svg{color:var(--gold);flex:none;transition:transform .4s cubic-bezier(.16,1,.3,1)}
+.card:hover .more svg{transform:translateX(4px)}
+.card:hover h3{color:var(--gold-ink)}
+.btn{margin-top:14px;display:inline-grid;place-items:center;height:48px;padding:0 22px;background:var(--brand-gold);color:#fff;text-decoration:none;font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;transition:background-color .3s;width:100%}
+.btn:hover{background:#a67b00;color:#fff}
+.btn.line{background:none;color:#8a6a20;border:1px solid var(--brand-gold)}
+.btn.line:hover{background:var(--brand-gold);color:#fff}
+@media (prefers-reduced-motion:reduce){.card .shot img,.more svg{transition:none}.card:hover .shot img,.card:hover .more svg{transform:none}}
+
+/* collezioni */
+.collection{background:var(--ivory);padding-block:56px 72px}
+.shot.trio{height:340px;gap:0;padding:0 0 46px}
+.shot.trio::after{content:"";position:absolute;left:18%;right:18%;bottom:30px;height:22px;background:radial-gradient(50% 50% at 50% 50%,rgba(30,28,25,.28),rgba(30,28,25,0));filter:blur(3px)}
+.card .shot.trio img{max-width:none}
+.shot.trio img.hero-b{height:250px;z-index:2}
+.shot.trio img.side{height:212px;margin:0 -16px;filter:brightness(.97)}
+.card:hover .shot.trio img.side:first-child{transform:translateX(-6px)}
+.card:hover .shot.trio img.side:last-child{transform:translateX(6px)}
+.card .kind{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+@media (max-width:900px){
+  .collection{padding-block:64px}
+  .cards{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:80%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px;gap:var(--col-gap);scrollbar-width:none}
+  .cards::-webkit-scrollbar{display:none}
+  .card{scroll-snap-align:start}
+  .card .shot{height:260px}
+  .shot.trio{height:280px}.shot.trio img.hero-b{height:206px}.shot.trio img.side{height:174px}
+}
+
+
+/* riconoscimenti in una riga */
+.awards-line{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding-block:26px;margin-bottom:0}
+.awards-line ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px 20px;align-items:center}
+.awards-line li{min-width:0}
+.awards-line li{display:flex;align-items:center;gap:12px;font-size:13.5px;color:var(--ink-2);line-height:1.3}
+.awards-line li b{display:block;font-weight:500;color:var(--ink);font-size:14px}
+.awards-line li i{display:block;font-style:normal;font-size:12px;letter-spacing:.04em;color:var(--gold-ink);margin-top:2px}
+.awards-line img{width:38px;height:auto}
+.awards-line .sc{font-family:var(--display);font-size:26px;color:var(--gold-ink);min-width:38px;text-align:center;display:inline-flex;justify-content:center}
+@media (max-width:1100px){.awards-line ul{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:700px){.awards-line ul{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 16px}}
+
+/* esperienze in cantina */
+.exp{display:grid;grid-template-columns:calc(50% - var(--col-gap)/2) minmax(0,1fr);column-gap:var(--col-gap);background:var(--ivory);align-items:stretch}
+.exp-img{margin:0;min-height:100%;overflow:hidden;background:var(--cellar)}
+.exp-img img{width:100%;height:100%;object-fit:cover;object-position:62% 40%}
+.exp-body{padding:88px max(48px,calc((100vw - var(--content))/2)) 88px 24px;display:grid;gap:18px;align-content:center}
+.exp-body .story-kicker{margin:0}
+.exp-body h2{font-size:var(--h2)}
+.exp-lead{color:var(--ink-2);max-width:52ch}
+.exp-list{list-style:none;margin:12px 0 0;padding:0;border-top:1px solid var(--ink)}
+.exp-list li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--rule)}
+.exp-list h3{font-size:20px}
+.exp-list p{font-size:14.5px;color:var(--ink-2);margin-top:4px}
+.exp-list .num{font-family:var(--display);font-size:22px;color:var(--gold-ink);white-space:nowrap}
+.exp-foot{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;margin-top:14px}
+.exp-foot .add{gap:10px;grid-auto-flow:column}
+.exp-foot p{font-size:13.5px;color:var(--ink-3)}
+@media (max-width:900px){.exp{grid-template-columns:1fr}.exp-img{aspect-ratio:3/2}.exp-body{padding:40px var(--gutter-r) 56px var(--gutter)}.exp-foot .add{width:100%}}
+
+/* chi è Colombo: come colombovino.it */
+.quote-band{position:relative;isolation:isolate;background:#fff;padding-block:104px 112px;border-top:1px solid var(--rule)}
+.quote-band::before{content:"";position:absolute;inset:0;z-index:-1;background:url(img/pattern-chiara.jpg) center/cover no-repeat;opacity:.45;pointer-events:none}
+.quote{margin:0 0 0 calc((100% + var(--col-gap))/12*3);max-width:760px}
+.quote .story-rule{margin-bottom:28px}
+.quote .qm{color:var(--gold);display:block;margin-bottom:18px}
+.quote blockquote{margin:0}
+.quote blockquote p{font-family:var(--display);font-size:clamp(28px,2.8vw,40px);line-height:1.25;color:var(--ink);text-wrap:balance}
+.quote figcaption{margin:26px 0 0 clamp(0px,8vw,120px);display:grid;gap:4px}
+.quote .sig{font-family:var(--display);font-size:20px;color:var(--gold-ink)}
+.quote .role{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+@media (max-width:900px){.quote-band{padding-block:64px 72px}.quote{margin:0}.quote figcaption{margin-left:0}}
+
+.story{padding-block:0 104px}
+.story-kicker{font-size:13.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin:96px 0 12px}
+.story-h{font-size:var(--h2);line-height:1.05;display:grid}
+.story-img{margin:0;aspect-ratio:3/1;overflow:hidden;background:var(--cellar)}
+.story-img img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.story-text{margin-top:28px;max-width:720px;display:grid;gap:18px}
+.story-rule{display:flex;align-items:flex-end;height:22px;margin-bottom:12px}
+.story-rule span{flex:1;height:2px;background:var(--brand-gold)}
+.story-rule img{width:20px;height:auto;margin-left:-6px;margin-bottom:-.4px;position:relative;display:block}
+.story-text p{font-size:18px;line-height:1.75;color:var(--ink);font-weight:400}
+.story-text b{font-weight:600}
+.story-text .btn{justify-self:start;width:auto;min-width:280px;margin-top:10px}
+.tlink{justify-self:start;margin-top:14px;margin-left:clamp(0px,6vw,96px);padding:0 8px 8px;border-bottom:1px solid var(--gold);color:var(--gold);text-decoration:none;font-size:17px;transition:color .3s,border-color .3s}
+.tlink:hover{color:var(--brand-gold);border-color:var(--brand-gold)}
+@media (max-width:900px){.story{padding-block:0 72px}.story-img{aspect-ratio:3/2}.story-kicker{margin-top:40px}.story-text{margin-left:0;margin-top:36px}.story-kicker{margin-left:0}.tlink{margin-left:0}}
+
+/* invito al club: compatto, si apre alla compilazione */
+.join{position:relative;isolation:isolate;background:var(--cellar);padding-block:72px;overflow:hidden}
+.join-bg{position:absolute;inset:0;z-index:-2;margin:0}
+.join-bg img{width:100%;height:100%;object-fit:cover;object-position:50% 50%}
+.join::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(70% 90% at 50% 50%,rgba(18,16,13,.6) 0%,rgba(18,16,13,.9) 100%)}
+.invite{position:relative;max-width:1040px;margin:0 auto;background:var(--paper);padding:48px 56px;box-shadow:0 40px 80px -30px rgba(0,0,0,.6);display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:32px 56px;align-items:start}
+.invite::before{content:"";position:absolute;inset:12px;border:1px solid var(--gold-soft);pointer-events:none}
+.invite-head{display:grid;gap:14px;align-content:start}
+.invite-head .seal{width:88px;height:auto;margin-bottom:6px}
+.invite-head h2{font-size:clamp(30px,3vw,42px)}
+.invite-head p{color:var(--ink-2);max-width:40ch}
+.invite-head [data-for]{display:none}
+.invite[data-who="privato"] .invite-head [data-for="privato"],.invite[data-who="b2b"] .invite-head [data-for="b2b"]{display:grid}
+.gifts{list-style:none;margin:8px 0 0;padding:0;gap:0}
+.gifts li{display:grid;grid-template-columns:18px minmax(0,1fr);gap:12px;padding:10px 0;border-top:1px solid var(--rule);font-size:15px;color:var(--ink-2);align-items:start}
+.gifts li .gem{margin-top:3px}
+.gifts b{color:var(--ink);font-weight:500}
+.form{display:grid;gap:20px;min-width:0}
+.who{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--ink);margin:0;padding:0;min-width:0}
+.who legend{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.who label{position:relative;display:grid;place-items:center;text-align:center;min-height:52px;padding:8px 12px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;color:var(--ink-2);cursor:pointer;transition:background-color .3s,color .3s}
+.who label+label{border-left:1px solid var(--ink)}
+.who input{position:absolute;opacity:0;pointer-events:none}
+.who label:has(input:checked){background:var(--ink);color:#fff}
+.who label:has(input:focus-visible){outline:2px solid var(--gold);outline-offset:3px}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px var(--col-gap)}
+.field{display:grid;gap:8px;min-width:0}
+.field.full{grid-column:1/-1}
+.field label{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.field input,.field select{height:48px;border:0;border-bottom:1px solid var(--ink-3);background:transparent;padding:0;font:inherit;font-size:17px;color:var(--ink);border-radius:0;min-width:0;width:100%;transition:border-color .3s}
+.field select{appearance:none;-webkit-appearance:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%235a534a' stroke-width='1.3'/%3E%3C/svg%3E") right 4px center no-repeat;padding-right:24px;cursor:pointer}
+.field input:focus,.field select:focus{outline:none;border-bottom-color:var(--gold);box-shadow:0 1px 0 var(--gold)}
+.field [aria-invalid="true"]{border-bottom-color:#9b2c1f}
+.field .hint{font-size:13px;color:var(--ink-3)}
+.field .err{font-size:13px;color:#9b2c1f;display:none}
+.field.bad .err{display:block}
+.field.bad .hint{display:none}
+.more-fields{display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s cubic-bezier(.16,1,.3,1)}
+.more-fields>div{overflow:hidden;min-height:0;display:grid;gap:20px}
+.more-fields>div>:first-child{margin-top:4px}
+.invite.open .more-fields{grid-template-rows:1fr}
+.more-fields [data-for]{display:none}
+.invite[data-who="privato"] .more-fields [data-for="privato"],.invite[data-who="b2b"] .more-fields [data-for="b2b"]{display:grid}
+.check{display:grid;grid-template-columns:22px minmax(0,1fr);gap:12px;font-size:14.5px;color:var(--ink-2);align-items:start;cursor:pointer}
+.check input{appearance:none;-webkit-appearance:none;width:20px;height:20px;border:1px solid var(--ink-3);margin:2px 0 0;display:grid;place-items:center;cursor:pointer;background:var(--paper)}
+.check input:checked{background:var(--ink);border-color:var(--ink)}
+.check input:checked::after{content:"";width:10px;height:6px;border-left:1.5px solid #fff;border-bottom:1.5px solid #fff;transform:translateY(-1px) rotate(-45deg)}
+.check a{color:var(--ink)}
+.check.bad input{border-color:#9b2c1f}
+.form .add{width:100%}
+.form .add [data-for]{display:none}
+.invite[data-who="privato"] .add [data-for="privato"],.invite[data-who="b2b"] .add [data-for="b2b"]{display:inline}
+.invite:not(.open) .add .go{display:none!important}
+.invite.open .add .start{display:none}
+.form .small{font-size:13.5px;color:var(--ink-3)}
+.form .small a{color:var(--ink)}
+.done-msg{display:none;gap:16px;align-content:start}
+.invite.sent .form{display:none}
+.invite.sent .done-msg{display:grid}
+.invite.sent .invite-head p,.invite.sent .gifts{display:none!important}
+.done-msg p{color:var(--ink-2);max-width:44ch}
+.done-msg .code{justify-self:start;font-family:var(--display);font-size:24px;letter-spacing:.1em;border:1px dashed var(--brand-gold);padding:12px 22px;color:var(--ink)}
+.done-msg [data-for]{display:none}
+.invite[data-who="privato"] .done-msg [data-for="privato"],.invite[data-who="b2b"] .done-msg [data-for="b2b"]{display:grid;gap:16px}
+@media (prefers-reduced-motion:reduce){.more-fields{transition:none}}
+@media (max-width:900px){.invite{grid-template-columns:1fr;padding:44px 32px}}
+@media (max-width:620px){
+  .join{padding-block:40px}
+  .invite{padding:40px 22px 32px;gap:28px}
+  .invite::before{inset:8px}
+  .fields{grid-template-columns:1fr}
+}
+
+footer{position:relative;isolation:isolate;overflow:hidden;background:#fff;border-top:1px solid var(--rule);color:var(--ink-2);font-size:14px;padding-block:56px calc(56px + env(safe-area-inset-bottom,0px))}
+footer .wrap{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:32px var(--col-gap);align-items:start}
+.f-brand{grid-column:span 3}
+footer nav{grid-column:span 1}
+footer .f-bottom{grid-column:1/-1}
+footer h2{font-family:var(--text);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--ink);margin-bottom:14px}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+footer a{color:var(--ink-2);text-decoration:none}
+footer a:hover{color:var(--gold-ink)}
+.f-brand{display:grid;gap:18px}
+footer .f-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;margin-top:40px;padding-top:20px;position:relative;font-size:13.5px}
+@media (max-width:900px){footer .wrap{grid-template-columns:repeat(2,minmax(0,1fr))}.f-brand{grid-column:1/-1}}
+footer .brand{width:130px}
+footer .f-bottom::before{content:"";position:absolute;top:0;left:16px;right:16px;height:1px;background:var(--rule)}
+@media (min-width:760px){footer .f-bottom::before{left:48px;right:48px}}
+footer::before{content:"";position:absolute;inset:0;z-index:-1;background:url(img/pattern-chiara.jpg) center/cover no-repeat;opacity:.4;pointer-events:none}
+footer p{max-width:46ch}
+footer b{color:var(--ink);font-weight:500}
+
+/* barra mobile */
+.mbar{display:none}
+@media (max-width:900px){
+  .mbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--paper);border-top:1px solid var(--rule);padding:10px var(--gutter-r) calc(10px + env(safe-area-inset-bottom,0px)) var(--gutter);gap:14px;align-items:center;justify-content:space-between;transform:translateY(110%);transition:transform .45s cubic-bezier(.16,1,.3,1)}
+  .mbar.show{transform:none}
+  .mbar .t{font-family:var(--display);font-size:19px;line-height:1.15}
+  .mbar small{display:block;font-size:12px;color:var(--ink-3)}
+  .mbar .add{min-width:0;height:48px;font-size:13px;padding:0 22px}
+  footer{padding-bottom:calc(120px + env(safe-area-inset-bottom,0px))}
+}
+@media (prefers-reduced-motion:reduce){.mbar{transition:none}.spec-dl svg{transition:none}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+
+/* pagine elenco */
+.page-head{position:relative;isolation:isolate;margin-top:-93px;min-height:min(620px,72svh);display:grid;align-items:end;background:var(--cellar);color:var(--on-cellar);overflow:hidden}
+.page-head figure{position:absolute;inset:0;z-index:-2;margin:0}
+.page-head figure img{width:100%;height:100%;object-fit:cover;transform:scale(1.03);animation:settle 2.4s cubic-bezier(.16,1,.3,1) forwards}
+.page-head::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,rgba(18,16,13,.9) 0%,rgba(18,16,13,.55) 40%,rgba(18,16,13,0) 70%),linear-gradient(0deg,rgba(18,16,13,.8) 0%,rgba(18,16,13,0) 45%),linear-gradient(180deg,rgba(18,16,13,.65) 0,rgba(18,16,13,0) 200px)}
+.page-head .wrap{width:100%;padding-block:180px 64px}
+.page-head .kicker{font-size:13.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-soft);margin:0 0 12px}
+.page-head h1{font-size:clamp(44px,5vw,72px);line-height:1.04;color:#fff}
+.page-head .intro{margin-top:18px;max-width:52ch;font-size:18px;color:var(--on-cellar);font-weight:300}
+@media (prefers-reduced-motion:reduce){.page-head figure img{animation:none;transform:none}}
+@media (max-width:900px){.page-head{min-height:0}.page-head .wrap{padding-block:200px 40px}.page-head::after{background:linear-gradient(0deg,rgba(18,16,13,.92) 0%,rgba(18,16,13,.3) 70%),linear-gradient(180deg,rgba(18,16,13,.65) 0,rgba(18,16,13,0) 160px)}}
+.subnav{margin-top:40px}
+.subnav .wrap{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 0}
+.subnav a{font-family:var(--display);font-size:20px;color:var(--ink-3);text-decoration:none;padding-bottom:4px;border-bottom:1px solid transparent;transition:color .3s,border-color .3s}
+.subnav a:hover{color:var(--ink)}
+.subnav a{border-bottom:0}
+.subnav a span{padding-bottom:4px;border-bottom:1px solid transparent}
+.subnav a.on{color:var(--ink)}
+.subnav a.on span{border-bottom-color:var(--brand-gold)}
+.subnav a+a::before{content:"";display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--gold);margin:0 18px 0 18px;vertical-align:middle;position:relative;top:-3px}
+.group{padding-block:72px 48px}
+.group.last{padding-bottom:136px}
+@media (max-width:900px){.group{padding-block:56px 32px}.group.last{padding-bottom:88px}}
+.group-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px 32px;flex-wrap:wrap}
+.group-head h2{font-size:var(--h2)}
+.group-head p{margin-top:12px;color:var(--ink-2);max-width:56ch}
+
+/* elenco vini: griglia a 4 colonne */
+.cards.four{grid-template-columns:repeat(4,minmax(0,1fr))}
+.cards.four .card .shot{height:300px}
+.fmt{display:inline-flex;align-items:baseline;gap:0;margin-top:auto;position:relative;z-index:3;justify-self:start}
+.fmt button{background:none;border:0;padding:4px 0 5px;font-family:var(--text);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);border-bottom:1px solid transparent;transition:color .3s,border-color .3s}
+.fmt button+button{margin-left:22px;position:relative}
+.fmt button+button::before{content:"";position:absolute;left:-12px;top:50%;width:1px;height:12px;margin-top:-6px;background:var(--rule)}
+.fmt button[aria-pressed="true"]{color:var(--ink);border-bottom-color:var(--brand-gold)}
+.fmt button:not([aria-pressed="true"]):hover{color:var(--gold-ink)}
+.card .note{font-size:13.5px;color:var(--gold-ink);margin-top:4px}
+.card .actions{display:grid;grid-template-columns:1fr;margin-top:16px;position:relative;z-index:3}
+.card .actions .btn{margin-top:0}
+.btn{border:0;font-family:var(--text)}
+.card .body{display:flex;flex-direction:column;gap:6px}
+.card .body > .fmt,.card .body > .single{margin-top:auto}
+.card .body > .fmt{align-self:flex-start}
+.single{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);padding:4px 0 6px}
+.card .row .soon{font-size:13px;color:var(--gold-ink)}
+.card .row .soon[hidden]{display:none}
+.card .body > h3 + .what,.card .body > h3 + .contents{min-height:0}
+.card .actions .link{font-family:var(--display);font-size:16px;color:var(--gold-ink);text-decoration:none;white-space:nowrap}
+.card .actions .link:hover{color:var(--brand-gold)}
+.btn.added{background:var(--ink)}
+.btn[disabled]{cursor:default}
+.tile{position:relative;overflow:hidden;background:var(--cellar);color:var(--on-cellar);display:grid;align-content:end;min-height:100%;text-decoration:none;isolation:isolate}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1s cubic-bezier(.16,1,.3,1)}
+.tile::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(18,16,13,.92) 0%,rgba(18,16,13,.35) 55%,rgba(18,16,13,.15) 100%)}
+.tile:hover img{transform:scale(1.04)}
+.tile .in{padding:28px 24px;display:grid;gap:10px}
+.tile .k{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft)}
+.tile h3{font-size:var(--h3);color:#fff}
+.tile p{font-size:15px;color:var(--on-cellar)}
+.tile .spec-dl{color:var(--gold-soft);font-size:18px;margin-top:4px}
+.tile:hover{color:var(--on-cellar)}
+@media (max-width:1100px){.cards.four{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:900px){.cards.four{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-flow:row;overflow:visible;gap:40px 16px}.cards.four .card .shot{height:240px}.card .actions{grid-template-columns:1fr}.tile{min-height:320px}.tile .in{padding:20px 14px}.tile h3{font-size:20px}.tile p{font-size:13.5px}.tile .spec-dl{font-size:16px}.vlist .lock{height:32px;justify-content:center}}
+
+/* confezioni */
+.collection .cards{margin-top:32px}
+.shot .plus{position:relative;z-index:2;align-self:center;margin-left:18px;display:grid;justify-items:center;gap:8px;font-family:var(--display);font-size:15px;line-height:1.25;color:var(--ink-2);text-align:center}
+.shot .plus i{font-style:normal;width:34px;height:34px;border:1px solid var(--brand-gold);border-radius:50%;display:grid;place-items:center;color:var(--brand-gold)}
+.shot.six{gap:0;padding:0 0 46px;height:340px}
+.shot.six img{height:200px;margin:0 -2px;max-width:none}
+.card .contents{font-size:13.5px;color:var(--ink-2);margin-top:2px}
+
+/* variante A: niente ombre, la bottiglia appoggia su un filetto oro */
+.card .shot{border-bottom:1px solid var(--brand-gold)}
+.card .shot::after,.shot.trio::after{display:none!important}
+.card .shot img{filter:none!important}
+.card .shot:not(.trio):not(.six) img{height:calc(100% - 22px);margin-bottom:22px}
+.card .shot.trio,.card .shot.six{padding-bottom:22px}
+
+/* annate storiche: la cantina delle annate */
+.vault{position:relative;isolation:isolate;background:var(--cellar);color:var(--on-cellar);padding-block:0 96px;overflow:hidden}
+.vault-band{position:relative;margin:0;aspect-ratio:4.2/1;overflow:hidden}
+.vault-band img{width:100%;height:100%;object-fit:cover;object-position:45% 46%}
+.vault-band::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#12100d 0%,rgba(18,16,13,.2) 55%,rgba(18,16,13,.35) 100%)}
+.vault .group-head{margin-top:-24px;position:relative}
+.vault h2{color:#fff}
+.vault .group-head p{color:var(--on-cellar);font-weight:300;font-size:18px;max-width:58ch}
+.reserved{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;padding:18px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.reserved p{flex:1;min-width:260px;font-size:15.5px}
+.reserved .gem{width:20px}
+.vault .reserved{border-color:rgba(217,192,138,.28);margin-top:36px}
+.vault .reserved p{color:var(--on-cellar-2)}
+.vault .reserved b{color:#fff}
+.vault .reserved .spec-dl{color:var(--gold-soft)}
+.vwine{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,9fr);gap:40px var(--col-gap);margin-top:72px;align-items:start}
+.vwine+.vwine{padding-top:72px;border-top:1px solid rgba(217,192,138,.18)}
+.vwine .bt{position:relative;height:380px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:28px}
+.vwine .bt::before{content:"";position:absolute;left:50%;top:22%;width:80%;aspect-ratio:1;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(217,192,138,.07),rgba(217,192,138,0));pointer-events:none}
+.vwine .bt img{position:relative;z-index:1;height:100%;width:auto}
+.vwine h3{font-size:var(--h2);color:#fff}
+.vwine .d{margin-top:10px;color:var(--on-cellar-2);max-width:56ch}
+.vgrid{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.vcard{border:1px solid rgba(217,192,138,.22);padding:16px 16px 14px;display:grid;gap:3px;position:relative;transition:border-color .4s,background-color .4s}
+.vcard:hover{border-color:var(--gold-soft);background:rgba(217,192,138,.05)}
+.vcard .y{font-family:var(--display);font-size:30px;line-height:1;color:var(--gold-soft)}
+.vcard .f{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--on-cellar-2)}
+.vcard .p{font-family:var(--display);font-size:18px;color:#fff;margin-top:10px;padding-top:10px;border-top:1px solid rgba(217,192,138,.16)}
+.vcard .lock{display:inline-flex;align-items:center;gap:6px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft);margin-top:6px}
+.vcard.mag{background:rgba(217,192,138,.06)}
+@media (max-width:900px){.vault{padding-bottom:64px}.vault-band{aspect-ratio:3/2}.vault .group-head{margin-top:-24px}.vwine{grid-template-columns:1fr;margin-top:48px}.vwine+.vwine{padding-top:48px}.vwine .bt{height:300px}.vgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.vcard{padding:14px 12px}.vcard .y{font-size:26px}}
+
+</style>
+<style>
+/* opzione E: cerchio di luce avorio dietro la bottiglia, cornice sottile, nessun filetto oro */
+.cards .card .shot{background:#fff!important;border:1px solid var(--rule)!important;border-bottom:1px solid var(--rule)!important}
+.cards .card .shot::before{content:""!important;position:absolute!important;left:50%!important;top:50%!important;width:min(78%,250px)!important;aspect-ratio:1!important;height:auto!important;inset:auto!important;left:50%!important;top:50%!important;transform:translate(-50%,-50%)!important;border-radius:50%!important;background:var(--ivory)!important;filter:none!important;opacity:1!important;mix-blend-mode:normal!important}
+.cards .card .shot{align-items:center!important;padding:0!important}
+.cards .card .shot:not(.trio):not(.six) img{height:84%!important;margin:0!important}
+.cards .card .shot.trio img,.cards .card .shot.six img{margin-bottom:0!important}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="user" viewBox="0 0 20 20"><circle cx="10" cy="7" r="3.4" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M3.5 17c.9-3.2 3.4-5 6.5-5s5.6 1.8 6.5 5" fill="none" stroke="currentColor" stroke-width="1.3"/></symbol>
+  <symbol id="bag" viewBox="0 0 20 20"><path d="M4 6h12l-1 11H5L4 6Z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M7.5 8V5a2.5 2.5 0 0 1 5 0v3" fill="none" stroke="currentColor" stroke-width="1.3"/></symbol>
+  <symbol id="menu" viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h12" stroke="currentColor" stroke-width="1.4" fill="none"/></symbol>
+  <symbol id="arrow" viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M16.5 12.5 24 20l-7.5 7.5" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+</svg>
+
+<div class="welcome"><div class="wrap"><span>Iscriviti al club: ricevi via mail un codice per il <b>10% sul primo ordine</b>.</span><a href="homepage.html#iscrizione">Iscriviti</a></div></div>
+
+<header class="head over" id="head">
+  <div class="wrap">
+    <div style="display:flex;align-items:center;gap:8px">
+      <button class="burger" aria-label="Apri il menu"><svg width="24" height="24"><use href="#menu"/></svg></button>
+      <ul class="menu">
+        <li><a href="vini.html" aria-current="page">Vini</a></li>
+        <li><a href="formati-speciali.html">Formati speciali</a></li>
+        <li><a href="il-club.html">Il club</a></li>
+      </ul>
+    </div>
+    <a class="brand" href="homepage.html"><img class="dark" src="img/logo-wine-club.png" alt="Colombo Wine Club" width="600" height="329"><img class="light" src="img/logo-wine-club-chiaro.png" alt="Colombo Wine Club" width="600" height="329"></a>
+    <div class="me">
+      <a class="lvl" href="homepage.html#iscrizione"><img class="gem" src="img/gemma.png" alt="" width="81" height="72"><span class="full"><b>Entra nel club</b></span><span class="short" aria-hidden="true"><b>Entra</b></span></a>
+      <a class="acct" href="#accedi"><svg width="20" height="20"><use href="#user"/></svg><span class="lbl">Accedi</span></a>
+      <a class="cart" href="#ordine"><svg width="20" height="20"><use href="#bag"/></svg><span class="sr">Carrello</span><span class="count num" id="cartCount">0</span></a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="page-head" aria-labelledby="page-t">
+    <figure><img src="img/cantina-calice.jpg" alt="In cantina, tra le botti, un calice di Pinot Nero alzato verso la luce" width="2200" height="1238" fetchpriority="high" style="object-position:62% 40%"></figure>
+    <div class="wrap">
+      <p class="kicker">Pinot Nero e Alta Langa</p>
+      <h1 id="page-t">I vini</h1>
+      <p class="intro">Tutti i nostri vini sono millesimati: in ogni bottiglia si esprime al cento per cento la vendemmia, con l'unicità della sua annata. Molti sono disponibili anche in Magnum.</p>
+    </div>
+  </section>
+
+  <nav class="subnav" aria-label="Sezioni">
+    <div class="wrap">
+      <a href="#metodo-classico"><span>Alta Langa e metodo classico</span></a>
+      <a href="#pinot-nero"><span>Pinot Nero</span></a>
+      <a href="formati-speciali.html"><span>Formati speciali</span></a>
+    </div>
+  </nav>
+
+  <section class="group" id="metodo-classico" aria-labelledby="mc-t" style="padding-bottom:88px">
+    <div class="wrap">
+      <div class="group-head"><div><h2 id="mc-t">Alta Langa e metodo classico</h2><p>Rifermentati in bottiglia e affinati a lungo sui lieviti, da uve Pinot Nero e Chardonnay raccolte a mano.</p></div></div>
+      <ul class="cards four">
+        <li class="card"><a class="cover" href="#" aria-label="Natusia"></a><div class="shot"><img src="img/COL-Natusia.png" alt="" loading="lazy" width="310" height="1100"></div><div class="body"><h3>Natusia</h3><p class="what">Metodo classico · Piemonte DOC · <span class="yr num">2023</span></p><div class="fmt" role="group" aria-label="Formato"><button type="button" aria-pressed="true" data-price="17" data-year="2023">75 cl</button><button type="button" aria-pressed="false" data-price="37" data-year="2022">Magnum</button></div><div class="row"><span class="p num">€ 17,00</span><span class="vat">IVA inclusa</span></div><div class="actions"><button type="button" class="btn buy">Aggiungi</button></div></div></li>
+        <li class="card"><a class="cover" href="#" aria-label="Alta Langa Blanc de Blancs"></a><div class="shot"><img src="img/COL-Blanc-de-blancs.png" alt="" loading="lazy" width="310" height="1100"></div><div class="body"><h3>Alta Langa Blanc de Blancs</h3><p class="what">Alta Langa DOCG · <span class="yr num">2023</span></p><div class="fmt" role="group" aria-label="Formato"><button type="button" aria-pressed="true" data-price="35" data-year="2023" data-soon="1" data-note="1">75 cl</button><button type="button" aria-pressed="false" data-price="69" data-year="2022">Magnum</button></div><div class="row"><span class="p num">€ 35,00</span><span class="vat" hidden>IVA inclusa</span><span class="soon">Disponibile da dicembre</span></div><div class="actions"><button type="button" class="btn buy" disabled>Avvisami</button></div></div></li>
+        <li class="card"><a class="cover" href="#" aria-label="Alta Langa Rosé"></a><div class="shot"><img src="img/COL-Rose.png" alt="" loading="lazy" width="310" height="1100"></div><div class="body"><h3>Alta Langa Rosé</h3><p class="what">Alta Langa DOCG · <span class="yr num">2022</span></p><div class="fmt" role="group" aria-label="Formato"><button type="button" aria-pressed="true" data-price="35" data-year="2022">75 cl</button><button type="button" aria-pressed="false" data-price="69" data-year="2021">Magnum</button></div><div class="row"><span class="p num">€ 35,00</span><span class="vat">IVA inclusa</span></div><div class="actions"><button type="button" class="btn buy">Aggiungi</button></div></div></li>
+        <li class="card"><a class="cover" href="scheda-vino.html" aria-label="Alta Langa Blanc de Noir"></a><div class="shot"><img src="img/COL-Blanc-de-noirs-g.png" alt="" loading="lazy" width="310" height="1100"></div><div class="body"><h3>Alta Langa Blanc de Noir</h3><p class="what">Alta Langa DOCG · Extra Brut · <span class="yr num">2022</span></p><div class="fmt" role="group" aria-label="Formato"><button type="button" aria-pressed="true" data-price="37" data-year="2022">75 cl</button><button type="button" aria-pressed="false" data-price="74" data-year="2021">Magnum</button></div><div class="row"><span class="p num">€ 37,00</span><span class="vat">IVA inclusa</span></div><div class="actions"><button type="button" class="btn buy">Aggiungi</button></div></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="group last" id="pinot-nero" aria-labelledby="pn-t">
+    <div class="wrap">
+      <div class="divider" aria-hidden="true"><span></span><img src="img/ricciolo.png" alt="" width="343" height="277"></div>
+      <div class="group-head"><div><h2 id="pn-t">Pinot Nero</h2><p>Da vigne di Pinot Nero di almeno ottant'anni, affinati in legno di rovere francese.</p></div></div>
+      <ul class="cards four">
+        <li class="card"><a class="cover" href="#" aria-label="Pinot Nero"></a><div class="shot"><img src="img/COL-Pinot-nero.png" alt="" loading="lazy" width="310" height="1100"></div><div class="body"><h3>Pinot Nero</h3><p class="what">Piemonte DOC · <span class="yr num">2025</span></p><p class="single">Solo 75 cl</p><div class="row"><span class="p num">€ 14,00</span><span class="vat">IVA inclusa</span></div><div class="actions"><button type="button" class="btn buy">Aggiungi</button></div></div></li>
+        <li class="card"><a class="cover" href="#" aria-label="Apertura"></a><div class="shot"><img src="img/COL-Apertura.png" alt="" loading="lazy" width="310" height="1100"></div><div class="body"><h3>Apertura</h3><p class="what">Pinot Nero · Piemonte DOC · <span class="yr num">2022</span></p><div class="fmt" role="group" aria-label="Formato"><button type="button" aria-pressed="true" data-price="21" data-year="2022">75 cl</button><button type="button" aria-pressed="false" data-price="41" data-year="2020">Magnum</button></div><div class="row"><span class="p num">€ 21,00</span><span class="vat">IVA inclusa</span></div><div class="actions"><button type="button" class="btn buy">Aggiungi</button></div></div></li>
+        <li class="card"><a class="cover" href="#" aria-label="Maxima"></a><div class="shot"><img src="img/COL-Maxima.png" alt="" loading="lazy" width="310" height="1100"></div><div class="body"><h3>Maxima</h3><p class="what">Pinot Nero · Piemonte DOC · <span class="yr num">2021</span></p><div class="fmt" role="group" aria-label="Formato"><button type="button" aria-pressed="true" data-price="25" data-year="2021">75 cl</button><button type="button" aria-pressed="false" data-price="46" data-year="2020">Magnum</button></div><div class="row"><span class="p num">€ 25,00</span><span class="vat">IVA inclusa</span></div><div class="actions"><button type="button" class="btn buy">Aggiungi</button></div></div></li>
+        <li><a class="tile" href="formati-speciali.html#annate"><img src="img/pinot-nero-capsule.jpg" alt="" loading="lazy" width="1700" height="1133"><span class="in"><span class="k">Formati speciali</span><h3>Annate storiche di Pinot Nero</h3><p>Apertura e Maxima dal 2013, riservate ai soci Platinum.</p><span class="spec-dl">Scopri le annate<svg width="26" height="26" aria-hidden="true"><use href="#arrow"/></svg></span></span></a></li>
+      </ul>
+    </div>
+  </section>
+  <!-- @parte:livelli -->
+  <section class="lv-dark" id="livelli" aria-labelledby="livelli-t">
+    <div class="wrap">
+      <div class="divider" aria-hidden="true"><span></span><img src="img/ricciolo.png" alt="" width="343" height="277"></div>
+      <h2 id="livelli-t">I livelli del club</h2><p class="lv-lead">Più ti avvicini alla cantina, più la cantina si apre a te. Entri come Silver, e ogni acquisto ti regala Gemme che ti portano verso prezzi riservati, anteprime ed esperienze a Bubbio. Il livello che raggiungi resta tuo.</p>
+      <ol class="tiers">
+        <li>
+          <h3>Silver</h3>
+          <p class="how">Con l'iscrizione</p>
+          <ul class="perks">
+            <li><span>Tutti i vini della cantina e le collezioni del club</span></li>
+            <li><span><b>10%</b> sul primo ordine con il codice di benvenuto</span></li>
+            <li><span>Gemme con ogni acquisto e nelle promozioni del club</span></li>
+            <li><span>Spedizione gratuita in Italia sopra <b class="num">€ 210</b></span></li>
+          </ul>
+        </li>
+        <li>
+          <h3>Gold</h3>
+          <p class="how">Da <span class="num">500</span> Gemme</p>
+          <ul class="perks">
+            <li><span><b>Prezzo Gold</b> su tutti i vini e le collezioni</span></li>
+            <li><span>Spedizione gratuita in Italia sopra <b class="num">€ 190</b></span></li>
+            <li><span>Un regalo per il tuo compleanno e per l'anniversario nel club</span></li>
+          </ul>
+        </li>
+        <li class="top">
+          <h3>Platinum</h3>
+          <p class="how">Da <span class="num">2.000</span> Gemme</p>
+          <ul class="perks">
+            <li><span>Il prezzo Gold, sempre</span></li>
+            <li><span>Accesso in anteprima alle nuove uscite</span></li>
+            <li><span>Le annate storiche di Apertura e Maxima</span></li>
+            <li><span>Visita e degustazione in cantina con la famiglia Colombo</span></li>
+            <li class="tease"><span>E qualche sorpresa, che si svela solo ai soci Platinum</span></li>
+          </ul>
+        </li>
+      </ol>
+      <div class="lv-foot"><a class="add" href="homepage.html#iscrizione">Entra nel club</a><p><img class="gem" src="img/gemma.png" alt="" width="81" height="72">Il prezzo Gold di ogni vino è visibile ai soci dopo l'iscrizione.</p></div>
+    </div>
+  </section>  <!-- /@parte:livelli -->
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-brand">
+      <span class="brand"><img src="img/logo-wine-club.png" alt="Colombo Wine Club" width="600" height="329" loading="lazy"></span>
+      <p><b>Colombo Antonio e Figli</b><br>Società Agricola Semplice<br>Reg. Cafra 172/B, Bubbio 14051 (Asti)<br>P.IVA 01317970059</p>
+    </div>
+    <nav aria-label="Il club"><h2>Il club</h2><ul><li><a href="il-club.html#come">Come funziona</a></li><li><a href="il-club.html#livelli">Livelli e Gemme</a></li><li><a href="il-club.html#regali">Carta regalo</a></li><li><a href="il-club.html#domande">Domande frequenti</a></li></ul></nav>
+    <nav aria-label="Assistenza"><h2>Assistenza</h2><ul><li><a href="#">Spedizioni</a></li><li><a href="#">Resi e diritto di recesso</a></li><li><a href="#">Termini e condizioni di vendita</a></li><li><a href="#">Contatti</a></li></ul></nav>
+    <nav aria-label="Informazioni legali"><h2>Legale</h2><ul><li><a href="#">Privacy policy</a></li><li><a href="#">Cookie policy</a></li><li><a href="https://colombovino.it/">colombovino.it</a></li></ul></nav>
+  </div>
+  <div class="wrap f-bottom"><span>info@colombovino.it · Sala degustazione 338 8703900</span><span>Vendita riservata ai maggiori di 18 anni</span></div>
+</footer>
+
+<!-- @parte:livelli-css -->
+<style>
+/* livelli del club su fondo cantina: blocco condiviso */
+.lv-dark{position:relative;isolation:isolate;background:var(--cellar);color:var(--on-cellar);padding-block:104px 120px;overflow:hidden}
+.lv-dark::before{content:"";position:absolute;inset:0;z-index:-2;background:url(img/cantina-botti.jpg) center 45%/cover no-repeat;opacity:.16}
+.lv-dark::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(60% 70% at 85% 20%,rgba(217,192,138,.12),rgba(217,192,138,0) 70%),linear-gradient(180deg,rgba(18,16,13,.55) 0%,rgba(18,16,13,.85) 100%)}
+.lv-dark .divider{margin-bottom:48px}
+.lv-dark h2{font-size:var(--h2);color:#fff}
+.lv-dark .lv-lead{margin-top:16px;max-width:58ch;font-size:18px;font-weight:300;color:var(--on-cellar)}
+.lv-dark .tiers{margin-top:48px;column-gap:var(--col-gap)}
+.lv-dark .tiers>li{border:1px solid rgba(217,192,138,.22);border-top:1px solid rgba(217,192,138,.22);padding:30px 28px 28px;gap:10px;background:rgba(255,255,255,.015)}
+.lv-dark .tiers>li::before{display:none}
+.lv-dark .tiers h3{font-size:clamp(28px,2.6vw,36px);color:#fff}
+.lv-dark .tiers .how{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-soft)}
+.lv-dark .perks{margin-top:14px}
+.lv-dark .perks li{border-color:rgba(217,192,138,.14);color:var(--on-cellar-2);font-size:15px}
+.lv-dark .perks li:first-child{border-top-color:rgba(217,192,138,.14)}
+.lv-dark .perks li::before{background:var(--gold-soft)}
+.lv-dark .perks b{color:#fff}
+.lv-dark .tiers>li.top{border-color:rgba(217,192,138,.6);background:linear-gradient(180deg,rgba(217,192,138,.10) 0%,rgba(217,192,138,.02) 100%);box-shadow:0 30px 60px -30px rgba(0,0,0,.8)}
+.lv-dark .tiers>li.top h3{color:var(--gold-soft)}
+.lv-dark .perks li.tease{color:var(--gold-soft);font-family:var(--display);font-size:17px}
+.lv-dark .perks li.tease::before{background:transparent;border:1px solid var(--gold-soft)}
+.lv-dark .lv-foot{margin-top:44px;display:flex;flex-wrap:wrap;align-items:center;gap:16px 32px}
+.lv-dark .lv-foot p{display:flex;align-items:center;gap:10px;font-size:15px;color:var(--on-cellar-2)}
+.lv-dark .lv-foot .add{text-decoration:none}
+.lv-wine .tiers>li{padding:24px 24px 22px}
+.lv-wine .tiers>li.you{border-color:var(--gold-soft)}
+.lv-wine .here-tag{position:absolute;top:24px;right:20px;margin:0;color:var(--gold-soft);border-color:rgba(217,192,138,.6);background:transparent}
+.lv-wine .tp{margin-top:10px;padding-top:12px;border-top:1px solid rgba(217,192,138,.16);font-size:14.5px;color:var(--on-cellar-2)}
+.lv-wine .tp .num{font-family:var(--display);font-size:22px;color:#fff;margin-right:6px}
+.lv-wine .more-club{margin-top:40px;color:var(--gold-soft)}
+@media (max-width:760px){.lv-dark{padding-block:56px 72px}.lv-dark .tiers{border-left:0;margin-left:0;gap:16px}.lv-dark .tiers>li{padding:22px 20px}.lv-dark .lv-foot .add{width:100%}}
+</style><!-- /@parte:livelli-css -->
+<script>
+(function(){
+  var count=document.getElementById('cartCount'), n=0;
+  var eur=function(v){return '€ '+v.toFixed(2).replace('.',',').replace(/\B(?=(\d{3})+(?!\d))/g,'.')};
+  document.querySelectorAll('.fmt').forEach(function(g){
+    g.addEventListener('click',function(e){
+      var b=e.target.closest('button'); if(!b) return;
+      g.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});
+      var card=g.closest('.card');
+      card.querySelector('.p').textContent=eur(+b.dataset.price);
+      var y=card.querySelector('.yr'); if(y&&b.dataset.year) y.textContent=b.dataset.year;
+      var note=card.querySelector('.soon'); var vat=card.querySelector('.vat'); if(note){note.hidden=!b.dataset.note; if(vat) vat.hidden=!!b.dataset.note;}
+      var add=card.querySelector('.btn.buy');
+      if(add){ if(b.dataset.soon){add.disabled=true;add.textContent='Avvisami'} else {add.disabled=false;add.textContent=add.dataset.label||'Aggiungi'} }
+    });
+  });
+  document.querySelectorAll('.btn.buy').forEach(function(b){
+    b.dataset.label=b.textContent;
+    b.addEventListener('click',function(){
+      if(b.disabled) return;
+      count.textContent=(parseInt(count.textContent,10)||0)+1;
+      b.classList.add('added'); b.textContent='Aggiunto';
+      setTimeout(function(){b.classList.remove('added'); b.textContent=b.dataset.label},1600);
+    });
+  });
+  // testata trasparente sulla foto, bianca quando si scorre
+  var head=document.getElementById('head'), welcome=document.querySelector('.welcome');
+  function headState(){ head.classList.toggle('over', scrollY < welcome.offsetHeight + 24) }
+  addEventListener('scroll',headState,{passive:true}); headState();
+  // voce attiva nel sottomenu
+  var links=[].slice.call(document.querySelectorAll('.subnav a[href^="#"]'));
+  if('IntersectionObserver' in window && links.length){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(l){l.classList.toggle('on',l.getAttribute('href')==='#'+e.target.id)})}})},{rootMargin:'-40% 0px -55% 0px'});
+    links.forEach(function(l){var s=document.querySelector(l.getAttribute('href')); if(s) io.observe(s)});
+  }
+})();
+</script>
+</body>
+</html>
