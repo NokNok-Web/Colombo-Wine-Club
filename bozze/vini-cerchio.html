@@ -496,6 +496,7 @@ footer b{color:var(--ink);font-weight:500}
 <style>
 /* opzione E: cerchio di luce avorio dietro la bottiglia, senza cornice né filetto oro */
 .cards .card .shot{background:#fff!important;border:0!important}
+.cards .card .shot::after{display:none!important}
 .cards .card .shot::before{content:""!important;position:absolute!important;left:50%!important;top:50%!important;width:min(78%,250px)!important;aspect-ratio:1!important;height:auto!important;inset:auto!important;left:50%!important;top:50%!important;transform:translate(-50%,-50%)!important;border-radius:50%!important;background:var(--ivory)!important;filter:none!important;opacity:1!important;mix-blend-mode:normal!important}
 .cards .card .shot{align-items:center!important;padding:0!important}
 .cards .card .shot:not(.trio):not(.six) img{height:84%!important;margin:0!important}
