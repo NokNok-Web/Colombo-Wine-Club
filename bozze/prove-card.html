@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prove card Wine Club</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400&family=Barlow:wght@300;400;500&display=swap">
+<style>
+:root{--paper:#fff;--ink:#141210;--ink-2:#5a534a;--ink-3:#6b645a;--rule:#e3dccf;--gold:#ab8329;--gold-ink:#8a6a20;--brand-gold:#c08e00;--cellar:#12100d;--ivory:#faf6f0;
+--stage:radial-gradient(60% 48% at 50% 38%, #fefefc 0%, rgba(254,254,252,0) 75%), linear-gradient(175deg, #fbfaf7 0%, #f5f2ec 55%, #ece7de 100%);
+--display:"Kaisei Decol",Georgia,serif;--text:"Barlow","Helvetica Neue",Arial,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--ink);font-family:var(--text);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1280px;margin:0 auto;padding:0 48px}
+header.top{padding:56px 0 8px}
+h1{font-family:var(--display);font-weight:400;font-size:44px;margin:0}
+.lead{color:var(--ink-2);max-width:62ch;margin-top:10px}
+.opt{padding:56px 0;border-top:1px solid var(--rule)}
+.opt-head{display:flex;align-items:baseline;gap:18px;margin-bottom:28px}
+.opt-head .k{font-family:var(--display);font-size:36px;color:var(--gold-ink);line-height:1}
+.opt-head h2{font-family:var(--display);font-weight:400;font-size:26px;margin:0}
+.opt-head p{color:var(--ink-2);font-size:15px;margin:4px 0 0}
+.row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}
+.card{display:grid;grid-template-rows:auto 1fr;min-width:0}
+.body{padding-top:20px;display:grid;gap:6px}
+.body h3{font-family:var(--display);font-weight:400;font-size:24px;margin:0;line-height:1.1}
+.what{font-size:15px;color:var(--ink-2)}
+.pr{margin-top:8px;padding-top:12px;border-top:1px solid var(--rule);display:flex;gap:12px;align-items:baseline}
+.pr b{font-family:var(--display);font-weight:400;font-size:24px}
+.pr span{font-size:12.5px;color:var(--ink-3)}
+.btn{margin-top:14px;height:46px;display:grid;place-items:center;background:var(--brand-gold);color:#fff;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:500}
+.shot{position:relative;overflow:hidden;display:flex;justify-content:center;align-items:flex-end}
+.shot img{display:block;width:auto;max-width:none}
+.trio img{margin:0 -12px}
+
+/* A: fondo chiaro, nessuna ombra, filetto oro alla base */
+.A .shot{background:var(--stage);height:320px;padding:28px 0 0;border-bottom:1px solid var(--brand-gold)}
+.A .shot img{height:250px;margin-bottom:22px}
+.A .trio img.s{height:216px}
+
+/* B: niente riquadro, bottiglia libera su bianco */
+.B .shot{background:none;height:330px;padding-top:10px}
+.B .shot img{height:300px}
+.B .trio img.s{height:260px}
+
+/* C: riquadro basso, bottiglia che esce dal riquadro */
+.C .shot{height:340px;background:none}
+.C .shot::before{content:"";position:absolute;left:0;right:0;bottom:0;height:62%;background:var(--ivory)}
+.C .shot img{position:relative;height:300px;margin-bottom:26px}
+.C .trio img.s{height:250px}
+
+/* D: bottiglia grande, tagliata dai bordi, inquadratura sull'etichetta */
+.D .shot{background:var(--stage);height:320px;align-items:flex-end}
+.D .shot img{height:600px;margin-bottom:-40px}
+.D .trio img{height:560px;margin:0 -10px -40px}
+.D .trio img.s{height:520px}
+
+/* E: cerchio di luce dietro la bottiglia */
+.E .shot{background:#fff;height:320px;border:1px solid var(--rule)}
+.E .shot::before{content:"";position:absolute;left:50%;top:50%;width:230px;height:230px;transform:translate(-50%,-50%);border-radius:50%;background:var(--ivory)}
+.E .shot img{position:relative;height:270px;margin-bottom:24px}
+.E .trio img.s{height:230px}
+</style>
+</head>
+<body>
+<header class="top wrap">
+  <h1>Prove della card</h1>
+  <p class="lead">Cinque modi di presentare la bottiglia nella card, tutti senza ombra. In ogni riga: un vino singolo, una collezione da tre e un altro vino singolo.</p>
+</header>
+<main class="wrap">
+<section class="opt A"><div class="opt-head"><span class="k">A</span><div><h2>Fondo chiaro con filetto oro</h2><p>La card di adesso, senza ombra: la bottiglia appoggia su una linea oro sottile.</p></div></div><div class="row"><div class="card"><div class="shot"><img src="img/COL-Blanc-de-noirs-g.png" alt=""></div><div class="body"><h3>Alta Langa Blanc de Noir</h3><p class="what">Alta Langa DOCG · Extra Brut · 2022</p><div class="pr"><b>€ 37,00</b><span>IVA inclusa</span></div><div class="btn">Aggiungi</div></div></div><div class="card"><div class="shot trio"><img class="s" src="img/COL-Blanc-de-blancs.png" alt=""><img src="img/COL-Blanc-de-noirs-g.png" alt=""><img class="s" src="img/COL-Rose.png" alt=""></div><div class="body"><h3>Trilogia Alta Langa</h3><p class="what">Blanc de Blancs · Blanc de Noir · Rosé</p><div class="pr"><b>€ 92,00</b><span>IVA inclusa</span></div><div class="btn">Aggiungi</div></div></div><div class="card"><div class="shot"><img src="img/COL-Maxima.png" alt=""></div><div class="body"><h3>Maxima</h3><p class="what">Pinot Nero · Piemonte DOC · 2021</p><div class="pr"><b>€ 25,00</b><span>IVA inclusa</span></div><div class="btn">Aggiungi</div></div></div></div></section>
+<section class="opt B"><div class="opt-head"><span class="k">B</span><div><h2>Bottiglia libera</h2><p>Nessun riquadro: la bottiglia sta direttamente sul bianco della pagina, più grande.</p></div></div><div class="row"><div class="card"><div class="shot"><img src="img/COL-Blanc-de-noirs-g.png" alt=""></div><div class="body"><h3>Alta Langa Blanc de Noir</h3><p class="what">Alta Langa DOCG · Extra Brut · 2022</p><div class="pr"><b>€ 37,00</b><span>IVA inclusa</span></div><div class="btn">Aggiungi</div></div></div><div class="card"><div class="shot trio"><img class="s" src="img/COL-Blanc-de-blancs.png" alt=""><img src="img/COL-Blanc-de-noirs-g.png" alt=""><img class="s" src="img/COL-Rose.png" alt=""></div><div class="body"><h3>Trilogia Alta Langa</h3><p class="what">Blanc de Blancs · Blanc de Noir · Rosé</p><div class="pr"><b>€ 92,00</b><span>IVA inclusa</span></div><div class="btn">Aggiungi</div></div></div><div class="card"><div class="shot"><img src="img/COL-Maxima.png" alt=""></div><div class="body"><h3>Maxima</h3><p class="what">Pinot Nero · Piemonte DOC · 2021</p><div class="pr"><b>€ 25,00</b><span>IVA inclusa</span></div><div class="btn">Aggiungi</div></div></div></div></section>
+<section class="opt C"><div class="opt-head"><span class="k">C</span><div><h2>Bottiglia che esce dal riquadro</h2><p>Un riquadro avorio più basso e la bottiglia che sporge sopra.</p></div></div><div class="row"><div class="card"><div class="shot"><img src="img/COL-Blanc-de-noirs-g.png" alt=""></div><div class="body"><h3>Alta Langa Blanc de Noir</h3><p class="what">Alta Langa DOCG · Extra Brut · 2022</p><div class="pr"><b>€ 37,00</b><span>IVA inclusa</span></div><div class="btn">Aggiungi</div></div></div><div class="card"><div class="shot trio"><img class="s" src="img/COL-Blanc-de-blancs.png" alt=""><img src="img/COL-Blanc-de-noirs-g.png" alt=""><img class="s" src="img/COL-Rose.png" alt=""></div><div class="body"><h3>Trilogia Alta Langa</h3><p class="what">Blanc de Blancs · Blanc de Noir · Rosé</p><div class="pr"><b>€ 92,00</b><span>IVA inclusa</span></div><div class="btn">Aggiungi</div></div></div><div class="card"><div class="shot"><img src="img/COL-Maxima.png" alt=""></div><div class="body"><h3>Maxima</h3><p class="what">Pinot Nero · Piemonte DOC · 2021</p><div class="pr"><b>€ 25,00</b><span>IVA inclusa</span></div><div class="btn">Aggiungi</div></div></div></div></section>
+<section class="opt D"><div class="opt-head"><span class="k">D</span><div><h2>Dettaglio sull'etichetta</h2><p>La bottiglia è grande e tagliata dai bordi: si vede soprattutto l'etichetta.</p></div></div><div class="row"><div class="card"><div class="shot"><img src="img/COL-Blanc-de-noirs-g.png" alt=""></div><div class="body"><h3>Alta Langa Blanc de Noir</h3><p class="what">Alta Langa DOCG · Extra Brut · 2022</p><div class="pr"><b>€ 37,00</b><span>IVA inclusa</span></div><div class="btn">Aggiungi</div></div></div><div class="card"><div class="shot trio"><img class="s" src="img/COL-Blanc-de-blancs.png" alt=""><img src="img/COL-Blanc-de-noirs-g.png" alt=""><img class="s" src="img/COL-Rose.png" alt=""></div><div class="body"><h3>Trilogia Alta Langa</h3><p class="what">Blanc de Blancs · Blanc de Noir · Rosé</p><div class="pr"><b>€ 92,00</b><span>IVA inclusa</span></div><div class="btn">Aggiungi</div></div></div><div class="card"><div class="shot"><img src="img/COL-Maxima.png" alt=""></div><div class="body"><h3>Maxima</h3><p class="what">Pinot Nero · Piemonte DOC · 2021</p><div class="pr"><b>€ 25,00</b><span>IVA inclusa</span></div><div class="btn">Aggiungi</div></div></div></div></section>
+<section class="opt E"><div class="opt-head"><span class="k">E</span><div><h2>Cerchio di luce</h2><p>Un cerchio avorio dietro la bottiglia, dentro una cornice sottile.</p></div></div><div class="row"><div class="card"><div class="shot"><img src="img/COL-Blanc-de-noirs-g.png" alt=""></div><div class="body"><h3>Alta Langa Blanc de Noir</h3><p class="what">Alta Langa DOCG · Extra Brut · 2022</p><div class="pr"><b>€ 37,00</b><span>IVA inclusa</span></div><div class="btn">Aggiungi</div></div></div><div class="card"><div class="shot trio"><img class="s" src="img/COL-Blanc-de-blancs.png" alt=""><img src="img/COL-Blanc-de-noirs-g.png" alt=""><img class="s" src="img/COL-Rose.png" alt=""></div><div class="body"><h3>Trilogia Alta Langa</h3><p class="what">Blanc de Blancs · Blanc de Noir · Rosé</p><div class="pr"><b>€ 92,00</b><span>IVA inclusa</span></div><div class="btn">Aggiungi</div></div></div><div class="card"><div class="shot"><img src="img/COL-Maxima.png" alt=""></div><div class="body"><h3>Maxima</h3><p class="what">Pinot Nero · Piemonte DOC · 2021</p><div class="pr"><b>€ 25,00</b><span>IVA inclusa</span></div><div class="btn">Aggiungi</div></div></div></div></section>
+
+</main>
+</body>
+</html>
