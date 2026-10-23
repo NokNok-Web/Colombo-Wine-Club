@@ -488,6 +488,8 @@ footer b{color:var(--ink);font-weight:500}
 .vcard .y{font-family:var(--display);font-size:30px;line-height:1;color:var(--gold-soft)}
 .vcard .f{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--on-cellar-2)}
 .vcard .p{font-family:var(--display);font-size:18px;color:#fff;margin-top:10px;padding-top:10px;border-top:1px solid rgba(217,192,138,.16)}
+.vcard .p.veil{display:grid;gap:4px}
+.vcard .p.veil .blur{filter:blur(7px);user-select:none;opacity:.8}
 .vcard .lock{display:inline-flex;align-items:center;gap:6px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft);margin-top:6px}
 .vcard.mag{background:rgba(217,192,138,.06)}
 @media (max-width:900px){.vault{padding-bottom:64px}.vault-band{aspect-ratio:3/2}.vault .group-head{margin-top:-24px}.vwine{grid-template-columns:1fr;margin-top:48px}.vwine+.vwine{padding-top:48px}.vwine .bt{height:300px}.vgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.vcard{padding:14px 12px}.vcard .y{font-size:26px}}
@@ -584,6 +586,7 @@ footer b{color:var(--ink);font-weight:500}
       <a href="#gemme"><span>Le Gemme</span></a>
       <a href="#livelli"><span>I livelli</span></a>
       <a href="#regali"><span>Regali</span></a>
+      <a href="#b2b"><span>Area B2B</span></a>
       <a href="#domande"><span>Domande</span></a>
     </div>
   </nav>
@@ -594,7 +597,7 @@ footer b{color:var(--ink);font-weight:500}
       <ol class="steps">
         <li><span class="n num">1</span><h3>Entra nel club</h3><p>L'iscrizione è gratuita. Entri come Silver e ricevi via mail un codice per il 10% sul primo ordine.</p></li>
         <li><span class="n num">2</span><h3>Raccogli Gemme</h3><p>Le Gemme arrivano con i tuoi acquisti e con le promozioni speciali riservate ai soci.</p></li>
-        <li><span class="n num">3</span><h3>Sali di livello</h3><p>Con 500 Gemme diventi Gold, con 2.000 Platinum. Il livello raggiunto resta tuo per sempre.</p></li>
+        <li><span class="n num">3</span><h3>Sali di livello</h3><p>Con 500 Gemme diventi Gold, con 2.000 Platinum. Diamond è su invito della cantina. Il livello raggiunto resta tuo per sempre.</p></li>
       </ol>
     </div>
   </section>
@@ -607,7 +610,7 @@ footer b{color:var(--ink);font-weight:500}
         <div><h3>Con i tuoi acquisti</h3><span class="g"><img class="gem" src="img/gemma.png" alt="" width="81" height="72"></span><p>Ogni ordine nel club ti avvicina al livello successivo.</p></div>
         <div><h3>Con le promozioni del club</h3><span class="g"><img class="gem" src="img/gemma.png" alt="" width="81" height="72"></span><p>In alcuni periodi dell'anno e su alcune collezioni le Gemme crescono più in fretta.</p></div>
         <div><h3>Nei tuoi momenti speciali</h3><span class="g"><img class="gem" src="img/gemma.png" alt="" width="81" height="72"></span><p>Il club ti festeggia: per il compleanno e per l'anniversario della tua iscrizione c'è sempre una sorpresa.</p></div>
-        <div><h3>Con le novità della cantina</h3><span class="g"><img class="gem" src="img/gemma.png" alt="" width="81" height="72"></span><p>Le nuove uscite e le edizioni speciali possono valere qualcosa in più.</p></div>
+        <div><h3>Anche in cantina</h3><span class="g"><img class="gem" src="img/gemma.png" alt="" width="81" height="72"></span><p>Quando compri da noi a Bubbio, la cantina aggiunge le Gemme al tuo saldo. Nella tua area riservata le vedi insieme a quelle degli ordini online.</p></div>
       </div>
     </div>
   </section>
@@ -616,7 +619,7 @@ footer b{color:var(--ink);font-weight:500}
   <section class="lv-dark" id="livelli" aria-labelledby="livelli-t">
     <div class="wrap">
       <div class="divider" aria-hidden="true"><span></span><img src="img/ricciolo.png" alt="" width="343" height="277"></div>
-      <h2 id="livelli-t">I livelli del club</h2><p class="lv-lead">Più ti avvicini alla cantina, più la cantina si apre a te. Entri come Silver, e ogni acquisto ti regala Gemme che ti portano verso prezzi riservati, anteprime ed esperienze a Bubbio. Il livello che raggiungi resta tuo.</p>
+      <h2 id="livelli-t">I livelli del club</h2><p class="lv-lead">Più ti avvicini alla cantina, più la cantina si apre a te. Entri come Silver, e ogni acquisto ti regala Gemme che ti portano verso prezzi riservati, anteprime ed esperienze a Bubbio e sul territorio. Il livello che raggiungi resta tuo.</p>
       <ol class="tiers">
         <li>
           <h3>Silver</h3>
@@ -637,15 +640,23 @@ footer b{color:var(--ink);font-weight:500}
             <li><span>Un regalo per il tuo compleanno e per l'anniversario nel club</span></li>
           </ul>
         </li>
-        <li class="top">
+        <li>
           <h3>Platinum</h3>
           <p class="how">Da <span class="num">2.000</span> Gemme</p>
           <ul class="perks">
             <li><span>Il prezzo Gold, sempre</span></li>
             <li><span>Accesso in anteprima alle nuove uscite</span></li>
             <li><span>Le annate storiche di Apertura e Maxima</span></li>
-            <li><span>Visita e degustazione in cantina con la famiglia Colombo</span></li>
-            <li class="tease"><span>E qualche sorpresa, che si svela solo ai soci Platinum</span></li>
+            <li><span>Degustazione in cantina con la famiglia Colombo, accompagnata da piatti della tradizione</span></li>
+          </ul>
+        </li>
+        <li class="top">
+          <h3>Diamond</h3>
+          <p class="how">Su invito della cantina</p>
+          <ul class="perks">
+            <li><span>Tutto quello che hai da Platinum</span></li>
+            <li><span>Esperienze sull'Alta Langa astigiana con il vino Colombo come filo conduttore: un soggiorno tra le colline, gli agnolotti preparati insieme</span></li>
+            <li class="tease"><span>E qualche sorpresa, che si svela solo ai soci Diamond</span></li>
           </ul>
         </li>
       </ol>
@@ -668,11 +679,12 @@ footer b{color:var(--ink);font-weight:500}
     <div class="wrap">
       <div class="divider" aria-hidden="true"><span></span><img src="img/ricciolo.png" alt="" width="343" height="277"></div>
       <div class="b2b">
-        <div><h2 id="b2b-t" style="font-size:var(--h2)">Area B2B</h2><p style="margin-top:14px;color:var(--ink-2)">Per distributori e ristoratori, in Italia e all'estero: tutti i vini della cantina con un listino dedicato.</p><a class="btn line" style="width:auto;margin-top:24px" href="#iscrizione">Richiedi l'accesso B2B</a></div>
+        <div><h2 id="b2b-t" style="font-size:var(--h2)">Area B2B</h2><p style="margin-top:14px;color:var(--ink-2)">Per distributori e ristoratori, in Italia e all'estero: tutti i vini della cantina con un listino dedicato. L'accesso non è automatico: ogni richiesta la valuta la cantina, di persona.</p><a class="btn line" style="width:auto;margin-top:24px" href="#iscrizione">Richiedi l'accesso B2B</a></div>
         <ol>
-          <li><b>Registrazione</b><span>Inserisci la partita IVA o il VAT number, la ragione sociale e il tipo di attività.</span></li>
-          <li><b>Verifica</b><span>Controlliamo la partita IVA sul registro europeo VIES. Se è valida, l'account è attivo subito.</span></li>
-          <li><b>Listino dedicato</b><span>Vedi tutti i vini con i prezzi riservati alla tua attività e ordini direttamente dal sito.</span></li>
+          <li><b>Richiesta</b><span>Compili il modulo con la ragione sociale, la partita IVA o il VAT number, il tipo di attività e la zona in cui lavori.</span></li>
+          <li><b>Valutazione</b><span>La richiesta arriva alla cantina, che la valuta anche in base ai partner già presenti nella tua zona.</span></li>
+          <li><b>Ti ricontattiamo</b><span>Ti scriviamo o ti chiamiamo per conoscerci. Se la richiesta è approvata, attiviamo il tuo account.</span></li>
+          <li><b>Listino dedicato</b><span>Dal tuo account vedi tutti i vini con i prezzi riservati alla tua attività e ordini dal sito.</span></li>
         </ol>
       </div>
     </div>
@@ -684,7 +696,7 @@ footer b{color:var(--ink);font-weight:500}
       <div class="group-head"><div><h2 id="faq-t">Domande frequenti</h2></div></div>
       <div class="faq">
         <details><summary>L'iscrizione è a pagamento?<svg width="28" height="28" viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="14" fill="none" stroke="currentColor" stroke-width="1"/><path d="M9.5 12.5 15 18l5.5-5.5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></summary><p>No, entrare nel club è gratuito. È riservato ai maggiori di 18 anni: all'iscrizione ti chiediamo la data di nascita.</p></details>
-        <details><summary>Come si raccolgono le Gemme?<svg width="28" height="28" viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="14" fill="none" stroke="currentColor" stroke-width="1"/><path d="M9.5 12.5 15 18l5.5-5.5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></summary><p>Con i tuoi acquisti nel club e con le promozioni speciali riservate ai soci. Nella tua area riservata vedi sempre quante Gemme hai e quante ne mancano al livello successivo.</p></details>
+        <details><summary>Come si raccolgono le Gemme?<svg width="28" height="28" viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="14" fill="none" stroke="currentColor" stroke-width="1"/><path d="M9.5 12.5 15 18l5.5-5.5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></summary><p>Con i tuoi acquisti nel club e con le promozioni speciali riservate ai soci. Anche gli acquisti fatti in cantina valgono Gemme. Nella tua area riservata vedi sempre quante Gemme hai, da dove arrivano e quante ne mancano al livello successivo.</p></details>
         <details><summary>Le Gemme scadono? Posso perdere il livello?<svg width="28" height="28" viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="14" fill="none" stroke="currentColor" stroke-width="1"/><path d="M9.5 12.5 15 18l5.5-5.5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></summary><p>No. Le Gemme non scadono e il livello che raggiungi resta tuo per sempre.</p></details>
         <details><summary>Cosa succede alle Gemme se restituisco un ordine?<svg width="28" height="28" viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="14" fill="none" stroke="currentColor" stroke-width="1"/><path d="M9.5 12.5 15 18l5.5-5.5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></summary><p>Le Gemme di un ordine annullato o restituito vengono tolte in automatico dal tuo saldo.</p></details>
         <details><summary>Quanto costa la spedizione?<svg width="28" height="28" viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="14" fill="none" stroke="currentColor" stroke-width="1"/><path d="M9.5 12.5 15 18l5.5-5.5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></summary><p>In Italia la spedizione è gratuita sopra € 210 per i soci Silver e sopra € 190 dai soci Gold. All'estero si paga la tariffa calcolata in base alla destinazione.</p></details>
@@ -710,10 +722,10 @@ footer b{color:var(--ink);font-weight:500}
             </ul>
           </div>
           <div data-for="b2b">
-            <p>Per distributori e ristoratori, in Italia e all'estero.</p>
+            <p>Per distributori e ristoratori, in Italia e all'estero. L'accesso non è automatico: ogni richiesta la valuta la cantina.</p>
             <ul class="gifts">
               <li><img class="gem" src="img/gemma.png" alt="" width="81" height="72"><span>Il <b>listino dedicato</b> alla tua attività su tutti i vini</span></li>
-              <li><img class="gem" src="img/gemma.png" alt="" width="81" height="72"><span>Ordini da subito, appena <b>verifichiamo la partita IVA</b></span></li>
+              <li><img class="gem" src="img/gemma.png" alt="" width="81" height="72"><span><b>Ti ricontattiamo noi</b> dopo aver letto la tua richiesta</span></li>
             </ul>
           </div>
         </div>
@@ -739,9 +751,12 @@ footer b{color:var(--ink);font-weight:500}
                 <div class="field full"><label for="b-rs">Ragione sociale</label><input id="b-rs" name="ragione" autocomplete="organization" required><span class="err">Scrivi la ragione sociale.</span></div>
                 <div class="field"><label for="b-tipo">Attività</label><select id="b-tipo" name="tipo" required><option value="" selected disabled>Scegli</option><option>Distributore</option><option>Ristoratore</option></select><span class="err">Scegli il tipo di attività.</span></div>
                 <div class="field"><label for="b-paese">Paese</label><select id="b-paese" name="paese" required><option value="IT" selected>Italia</option><option value="UE">Altro paese dell'Unione europea</option><option value="EXTRA">Fuori dall'Unione europea</option></select></div>
-                <div class="field full"><label for="b-iva" id="b-iva-l">Partita IVA</label><input id="b-iva" name="iva" autocomplete="off" inputmode="numeric" required><span class="hint" id="b-iva-h">11 cifre. La verifichiamo in automatico sul registro europeo VIES.</span><span class="err" id="b-iva-e">La partita IVA non è valida: controlla le 11 cifre.</span></div>
+                <div class="field full"><label for="b-iva" id="b-iva-l">Partita IVA</label><input id="b-iva" name="iva" autocomplete="off" inputmode="numeric" required><span class="hint" id="b-iva-h">11 cifre.</span><span class="err" id="b-iva-e">La partita IVA non è valida: controlla le 11 cifre.</span></div>
                 <div class="field"><label for="b-nome">Nome del referente</label><input id="b-nome" name="refnome" autocomplete="given-name" required><span class="err">Scrivi il nome.</span></div>
                 <div class="field"><label for="b-cognome">Cognome del referente</label><input id="b-cognome" name="refcognome" autocomplete="family-name" required><span class="err">Scrivi il cognome.</span></div>
+                <div class="field"><label for="b-tel">Telefono</label><input id="b-tel" name="telefono" type="tel" autocomplete="tel" inputmode="tel" required><span class="err">Scrivi un numero di telefono.</span></div>
+                <div class="field"><label for="b-zona">Città e zona di lavoro</label><input id="b-zona" name="zona" autocomplete="address-level2" required><span class="err">Scrivi dove lavori.</span></div>
+                <div class="field full"><label for="b-msg">Messaggio <span style="text-transform:none;letter-spacing:0">(facoltativo)</span></label><input id="b-msg" name="messaggio"><span class="hint">Raccontaci la tua attività: locali, clienti, vini che cerchi.</span></div>
               </div>
 
               <label class="check"><input type="checkbox" name="privacy" required><span>Ho letto la <a href="#">privacy policy</a> e accetto i <a href="#">termini del club</a>.</span></label>
@@ -749,7 +764,7 @@ footer b{color:var(--ink);font-weight:500}
             </div>
           </div>
 
-          <button type="submit" class="add"><span class="start">Continua</span><span class="go" data-for="privato">Accetta l'invito</span><span class="go" data-for="b2b">Richiedi l'accesso B2B</span></button>
+          <button type="submit" class="add"><span class="start">Continua</span><span class="go" data-for="privato">Accetta l'invito</span><span class="go" data-for="b2b">Invia la richiesta</span></button>
           <p class="small">Sei già socio? <a href="#accedi">Accedi</a></p>
         </form>
 
@@ -760,8 +775,8 @@ footer b{color:var(--ink);font-weight:500}
             <a class="spec-dl" href="vini.html">Inizia dai vini<svg width="28" height="28" aria-hidden="true"><use href="#arrow"/></svg></a>
           </div>
           <div data-for="b2b">
-            <p>Verifichiamo la tua partita IVA sul registro europeo VIES: se è valida, il tuo account è attivo subito con il listino dedicato. Se la verifica automatica non è possibile, la cantina controlla i dati e ti scrive appena l'account è attivo.</p>
-            <a class="spec-dl" href="vini.html">Guarda i vini<svg width="28" height="28" aria-hidden="true"><use href="#arrow"/></svg></a>
+            <p>La cantina legge la tua richiesta e ti ricontatta via mail o al telefono nei prossimi giorni. L'account B2B, con il listino dedicato, si attiva solo dopo la nostra approvazione.</p>
+            <a class="spec-dl" href="vini.html">Intanto, guarda i vini<svg width="28" height="28" aria-hidden="true"><use href="#arrow"/></svg></a>
           </div>
         </div>
       </div>
@@ -894,9 +909,9 @@ footer b{color:var(--ink);font-weight:500}
 
   // partita IVA, VAT number o numero fiscale estero a seconda del paese
   var IVA={
-    IT:{l:'Partita IVA',h:'11 cifre. La verifichiamo in automatico sul registro europeo VIES.',e:'La partita IVA non è valida: controlla le 11 cifre.',m:'numeric'},
-    UE:{l:'VAT number',h:'Con il prefisso del paese, per esempio FR12345678901. Lo verifichiamo sul registro europeo VIES.',e:'Il VAT number non è valido: deve iniziare con il prefisso del paese.',m:'text'},
-    EXTRA:{l:'Numero fiscale dell’azienda',h:'Il numero fiscale della tua attività nel tuo paese (Tax ID). Lo verifica la cantina prima di attivare l’account.',e:'Scrivi il numero fiscale della tua attività.',m:'text'}
+    IT:{l:'Partita IVA',h:'11 cifre.',e:'La partita IVA non è valida: controlla le 11 cifre.',m:'numeric'},
+    UE:{l:'VAT number',h:'Con il prefisso del paese, per esempio FR12345678901.',e:'Il VAT number non è valido: deve iniziare con il prefisso del paese.',m:'text'},
+    EXTRA:{l:'Numero fiscale dell’azienda',h:'Il numero fiscale della tua attività nel tuo paese (Tax ID).',e:'Scrivi il numero fiscale della tua attività.',m:'text'}
   };
   function paese(){
     var c=IVA[$('b-paese').value];
@@ -981,7 +996,8 @@ footer b{color:var(--ink);font-weight:500}
 .lv-dark .divider{margin-bottom:48px}
 .lv-dark h2{font-size:var(--h2);color:#fff}
 .lv-dark .lv-lead{margin-top:16px;max-width:58ch;font-size:18px;font-weight:300;color:var(--on-cellar)}
-.lv-dark .tiers{margin-top:48px;column-gap:var(--col-gap)}
+.lv-dark .tiers{margin-top:48px;column-gap:var(--col-gap);grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:1100px) and (min-width:761px){.lv-dark .tiers{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:var(--col-gap)}}
 .lv-dark .tiers>li{border:1px solid rgba(217,192,138,.22);border-top:1px solid rgba(217,192,138,.22);padding:30px 28px 28px;gap:10px;background:rgba(255,255,255,.015)}
 .lv-dark .tiers>li::before{display:none}
 .lv-dark .tiers h3{font-size:clamp(28px,2.6vw,36px);color:#fff}
@@ -1003,9 +1019,23 @@ footer b{color:var(--ink);font-weight:500}
 .lv-wine .here-tag{position:absolute;top:24px;right:20px;margin:0;color:var(--gold-soft);border-color:rgba(217,192,138,.6);background:transparent}
 .lv-wine .tp{margin-top:10px;padding-top:12px;border-top:1px solid rgba(217,192,138,.16);font-size:14.5px;color:var(--on-cellar-2)}
 .lv-wine .tp .num{font-family:var(--display);font-size:22px;color:#fff;margin-right:6px}
+.lv-wine .gap{font-size:14px;color:var(--gold-soft);margin-top:2px}
+.lv-wine .gap b{font-weight:500;color:#fff}
 .lv-wine .more-club{margin-top:40px;color:var(--gold-soft)}
-@media (max-width:760px){.lv-dark{padding-block:56px 72px}.lv-dark .tiers{border-left:0;margin-left:0;gap:16px}.lv-dark .tiers>li{padding:22px 20px}.lv-dark .lv-foot .add{width:100%}}
+@media (max-width:760px){.lv-dark{padding-block:56px 72px}.lv-dark .tiers{grid-template-columns:1fr;border-left:0;margin-left:0;gap:16px}.lv-dark .tiers>li{padding:22px 20px}.lv-dark .lv-foot .add{width:100%}}
 </style><!-- /@parte:livelli-css -->
+<!-- @parte:whatsapp -->
+<style>
+/* pulsante WhatsApp sempre visibile: numero della cantina da confermare */
+.wa{position:fixed;right:max(24px,env(safe-area-inset-right,0px));bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:40;display:inline-flex;align-items:center;gap:12px;height:56px;padding:0 22px 0 8px;border-radius:28px;background:var(--ink);color:#fff;text-decoration:none;font-family:var(--text);font-size:15px;font-weight:500;letter-spacing:.02em;border:1px solid rgba(255,255,255,.16);box-shadow:0 12px 30px -12px rgba(18,16,13,.55);transition:transform .35s cubic-bezier(.16,1,.3,1),bottom .45s cubic-bezier(.16,1,.3,1)}
+.wa:hover{transform:translateY(-2px);color:#fff}
+.wa i{width:40px;height:40px;border-radius:50%;background:#25d366;display:grid;place-items:center;flex:none}
+.wa:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+body:has(.mbar.show) .wa{bottom:calc(88px + env(safe-area-inset-bottom,0px))}
+@media (max-width:620px){.wa{padding:0 8px;height:56px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px))}.wa .lbl{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}
+@media (prefers-reduced-motion:reduce){.wa{transition:none}}
+</style>
+<a class="wa" href="https://wa.me/390000000000" target="_blank" rel="noopener"><i><svg width="24" height="24" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4C9.4 4 4 9.3 4 15.8c0 2.3.7 4.4 1.8 6.2L4 28l6.2-1.7c1.7.9 3.7 1.4 5.8 1.4 6.6 0 12-5.3 12-11.9S22.6 4 16 4z" fill="none" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/><path d="M11.7 10.2c.3-.3.8-.3 1 .1l1.3 2.3c.2.4.1.8-.2 1.1l-.8.8c.7 1.6 2 2.9 3.6 3.6l.8-.8c.3-.3.7-.4 1.1-.2l2.3 1.3c.4.2.4.7.1 1l-1 1c-.6.6-1.5.8-2.3.5-3.2-1.2-5.8-3.8-7-7-.3-.8-.1-1.7.5-2.3z" fill="#fff"/></svg></i><span class="lbl">Scrivici su WhatsApp</span></a><!-- /@parte:whatsapp -->
 <script>
 (function(){
   var count=document.getElementById('cartCount'), n=0;

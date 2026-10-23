@@ -473,10 +473,10 @@ footer b{color:var(--ink);font-weight:500}
             </ul>
           </div>
           <div data-for="b2b">
-            <p>Per distributori e ristoratori, in Italia e all'estero.</p>
+            <p>Per distributori e ristoratori, in Italia e all'estero. L'accesso non è automatico: ogni richiesta la valuta la cantina.</p>
             <ul class="gifts">
               <li><img class="gem" src="img/gemma.png" alt="" width="81" height="72"><span>Il <b>listino dedicato</b> alla tua attività su tutti i vini</span></li>
-              <li><img class="gem" src="img/gemma.png" alt="" width="81" height="72"><span>Ordini da subito, appena <b>verifichiamo la partita IVA</b></span></li>
+              <li><img class="gem" src="img/gemma.png" alt="" width="81" height="72"><span><b>Ti ricontattiamo noi</b> dopo aver letto la tua richiesta</span></li>
             </ul>
           </div>
         </div>
@@ -502,9 +502,12 @@ footer b{color:var(--ink);font-weight:500}
                 <div class="field full"><label for="b-rs">Ragione sociale</label><input id="b-rs" name="ragione" autocomplete="organization" required><span class="err">Scrivi la ragione sociale.</span></div>
                 <div class="field"><label for="b-tipo">Attività</label><select id="b-tipo" name="tipo" required><option value="" selected disabled>Scegli</option><option>Distributore</option><option>Ristoratore</option></select><span class="err">Scegli il tipo di attività.</span></div>
                 <div class="field"><label for="b-paese">Paese</label><select id="b-paese" name="paese" required><option value="IT" selected>Italia</option><option value="UE">Altro paese dell'Unione europea</option><option value="EXTRA">Fuori dall'Unione europea</option></select></div>
-                <div class="field full"><label for="b-iva" id="b-iva-l">Partita IVA</label><input id="b-iva" name="iva" autocomplete="off" inputmode="numeric" required><span class="hint" id="b-iva-h">11 cifre. La verifichiamo in automatico sul registro europeo VIES.</span><span class="err" id="b-iva-e">La partita IVA non è valida: controlla le 11 cifre.</span></div>
+                <div class="field full"><label for="b-iva" id="b-iva-l">Partita IVA</label><input id="b-iva" name="iva" autocomplete="off" inputmode="numeric" required><span class="hint" id="b-iva-h">11 cifre.</span><span class="err" id="b-iva-e">La partita IVA non è valida: controlla le 11 cifre.</span></div>
                 <div class="field"><label for="b-nome">Nome del referente</label><input id="b-nome" name="refnome" autocomplete="given-name" required><span class="err">Scrivi il nome.</span></div>
                 <div class="field"><label for="b-cognome">Cognome del referente</label><input id="b-cognome" name="refcognome" autocomplete="family-name" required><span class="err">Scrivi il cognome.</span></div>
+                <div class="field"><label for="b-tel">Telefono</label><input id="b-tel" name="telefono" type="tel" autocomplete="tel" inputmode="tel" required><span class="err">Scrivi un numero di telefono.</span></div>
+                <div class="field"><label for="b-zona">Città e zona di lavoro</label><input id="b-zona" name="zona" autocomplete="address-level2" required><span class="err">Scrivi dove lavori.</span></div>
+                <div class="field full"><label for="b-msg">Messaggio <span style="text-transform:none;letter-spacing:0">(facoltativo)</span></label><input id="b-msg" name="messaggio"><span class="hint">Raccontaci la tua attività: locali, clienti, vini che cerchi.</span></div>
               </div>
 
               <label class="check"><input type="checkbox" name="privacy" required><span>Ho letto la <a href="#">privacy policy</a> e accetto i <a href="#">termini del club</a>.</span></label>
@@ -512,7 +515,7 @@ footer b{color:var(--ink);font-weight:500}
             </div>
           </div>
 
-          <button type="submit" class="add"><span class="start">Continua</span><span class="go" data-for="privato">Accetta l'invito</span><span class="go" data-for="b2b">Richiedi l'accesso B2B</span></button>
+          <button type="submit" class="add"><span class="start">Continua</span><span class="go" data-for="privato">Accetta l'invito</span><span class="go" data-for="b2b">Invia la richiesta</span></button>
           <p class="small">Sei già socio? <a href="#accedi">Accedi</a></p>
         </form>
 
@@ -523,8 +526,8 @@ footer b{color:var(--ink);font-weight:500}
             <a class="spec-dl" href="vini.html">Inizia dai vini<svg width="28" height="28" aria-hidden="true"><use href="#arrow"/></svg></a>
           </div>
           <div data-for="b2b">
-            <p>Verifichiamo la tua partita IVA sul registro europeo VIES: se è valida, il tuo account è attivo subito con il listino dedicato. Se la verifica automatica non è possibile, la cantina controlla i dati e ti scrive appena l'account è attivo.</p>
-            <a class="spec-dl" href="vini.html">Guarda i vini<svg width="28" height="28" aria-hidden="true"><use href="#arrow"/></svg></a>
+            <p>La cantina legge la tua richiesta e ti ricontatta via mail o al telefono nei prossimi giorni. L'account B2B, con il listino dedicato, si attiva solo dopo la nostra approvazione.</p>
+            <a class="spec-dl" href="vini.html">Intanto, guarda i vini<svg width="28" height="28" aria-hidden="true"><use href="#arrow"/></svg></a>
           </div>
         </div>
       </div>
@@ -551,7 +554,7 @@ footer b{color:var(--ink);font-weight:500}
   <section class="lv-dark" id="livelli" aria-labelledby="livelli-t">
     <div class="wrap">
       <div class="divider" aria-hidden="true"><span></span><img src="img/ricciolo.png" alt="" width="343" height="277"></div>
-      <h2 id="livelli-t">I livelli del club</h2><p class="lv-lead">Più ti avvicini alla cantina, più la cantina si apre a te. Entri come Silver, e ogni acquisto ti regala Gemme che ti portano verso prezzi riservati, anteprime ed esperienze a Bubbio. Il livello che raggiungi resta tuo.</p>
+      <h2 id="livelli-t">I livelli del club</h2><p class="lv-lead">Più ti avvicini alla cantina, più la cantina si apre a te. Entri come Silver, e ogni acquisto ti regala Gemme che ti portano verso prezzi riservati, anteprime ed esperienze a Bubbio e sul territorio. Il livello che raggiungi resta tuo.</p>
       <ol class="tiers">
         <li>
           <h3>Silver</h3>
@@ -572,15 +575,23 @@ footer b{color:var(--ink);font-weight:500}
             <li><span>Un regalo per il tuo compleanno e per l'anniversario nel club</span></li>
           </ul>
         </li>
-        <li class="top">
+        <li>
           <h3>Platinum</h3>
           <p class="how">Da <span class="num">2.000</span> Gemme</p>
           <ul class="perks">
             <li><span>Il prezzo Gold, sempre</span></li>
             <li><span>Accesso in anteprima alle nuove uscite</span></li>
             <li><span>Le annate storiche di Apertura e Maxima</span></li>
-            <li><span>Visita e degustazione in cantina con la famiglia Colombo</span></li>
-            <li class="tease"><span>E qualche sorpresa, che si svela solo ai soci Platinum</span></li>
+            <li><span>Degustazione in cantina con la famiglia Colombo, accompagnata da piatti della tradizione</span></li>
+          </ul>
+        </li>
+        <li class="top">
+          <h3>Diamond</h3>
+          <p class="how">Su invito della cantina</p>
+          <ul class="perks">
+            <li><span>Tutto quello che hai da Platinum</span></li>
+            <li><span>Esperienze sull'Alta Langa astigiana con il vino Colombo come filo conduttore: un soggiorno tra le colline, gli agnolotti preparati insieme</span></li>
+            <li class="tease"><span>E qualche sorpresa, che si svela solo ai soci Diamond</span></li>
           </ul>
         </li>
       </ol>
@@ -655,7 +666,8 @@ footer b{color:var(--ink);font-weight:500}
 .lv-dark .divider{margin-bottom:48px}
 .lv-dark h2{font-size:var(--h2);color:#fff}
 .lv-dark .lv-lead{margin-top:16px;max-width:58ch;font-size:18px;font-weight:300;color:var(--on-cellar)}
-.lv-dark .tiers{margin-top:48px;column-gap:var(--col-gap)}
+.lv-dark .tiers{margin-top:48px;column-gap:var(--col-gap);grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:1100px) and (min-width:761px){.lv-dark .tiers{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:var(--col-gap)}}
 .lv-dark .tiers>li{border:1px solid rgba(217,192,138,.22);border-top:1px solid rgba(217,192,138,.22);padding:30px 28px 28px;gap:10px;background:rgba(255,255,255,.015)}
 .lv-dark .tiers>li::before{display:none}
 .lv-dark .tiers h3{font-size:clamp(28px,2.6vw,36px);color:#fff}
@@ -677,8 +689,10 @@ footer b{color:var(--ink);font-weight:500}
 .lv-wine .here-tag{position:absolute;top:24px;right:20px;margin:0;color:var(--gold-soft);border-color:rgba(217,192,138,.6);background:transparent}
 .lv-wine .tp{margin-top:10px;padding-top:12px;border-top:1px solid rgba(217,192,138,.16);font-size:14.5px;color:var(--on-cellar-2)}
 .lv-wine .tp .num{font-family:var(--display);font-size:22px;color:#fff;margin-right:6px}
+.lv-wine .gap{font-size:14px;color:var(--gold-soft);margin-top:2px}
+.lv-wine .gap b{font-weight:500;color:#fff}
 .lv-wine .more-club{margin-top:40px;color:var(--gold-soft)}
-@media (max-width:760px){.lv-dark{padding-block:56px 72px}.lv-dark .tiers{border-left:0;margin-left:0;gap:16px}.lv-dark .tiers>li{padding:22px 20px}.lv-dark .lv-foot .add{width:100%}}
+@media (max-width:760px){.lv-dark{padding-block:56px 72px}.lv-dark .tiers{grid-template-columns:1fr;border-left:0;margin-left:0;gap:16px}.lv-dark .tiers>li{padding:22px 20px}.lv-dark .lv-foot .add{width:100%}}
 </style><!-- /@parte:livelli-css -->
 <!-- @parte:card-css -->
 <style>
@@ -966,5 +980,17 @@ footer b{color:var(--ink);font-weight:500}
 })();
 </script>
 
+<!-- @parte:whatsapp -->
+<style>
+/* pulsante WhatsApp sempre visibile: numero della cantina da confermare */
+.wa{position:fixed;right:max(24px,env(safe-area-inset-right,0px));bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:40;display:inline-flex;align-items:center;gap:12px;height:56px;padding:0 22px 0 8px;border-radius:28px;background:var(--ink);color:#fff;text-decoration:none;font-family:var(--text);font-size:15px;font-weight:500;letter-spacing:.02em;border:1px solid rgba(255,255,255,.16);box-shadow:0 12px 30px -12px rgba(18,16,13,.55);transition:transform .35s cubic-bezier(.16,1,.3,1),bottom .45s cubic-bezier(.16,1,.3,1)}
+.wa:hover{transform:translateY(-2px);color:#fff}
+.wa i{width:40px;height:40px;border-radius:50%;background:#25d366;display:grid;place-items:center;flex:none}
+.wa:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+body:has(.mbar.show) .wa{bottom:calc(88px + env(safe-area-inset-bottom,0px))}
+@media (max-width:620px){.wa{padding:0 8px;height:56px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px))}.wa .lbl{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}
+@media (prefers-reduced-motion:reduce){.wa{transition:none}}
+</style>
+<a class="wa" href="https://wa.me/390000000000" target="_blank" rel="noopener"><i><svg width="24" height="24" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4C9.4 4 4 9.3 4 15.8c0 2.3.7 4.4 1.8 6.2L4 28l6.2-1.7c1.7.9 3.7 1.4 5.8 1.4 6.6 0 12-5.3 12-11.9S22.6 4 16 4z" fill="none" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/><path d="M11.7 10.2c.3-.3.8-.3 1 .1l1.3 2.3c.2.4.1.8-.2 1.1l-.8.8c.7 1.6 2 2.9 3.6 3.6l.8-.8c.3-.3.7-.4 1.1-.2l2.3 1.3c.4.2.4.7.1 1l-1 1c-.6.6-1.5.8-2.3.5-3.2-1.2-5.8-3.8-7-7-.3-.8-.1-1.7.5-2.3z" fill="#fff"/></svg></i><span class="lbl">Scrivici su WhatsApp</span></a><!-- /@parte:whatsapp -->
 </body>
 </html>
