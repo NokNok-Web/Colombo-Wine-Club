@@ -840,15 +840,16 @@ footer b{color:var(--ink);font-weight:500}
 <!-- @parte:whatsapp -->
 <style>
 /* pulsante WhatsApp sempre visibile, sottile: numero della cantina da confermare */
-.wa{position:fixed;right:max(24px,env(safe-area-inset-right,0px));bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:40;display:inline-flex;align-items:center;gap:9px;height:38px;padding:0 16px 0 13px;background:rgba(255,255,255,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid var(--brand-gold);color:var(--ink);text-decoration:none;font-family:var(--text);font-size:11.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;transition:background-color .3s,color .3s,bottom .45s cubic-bezier(.16,1,.3,1)}
+.wa{position:fixed;right:max(24px,env(safe-area-inset-right,0px));bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:40;display:grid;place-items:center;width:42px;height:42px;padding:0;background:rgba(255,255,255,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid var(--brand-gold);color:var(--ink);text-decoration:none;transition:background-color .3s,color .3s,bottom .45s cubic-bezier(.16,1,.3,1)}
 .wa svg{flex:none;color:#1fa855;transition:color .3s}
 .wa:hover{background:var(--ink);color:#fff}
 .wa:hover svg{color:#25d366}
 .wa:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 body:has(.mbar.show) .wa{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
-@media (max-width:620px){.wa{width:40px;height:40px;padding:0;justify-content:center;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px))}.wa .lbl{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}
+.wa .lbl{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:620px){.wa{right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px))}}
 @media (prefers-reduced-motion:reduce){.wa{transition:none}}
 </style>
-<a class="wa" href="https://wa.me/390000000000" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4C9.4 4 4 9.3 4 15.8c0 2.3.7 4.4 1.8 6.2L4 28l6.2-1.7c1.7.9 3.7 1.4 5.8 1.4 6.6 0 12-5.3 12-11.9S22.6 4 16 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M11.7 10.2c.3-.3.8-.3 1 .1l1.3 2.3c.2.4.1.8-.2 1.1l-.8.8c.7 1.6 2 2.9 3.6 3.6l.8-.8c.3-.3.7-.4 1.1-.2l2.3 1.3c.4.2.4.7.1 1l-1 1c-.6.6-1.5.8-2.3.5-3.2-1.2-5.8-3.8-7-7-.3-.8-.1-1.7.5-2.3z" fill="currentColor"/></svg><span class="lbl">WhatsApp</span></a><!-- /@parte:whatsapp -->
+<a class="wa" href="https://wa.me/390000000000" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4C9.4 4 4 9.3 4 15.8c0 2.3.7 4.4 1.8 6.2L4 28l6.2-1.7c1.7.9 3.7 1.4 5.8 1.4 6.6 0 12-5.3 12-11.9S22.6 4 16 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M11.7 10.2c.3-.3.8-.3 1 .1l1.3 2.3c.2.4.1.8-.2 1.1l-.8.8c.7 1.6 2 2.9 3.6 3.6l.8-.8c.3-.3.7-.4 1.1-.2l2.3 1.3c.4.2.4.7.1 1l-1 1c-.6.6-1.5.8-2.3.5-3.2-1.2-5.8-3.8-7-7-.3-.8-.1-1.7.5-2.3z" fill="currentColor"/></svg><span class="lbl">Scrivici su WhatsApp</span></a><!-- /@parte:whatsapp -->
 </body>
 </html>
